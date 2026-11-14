@@ -1,6 +1,6 @@
 // Measures splitIsnad (Dart) against spec/vectors/isnad.json.
 // Usage: node tools/eval-isnad.mjs [dev|test] [--show]   (default: dev)
-// "test" is the held-out v0.2 test set (300-499): run it once, after the design is frozen.
+// "test" is the held-out v0.3 test set (500-799): run it once, after the design is frozen.
 // Results are also broken down by sample group (see tools/gen-isnad-vectors.mjs).
 import { dart, readVectors } from "./lib.mjs";
 
@@ -10,7 +10,7 @@ const cases = readVectors("isnad").cases.filter((c) => c.split === split);
 const out = dart(cases.map((c) => ({ op: "splitIsnad", text: c.input })));
 const group = (id) => {
   const n = Number(id.slice(-3));
-  return n < 100 ? "v0.1 dev" : n < 200 ? "v0.1 test" : n < 300 ? "v0.2 dev" : "v0.2 test";
+  return n < 100 ? "v0.1 dev" : n < 200 ? "v0.1 test" : n < 300 ? "v0.2 dev" : n < 500 ? "v0.2 test" : "v0.3 test";
 };
 const byWork = {};
 const byGroup = {};
