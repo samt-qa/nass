@@ -95,9 +95,6 @@ class Charset {
     _pairs(t.digitSeparators, digitSep);
   }
 
-  int flagsOf(int c) => c < 0x10000 ? flags[c] : 0;
-  int cccOf(int c) => c < 0x10000 ? ccc[c] : 0;
-  bool isArabic(int c) => c < 0x10000 && flags[c] & fArabic != 0;
   bool isSep(int c) =>
       c < 0x10000 ? flags[c] & fSep != 0 : astralSep.contains(c);
   bool isSpace(int c) =>

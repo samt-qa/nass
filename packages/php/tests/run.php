@@ -130,5 +130,30 @@ for ($i = 0; $i < 1500; $i++) {
     check(Nass::normalize(Nass::normalize($x, Level::Clean)) === Nass::normalize($x), 'clean ⊂ search: ' . bin2hex($x));
 }
 
+// Line coverage with pcov (CI): NASS_COVERAGE=<min percent>.
+$minCoverage = getenv('NASS_COVERAGE');
+if ($minCoverage !== false && $minCoverage !== '') {
+    if (!extension_loaded('pcov')) {
+        fwrite(STDERR, "NASS_COVERAGE is set but pcov is not loaded\n");
+        exit(1);
+    }
+    $src = realpath(__DIR__ . '/../src');
+    $files = glob($src . DIRECTORY_SEPARATOR . '*.php');
+    $hit = $total = 0;
+    foreach (\pcov\collect(\pcov\inclusive, $files) as $lines) {
+        foreach ($lines as $count) {
+            if ($count > 0) {
+                $hit++;
+                $total++;
+            } elseif ($count === -1) {
+                $total++; // executable, not executed
+            }
+        }
+    }
+    $pct = $total > 0 ? 100 * $hit / $total : 0;
+    printf("line coverage: %.1f%% (%d/%d), minimum %s%%\n", $pct, $hit, $total, $minCoverage);
+    check($pct >= (float) $minCoverage, 'line coverage', $pct, $minCoverage);
+}
+
 printf("%d passed, %d failed\n", $pass, $fail);
 exit($fail === 0 ? 0 : 1);

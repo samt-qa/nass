@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>نَصّ · تجربة حيّة</title>
+<meta name="description" content="Live demo of nass: Arabic normalization and diacritic-insensitive search with offsets in the original vocalized text.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f4ee; --panel: #fffdf9; --ink: #1f1d1a; --muted: #6b655c; --line: #e3ddd2;
+    --accent: #1d5c4d; --mark: #f3dd8f; --mark-ink: #2a2000; --code: #efe9de;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #151513; --panel: #1d1c19; --ink: #ece7dd; --muted: #a49d90; --line: #33312c;
+      --accent: #7cc3ad; --mark: #6b5a17; --mark-ink: #fff6d6; --code: #26241f; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.7 "IBM Plex Sans Arabic", system-ui, sans-serif; }
+  main { max-width: 960px; margin: 0 auto; padding: 32px 16px 64px; }
+  header h1 { font: 700 2.4rem/1.2 Amiri, serif; margin: 0; }
+  header h1 span { color: var(--muted); font: 500 1rem "IBM Plex Sans Arabic", sans-serif; margin-inline-start: .5rem; }
+  header p { color: var(--muted); margin: .4rem 0 0; max-width: 60ch; }
+  nav { margin-top: .6rem; display: flex; gap: 1rem; flex-wrap: wrap; font-size: .9rem; }
+  a { color: var(--accent); }
+  section { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px; margin-top: 20px; }
+  h2 { font-size: 1.05rem; margin: 0 0 12px; }
+  label { font-size: .85rem; color: var(--muted); display: block; margin-bottom: 4px; }
+  textarea, input[type=text], select {
+    width: 100%; font: inherit; color: var(--ink); background: var(--bg);
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+  textarea { min-height: 140px; font: 1.15rem/2 Amiri, serif; resize: vertical; }
+  .controls { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 12px; margin-top: 14px; align-items: end; }
+  .check { display: flex; gap: 6px; align-items: center; color: var(--ink); font-size: .9rem; padding-bottom: 10px; }
+  @media (max-width: 720px) { .controls { grid-template-columns: 1fr 1fr; } .controls > :first-child { grid-column: 1 / -1; } }
+  .out { font: 1.25rem/2.1 Amiri, serif; white-space: pre-wrap; word-break: break-word; }
+  mark { background: var(--mark); color: var(--mark-ink); border-radius: 3px; padding: 0 2px; }
+  .meta { color: var(--muted); font-size: .85rem; margin-top: 8px; }
+  .norm { font-family: ui-monospace, "IBM Plex Sans Arabic", monospace; font-size: .95rem; background: var(--code);
+    border-radius: 8px; padding: 10px 12px; white-space: pre-wrap; word-break: break-word; margin-top: 6px; }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; margin-top: 10px; }
+  th, td { text-align: start; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 500; }
+  td.ar { font: 1.05rem Amiri, serif; }
+  .tag { display: inline-block; font-size: .75rem; border: 1px solid var(--line); border-radius: 99px; padding: 0 8px; color: var(--muted); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 720px) { .grid2 { grid-template-columns: 1fr; } }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 28px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>نَصّ <span>nass</span></h1>
+    <p>تطبيع النص العربي والبحث فيه بلا اعتبار للحركات، مع مواضع التطابق في النص الأصلي المشكول. كل شيء هنا يعمل في متصفحك بالحزمة نفسها المنشورة.</p>
+    <nav>
+      <a href="https://github.com/samt-qa/nass">GitHub</a>
+      <a href="https://github.com/samt-qa/nass/blob/main/spec/SPEC.md">المواصفة</a>
+      <a href="https://github.com/samt-qa/nass/blob/main/docs/corpus.md">دقة تقسيم الإسناد</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>النص والبحث</h2>
+    <label for="text">النص الأصلي</label>
+    <textarea id="text" spellcheck="false"></textarea>
+    <div class="meta" id="source"></div>
+    <div class="controls">
+      <div><label for="needle">ابحث عن (بلا حركات)</label><input id="needle" type="text" value="كيف ياتيك الوحي"></div>
+      <div><label for="level">المستوى</label>
+        <select id="level"><option value="search" selected>search</option><option value="loose">loose</option><option value="clean">clean</option></select></div>
+      <div><label for="mode">المطابقة</label>
+        <select id="mode"><option value="phrase" selected>عبارة</option><option value="allWords">كل الكلمات</option><option value="anyWord">أي كلمة</option></select></div>
+      <div>
+        <label class="check"><input id="whole" type="checkbox"> كلمة كاملة</label>
+        <label class="check"><input id="strip" type="checkbox"> حذف الترضّي</label>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>التظليل في الأصل <span class="tag" id="count"></span></h2>
+    <div class="out" id="highlighted"></div>
+    <table id="matches"><thead><tr><th>#</th><th>من</th><th>إلى</th><th>النص في الأصل</th></tr></thead><tbody></tbody></table>
+  </section>
+
+  <section>
+    <h2>النص بعد التطبيع</h2>
+    <div class="norm" id="normalized"></div>
+  </section>
+
+  <section>
+    <h2>الإسناد والمتن <span class="tag">تجريبي</span></h2>
+    <div class="grid2">
+      <div><label>الإسناد</label><div class="out" id="isnad"></div></div>
+      <div><label>المتن</label><div class="out" id="matn"></div></div>
+    </div>
+    <div class="meta" id="isnadMeta"></div>
+    <table id="narrators"><thead><tr><th>الصيغة</th><th>الراوي (كما في النص)</th></tr></thead><tbody></tbody></table>
+    <p class="meta">يصيب الحدّ في 91 من 100 حديث محجوز من الكتب الستة. محلل تقريبي، و«الراوي» هنا نص لا هوية.</p>
+  </section>
+
+  <footer>MIT © 2026 Samt Software · النص الافتراضي: صحيح البخاري، رقم 2، من Open-Hadith-Data (ODbL/DbCL).</footer>
+</main>
+
+<script type="module">
+import { normalize, findAll } from "./nass/index.js";
+import { splitIsnad } from "./nass/isnad.js";
+
+const SAMPLE = "‏ ‏حَدَّثَنَا ‏ ‏عَبْدُ اللَّهِ بْنُ يُوسُفَ ‏ ‏قَالَ أَخْبَرَنَا ‏ ‏مَالِكٌ ‏ ‏عَنْ ‏ ‏هِشَامِ بْنِ عُرْوَةَ ‏ ‏عَنْ ‏ ‏أَبِيهِ ‏ ‏عَنْ ‏ ‏عَائِشَةَ أُمِّ الْمُؤْمِنِينَ ‏ ‏رَضِيَ اللَّهُ عَنْهَا ‏ ‏أَنَّ ‏ ‏الْحَارِثَ بْنَ هِشَامٍ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏سَأَلَ رَسُولَ اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏فَقَالَ يَا رَسُولَ اللَّهِ كَيْفَ يَأْتِيكَ الْوَحْيُ فَقَالَ رَسُولُ اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏أَحْيَانًا يَأْتِينِي مِثْلَ ‏ ‏صَلْصَلَةِ ‏ ‏الْجَرَسِ وَهُوَ أَشَدُّهُ عَلَيَّ ‏ ‏فَيُفْصَمُ ‏ ‏عَنِّي وَقَدْ وَعَيْتُ عَنْهُ مَا قَالَ وَأَحْيَانًا يَتَمَثَّلُ لِي ‏ ‏الْمَلَكُ ‏ ‏رَجُلًا فَيُكَلِّمُنِي فَأَعِي مَا يَقُولُ قَالَتْ ‏ ‏عَائِشَةُ ‏ ‏رَضِيَ اللَّهُ عَنْهَا ‏ ‏وَلَقَدْ رَأَيْتُهُ يَنْزِلُ عَلَيْهِ الْوَحْيُ فِي الْيَوْمِ الشَّدِيدِ الْبَرْدِ ‏ ‏فَيَفْصِمُ ‏ ‏عَنْهُ وَإِنَّ جَبِينَهُ ‏ ‏لَيَتَفَصَّدُ ‏ ‏عَرَقًا ‏";
+const $ = (id) => document.getElementById(id);
+$("text").value = SAMPLE;
+$("source").textContent = "النص الافتراضي: صحيح البخاري 2 (مشكول، فيه علامات اتجاه خفية U+200F كما في المصدر).";
+
+function setRows(tbody, rows) {
+  tbody.replaceChildren(...rows.map((cells) => {
+    const tr = document.createElement("tr");
+    cells.forEach(([text, cls]) => { const td = document.createElement("td"); td.textContent = text; if (cls) td.className = cls; tr.append(td); });
+    return tr;
+  }));
+}
+
+function render() {
+  const text = $("text").value;
+  const opts = {
+    level: $("level").value,
+    matchMode: $("mode").value,
+    wholeWord: $("whole").checked,
+    honorifics: $("strip").checked ? "strip" : "keep",
+  };
+  // Highlight with DOM nodes (highlight() itself does not escape HTML).
+  const ms = findAll(text, $("needle").value, opts);
+  const out = $("highlighted");
+  const parts = [];
+  let pos = 0;
+  for (const m of ms) {
+    parts.push(document.createTextNode(text.slice(pos, m.start)));
+    const mark = document.createElement("mark");
+    mark.textContent = m.text;
+    parts.push(mark);
+    pos = m.end;
+  }
+  parts.push(document.createTextNode(text.slice(pos)));
+  out.replaceChildren(...parts);
+  $("count").textContent = `${ms.length} تطابق`;
+  setRows($("matches").tBodies[0], ms.map((m, i) => [[String(i + 1)], [String(m.start)], [String(m.end)], [m.text, "ar"]]));
+  $("normalized").textContent = normalize(text, opts);
+
+  const s = splitIsnad(text);
+  $("isnad").textContent = s.isnad || "—";
+  $("matn").textContent = s.matn;
+  $("isnadMeta").textContent = s.isnad ? `الثقة: ${s.confidence}` : "لم يُعثر على حدّ واضح.";
+  setRows($("narrators").tBodies[0], s.narrators.map((n) => [[n.form, "ar"], [n.name, "ar"]]));
+}
+
+for (const id of ["text", "needle", "level", "mode", "whole", "strip"]) $(id).addEventListener("input", render);
+render();
+</script>
+</body>
+</html>

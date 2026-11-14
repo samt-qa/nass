@@ -1,0 +1,45 @@
+name: Demo site
+
+on:
+  push:
+    branches: [main]
+    paths: ["docs/**", "packages/js/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Build the JS package
+        working-directory: packages/js
+        run: npm ci && npm run build
+      - name: Assemble the site (demo page + the published bundles)
+        run: |
+          mkdir -p _site/nass
+          cp docs/index.html _site/
+          cp packages/js/dist/index.js packages/js/dist/isnad.js _site/nass/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -501,6 +501,32 @@
       "review": "pending"
     },
     {
+      "id": "norm-edge-005",
+      "rule": "S7",
+      "input": "قال الله تعالى تعالى",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "note": "S7 يتكرر حتى يستقر: حذف «تعالى» يجعل الثانية بعد لفظ الجلالة (اختبار انحدار)",
+      "review": "pending",
+      "synthetic": true,
+      "expected": "قال الله"
+    },
+    {
+      "id": "norm-edge-006",
+      "rule": "L1",
+      "input": "سبحان الله تعالى ء",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "note": "في loose يسبق L1 قاعدةَ S7، فالهمزة المنفردة تُحذف ولا تمنع المطابقة",
+      "review": "pending",
+      "synthetic": true,
+      "expected": "سبحان الله"
+    },
+    {
       "id": "gen-norm-rule-001",
       "rule": "C4",
       "input": "ﺑِﺴْﻢِ",

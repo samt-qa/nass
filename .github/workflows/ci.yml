@@ -1,0 +1,101 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  spec:
+    name: Spec, tables and vectors
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Generated tables match the source and Unicode 17
+        run: node tools/gen-tables.mjs --check
+      - name: Test vectors are well-formed
+        run: node tools/check-vectors.mjs
+
+  dart:
+    name: Dart
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/dart
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.13.5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: dart pub get
+      - name: Format (generated tables excluded)
+        run: dart format --output=none --set-exit-if-changed lib/nass.dart lib/src/charset.dart lib/src/isnad.dart lib/src/names.dart lib/src/normalizer.dart lib/src/search.dart test tool benchmark
+      - run: dart analyze --fatal-infos
+      - name: Tests with coverage (>= 95%)
+        run: |
+          dart run coverage:test_with_coverage
+          node ../../tools/coverage-check.mjs coverage/lcov.info 95
+      - name: Differential test against the independent oracle (six books)
+        working-directory: .
+        run: |
+          node tools/fetch-corpus.mjs
+          node tools/differential.mjs
+
+  js:
+    name: TypeScript (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20, 22, 24]
+    defaults:
+      run:
+        working-directory: packages/js
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build
+      - name: Bundle size (core < 8 KB gzip)
+        run: npm run size
+      - name: Tests with coverage (>= 95% lines)
+        run: npm run coverage
+
+  php:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          # Minimum releases patched for PHP2Shell (CVE-2026-109618, CVE-2026-109619).
+          - { php: "8.3", min: "8.3.36" }
+          - { php: "8.4", min: "8.4.27" }
+          - { php: "8.5", min: "8.5.12" }
+    defaults:
+      run:
+        working-directory: packages/php
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring
+          coverage: pcov
+      - name: Refuse unpatched PHP (PHP2Shell)
+        run: php -r 'if (version_compare(PHP_VERSION, "${{ matrix.min }}", "<")) { fwrite(STDERR, "PHP " . PHP_VERSION . " is older than ${{ matrix.min }}\n"); exit(1); } echo PHP_VERSION, " OK\n";'
+      - run: composer validate --strict
+      - name: Tests with coverage (>= 95% lines)
+        run: php -d pcov.enabled=1 -d pcov.directory=src tests/run.php
+        env:
+          NASS_COVERAGE: "95"
