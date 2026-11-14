@@ -1,0 +1,133 @@
+{
+  "file": "names",
+  "specVersion": "0.1",
+  "status": "draft",
+  "cases": [
+    {
+      "id": "names-key-001",
+      "input": "أبو هريرة",
+      "expected": "ابو هريره",
+      "note": "كنية بالرفع",
+      "review": "pending"
+    },
+    {
+      "id": "names-key-002",
+      "input": "أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ",
+      "expected": "ابو هريره",
+      "note": "كنية بالجر مع تشكيل وترضّ",
+      "review": "pending",
+      "synthetic": true
+    },
+    {
+      "id": "names-key-003",
+      "input": "عبد الله بن عمر",
+      "expected": "عبدالله بن عمر",
+      "note": "ضم عبد",
+      "review": "pending"
+    },
+    {
+      "id": "names-key-004",
+      "input": "ابن عباس",
+      "expected": "بن عباس",
+      "note": "ابن في أول الاسم [معتمد 9]",
+      "review": "pending"
+    },
+    {
+      "id": "names-key-005",
+      "input": "أبو عبد الله البخاري",
+      "expected": "ابو عبدالله البخاري",
+      "note": "كنية ثم مركّب",
+      "review": "pending"
+    },
+    {
+      "id": "names-key-006",
+      "input": "ذا اليدين",
+      "expected": "ذو اليدين",
+      "note": "ذا قبل اسم معروف [معتمد 8]",
+      "review": "pending"
+    },
+    {
+      "id": "names-key-007",
+      "input": "عائشة رضي الله عنها",
+      "expected": "عايشه",
+      "note": "ترضّي المؤنث ثم الهمزة والتاء",
+      "review": "pending"
+    },
+    {
+      "id": "names-key-008",
+      "input": "فاطمة ابنة محمد",
+      "expected": "فاطمه بنت محمد",
+      "note": "ابنة ← بنت",
+      "review": "pending"
+    },
+    {
+      "id": "names-key-009",
+      "input": "عبد المطلب",
+      "expected": "عبدالمطلب",
+      "note": "عبد مع غير الأسماء الحسنى [معتمد 11]",
+      "review": "pending"
+    },
+    {
+      "id": "names-key-010",
+      "input": "مالك بن أنس الإمام",
+      "expected": "مالك بن انس",
+      "note": "لقب ملحق في الآخر [معتمد 7]",
+      "review": "pending"
+    },
+    {
+      "id": "names-key-011",
+      "input": "الإمام مالك",
+      "expected": "الامام مالك",
+      "note": "اللقب في الأول لا يُحذف",
+      "review": "pending"
+    },
+    {
+      "id": "names-same-001",
+      "same": [
+        "أبو بكر",
+        "أبي بكر",
+        "أبا بكر",
+        "ابى بكر"
+      ],
+      "note": "حالات الكنية الثلاث مع ألف مقصورة",
+      "review": "pending"
+    },
+    {
+      "id": "names-same-002",
+      "same": [
+        "عبد الرحمن بن عوف",
+        "عبدالرحمن بن عوف",
+        "عَبْدُ الرَّحْمَنِ بْنُ عَوْفٍ"
+      ],
+      "note": "مركّب ومشكول",
+      "review": "pending"
+    },
+    {
+      "id": "names-same-003",
+      "same": [
+        "ابن مسعود",
+        "بن مسعود"
+      ],
+      "note": "ابن وبن",
+      "review": "pending"
+    },
+    {
+      "id": "names-diff-001",
+      "different": [
+        "سفيان الثوري",
+        "سفيان بن عيينة"
+      ],
+      "note": "اسمان مختلفان يبقيان مختلفين",
+      "review": "pending"
+    },
+    {
+      "id": "names-diff-002",
+      "different": [
+        "أبو هريرة",
+        "أبو بكر"
+      ],
+      "note": "الكنية وحدها لا تكفي للدمج",
+      "review": "pending"
+    }
+  ]
+}

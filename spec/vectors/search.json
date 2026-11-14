@@ -1,0 +1,20 @@
+{
+  "file": "search",
+  "specVersion": "0.1",
+  "status": "draft",
+  "cases": [
+    { "id": "search-phrase-001", "haystack": "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ", "needle": "الاعمال", "options": {}, "expected": [{ "start": 9, "end": 21, "text": "الْأَعْمَالُ" }], "note": "التطابق يشمل الضمة الأخيرة", "source": { "work": "صحيح البخاري", "ref": "1", "verified": false }, "review": "pending" },
+    { "id": "search-phrase-002", "haystack": "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ", "needle": "الأعمال بالنيات", "options": {}, "expected": [{ "start": 9, "end": 35, "text": "الْأَعْمَالُ بِالنِّيَّاتِ" }], "note": "عبارة من كلمتين", "source": { "work": "صحيح البخاري", "ref": "1", "verified": false }, "review": "pending" },
+    { "id": "search-phrase-003", "haystack": "العلم نور والعلم ميراث", "needle": "العلم", "options": {}, "expected": [{ "start": 0, "end": 5, "text": "العلم" }, { "start": 11, "end": 16, "text": "العلم" }], "note": "تطابقان، والثاني داخل «والعلم»", "review": "pending" },
+    { "id": "search-whole-001", "haystack": "العلم نور والعلم ميراث", "needle": "العلم", "options": { "wholeWord": true }, "expected": [{ "start": 0, "end": 5, "text": "العلم" }], "note": "wholeWord يستبعد «والعلم»", "review": "pending" },
+    { "id": "search-whole-002", "haystack": "قال: العلم، نور", "needle": "العلم", "options": { "wholeWord": true }, "expected": [{ "start": 5, "end": 10, "text": "العلم" }], "note": "الترقيم حد للكلمة", "review": "pending" },
+    { "id": "search-overlap-001", "haystack": "ااا", "needle": "اا", "options": {}, "expected": [{ "start": 0, "end": 2, "text": "اا" }], "note": "لا تداخل", "review": "pending" },
+    { "id": "search-lig-001", "haystack": "بسم ﷲ", "needle": "لل", "options": {}, "expected": [{ "start": 4, "end": 5, "text": "ﷲ" }], "note": "تطابق جزء من رمز ممتد يظلل الرمز كله", "review": "pending" },
+    { "id": "search-all-001", "haystack": "الصبر مفتاح الفرج", "needle": "الفرج الصبر", "options": { "matchMode": "allWords" }, "expected": [{ "start": 0, "end": 5, "text": "الصبر" }, { "start": 12, "end": 17, "text": "الفرج" }], "note": "كل الكلمات موجودة، والنتائج مرتبة بالموضع", "review": "pending" },
+    { "id": "search-all-002", "haystack": "الصبر مفتاح الفرج", "needle": "الصبر الشكر", "options": { "matchMode": "allWords" }, "expected": [], "note": "كلمة غائبة ← لا نتائج", "review": "pending" },
+    { "id": "search-any-001", "haystack": "الصبر مفتاح الفرج", "needle": "الصبر الشكر", "options": { "matchMode": "anyWord" }, "expected": [{ "start": 0, "end": 5, "text": "الصبر" }], "note": "أي كلمة", "review": "pending" },
+    { "id": "search-empty-001", "haystack": "نص ما", "needle": "ًَُ", "options": {}, "expected": [], "note": "عبارة بحث فارغة بعد التطبيع", "review": "pending" },
+    { "id": "search-loose-001", "haystack": "مدرسة", "needle": "مدرسه", "options": { "level": "loose" }, "expected": [{ "start": 0, "end": 5, "text": "مدرسة" }], "note": "loose يطابق الهاء بالتاء", "review": "pending" },
+    { "id": "search-loose-002", "haystack": "مدرسة", "needle": "مدرسه", "options": {}, "expected": [], "note": "search لا يطابقهما [القرار المفتوح 2]", "review": "pending" }
+  ]
+}

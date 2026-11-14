@@ -1,0 +1,10 @@
+CC0 1.0 Universal — Public Domain Dedication
+
+To the extent possible under law, Samt Software has waived all copyright and
+related or neighboring rights to the test vectors in this directory
+(spec/vectors/*.json).
+
+Full legal text: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+Note: quoted Quran and hadith text inside the vectors is not claimed by Samt
+Software; each such case cites its source in the "source" field.

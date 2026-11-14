@@ -1,0 +1,504 @@
+{
+  "file": "normalize",
+  "specVersion": "0.1",
+  "status": "draft",
+  "cases": [
+    {
+      "id": "norm-clean-001",
+      "rule": "C2",
+      "input": "سلام‏عليكم",
+      "level": "clean",
+      "options": {},
+      "expected": "سلامعليكم",
+      "note": "RLM بين كلمتين يُحذف ولا يصير مسافة",
+      "review": "pending"
+    },
+    {
+      "id": "norm-clean-002",
+      "rule": "C2",
+      "input": "﻿بسم",
+      "level": "clean",
+      "options": {},
+      "expected": "بسم",
+      "note": "BOM في أول النص",
+      "review": "pending"
+    },
+    {
+      "id": "norm-clean-003",
+      "rule": "C2",
+      "input": "می‌خواهم",
+      "level": "clean",
+      "options": {},
+      "expected": "میخواهم",
+      "note": "ZWNJ بجوار حرف عربي/فارسي يُحذف",
+      "review": "pending"
+    },
+    {
+      "id": "norm-clean-004",
+      "rule": "C2",
+      "input": "👨‍👩‍👧",
+      "level": "clean",
+      "options": {},
+      "expected": "👨‍👩‍👧",
+      "note": "ZWJ في رمز تعبيري لا يُمس [معتمد 1]",
+      "review": "pending"
+    },
+    {
+      "id": "norm-clean-005",
+      "rule": "C3",
+      "input": "محـــمد",
+      "level": "clean",
+      "options": {},
+      "expected": "محمد",
+      "note": "تطويل متكرر",
+      "review": "pending"
+    },
+    {
+      "id": "norm-clean-006",
+      "rule": "C3",
+      "input": "مُحَـمَّد",
+      "level": "clean",
+      "options": {},
+      "expected": "مُحَمَّد",
+      "note": "clean يحذف التطويل ويُبقي التشكيل",
+      "review": "pending"
+    },
+    {
+      "id": "norm-clean-007",
+      "rule": "C4",
+      "input": "ﻻ",
+      "level": "clean",
+      "options": {},
+      "expected": "لا",
+      "note": "لام ألف U+FEFB",
+      "review": "pending"
+    },
+    {
+      "id": "norm-clean-008",
+      "rule": "C4",
+      "input": "ﷲ",
+      "level": "clean",
+      "options": {},
+      "expected": "الله",
+      "note": "لفظ الجلالة U+FDF2",
+      "review": "pending"
+    },
+    {
+      "id": "norm-clean-009",
+      "rule": "C4",
+      "input": "ﻣﺤﻤﺪ",
+      "level": "clean",
+      "options": {},
+      "expected": "محمد",
+      "note": "صيغ عرض لحروف مفردة",
+      "review": "pending"
+    },
+    {
+      "id": "norm-clean-010",
+      "rule": "C4",
+      "input": "النبي ﷺ",
+      "level": "clean",
+      "options": {},
+      "expected": "النبي ﷺ",
+      "note": "رمز الصلاة لا يُفك في clean [معتمد 2]",
+      "review": "pending"
+    },
+    {
+      "id": "norm-clean-011",
+      "rule": "C5",
+      "input": "  قال  رسول\nالله  ",
+      "level": "clean",
+      "options": {},
+      "expected": "قال رسول الله",
+      "note": "مسافة غير منكسرة وسطر جديد ومسافات الأطراف [معتمد 3]",
+      "review": "pending"
+    },
+    {
+      "id": "norm-clean-012",
+      "rule": "C1",
+      "input": "أ",
+      "level": "clean",
+      "options": {},
+      "expected": "أ",
+      "note": "ألف + همزة مركّبة تصير أ بـ NFC",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-001",
+      "rule": "S2",
+      "input": "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ",
+      "level": "search",
+      "options": {},
+      "expected": "انما الاعمال بالنيات",
+      "note": "حديث مشكول تشكيلًا تامًا",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1",
+        "verified": false
+      },
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-002",
+      "rule": "S2",
+      "input": "كِتَابٌ",
+      "level": "search",
+      "options": {},
+      "expected": "كتاب",
+      "note": "تنوين ضم",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-003",
+      "rule": "S2",
+      "input": "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ",
+      "level": "search",
+      "options": {},
+      "expected": "الحمد لله رب العلمين",
+      "note": "الألف الخنجرية تُحذف ولا تصير ألفًا، فيبقى «العلمين». تطابق «العالمين» يحتاج quranicAlef (1.1)",
+      "source": {
+        "work": "القرآن الكريم، رسم عثماني (Tanzil)",
+        "ref": "الفاتحة 2",
+        "verified": false
+      },
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-004",
+      "rule": "S2",
+      "input": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+      "level": "search",
+      "options": {},
+      "expected": "بسم الله الرحمن الرحيم",
+      "note": "ألف الوصل ٱ والألف الخنجرية",
+      "source": {
+        "work": "القرآن الكريم، رسم عثماني (Tanzil)",
+        "ref": "الفاتحة 1",
+        "verified": false
+      },
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-005",
+      "rule": "S2",
+      "input": "إِنَّهُۥ",
+      "level": "search",
+      "options": {},
+      "expected": "انه",
+      "note": "الواو الصغيرة U+06E5 تُحذف",
+      "review": "pending",
+      "source": {
+        "work": "القرآن الكريم، رسم عثماني (Tanzil)",
+        "ref": "كلمة ترد كثيرًا، منها البقرة 37",
+        "verified": false
+      }
+    },
+    {
+      "id": "norm-search-006",
+      "rule": "S2",
+      "input": "ٱلنَّبِيِّـۧنَ",
+      "level": "search",
+      "options": {},
+      "expected": "النبين",
+      "note": "سلوك 1.0 الموثَّق: الياء الصغيرة تُحذف فتنقص ياء. يتغير مع quranicAlef في 1.1",
+      "review": "pending",
+      "source": {
+        "work": "القرآن الكريم، رسم عثماني (Tanzil)",
+        "ref": "البقرة 61",
+        "verified": false
+      }
+    },
+    {
+      "id": "norm-search-007",
+      "rule": "S2",
+      "input": "قَالَ ۚ",
+      "level": "search",
+      "options": {},
+      "expected": "قال",
+      "note": "علامة وقف قرآنية منفردة U+06DA",
+      "review": "pending",
+      "synthetic": true
+    },
+    {
+      "id": "norm-search-008",
+      "rule": "S3",
+      "input": "أحمد إبراهيم آمنة",
+      "level": "search",
+      "options": {},
+      "expected": "احمد ابراهيم امنة",
+      "note": "توحيد الألف، والتاء المربوطة تبقى في search",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-009",
+      "rule": "S3",
+      "input": "مصطفى على",
+      "level": "search",
+      "options": {},
+      "expected": "مصطفي علي",
+      "note": "الألف المقصورة ← ياء",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-010",
+      "rule": "S3",
+      "input": "کتاب فارسی",
+      "level": "search",
+      "options": {},
+      "expected": "كتاب فارسي",
+      "note": "الكاف والياء الفارسيتان",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-011",
+      "rule": "S3",
+      "input": "ھذہ",
+      "level": "search",
+      "options": {},
+      "expected": "هذه",
+      "note": "الهاء الأردية بصيغتيها",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-012",
+      "rule": "S4",
+      "input": "الحديث ١٢٣ و ۴۵",
+      "level": "search",
+      "options": {},
+      "expected": "الحديث 123 و 45",
+      "note": "أرقام هندية وفارسية",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-013",
+      "rule": "S4",
+      "input": "٣٫٥ و ١٬٠٠٠",
+      "level": "search",
+      "options": {},
+      "expected": "3.5 و 1,000",
+      "note": "الفاصلة العشرية وفاصل الآلاف بين رقمين",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-014",
+      "rule": "S5",
+      "input": "قال: «نعم»، ثم سكت.",
+      "level": "search",
+      "options": {},
+      "expected": "قال نعم ثم سكت",
+      "note": "الترقيم يصير مسافة ثم تُوحَّد المسافات",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-015",
+      "rule": "S5",
+      "input": "العلم،والعمل",
+      "level": "search",
+      "options": {},
+      "expected": "العلم والعمل",
+      "note": "فاصلة بلا مسافة: يجب ألا تلتصق الكلمتان",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-016",
+      "rule": "S5",
+      "input": "الآية ۝٥",
+      "level": "search",
+      "options": {},
+      "expected": "الاية 5",
+      "note": "علامة نهاية الآية فاصل والرقم يبقى",
+      "review": "pending",
+      "synthetic": true
+    },
+    {
+      "id": "norm-search-017",
+      "rule": "S5",
+      "input": "الربح +5$",
+      "level": "search",
+      "options": {},
+      "expected": "الربح +5$",
+      "note": "الرموز (تصنيف S) لا تُمس",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-018",
+      "rule": "S6",
+      "input": "مكتبة Flutter",
+      "level": "search",
+      "options": {},
+      "expected": "مكتبة flutter",
+      "note": "تصغير ASCII [معتمد 5]",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-019",
+      "rule": "S1",
+      "input": "قال النبي ﷺ",
+      "level": "search",
+      "options": {},
+      "expected": "قال النبي صلي الله عليه وسلم",
+      "note": "honorifics=keep يفك الرمز، ثم S3 يحوّل الألف المقصورة",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-020",
+      "rule": "S1",
+      "input": "قال النبي ﷺ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "قال النبي",
+      "note": "honorifics=strip يحذف الرمز",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-021",
+      "rule": "S7",
+      "input": "قال رسول الله صلى الله عليه وسلم",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "قال رسول الله",
+      "note": "الصيغة المكتوبة",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-022",
+      "rule": "S7",
+      "input": "عن عائشة رضي الله عنها",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عن عائشة",
+      "note": "ترضّي المؤنث",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-023",
+      "rule": "S7",
+      "input": "قال الله تعالى",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "قال الله",
+      "note": "«تعالى» بعد لفظ الجلالة تُحذف",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-024",
+      "rule": "S7",
+      "input": "فتعالى الله الملك الحق",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "فتعالي الله الملك الحق",
+      "note": "«تعالى» ليست بعد لفظ الجلالة فلا تُمس [معتمد 6]",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-025",
+      "rule": "S7",
+      "input": "ثم تعالى النهار",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "ثم تعالي النهار",
+      "note": "«تعالى» فعلًا",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-026",
+      "rule": "S1",
+      "input": "﷽",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "بسم الله الرحمن الرحيم",
+      "note": "البسملة تُفك دائمًا ولا تُحذف",
+      "review": "pending"
+    },
+    {
+      "id": "norm-loose-001",
+      "rule": "L1",
+      "input": "مدرسة",
+      "level": "loose",
+      "options": {},
+      "expected": "مدرسه",
+      "note": "التاء المربوطة",
+      "review": "pending"
+    },
+    {
+      "id": "norm-loose-002",
+      "rule": "L1",
+      "input": "مؤمن قائم",
+      "level": "loose",
+      "options": {},
+      "expected": "مومن قايم",
+      "note": "الهمزة على الواو والياء",
+      "review": "pending"
+    },
+    {
+      "id": "norm-loose-003",
+      "rule": "L1",
+      "input": "سماء",
+      "level": "loose",
+      "options": {},
+      "expected": "سما",
+      "note": "حذف الهمزة المنفردة، دمج مقصود",
+      "review": "pending"
+    },
+    {
+      "id": "norm-loose-004",
+      "rule": "L1",
+      "input": "شَيْءٌ",
+      "level": "loose",
+      "options": {},
+      "expected": "شي",
+      "note": "همزة متطرفة بعد التشكيل",
+      "review": "pending"
+    },
+    {
+      "id": "norm-edge-001",
+      "input": "",
+      "level": "search",
+      "options": {},
+      "expected": "",
+      "note": "نص فارغ",
+      "review": "pending"
+    },
+    {
+      "id": "norm-edge-002",
+      "input": "ًٌٍَُِّْ",
+      "level": "search",
+      "options": {},
+      "expected": "",
+      "note": "علامات فقط بلا حروف",
+      "review": "pending"
+    },
+    {
+      "id": "norm-edge-003",
+      "input": "Hello, World!",
+      "level": "search",
+      "options": {},
+      "expected": "hello world",
+      "note": "نص لاتيني خالص",
+      "review": "pending"
+    },
+    {
+      "id": "norm-edge-004",
+      "input": "،،،",
+      "level": "search",
+      "options": {},
+      "expected": "",
+      "note": "ترقيم فقط",
+      "review": "pending"
+    }
+  ]
+}
