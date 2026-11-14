@@ -1,0 +1,26 @@
+{
+    "name": "samt/nass",
+    "description": "Arabic text normalization and diacritic-insensitive search for Quran, hadith and heritage texts, with match offsets in the original vocalized text.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["arabic", "quran", "hadith", "normalization", "search", "highlight", "tashkeel", "diacritics", "unicode"],
+    "homepage": "https://github.com/samt-qa/nass",
+    "readme": "packages/php/README.md",
+    "support": {
+        "issues": "https://github.com/samt-qa/nass/issues",
+        "source": "https://github.com/samt-qa/nass",
+        "docs": "https://github.com/samt-qa/nass/tree/main/packages/php"
+    },
+    "authors": [{ "name": "Samt Software" }],
+    "require": {
+        "php": ">=8.3",
+        "ext-mbstring": "*"
+    },
+    "autoload": {
+        "psr-4": { "Samt\\Nass\\": "packages/php/src/" },
+        "files": ["packages/php/src/Enums.php"]
+    },
+    "scripts": {
+        "test": "php packages/php/tests/run.php"
+    }
+}

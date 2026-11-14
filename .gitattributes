@@ -1,3 +1,16 @@
 * text=auto eol=lf
 *.json text eol=lf
 *.md text eol=lf
+
+# Composer installs (Packagist dist archives) ship only the PHP package.
+/.github            export-ignore
+/docs               export-ignore
+/spec               export-ignore
+/tools              export-ignore
+/packages/dart      export-ignore
+/packages/js        export-ignore
+/packages/php/tests export-ignore
+/packages/php/benchmark export-ignore
+/README.ar.md       export-ignore
+/.gitignore         export-ignore
+/.gitattributes     export-ignore
