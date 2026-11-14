@@ -10,3 +10,5 @@ packages/dart/pubspec.lock
 packages/js/node_modules/
 packages/js/dist/
 packages/js/coverage/
+packages/php/vendor/
+packages/php/composer.lock
