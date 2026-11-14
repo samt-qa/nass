@@ -1,7 +1,7 @@
 # Comparison with other libraries
 
-nass's conformance tests (`spec/vectors/normalize.json`, 302 cases, and
-`spec/vectors/search.json`, 150 cases, spec version 0.1) were run against three other
+nass's conformance tests (`spec/vectors/normalize.json`, 304 cases, and
+`spec/vectors/search.json`, 150 cases, spec version 0.2) were run against three other
 MIT-licensed Arabic normalization libraries. This page reports what happened.
 
 - Run on: 2026-11-14
@@ -35,8 +35,8 @@ MIT-licensed Arabic normalization libraries. This page reports what happened.
 
 | | TS | Rust | Dart |
 |---|:-:|:-:|:-:|
-| normalize: pass / fail / unsupported (of 302) | 179 / 24 / 99 | 77 / 126 / 99 | 66 / 137 / 99 |
-| normalize: pass rate of supported cases | 88% (179/203) | 38% (77/203) | 33% (66/203) |
+| normalize: pass / fail / unsupported (of 304) | 179 / 26 / 99 | 76 / 129 / 99 | 65 / 140 / 99 |
+| normalize: pass rate of supported cases | 87% (179/205) | 37% (76/205) | 32% (65/205) |
 | normalize: failures that are whitespace only | 0 | 53 | 50 |
 | search: pass / fail / unsupported (of 150) | 63 / 0 / 87 | 0 / 0 / 150 | 0 / 0 / 150 |
 
@@ -60,13 +60,13 @@ Each cell is pass / fail / unsupported.
 | Family | Cases | TS | Rust | Dart |
 |---|--:|:-:|:-:|:-:|
 | C1 canonical order and composition | 8 | 8 / 0 / 0 | 0 / 8 / 0 | 0 / 8 / 0 |
-| C2 invisible characters | 8 | 8 / 0 / 0 | 6 / 2 / 0 | 6 / 2 / 0 |
+| C2 invisible characters | 8 | 7 / 1 / 0 | 5 / 3 / 0 | 5 / 3 / 0 |
 | C3 tatweel | 2 | 2 / 0 / 0 | 2 / 0 / 0 | 2 / 0 / 0 |
 | C4 presentation forms | 9 | 7 / 2 / 0 | 2 / 7 / 0 | 2 / 7 / 0 |
 | C4+S3 | 1 | 1 / 0 / 0 | 0 / 1 / 0 | 0 / 1 / 0 |
 | C5 whitespace | 3 | 3 / 0 / 0 | 0 / 3 / 0 | 0 / 3 / 0 |
 | S1 honorific ligatures, basmala | 6 | 2 / 1 / 3 | 0 / 3 / 3 | 0 / 3 / 3 |
-| S2 marks | 8 | 8 / 0 / 0 | 6 / 2 / 0 | 5 / 3 / 0 |
+| S2 marks | 10 | 9 / 1 / 0 | 6 / 4 / 0 | 5 / 5 / 0 |
 | S2+S3 | 1 | 1 / 0 / 0 | 1 / 0 / 0 | 1 / 0 / 0 |
 | S3 letter folding | 8 | 6 / 2 / 0 | 6 / 2 / 0 | 2 / 6 / 0 |
 | S4 digits | 6 | 5 / 1 / 0 | 3 / 3 / 0 | 0 / 6 / 0 |
@@ -80,7 +80,7 @@ Each cell is pass / fail / unsupported.
 | hadith corpus, `search` + strip honorifics | 42 | 0 / 0 / 42 | 0 / 0 / 42 | 0 / 0 / 42 |
 | hadith corpus, `loose` | 42 | 35 / 7 / 0 | 14 / 28 / 0 | 13 / 29 / 0 |
 | hadith corpus, `loose` + strip honorifics | 41 | 0 / 0 / 41 | 0 / 0 / 41 | 0 / 0 / 41 |
-| **Total** | **302** | **179 / 24 / 99** | **77 / 126 / 99** | **66 / 137 / 99** |
+| **Total** | **304** | **179 / 26 / 99** | **76 / 129 / 99** | **65 / 140 / 99** |
 
 ## Search, by option
 
@@ -124,8 +124,9 @@ same output.
 | Rust output | 👨👩👧 (`U+1F468 U+1F469 U+1F467`, three separate emoji) |
 
 The crate's `bidi_marks` option removes U+200C and U+200D everywhere. The Dart library's
-`stripInvisibleChars` does the same. The TS library removes them only next to Arabic
-letters and passes.
+`stripInvisibleChars` does the same, so both also fail `norm-search-028` (ZWNJ between two
+Latin letters, which nass keeps). The TS library removes them only next to Arabic letters
+and passes both.
 
 **3. Presentation forms (Rust and Dart, rule C4, `norm-clean-009`, level `clean`)**
 
@@ -150,7 +151,7 @@ Neither library maps Arabic Presentation Forms A/B to base letters. The TS libra
 
 The Rust crate's diacritic list skips U+06E5–06E6. The Dart library removes only
 U+064B–0652 and U+0670, so it also keeps the Quranic pause marks (`norm-search-007`) and
-U+06E7 (`norm-search-006`).
+U+06E7 (`norm-search-006`, output `النبيۧن`).
 
 ## Differences that follow from nass's own choices
 
@@ -159,6 +160,14 @@ other library documents as a goal:
 
 - `clean` keeps ﷺ (U+FDFA) as is; the TS library expands it to «صلى الله عليه وسلم» through
   NFKC (`norm-clean-010`, `gen-norm-rule-005`).
+- `search` turns ARABIC SMALL HIGH YEH (U+06E7) into ي, so «ٱلنَّبِيِّـۧنَ» becomes
+  `النبيين` (`norm-search-006`, changed in spec 0.2). The TS and Rust libraries remove
+  U+06E7 as a mark and give `النبين`; the Dart library keeps it.
+- `clean` keeps ZERO WIDTH NON-JOINER (U+200C), because it is part of how Persian and Urdu
+  words are written («می‌خواهم», `norm-clean-003`, changed in spec 0.2). All three
+  libraries remove it at the settings mapped to `clean`. At `search` nass removes it next
+  to an Arabic letter (`norm-search-027`); TS and Rust pass that case, and the Dart library
+  fails it only because it keeps Farsi yeh (ی U+06CC).
 - `search` turns punctuation into a space (S5) and lowercases ASCII letters (S6). None of
   the three libraries does either.
 - `loose` drops ء (L1). None of the three libraries has this option. Of the 7 TS failures
@@ -175,15 +184,15 @@ other library documents as a goal:
 
 ## ملخص بالعربية
 
-شغّلنا ملفات اختبار «نَصّ» المشتركة (302 حالة تطبيع و150 حالة بحث) على ثلاث مكتبات أخرى
+شغّلنا ملفات اختبار «نَصّ» المشتركة، الإصدار 0.2 (304 حالة تطبيع و150 حالة بحث) على ثلاث مكتبات أخرى
 بتاريخ 2026-11-14، كلٌّ منها عند إيداع محدد مذكور أعلاه.
 
-- **arabic-normalize (TypeScript):** نجح في 179 حالة تطبيع وأخفق في 24، و99 حالة لا مقابل لها
+- **arabic-normalize (TypeScript):** نجح في 179 حالة تطبيع وأخفق في 26، و99 حالة لا مقابل لها
   عنده (أغلبها حذف صيغ الترضّي المكتوبة). في البحث نجح في كل حالات العبارة الـ63 بمواضعها،
   ولا يدعم البحث بالكلمة الكاملة ولا `allWords` ولا `anyWord`.
-- **arabic-normalize (Rust):** نجح في 77 وأخفق في 126، منها 53 سببها المسافات وحدها (لا يوحّد
+- **arabic-normalize (Rust):** نجح في 76 وأخفق في 129، منها 53 سببها المسافات وحدها (لا يوحّد
   المسافات). ليس فيه دالة بحث، فكل حالات البحث بلا مقابل.
-- **arabic_dev_utils (Dart):** نجح في 66 وأخفق في 137، منها 50 سببها المسافات وحدها. دالة البحث
+- **arabic_dev_utils (Dart):** نجح في 65 وأخفق في 140، منها 50 سببها المسافات وحدها. دالة البحث
   فيه تعيد صحيحًا أو خطأ بلا مواضع، فكل حالات البحث بلا مقابل؛ ونتيجتها توافق المتوقع في 37
   من 63 حالة عبارة.
 

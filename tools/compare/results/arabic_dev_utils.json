@@ -3,11 +3,11 @@
  "repo": "https://github.com/BilalFali/arabic_dev_utils",
  "commit": "46c07179a582a247ab210e47eb14e94d6acdf02b",
  "date": "2026-11-14",
- "specVersion": "0.1",
+ "specVersion": "0.2",
  "totals": {
   "normalize\tC2": {
-   "pass": 6,
-   "fail": 2,
+   "pass": 5,
+   "fail": 3,
    "unsupported": 0,
    "wsOnly": 0,
    "boolAgree": 0,
@@ -47,7 +47,7 @@
   },
   "normalize\tS2": {
    "pass": 5,
-   "fail": 3,
+   "fail": 5,
    "unsupported": 0,
    "wsOnly": 0,
    "boolAgree": 0,
@@ -241,11 +241,11 @@
    "file": "normalize",
    "id": "norm-clean-003",
    "family": "C2",
-   "status": "pass",
+   "status": "fail",
    "input": "می‌خواهم",
    "level": "clean",
    "options": {},
-   "expected": "میخواهم",
+   "expected": "می‌خواهم",
    "actual": "میخواهم"
   },
   {
@@ -411,7 +411,7 @@
    "input": "ٱلنَّبِيِّـۧنَ",
    "level": "search",
    "options": {},
-   "expected": "النبين",
+   "expected": "النبيين",
    "actual": "النبيۧن"
   },
   {
@@ -605,6 +605,28 @@
    "family": "S1",
    "status": "unsupported",
    "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-027",
+   "family": "S2",
+   "status": "fail",
+   "input": "می‌خواهم",
+   "level": "search",
+   "options": {},
+   "expected": "ميخواهم",
+   "actual": "میخواهم"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-028",
+   "family": "S2",
+   "status": "fail",
+   "input": "a‌b",
+   "level": "search",
+   "options": {},
+   "expected": "a‌b",
+   "actual": "ab"
   },
   {
    "file": "normalize",

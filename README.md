@@ -173,7 +173,7 @@ From a review in November 2026 (all MIT-licensed). nass was written from scratch
 
 ✅ supported · — not supported · ? not checked in the review
 
-nass's shared vectors were also run against these three libraries; the per-rule results, failures and how to reproduce them are in **[docs/comparison.md](docs/comparison.md)**. On the 203 normalize cases each library supports, the pass rates were 88% (TS), 38% (Rust) and 33% (Dart); a failure means the output differs from nass's spec, not that the library is wrong for its own purpose.
+nass's shared vectors were also run against these three libraries; the per-rule results, failures and how to reproduce them are in **[docs/comparison.md](docs/comparison.md)**. On the 205 normalize cases each library supports (spec v0.2 vectors), the pass rates were 87% (TS), 37% (Rust) and 32% (Dart); a failure means the output differs from nass's spec, not that the library is wrong for its own purpose.
 
 ## Repository layout
 
