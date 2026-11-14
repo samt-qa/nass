@@ -48,7 +48,7 @@ Searching vocalized Arabic is easy to get *almost* right. Strip the diacritics a
 | | |
 |---|---|
 | **Offsets in the original** | Every normalized character maps back to its source span, so you highlight the vocalized text the user is actually reading. |
-| **One spec, three languages** | Dart, TypeScript and PHP pass the same 952 shared test vectors, plus a differential test against an independent implementation: 0 mismatches in 172,463 comparisons over the six books. |
+| **One spec, three languages** | Dart, TypeScript and PHP pass the same 1,254 shared test vectors, plus a differential test against an independent implementation: 0 mismatches in 172,463 comparisons over the six books. |
 | **Built for religious texts** | Honorifics («ﷺ», «رضي الله عنه», «عز وجل» only after «الله»), a `nameKey` for narrator names, and an experimental isnad/matn splitter measured on hand-labelled hadiths. |
 | **Small and dependency-free** | The core JS bundle is 7.9 KB min+gzip with no runtime dependencies; the Dart and PHP packages have none either. |
 
@@ -61,7 +61,7 @@ Searching vocalized Arabic is easy to get *almost* right. Strip the diacritics a
 | PHP ≥ 8.3 | `samt/nass` | `composer require samt/nass` | [packages/php](packages/php) |
 
 > [!NOTE]
-> **Version 0.1.0.** Published on [pub.dev](https://pub.dev/packages/nass), [npm](https://www.npmjs.com/package/@samt-qa/nass) and [Packagist](https://packagist.org/packages/samt/nass). All test vectors are reviewed and approved ([SPEC §12](spec/SPEC.md)).
+> **Version 0.2.0.** Published on [pub.dev](https://pub.dev/packages/nass), [npm](https://www.npmjs.com/package/@samt-qa/nass) and [Packagist](https://packagist.org/packages/samt/nass). The v0.1 test vectors are reviewed and approved ([SPEC §12](spec/SPEC.md)); the 0.2 changes are listed in [SPEC §13](spec/SPEC.md).
 
 ## Quick start
 
@@ -124,8 +124,10 @@ splitIsnad("حدثنا أبو بكر بن أبي شيبة حدثنا عبد ال
 
 | Set | Cases | Correct boundary |
 |---|---|---|
-| Design (dev) | 100 | **98%** |
-| Held out (test, measured once) | 100 | **91%** |
+| Design (dev) | 300 | **98.3%** |
+| Held out (test, measured once) | 200 | **88.0%** |
+
+The 0.1 algorithm scores 87.5% on the same held-out set, so 0.2 barely improves on unseen hadiths. `splitIsnad` stays experimental until a held-out set reaches 90%.
 
 Per-book results and the error analysis are in [docs/corpus.md](docs/corpus.md).
 
@@ -136,7 +138,7 @@ Per-book results and the error analysis are in [docs/corpus.md](docs/corpus.md).
 
 | Check | Result |
 |---|---|
-| Shared test vectors (normalize, offsets, search, names, isnad) | 952 cases, all three packages |
+| Shared test vectors (normalize, offsets, search, names, isnad) | 1,254 cases, all three packages |
 | Differential test vs. independent oracle (six books) | 0 mismatches / 172,463 |
 | Line coverage | Dart 99.3% · TypeScript 99.6% · PHP 97.9% |
 | CI matrix | Dart 3.13 · Node 20 / 22 / 24 · PHP 8.3 / 8.4 / 8.5 |
@@ -167,7 +169,7 @@ From a review in November 2026 (all MIT-licensed). nass was written from scratch
 | Quranic marks (dagger alef, pause marks) | ✅ | ✅ | ? | — |
 | Narrator `nameKey`, isnad split | ✅ | — | — | — |
 | Same behaviour across languages | Dart · TS · PHP | TS | Rust · Python | Dart |
-| Shared test vectors (CC0) | 952 | — | — | — |
+| Shared test vectors (CC0) | 1,254 | — | — | — |
 
 ✅ supported · — not supported · ? not checked in the review
 

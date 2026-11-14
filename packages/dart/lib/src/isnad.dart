@@ -395,9 +395,11 @@ class _Parser {
           }
         }
       }
-      // «واللفظ له» / «واللفظ لسعيد»: whose wording is given.
+      // «واللفظ له» / «واللفظ لسعيد» / «واللفظ لابن المثنى»: whose wording is given.
       if (at(j) == _wording && j + 2 < n) {
-        j += 2;
+        final x = at(j + 1);
+        final head = x.length > 1 && _nameHead.contains(x.substring(1));
+        j += head && j + 3 < n ? 3 : 2;
         continue;
       }
       if (_seq(j, _qira2a)) {

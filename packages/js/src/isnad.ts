@@ -23,18 +23,29 @@ const N = (s: string) => normalize(s);
 // Lexicon (SPEC §8.2), normalized at the search level.
 const TV = set("حدثنا حدثني أخبرنا أخبرني أنبأنا أنبأني حدثناه أخبرناه حدثنيه أخبرنيه أخبرناه");
 const ABBR = set("ثنا نا أنا أنبا");
-const PRON_TV = set("حدثه حدثته حدثها حدثهم أخبره أخبرته أخبرها أخبرهم حدث أخبر");
+const PRON_TV = set("حدثه حدثته حدثها حدثهم حدثهما أخبره أخبرته أخبرها أخبرهم أخبرهما حدث أخبر");
 const SAY = set("قال قالت قالا قالوا يقول تقول يقولا يقولان");
 const HEAR = set("سمعت سمع سمعه سمعنا سمعته سمعتها");
 const SKIP = set("و ح أحسبه");
 const RAISE = set("يرويه يرفعه رفعه");
 const QUALIFIER = set("يعني تعني وهو هو واسمه");
-const CLIENT = set("زوج مولى");
+const CLIENT = set("زوج مولى صاحب");
+const MAWLA = N("مولى"), HA = N("ح"), WORDING = N("واللفظ");
+// Names that may follow «قال قال» (SPEC §8.3): a kunya/patronymic head takes the next word.
+const NAME_HEAD = set("أبو أبي أبا أم ابن بنت عبد");
+const NAME_LINK = set("بن ابن بنت");
+// First-person narrative verbs: a story, never a narrator's name (SPEC §8.2).
+const NARRATIVE = set(
+  "أتيت أتينا أتاني أتانا سألت سألنا سألني دخلت دخلنا خرجت خرجنا رأيت رأينا شهدت جاءنا جاءني قدمت قدمنا صليت صلينا",
+);
+const HEARD_HIM = set("سمعته سمعتها سمعه");
+// «قراءة عليه وأنا أسمع» (al-Nasa'i) between a narrator and the next link.
+const QIRA2A = N("قراءة عليه وأنا أسمع").split(" ");
 const STOP = new Set([
   ...TV, ...ABBR, ...PRON_TV, ...SAY, ...HEAR, ...SKIP, ...RAISE, ...QUALIFIER, ...CLIENT,
-  ...set("عن أن أنه أنها يحدث رضي رسول النبي نبي صلى في يا لما إذا إذ كان كانت كانوا كنا كنت لا ما لم لن هل قد ثم إلى"),
+  ...set("عن أن أنه أنها أنهم أنهما يحدث رضي رسول النبي نبي نبيكم صلى في يا لما إذا إذ كان كانت كانوا كنا كنت لا ما لم لن هل قد ثم إلى قراءة واللفظ"),
 ]);
-const RASUL = N("رسول"), NABI_AL = N("النبي"), NABI = N("نبي"), ALLAH = N("الله");
+const RASUL = N("رسول"), NABI_AL = N("النبي"), NABI = N("نبي"), ALLAH = N("الله"), NABIKUM = N("نبيكم");
 const SALAWAT = N("صلى الله عليه وسلم").split(" ");
 const PEACE = N("عليه السلام").split(" ");
 const RADI = N("رضي");
@@ -81,6 +92,7 @@ class Parser {
     if (this.at(i) === RASUL && this.at(i + 1) === ALLAH) j = i + 2;
     else if (this.at(i) === NABI_AL) j = i + 1;
     else if (this.at(i) === NABI && this.at(i + 1) === ALLAH) j = i + 2;
+    else if (this.at(i) === NABIKUM) j = i + 1;
     else return -1;
     if (this.seq(j, SALAWAT)) return j + SALAWAT.length;
     if (this.seq(j, PEACE)) return j + PEACE.length;
@@ -137,6 +149,7 @@ class Parser {
       return j < 0 ? -1 : this.after(j, true);
     }
     if (HEAR.has(x)) {
+      if (HEARD_HIM.has(x) && SAY.has(this.at(i + 1))) return this.done(i + 2, 2);
       const p = this.prophet(i + 1);
       if (p >= 0) return this.prophetEnd(p);
       const j = this.name(this.at(i + 1) === MIN ? i + 2 : i + 1, this.src(i), max);
@@ -155,11 +168,17 @@ class Parser {
         return this.done(i, 3);
       }
       return this.try(() => {
-        const j = this.name(i + 1, this.src(i), MAX_WEAK);
+        const j = this.name(i + 1, this.src(i), MAX_STRONG);
         if (j < 0) return -1;
-        const h = this.honorific(j);
-        if (h >= 0) return this.after(h, true);
-        return PRON_TV.has(this.at(j)) ? this.link(j) : -1;
+        const [k, honored] = this.tail(j);
+        if (honored) return this.after(k, true);
+        if (PRON_TV.has(this.at(k))) return this.link(k);
+        // «أن أبا هريرة قال قال رسول الله ﷺ»: accepted only when it reaches the Prophet.
+        if (SAY.has(this.at(k))) {
+          const r = this.say(k);
+          return this.how === 3 ? r : -1;
+        }
+        return -1;
       });
     }
     if (PRON_TV.has(x)) {
@@ -184,6 +203,11 @@ class Parser {
     let j = p;
     if (this.at(j) === ANHU) j++;
     if (SAY.has(this.at(j))) return this.done(j + 1, 3);
+    // Another chain follows: «… عن النبي ﷺ ح و حدثنا …».
+    if (this.at(p) === HA && p + 1 < this.n) {
+      const r = this.try(() => this.link(p));
+      if (r >= 0) return r;
+    }
     return this.done(p, 3);
   }
 
@@ -192,7 +216,18 @@ class Parser {
     const x = this.at(j);
     if (SAY.has(x)) {
       const r = this.try(() => this.sayCont(j));
-      return r >= 0 ? r : this.done(j, 2);
+      if (r >= 0) return r;
+      // «قال قال أنس ║ …»: a short name, then the matn.
+      const k = this.at(j + 1) === LI || this.at(j + 1) === LANA ? j + 1 : this.shortName(j + 1);
+      if (k > j + 1) {
+        this.narrators.push({ name: this.text.slice(this.st[j + 1]!, this.en[k - 1]!), form: this.src(j) });
+        return this.done(k, 2);
+      }
+      return this.done(j, 2);
+    }
+    if (PRON_TV.has(x) || (x === QARA2TU && this.at(j + 1) === ALA)) {
+      const r = this.try(() => this.link(j));
+      if (r >= 0) return r;
     }
     if (x === LI || x === LANA) {
       const p = this.prophet(j + 1);
@@ -208,7 +243,28 @@ class Parser {
     return this.try(() => this.weak(j, i));
   }
 
+  /** End of a short name at [i] («أنس», «ابن عباس», «عبد الله بن عمرو»), or [i]. */
+  shortName(i: number): number {
+    const unit = (k: number): number => {
+      if (k >= this.n || STOP.has(this.w[k]!) || this.isTv(k)) return -1;
+      if (NAME_HEAD.has(this.w[k]!)) {
+        return k + 1 < this.n && !STOP.has(this.w[k + 1]!) && !this.isTv(k + 1) ? k + 2 : -1;
+      }
+      return k + 1;
+    };
+    const u = unit(i);
+    if (u < 0) return i;
+    let j = u;
+    while (NAME_LINK.has(this.at(j))) {
+      const v = unit(j + 1);
+      if (v < 0) break;
+      j = v;
+    }
+    return j;
+  }
+
   weak(i: number, formAt: number) {
+    if (NARRATIVE.has(this.at(i))) return -1;
     const j = this.name(i, this.src(formAt), MAX_WEAK);
     return j < 0 ? -1 : this.after(j, false);
   }
@@ -218,21 +274,8 @@ class Parser {
     return r >= 0 ? r : this.done(i + 1, 2);
   }
 
-  after(j: number, strong: boolean): number {
-    let honored = false;
-    for (;;) {
-      const h = this.honorific(j);
-      if (h >= 0) { j = h; honored = true; continue; }
-      if (QUALIFIER.has(this.at(j))) {
-        const k = this.try(() => this.name(j + 1, "", MAX_STRONG));
-        if (k >= 0) { this.narrators.pop(); j = k; continue; }
-      }
-      if (CLIENT.has(this.at(j))) {
-        const p = this.prophet(j + 1);
-        if (p >= 0) { j = p; continue; }
-      }
-      break;
-    }
+  after(j0: number, strong: boolean): number {
+    const [j, honored] = this.tail(j0);
     if (j >= this.n) return -1;
     if (SAY.has(this.at(j))) {
       const r = this.sayCont(j);
@@ -244,6 +287,41 @@ class Parser {
       if (this.isTv(j, true)) return -1;
     }
     return strong || honored ? this.done(j, 1) : -1;
+  }
+
+  /**
+   * Skips what may follow a narrator's name: honorifics, «يعني …», «مولى …»,
+   * «زوج النبي ﷺ», «قراءة عليه وأنا أسمع». Returns the end and whether an honorific was seen.
+   */
+  tail(j: number): [number, boolean] {
+    let honored = false;
+    for (;;) {
+      const h = this.honorific(j);
+      if (h >= 0) { j = h; honored = true; continue; }
+      if (QUALIFIER.has(this.at(j))) {
+        const k = this.try(() => this.name(j + 1, "", MAX_STRONG));
+        if (k >= 0) { this.narrators.pop(); j = k; continue; } // a qualifier, not another narrator
+      }
+      if (CLIENT.has(this.at(j))) {
+        const p = this.prophet(j + 1);
+        if (p >= 0) { j = p; continue; }
+        // «أبي مرة مولى عقيل بن أبي طالب»: the patron's name qualifies the narrator.
+        if (this.at(j) === MAWLA) {
+          const k = this.try(() => this.name(j + 1, "", MAX_WEAK));
+          if (k >= 0) { this.narrators.pop(); j = k; continue; }
+        }
+      }
+      // «واللفظ له» / «واللفظ لسعيد» / «واللفظ لابن المثنى»: whose wording is given.
+      if (this.at(j) === WORDING && j + 2 < this.n) {
+        const x = this.at(j + 1);
+        const head = x.length > 1 && NAME_HEAD.has(x.slice(1));
+        j += head && j + 3 < this.n ? 3 : 2;
+        continue;
+      }
+      if (this.seq(j, QIRA2A)) { j += QIRA2A.length; continue; }
+      break;
+    }
+    return [j, honored];
   }
 }
 

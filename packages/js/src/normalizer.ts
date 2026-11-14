@@ -89,23 +89,18 @@ export class Buf {
 // ---------------------------------------------------------------- pass 1
 
 const ZWNJ = 0x200c;
-const ZWJ = 0x200d;
 
-/** Whether the ZWNJ at k has an Arabic neighbour: the nearest code point on either side that is not ZWNJ or ZWJ (SPEC S2). */
-function zwnjNearArabic(a: Buf, k: number): boolean {
-  const arabic = (x: number) => x < 0x10000 && (flags[x]! & F_ARABIC) !== 0;
-  for (let m = k - 1; m >= 0; m--) {
-    const x = a.cp[m]!;
-    if (x === ZWNJ || x === ZWJ) continue;
-    if (arabic(x)) return true;
-    break;
+/**
+ * Whether the nearest code point that is not invisible, scanning left from `l` and right
+ * from `r`, is Arabic (SPEC C2, S2). `get` returns NaN out of range; its flags are 0.
+ */
+function nearArabic(get: (m: number) => number, l: number, r: number): boolean {
+  let near = false;
+  for (let d = -1, m = l; d < 2 && !near; d += 2, m = r) {
+    while (flags[get(m)]! & (F_INVIS_ALWAYS | F_INVIS_NEAR)) m += d;
+    near = (flags[get(m)]! & F_ARABIC) !== 0;
   }
-  for (let m = k + 1; m < a.length; m++) {
-    const x = a.cp[m]!;
-    if (x === ZWNJ || x === ZWJ) continue;
-    return arabic(x);
-  }
-  return false;
+  return near;
 }
 
 function pass1(text: string): Buf {
@@ -140,25 +135,8 @@ function pass1(text: string): Buf {
     }
     if ((f & F_INVIS_NEAR) !== 0) {
       // Neighbours: nearest input code points on each side that are not invisible (SPEC C2).
-      let near = false;
-      for (let m = st - 1; m >= 0; m--) {
-        const x = text.charCodeAt(m);
-        if ((flags[x]! & (F_INVIS_ALWAYS | F_INVIS_NEAR)) === 0) {
-          near = (flags[x]! & F_ARABIC) !== 0;
-          break;
-        }
-      }
-      if (!near) {
-        for (let m = i; m < n; m++) {
-          const x = text.charCodeAt(m);
-          if ((flags[x]! & (F_INVIS_ALWAYS | F_INVIS_NEAR)) === 0) {
-            near = (flags[x]! & F_ARABIC) !== 0;
-            break;
-          }
-        }
-      }
       // ZWNJ next to Arabic is kept in clean and removed in search (SPEC C2, S2).
-      if (near && c !== ZWNJ) out.attach(en);
+      if (c !== ZWNJ && nearArabic((m) => text.charCodeAt(m), st - 1, i)) out.attach(en);
       else out.add(c, st, en);
       continue;
     }
@@ -263,7 +241,8 @@ function pass3(a: Buf, h: Honorifics, loose: boolean): Buf {
         }
         continue;
       }
-      if (c === ZWNJ && zwnjNearArabic(a, k)) {
+      // In the clean text only ZWNJ and ZWJ can still be invisible.
+      if (c === ZWNJ && nearArabic((m) => (m < a.length ? a.cp[m]! : NaN), k - 1, k + 1)) {
         out.attach(en);
         continue;
       }

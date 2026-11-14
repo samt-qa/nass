@@ -76,22 +76,33 @@ final class Isnad
         $L = [
             'tv' => self::set('حدثنا حدثني أخبرنا أخبرني أنبأنا أنبأني حدثناه أخبرناه حدثنيه أخبرنيه أخبرناه'),
             'abbr' => self::set('ثنا نا أنا أنبا'),
-            'pronTv' => self::set('حدثه حدثته حدثها حدثهم أخبره أخبرته أخبرها أخبرهم حدث أخبر'),
+            'pronTv' => self::set('حدثه حدثته حدثها حدثهم حدثهما أخبره أخبرته أخبرها أخبرهم أخبرهما حدث أخبر'),
             'say' => self::set('قال قالت قالا قالوا يقول تقول يقولا يقولان'),
             'hear' => self::set('سمعت سمع سمعه سمعنا سمعته سمعتها'),
             'skip' => self::set('و ح أحسبه'),
             'raise' => self::set('يرويه يرفعه رفعه'),
             'qualifier' => self::set('يعني تعني وهو هو واسمه'),
-            'client' => self::set('زوج مولى'),
+            'client' => self::set('زوج مولى صاحب'),
+            // Names that may follow «قال قال» (SPEC §8.3): a kunya/patronymic head takes the next word.
+            'nameHead' => self::set('أبو أبي أبا أم ابن بنت عبد'),
+            'nameLink' => self::set('بن ابن بنت'),
+            // First-person narrative verbs: a story, never a narrator's name (SPEC §8.2).
+            'narrative' => self::set(
+                'أتيت أتينا أتاني أتانا سألت سألنا سألني دخلت دخلنا خرجت خرجنا رأيت رأينا شهدت جاءنا جاءني قدمت قدمنا صليت صلينا',
+            ),
+            'heardHim' => self::set('سمعته سمعتها سمعه'),
+            // «قراءة عليه وأنا أسمع» (al-Nasa'i) between a narrator and the next link.
+            'qira2a' => explode(' ', $N('قراءة عليه وأنا أسمع')),
             'honorTail' => self::set('عنه عنها عنهما عنهم'),
             'salawat' => explode(' ', $N('صلى الله عليه وسلم')),
             'peace' => explode(' ', $N('عليه السلام')),
         ];
         $L['stop'] = $L['tv'] + $L['abbr'] + $L['pronTv'] + $L['say'] + $L['hear'] + $L['skip'] + $L['raise']
             + $L['qualifier'] + $L['client']
-            + self::set('عن أن أنه أنها يحدث رضي رسول النبي نبي صلى في يا لما إذا إذ كان كانت كانوا كنا كنت لا ما لم لن هل قد ثم إلى');
+            + self::set('عن أن أنه أنها أنهم أنهما يحدث رضي رسول النبي نبي نبيكم صلى في يا لما إذا إذ كان كانت كانوا كنا كنت لا ما لم لن هل قد ثم إلى قراءة واللفظ');
         foreach ([
-            'rasul' => 'رسول', 'nabiAl' => 'النبي', 'nabi' => 'نبي', 'allah' => 'الله', 'radi' => 'رضي',
+            'rasul' => 'رسول', 'nabiAl' => 'النبي', 'nabi' => 'نبي', 'allah' => 'الله', 'nabikum' => 'نبيكم', 'radi' => 'رضي',
+            'mawla' => 'مولى', 'ha' => 'ح', 'wording' => 'واللفظ',
             'an' => 'أن', 'anhu' => 'أنه', 'anha' => 'أنها', 'aan' => 'عن', 'yuhaddith' => 'يحدث',
             'li' => 'لي', 'lana' => 'لنا', 'kana' => 'كان', 'qara2tu' => 'قرأت', 'ala' => 'على', 'min' => 'من',
             'waw' => 'و',
@@ -154,6 +165,8 @@ final class Isnad
             $j = $i + 1;
         } elseif ($this->at($i) === $L['nabi'] && $this->at($i + 1) === $L['allah']) {
             $j = $i + 2;
+        } elseif ($this->at($i) === $L['nabikum']) {
+            $j = $i + 1;
         } else {
             return -1;
         }
@@ -247,6 +260,9 @@ final class Isnad
             return $j < 0 ? -1 : $this->after($j, true);
         }
         if (isset($L['hear'][$x])) {
+            if (isset($L['heardHim'][$x]) && isset($L['say'][$this->at($i + 1)])) {
+                return $this->done($i + 2, 2);
+            }
             $p = $this->prophet($i + 1);
             if ($p >= 0) {
                 return $this->prophetEnd($p);
@@ -275,15 +291,23 @@ final class Isnad
                 return $this->done($i, 3);
             }
             return $this->try(function () use ($i, $L): int {
-                $j = $this->name($i + 1, $this->text($i), self::MAX_WEAK);
+                $j = $this->name($i + 1, $this->text($i), self::MAX_STRONG);
                 if ($j < 0) {
                     return -1;
                 }
-                $h = $this->honorific($j);
-                if ($h >= 0) {
-                    return $this->after($h, true);
+                [$k, $honored] = $this->tail($j);
+                if ($honored) {
+                    return $this->after($k, true);
                 }
-                return isset($L['pronTv'][$this->at($j)]) ? $this->link($j) : -1;
+                if (isset($L['pronTv'][$this->at($k)])) {
+                    return $this->link($k);
+                }
+                // «أن أبا هريرة قال قال رسول الله ﷺ»: accepted only when it reaches the Prophet.
+                if (isset($L['say'][$this->at($k)])) {
+                    $r = $this->say($k);
+                    return $this->how === 3 ? $r : -1;
+                }
+                return -1;
             });
         }
         if (isset($L['pronTv'][$x])) {
@@ -321,6 +345,13 @@ final class Isnad
         if (isset($this->L['say'][$this->at($j)])) {
             return $this->done($j + 1, 3);
         }
+        // Another chain follows: «… عن النبي ﷺ ح و حدثنا …».
+        if ($this->at($p) === $this->L['ha'] && $p + 1 < $this->n) {
+            $r = $this->try(fn (): int => $this->link($p));
+            if ($r >= 0) {
+                return $r;
+            }
+        }
         return $this->done($p, 3);
     }
 
@@ -331,7 +362,25 @@ final class Isnad
         $x = $this->at($j);
         if (isset($L['say'][$x])) {
             $r = $this->try(fn (): int => $this->sayCont($j));
-            return $r >= 0 ? $r : $this->done($j, 2);
+            if ($r >= 0) {
+                return $r;
+            }
+            // «قال قال أنس ║ …»: a short name, then the matn.
+            $k = $this->at($j + 1) === $L['li'] || $this->at($j + 1) === $L['lana'] ? $j + 1 : $this->shortName($j + 1);
+            if ($k > $j + 1) {
+                $this->narrators[] = new Narrator(
+                    Normalizer::encode($this->src, $this->st[$j + 1], $this->en[$k - 1]),
+                    $this->text($j),
+                );
+                return $this->done($k, 2);
+            }
+            return $this->done($j, 2);
+        }
+        if (isset($L['pronTv'][$x]) || ($x === $L['qara2tu'] && $this->at($j + 1) === $L['ala'])) {
+            $r = $this->try(fn (): int => $this->link($j));
+            if ($r >= 0) {
+                return $r;
+            }
         }
         if ($x === $L['li'] || $x === $L['lana']) {
             $p = $this->prophet($j + 1);
@@ -353,8 +402,39 @@ final class Isnad
         return $this->try(fn (): int => $this->weak($j, $i));
     }
 
+    /** End of a short name at $i («أنس», «ابن عباس», «عبد الله بن عمرو»), or $i. */
+    private function shortName(int $i): int
+    {
+        $L = $this->L;
+        $unit = function (int $k) use ($L): int {
+            if ($k >= $this->n || isset($L['stop'][$this->w[$k]]) || $this->isTv($k)) {
+                return -1;
+            }
+            if (isset($L['nameHead'][$this->w[$k]])) {
+                return $k + 1 < $this->n && !isset($L['stop'][$this->w[$k + 1]]) && !$this->isTv($k + 1) ? $k + 2 : -1;
+            }
+            return $k + 1;
+        };
+        $u = $unit($i);
+        if ($u < 0) {
+            return $i;
+        }
+        $j = $u;
+        while (isset($L['nameLink'][$this->at($j)])) {
+            $v = $unit($j + 1);
+            if ($v < 0) {
+                break;
+            }
+            $j = $v;
+        }
+        return $j;
+    }
+
     private function weak(int $i, int $formAt): int
     {
+        if (isset($this->L['narrative'][$this->at($i)])) {
+            return -1;
+        }
         $j = $this->name($i, $this->text($formAt), self::MAX_WEAK);
         return $j < 0 ? -1 : $this->after($j, false);
     }
@@ -366,6 +446,35 @@ final class Isnad
     }
 
     private function after(int $j, bool $strong): int
+    {
+        $L = $this->L;
+        [$j, $honored] = $this->tail($j);
+        if ($j >= $this->n) {
+            return -1;
+        }
+        if (isset($L['say'][$this->at($j)])) {
+            $r = $this->sayCont($j);
+            return $r >= 0 ? $r : $this->done($j + 1, 2);
+        }
+        if ($this->isTv($j, true) || $this->isLinkWord($j)) {
+            $r = $this->try(fn (): int => $this->link($j, $strong ? self::MAX_STRONG : self::MAX_WEAK));
+            if ($r >= 0) {
+                return $r;
+            }
+            if ($this->isTv($j, true)) {
+                return -1; // a transmission word cannot start the matn: the chain is broken
+            }
+        }
+        return $strong || $honored ? $this->done($j, 1) : -1;
+    }
+
+    /**
+     * Skips what may follow a narrator's name: honorifics, «يعني …», «مولى …»,
+     * «زوج النبي ﷺ», «قراءة عليه وأنا أسمع». Returns the end and whether an honorific was seen.
+     *
+     * @return array{int, bool}
+     */
+    private function tail(int $j): array
     {
         $L = $this->L;
         $honored = false;
@@ -390,25 +499,29 @@ final class Isnad
                     $j = $p;
                     continue;
                 }
+                // «أبي مرة مولى عقيل بن أبي طالب»: the patron's name qualifies the narrator.
+                if ($this->at($j) === $L['mawla']) {
+                    $k = $this->try(fn (): int => $this->name($j + 1, '', self::MAX_WEAK));
+                    if ($k >= 0) {
+                        array_pop($this->narrators);
+                        $j = $k;
+                        continue;
+                    }
+                }
+            }
+            // «واللفظ له» / «واللفظ لسعيد» / «واللفظ لابن المثنى»: whose wording is given.
+            if ($this->at($j) === $L['wording'] && $j + 2 < $this->n) {
+                $x = $this->at($j + 1);
+                $head = mb_strlen($x) > 1 && isset($L['nameHead'][mb_substr($x, 1)]);
+                $j += $head && $j + 3 < $this->n ? 3 : 2;
+                continue;
+            }
+            if ($this->seq($j, $L['qira2a'])) {
+                $j += count($L['qira2a']);
+                continue;
             }
             break;
         }
-        if ($j >= $this->n) {
-            return -1;
-        }
-        if (isset($L['say'][$this->at($j)])) {
-            $r = $this->sayCont($j);
-            return $r >= 0 ? $r : $this->done($j + 1, 2);
-        }
-        if ($this->isTv($j, true) || $this->isLinkWord($j)) {
-            $r = $this->try(fn (): int => $this->link($j, $strong ? self::MAX_STRONG : self::MAX_WEAK));
-            if ($r >= 0) {
-                return $r;
-            }
-            if ($this->isTv($j, true)) {
-                return -1; // a transmission word cannot start the matn: the chain is broken
-            }
-        }
-        return $strong || $honored ? $this->done($j, 1) : -1;
+        return [$j, $honored];
     }
 }
