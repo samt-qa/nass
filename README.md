@@ -7,6 +7,7 @@
 One specification · three byte-identical packages · Dart, TypeScript and PHP
 
 [![CI](https://github.com/samt-qa/nass/actions/workflows/ci.yml/badge.svg)](https://github.com/samt-qa/nass/actions/workflows/ci.yml)
+[![pub.dev](https://img.shields.io/pub/v/nass?logo=dart&label=pub.dev)](https://pub.dev/packages/nass)
 [![npm](https://img.shields.io/npm/v/@samt-qa/nass?logo=npm&label=npm)](https://www.npmjs.com/package/@samt-qa/nass)
 [![Packagist](https://img.shields.io/packagist/v/samt/nass?logo=packagist&logoColor=white&label=packagist)](https://packagist.org/packages/samt/nass)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -60,7 +61,7 @@ Searching vocalized Arabic is easy to get *almost* right. Strip the diacritics a
 | PHP ≥ 8.3 | `samt/nass` | `composer require samt/nass` | [packages/php](packages/php) |
 
 > [!NOTE]
-> **Version 0.1.0.** Published on [npm](https://www.npmjs.com/package/@samt-qa/nass) and [Packagist](https://packagist.org/packages/samt/nass); the Dart package on pub.dev is coming next. The test vectors stay `review: pending` until a specialist has reviewed them.
+> **Version 0.1.0.** Published on [pub.dev](https://pub.dev/packages/nass), [npm](https://www.npmjs.com/package/@samt-qa/nass) and [Packagist](https://packagist.org/packages/samt/nass). The test vectors stay `review: pending` until a specialist has reviewed them.
 
 ## Quick start
 
