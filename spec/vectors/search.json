@@ -3,18 +3,3564 @@
   "specVersion": "0.1",
   "status": "draft",
   "cases": [
-    { "id": "search-phrase-001", "haystack": "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ", "needle": "الاعمال", "options": {}, "expected": [{ "start": 9, "end": 21, "text": "الْأَعْمَالُ" }], "note": "التطابق يشمل الضمة الأخيرة", "source": { "work": "صحيح البخاري", "ref": "1", "verified": false }, "review": "pending" },
-    { "id": "search-phrase-002", "haystack": "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ", "needle": "الأعمال بالنيات", "options": {}, "expected": [{ "start": 9, "end": 35, "text": "الْأَعْمَالُ بِالنِّيَّاتِ" }], "note": "عبارة من كلمتين", "source": { "work": "صحيح البخاري", "ref": "1", "verified": false }, "review": "pending" },
-    { "id": "search-phrase-003", "haystack": "العلم نور والعلم ميراث", "needle": "العلم", "options": {}, "expected": [{ "start": 0, "end": 5, "text": "العلم" }, { "start": 11, "end": 16, "text": "العلم" }], "note": "تطابقان، والثاني داخل «والعلم»", "review": "pending" },
-    { "id": "search-whole-001", "haystack": "العلم نور والعلم ميراث", "needle": "العلم", "options": { "wholeWord": true }, "expected": [{ "start": 0, "end": 5, "text": "العلم" }], "note": "wholeWord يستبعد «والعلم»", "review": "pending" },
-    { "id": "search-whole-002", "haystack": "قال: العلم، نور", "needle": "العلم", "options": { "wholeWord": true }, "expected": [{ "start": 5, "end": 10, "text": "العلم" }], "note": "الترقيم حد للكلمة", "review": "pending" },
-    { "id": "search-overlap-001", "haystack": "ااا", "needle": "اا", "options": {}, "expected": [{ "start": 0, "end": 2, "text": "اا" }], "note": "لا تداخل", "review": "pending" },
-    { "id": "search-lig-001", "haystack": "بسم ﷲ", "needle": "لل", "options": {}, "expected": [{ "start": 4, "end": 5, "text": "ﷲ" }], "note": "تطابق جزء من رمز ممتد يظلل الرمز كله", "review": "pending" },
-    { "id": "search-all-001", "haystack": "الصبر مفتاح الفرج", "needle": "الفرج الصبر", "options": { "matchMode": "allWords" }, "expected": [{ "start": 0, "end": 5, "text": "الصبر" }, { "start": 12, "end": 17, "text": "الفرج" }], "note": "كل الكلمات موجودة، والنتائج مرتبة بالموضع", "review": "pending" },
-    { "id": "search-all-002", "haystack": "الصبر مفتاح الفرج", "needle": "الصبر الشكر", "options": { "matchMode": "allWords" }, "expected": [], "note": "كلمة غائبة ← لا نتائج", "review": "pending" },
-    { "id": "search-any-001", "haystack": "الصبر مفتاح الفرج", "needle": "الصبر الشكر", "options": { "matchMode": "anyWord" }, "expected": [{ "start": 0, "end": 5, "text": "الصبر" }], "note": "أي كلمة", "review": "pending" },
-    { "id": "search-empty-001", "haystack": "نص ما", "needle": "ًَُ", "options": {}, "expected": [], "note": "عبارة بحث فارغة بعد التطبيع", "review": "pending" },
-    { "id": "search-loose-001", "haystack": "مدرسة", "needle": "مدرسه", "options": { "level": "loose" }, "expected": [{ "start": 0, "end": 5, "text": "مدرسة" }], "note": "loose يطابق الهاء بالتاء", "review": "pending" },
-    { "id": "search-loose-002", "haystack": "مدرسة", "needle": "مدرسه", "options": {}, "expected": [], "note": "search لا يطابقهما [القرار المفتوح 2]", "review": "pending" }
+    {
+      "id": "search-phrase-001",
+      "haystack": "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ",
+      "needle": "الاعمال",
+      "options": {},
+      "expected": [
+        {
+          "start": 9,
+          "end": 21,
+          "text": "الْأَعْمَالُ"
+        }
+      ],
+      "note": "التطابق يشمل الضمة الأخيرة",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1",
+        "verified": false
+      },
+      "review": "pending"
+    },
+    {
+      "id": "search-phrase-002",
+      "haystack": "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ",
+      "needle": "الأعمال بالنيات",
+      "options": {},
+      "expected": [
+        {
+          "start": 9,
+          "end": 35,
+          "text": "الْأَعْمَالُ بِالنِّيَّاتِ"
+        }
+      ],
+      "note": "عبارة من كلمتين",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1",
+        "verified": false
+      },
+      "review": "pending"
+    },
+    {
+      "id": "search-phrase-003",
+      "haystack": "العلم نور والعلم ميراث",
+      "needle": "العلم",
+      "options": {},
+      "expected": [
+        {
+          "start": 0,
+          "end": 5,
+          "text": "العلم"
+        },
+        {
+          "start": 11,
+          "end": 16,
+          "text": "العلم"
+        }
+      ],
+      "note": "تطابقان، والثاني داخل «والعلم»",
+      "review": "pending"
+    },
+    {
+      "id": "search-whole-001",
+      "haystack": "العلم نور والعلم ميراث",
+      "needle": "العلم",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 0,
+          "end": 5,
+          "text": "العلم"
+        }
+      ],
+      "note": "wholeWord يستبعد «والعلم»",
+      "review": "pending"
+    },
+    {
+      "id": "search-whole-002",
+      "haystack": "قال: العلم، نور",
+      "needle": "العلم",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 5,
+          "end": 10,
+          "text": "العلم"
+        }
+      ],
+      "note": "الترقيم حد للكلمة",
+      "review": "pending"
+    },
+    {
+      "id": "search-overlap-001",
+      "haystack": "ااا",
+      "needle": "اا",
+      "options": {},
+      "expected": [
+        {
+          "start": 0,
+          "end": 2,
+          "text": "اا"
+        }
+      ],
+      "note": "لا تداخل",
+      "review": "pending"
+    },
+    {
+      "id": "search-lig-001",
+      "haystack": "بسم ﷲ",
+      "needle": "لل",
+      "options": {},
+      "expected": [
+        {
+          "start": 4,
+          "end": 5,
+          "text": "ﷲ"
+        }
+      ],
+      "note": "تطابق جزء من رمز ممتد يظلل الرمز كله",
+      "review": "pending"
+    },
+    {
+      "id": "search-all-001",
+      "haystack": "الصبر مفتاح الفرج",
+      "needle": "الفرج الصبر",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 0,
+          "end": 5,
+          "text": "الصبر"
+        },
+        {
+          "start": 12,
+          "end": 17,
+          "text": "الفرج"
+        }
+      ],
+      "note": "كل الكلمات موجودة، والنتائج مرتبة بالموضع",
+      "review": "pending"
+    },
+    {
+      "id": "search-all-002",
+      "haystack": "الصبر مفتاح الفرج",
+      "needle": "الصبر الشكر",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [],
+      "note": "كلمة غائبة ← لا نتائج",
+      "review": "pending"
+    },
+    {
+      "id": "search-any-001",
+      "haystack": "الصبر مفتاح الفرج",
+      "needle": "الصبر الشكر",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 0,
+          "end": 5,
+          "text": "الصبر"
+        }
+      ],
+      "note": "أي كلمة",
+      "review": "pending"
+    },
+    {
+      "id": "search-empty-001",
+      "haystack": "نص ما",
+      "needle": "ًَُ",
+      "options": {},
+      "expected": [],
+      "note": "عبارة بحث فارغة بعد التطبيع",
+      "review": "pending"
+    },
+    {
+      "id": "search-loose-001",
+      "haystack": "مدرسة",
+      "needle": "مدرسه",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 0,
+          "end": 5,
+          "text": "مدرسة"
+        }
+      ],
+      "note": "loose يطابق الهاء بالتاء",
+      "review": "pending"
+    },
+    {
+      "id": "search-loose-002",
+      "haystack": "مدرسة",
+      "needle": "مدرسه",
+      "options": {},
+      "expected": [],
+      "note": "search لا يطابقهما [القرار المفتوح 2]",
+      "review": "pending"
+    },
+    {
+      "id": "gen-search-001",
+      "haystack": "‏ ‏مُسَدَّدٌ ‏ ‏عَنْ ‏ ‏يَحْيَى ‏ ‏عَنْ ‏ ‏عُبَيْدِ اللَّهِ بْنِ عُمَرَ ‏ ‏قَالَ حَدَّثَنِي ‏",
+      "needle": "مسدد عن يحيي",
+      "options": {},
+      "expected": [
+        {
+          "start": 3,
+          "end": 31,
+          "text": "مُسَدَّدٌ ‏ ‏عَنْ ‏ ‏يَحْيَى"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1755",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-002",
+      "haystack": "مَعَ رَسُولِ اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏قِبَلَ ‏ ‏مَكَّةَ ‏ ‏فَدَارُوا كَمَا هُمْ ‏ ‏قِبَلَ ‏ ‏الْبَيْتِ",
+      "needle": "الله عليه وسلم",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 31,
+          "end": 57,
+          "text": "اللَّهُ عَلَيْهِ وَسَلَّمَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "39",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-003",
+      "haystack": "‏ ‏أَبُو عَقِيلٍ زُهْرَةُ بْنُ مَعْبَدٍ ‏ ‏أَنَّهُ سَمِعَ ‏ ‏جَدَّهُ ‏ ‏عَبْدَ اللَّهِ بْنَ",
+      "needle": "زهرة سمع",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 17,
+          "end": 25,
+          "text": "زُهْرَةُ"
+        },
+        {
+          "start": 51,
+          "end": 57,
+          "text": "سَمِعَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3418",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-004",
+      "haystack": "‏يَحْيَى بْنُ صَالِحٍ ‏ ‏قَالَ حَدَّثَنَا ‏ ‏مُعَاوِيَةُ بْنُ سَلَّامِ بْنِ أَبِي سَلَّامٍ الْحَبَشِيُّ الدِّمَشْقِيُّ ‏ ‏قَالَ",
+      "needle": "الدمشقي كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 104,
+          "end": 118,
+          "text": "الدِّمَشْقِيُّ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "987",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-005",
+      "haystack": "نُعَيْمٍ ‏ ‏قَالَ حَدَّثَنَا ‏ ‏إِبْرَاهِيمُ بْنُ نَافِعٍ ‏ ‏عَنْ ‏ ‏ابْنِ أَبِي نَجِيحٍ ‏ ‏عَنْ ‏ ‏مُجَاهِدٍ ‏ ‏قَالَ قَالَتْ",
+      "needle": "بن نافع عن",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 45,
+          "end": 65,
+          "text": "بْنُ نَافِعٍ ‏ ‏عَنْ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "301",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-006",
+      "haystack": "‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏يَقُولُ ‏ ‏آخِرُ آيَةٍ نَزَلَتْ ‏ { ‏يَسْتَفْتُونَكَ قُلْ اللَّهُ يُفْتِيكُمْ فِي ‏ ‏الْكَلَالَةِ ‏",
+      "needle": "رضي الله عنه",
+      "options": {},
+      "expected": [
+        {
+          "start": 3,
+          "end": 24,
+          "text": "رَضِيَ اللَّهُ عَنْهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4287",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-007",
+      "haystack": "‏ ‏جَرِيرٌ ‏ ‏عَنْ ‏ ‏الْأَعْمَشِ ‏ ‏عَنْ ‏ ‏مُنْذِرٍ أَبِي يَعْلَى الْثَّوْرِيِّ ‏ ‏عَنْ ‏ ‏مُحَمَّدِ بْنِ الْحَنَفِيَّةِ",
+      "needle": "بن الحنفية",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 103,
+          "end": 122,
+          "text": "بْنِ الْحَنَفِيَّةِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "172",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-008",
+      "haystack": "‏ ‏إِلَى نِصْفِ النَّهَارِ عَلَى ‏ ‏قِيرَاطٍ ‏ ‏قِيرَاطٍ ‏ ‏ثُمَّ قَالَ مَنْ يَعْمَلُ لِي مِنْ نِصْفِ النَّهَارِ إِلَى صَلَاةِ الْعَصْرِ",
+      "needle": "نصف النهار",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 9,
+          "end": 15,
+          "text": "نِصْفِ"
+        },
+        {
+          "start": 16,
+          "end": 26,
+          "text": "النَّهَارِ"
+        },
+        {
+          "start": 95,
+          "end": 101,
+          "text": "نِصْفِ"
+        },
+        {
+          "start": 102,
+          "end": 112,
+          "text": "النَّهَارِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3200",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-009",
+      "haystack": "‏ ‏سُفْيَانُ ‏ ‏عَنْ ‏ ‏عَوْنِ بْنِ أَبِي جُحَيْفَةَ ‏ ‏عَنْ ‏ ‏أَبِيهِ ‏ ‏أَنَّهُ",
+      "needle": "عن كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 16,
+          "end": 20,
+          "text": "عَنْ"
+        },
+        {
+          "start": 56,
+          "end": 60,
+          "text": "عَنْ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "598",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-010",
+      "haystack": "‏أَبُو الْيَمَانِ ‏ ‏أَخْبَرَنَا ‏ ‏شُعَيْبٌ ‏ ‏عَنْ ‏ ‏الزُّهْرِيِّ ‏ ‏قَالَ حَدَّثَنِي ‏",
+      "needle": "شعيب عن الزهري",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 36,
+          "end": 68,
+          "text": "شُعَيْبٌ ‏ ‏عَنْ ‏ ‏الزُّهْرِيِّ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3435",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-011",
+      "haystack": "قَالَ لَكَ أَجْرَانِ قَالَ نَعَمْ مَا مِنْ مُسْلِمٍ يُصِيبُهُ أَذًى مَرَضٌ",
+      "needle": "من مسلم يصيبه",
+      "options": {},
+      "expected": [
+        {
+          "start": 38,
+          "end": 61,
+          "text": "مِنْ مُسْلِمٍ يُصِيبُهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5235",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-012",
+      "haystack": "‏ ‏حَدَّثَنَا ‏ ‏عَبْدَانُ ‏ ‏أَخْبَرَنَا ‏ ‏يَزِيدُ بْنُ",
+      "needle": "بن",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 53,
+          "end": 57,
+          "text": "بْنُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1797",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-013",
+      "haystack": "‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏قَالَ ‏ ‏مَنْ",
+      "needle": "قال الله",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 10,
+          "end": 17,
+          "text": "اللَّهُ"
+        },
+        {
+          "start": 40,
+          "end": 45,
+          "text": "قَالَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "545",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-014",
+      "haystack": "‏ ‏قَبِيصَةُ ‏ ‏حَدَّثَنَا ‏ ‏سُفْيَانُ ‏ ‏عَنْ ‏ ‏ابْنِ ذَكْوَانَ",
+      "needle": "سفيان كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 30,
+          "end": 39,
+          "text": "سُفْيَانُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2715",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-015",
+      "haystack": "‏مِثْلَهُ ‏ ‏وَقَالَ ‏ ‏مُوسَى ‏ ‏حَدَّثَنَا ‏ ‏أَبَانُ",
+      "needle": "وقال موسي حدثنا",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 13,
+          "end": 44,
+          "text": "وَقَالَ ‏ ‏مُوسَى ‏ ‏حَدَّثَنَا"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "282",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-016",
+      "haystack": "‏ ‏حَدَّثَنَا ‏ ‏إِسْمَاعِيلُ ‏ ‏قَالَ حَدَّثَنِي ‏ ‏مَالِكٌ",
+      "needle": "قال حدثني مالك",
+      "options": {},
+      "expected": [
+        {
+          "start": 33,
+          "end": 60,
+          "text": "قَالَ حَدَّثَنِي ‏ ‏مَالِكٌ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "177",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-017",
+      "haystack": "‏ ‏حَدَّثَنَا ‏ ‏قُتَيْبَةُ بْنُ سَعِيدٍ ‏ ‏حَدَّثَنَا ‏ ‏سُفْيَانُ ‏ ‏عَنْ ‏ ‏عَمْرٍو",
+      "needle": "عمرو",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 79,
+          "end": 86,
+          "text": "عَمْرٍو"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5622",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-018",
+      "haystack": "‏ ‏شُعْبَةُ ‏ ‏عَنْ ‏ ‏حُمَيْدِ بْنِ هِلَالٍ ‏ ‏عَنْ ‏",
+      "needle": "هلال عن",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 15,
+          "end": 19,
+          "text": "عَنْ"
+        },
+        {
+          "start": 37,
+          "end": 44,
+          "text": "هِلَالٍ"
+        },
+        {
+          "start": 48,
+          "end": 52,
+          "text": "عَنْ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5084",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-019",
+      "haystack": "اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏بِثَلَاثٍ صِيَامِ ثَلَاثَةِ أَيَّامٍ مِنْ كُلِّ شَهْرٍ وَرَكْعَتَيْ الضُّحَى وَأَنْ",
+      "needle": "الضحي كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 98,
+          "end": 106,
+          "text": "الضُّحَى"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1845",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-020",
+      "haystack": "‏عَبْدُ اللَّهِ ‏ ‏أَخْبَرَنَا ‏ ‏عَاصِمُ بْنُ سُلَيْمَانَ ‏ ‏عَنْ ‏ ‏الشَّعْبِيِّ ‏ ‏أَنَّهُ سَمِعَ ‏ ‏جَابِرَ بْنَ عَبْدِ اللَّهِ",
+      "needle": "عبد الله اخبرنا",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 1,
+          "end": 30,
+          "text": "عَبْدُ اللَّهِ ‏ ‏أَخْبَرَنَا"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4843",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-021",
+      "haystack": "‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏أَنَّ رَسُولَ اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏نَهَى أَنْ",
+      "needle": "رسول الله",
+      "options": {},
+      "expected": [
+        {
+          "start": 34,
+          "end": 49,
+          "text": "رَسُولَ اللَّهِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2045",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-022",
+      "haystack": "إِنَّ ‏ ‏أَبَا سُفْيَانَ ‏ ‏رَجُلٌ مِسِّيكٌ فَهَلْ عَلَيَّ حَرَجٌ أَنْ",
+      "needle": "رجل مسيك",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 28,
+          "end": 43,
+          "text": "رَجُلٌ مِسِّيكٌ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6150",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-023",
+      "haystack": "حَتَّى ‏ ‏وَارَى ‏ ‏التُّرَابُ شَعَرَ صَدْرِهِ وَكَانَ رَجُلًا كَثِيرَ الشَّعَرِ وَهُوَ ‏ ‏يَرْتَجِزُ ‏ ‏بِرَجَزِ ‏ ‏عَبْدِ اللَّهِ ‏ ‏اللَّهُمَّ",
+      "needle": "صدره حتي",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 0,
+          "end": 6,
+          "text": "حَتَّى"
+        },
+        {
+          "start": 38,
+          "end": 46,
+          "text": "صَدْرِهِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2808",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-024",
+      "haystack": "‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏وَإِمْرَةِ ‏ ‏أَبِي بَكْرٍ ‏ ‏وَصَدْرًا مِنْ خِلَافَةِ ‏ ‏عُمَرَ ‏ ‏فَنَقُومُ إِلَيْهِ بِأَيْدِينَا وَنِعَالِنَا",
+      "needle": "وسلم كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 25,
+          "end": 34,
+          "text": "وَسَلَّمَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6281",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-025",
+      "haystack": "وَسَلَّمَ ‏ ‏زَمَنَ ‏ ‏الْحُدَيْبِيَةِ ‏ ‏وَالْقَمْلُ يَتَنَاثَرُ عَلَى وَجْهِي فَقَالَ ‏ ‏أَيُؤْذِيكَ ‏ ‏هَوَامُّ ‏ ‏رَأْسِكَ قُلْتُ نَعَمْ قَالَ فَاحْلِقْ",
+      "needle": "الحديبية والقمل",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 23,
+          "end": 53,
+          "text": "الْحُدَيْبِيَةِ ‏ ‏وَالْقَمْلُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3869",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-026",
+      "haystack": "‏ ‏نَافِعٍ ‏ ‏أَنَّ ‏ ‏عَبْدَ اللَّهِ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏قَالَ ‏",
+      "needle": "عبد",
+      "options": {},
+      "expected": [
+        {
+          "start": 23,
+          "end": 29,
+          "text": "عَبْدَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1523",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-027",
+      "haystack": "الْقَمَرِ لَيْلَةَ الْبَدْرِ وَالَّذِينَ عَلَى آثَارِهِمْ كَأَحْسَنِ كَوْكَبٍ ‏ ‏دُرِّيٍّ ‏ ‏فِي السَّمَاءِ إِضَاءَةً قُلُوبُهُمْ عَلَى قَلْبِ رَجُلٍ وَاحِدٍ",
+      "needle": "كوكب دري",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 69,
+          "end": 89,
+          "text": "كَوْكَبٍ ‏ ‏دُرِّيٍّ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3014",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-028",
+      "haystack": "‏عَنْ ‏ ‏حُمْرَانَ ‏ ‏رَأَيْتُ ‏ ‏عُثْمَانَ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏تَوَضَّأَ فَأَفْرَغَ عَلَى يَدَيْهِ ثَلَاثًا",
+      "needle": "رضي عنه",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 47,
+          "end": 53,
+          "text": "رَضِيَ"
+        },
+        {
+          "start": 62,
+          "end": 68,
+          "text": "عَنْهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1798",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-029",
+      "haystack": "‏الْأَشْعَثِ بْنِ سُلَيْمٍ ‏ ‏عَنْ ‏ ‏مُعَاوِيَةَ بْنِ",
+      "needle": "سليم كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 18,
+          "end": 26,
+          "text": "سُلَيْمٍ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5204",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-030",
+      "haystack": "فَقَالَ أَعْطُوهُ فَطَلَبُوا ‏ ‏سِنَّهُ ‏ ‏فَلَمْ يَجِدُوا لَهُ إِلَّا ‏ ‏سِنًّا ‏ ‏فَوْقَهَا فَقَالَ أَعْطُوهُ",
+      "needle": "فقال اعطوه فطلبوا",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 0,
+          "end": 28,
+          "text": "فَقَالَ أَعْطُوهُ فَطَلَبُوا"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2140",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-031",
+      "haystack": "‏عَنْ ‏ ‏أَبِي هُرَيْرَةَ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏",
+      "needle": "رضي الله عنه",
+      "options": {},
+      "expected": [
+        {
+          "start": 29,
+          "end": 50,
+          "text": "رَضِيَ اللَّهُ عَنْهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1921",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-032",
+      "haystack": "‏يَقُولُ ‏ ‏أَنَا أَوْلَى النَّاسِ ‏ ‏بِابْنِ مَرْيَمَ ‏",
+      "needle": "انا اولي الناس",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 12,
+          "end": 34,
+          "text": "أَنَا أَوْلَى النَّاسِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3186",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-033",
+      "haystack": "‏عُمَرُ ‏ ‏عَلَى الْمِنْبَرِ فَلَمَّا سَكَتَ الْمُؤَذِّنُونَ قَامَ فَأَثْنَى عَلَى اللَّهِ",
+      "needle": "علي علي",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 11,
+          "end": 16,
+          "text": "عَلَى"
+        },
+        {
+          "start": 77,
+          "end": 82,
+          "text": "عَلَى"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6328",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-034",
+      "haystack": "‏ ‏لِلْيَهُودِ ‏ ‏وَلِلرَّسُولِ وَلِلْمُسْلِمِينَ فَسَأَلَ ‏ ‏الْيَهُودُ ‏ ‏رَسُولَ اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏أَنْ يَتْرُكَهُمْ عَلَى أَنْ",
+      "needle": "وللمسلمين كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 32,
+          "end": 49,
+          "text": "وَلِلْمُسْلِمِينَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2919",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-035",
+      "haystack": "‏ ‏قَالَ ‏ ‏لَا يَزْنِي الزَّانِي حِينَ يَزْنِي",
+      "needle": "قال لا",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 3,
+          "end": 15,
+          "text": "قَالَ ‏ ‏لَا"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6284",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-036",
+      "haystack": "‏ ‏فَقَالَ هُوَ لَكَ يَا ‏ ‏عَبْدُ بْنَ زَمْعَةَ ‏ ‏الْوَلَدُ ‏ ‏لِلْفِرَاشِ ‏ ‏وَلِلْعَاهِرِ ‏ ‏الْحَجَرُ وَاحْتَجِبِي مِنْهُ",
+      "needle": "للفراش وللعاهر الحجر",
+      "options": {},
+      "expected": [
+        {
+          "start": 65,
+          "end": 106,
+          "text": "لِلْفِرَاشِ ‏ ‏وَلِلْعَاهِرِ ‏ ‏الْحَجَرُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6268",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-037",
+      "haystack": "بْنُ مُحَمَّدٍ ‏ ‏أَخْبَرَنَا ‏ ‏عَبْدُ اللَّهِ ‏ ‏أَخْبَرَنَا ‏ ‏الْأَوْزَاعِيُّ ‏ ‏عَنْ ‏ ‏إِسْحَاقَ بْنِ عَبْدِ اللَّهِ",
+      "needle": "اسحاق",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 93,
+          "end": 102,
+          "text": "إِسْحَاقَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2687",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-038",
+      "haystack": "‏ ‏حَدَّثَنَا ‏ ‏مُسَدَّدٌ ‏ ‏حَدَّثَنَا ‏ ‏أَبُو الْأَحْوَصِ ‏ ‏حَدَّثَنَا ‏ ‏أَشْعَثُ ‏ ‏عَنْ ‏ ‏الْأَسْوَدِ بْنِ يَزِيدَ ‏ ‏عَنْ",
+      "needle": "بن عن",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 91,
+          "end": 95,
+          "text": "عَنْ"
+        },
+        {
+          "start": 111,
+          "end": 115,
+          "text": "بْنِ"
+        },
+        {
+          "start": 127,
+          "end": 131,
+          "text": "عَنْ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6702",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-039",
+      "haystack": "اللَّهُ عَنْهُ ‏ ‏قَالَ ‏ ‏قَالَ النَّبِيُّ ‏",
+      "needle": "قال كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 18,
+          "end": 23,
+          "text": "قَالَ"
+        },
+        {
+          "start": 27,
+          "end": 32,
+          "text": "قَالَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5581",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-040",
+      "haystack": "‏عَنْ ‏ ‏ثَابِتٍ ‏ ‏عَنْ ‏ ‏أَبِي رَافِعٍ ‏ ‏عَنْ ‏ ‏أَبِي هُرَيْرَةَ ‏ ‏أَنَّ",
+      "needle": "ابي رافع",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 28,
+          "end": 41,
+          "text": "أَبِي رَافِعٍ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "438",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-041",
+      "haystack": "‏صَدَاقٍ ‏ ‏وَقَالَ بَعْضُ النَّاسِ إِنْ احْتَالَ حَتَّى تَزَوَّجَ عَلَى الشِّغَارِ فَهُوَ جَائِزٌ وَالشَّرْطُ",
+      "needle": "تزوج علي الشغار",
+      "options": {},
+      "expected": [
+        {
+          "start": 57,
+          "end": 83,
+          "text": "تَزَوَّجَ عَلَى الشِّغَارِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6445",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-042",
+      "haystack": "‏عَنْ ‏ ‏الشَّعْبِيِّ ‏ ‏سَمِعْتُ ‏ ‏النُّعْمَانَ بْنَ بَشِيرٍ",
+      "needle": "سمعت النعمان بن",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 25,
+          "end": 54,
+          "text": "سَمِعْتُ ‏ ‏النُّعْمَانَ بْنَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1910",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-043",
+      "haystack": "اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏قَالَ ‏ ‏لَا يَزَالُ النَّاسُ بِخَيْرٍ",
+      "needle": "صلي يزال",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 11,
+          "end": 17,
+          "text": "صَلَّى"
+        },
+        {
+          "start": 61,
+          "end": 68,
+          "text": "يَزَالُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1821",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-044",
+      "haystack": "كَرِهَ لِقَاءَ اللَّهِ كَرِهَ اللَّهُ لِقَاءَهُ قَالَتْ ‏ ‏عَائِشَةُ",
+      "needle": "قالت كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 48,
+          "end": 55,
+          "text": "قَالَتْ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6026",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-045",
+      "haystack": "‏الْمَكِّيُّ بْنُ إِبْرَاهِيمَ ‏ ‏أَخْبَرَنَا ‏ ‏حَنْظَلَةُ بْنُ أَبِي سُفْيَانَ ‏ ‏قَالَ سَمِعْتُ ‏ ‏سَالِمًا",
+      "needle": "قال",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 84,
+          "end": 89,
+          "text": "قَالَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5059",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-046",
+      "haystack": "فَأَدْخَلْتُ فِيهِ مَا أُخْرِجَ مِنْهُ وَأَلْزَقْتُهُ بِالْأَرْضِ وَجَعَلْتُ لَهُ",
+      "needle": "منه والزقته",
+      "options": {},
+      "expected": [
+        {
+          "start": 32,
+          "end": 53,
+          "text": "مِنْهُ وَأَلْزَقْتُهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1483",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-047",
+      "haystack": "إِنَّهَا جِنَازَةُ يَهُودِيٍّ فَقَالَ أَلَيْسَتْ نَفْسًا ‏ ‏وَقَالَ ‏ ‏أَبُو حَمْزَةَ ‏ ‏عَنْ ‏ ‏الْأَعْمَشِ ‏ ‏عَنْ ‏ ‏عَمْرٍو",
+      "needle": "الاعمش",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 97,
+          "end": 108,
+          "text": "الْأَعْمَشِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1229",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-048",
+      "haystack": "نُورَثُ مَا تَرَكْنَا صَدَقَةٌ إِنَّمَا يَأْكُلُ آلُ ‏ ‏مُحَمَّدٍ ‏ ‏فِي هَذَا الْمَالِ وَاللَّهِ لَقَرَابَةُ رَسُولِ اللَّهِ ‏ ‏صَلَّى اللَّهُ",
+      "needle": "ال المال",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 49,
+          "end": 52,
+          "text": "آلُ"
+        },
+        {
+          "start": 79,
+          "end": 87,
+          "text": "الْمَالِ"
+        },
+        {
+          "start": 90,
+          "end": 92,
+          "text": "ال"
+        },
+        {
+          "start": 118,
+          "end": 120,
+          "text": "ال"
+        },
+        {
+          "start": 136,
+          "end": 138,
+          "text": "ال"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3730",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-049",
+      "haystack": "بْنُ مَالِكِ بْنِ جُعْشُمٍ ‏ ‏فَدَعَا عَلَيْهِ النَّبِيُّ ‏",
+      "needle": "بن كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 0,
+          "end": 4,
+          "text": "بْنُ"
+        },
+        {
+          "start": 13,
+          "end": 17,
+          "text": "بْنِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3618",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-050",
+      "haystack": "‏عُبَادَةَ بْنَ الصَّامِتِ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏قَالَ ‏ ‏كُنَّا عِنْدَ النَّبِيِّ ‏",
+      "needle": "الصامت رضي الله",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 16,
+          "end": 44,
+          "text": "الصَّامِتِ ‏ ‏رَضِيَ اللَّهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4515",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-051",
+      "haystack": "‏الْأَعْمَشُ ‏ ‏حَدَّثَنَا ‏ ‏مُسْلِمٌ ‏ ‏عَنْ ‏ ‏مَسْرُوقٍ ‏",
+      "needle": "عن مسروق",
+      "options": {},
+      "expected": [
+        {
+          "start": 42,
+          "end": 59,
+          "text": "عَنْ ‏ ‏مَسْرُوقٍ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4858",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-052",
+      "haystack": "‏أَنَّهُ رَأَى النَّبِيَّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏يَحْتَزُّ مِنْ كَتِفِ",
+      "needle": "من",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 76,
+          "end": 80,
+          "text": "مِنْ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4988",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-053",
+      "haystack": "‏ ‏رَجُلًا مِنْ ‏ ‏الْأَنْصَارِ ‏ ‏فَقَالَ الْأَنْصَارِيُّ يَا ‏ ‏لَلْأَنْصَارِ ‏ ‏وَقَالَ الْمُهَاجِرِيُّ يَا",
+      "needle": "الانصاري للانصار",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 43,
+          "end": 58,
+          "text": "الْأَنْصَارِيُّ"
+        },
+        {
+          "start": 66,
+          "end": 79,
+          "text": "لَلْأَنْصَارِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4527",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-054",
+      "haystack": "إِلَّا أَنْ أَقُولَ بِهِ فِي عِبَادِ اللَّهِ هَكَذَا وَهَكَذَا وَهَكَذَا عَنْ يَمِينِهِ وَعَنْ",
+      "needle": "يمينه كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 78,
+          "end": 87,
+          "text": "يَمِينِهِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5963",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-055",
+      "haystack": "‏أَبِي مُوسَى ‏ ‏عَنْ النَّبِيِّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏قَالَ ‏ ‏الْخَازِنُ ‏ ‏الْمُسْلِمُ الْأَمِينُ الَّذِي يُنْفِذُ ‏ ‏وَرُبَّمَا",
+      "needle": "عن النبي",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 17,
+          "end": 32,
+          "text": "عَنْ النَّبِيِّ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1348",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-056",
+      "haystack": "‏ ‏كُنْتُ أَتَسَحَّرُ فِي أَهْلِي ثُمَّ تَكُونُ سُرْعَتِي أَنْ أُدْرِكَ السُّجُودَ مَعَ رَسُولِ اللَّهِ ‏ ‏صَلَّى اللَّهُ",
+      "needle": "رسول الله",
+      "options": {},
+      "expected": [
+        {
+          "start": 88,
+          "end": 103,
+          "text": "رَسُولِ اللَّهِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1786",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-057",
+      "haystack": "‏عَنْ ‏ ‏عَائِشَةَ ‏ ‏رَضِيَ اللَّهُ عَنْهَا ‏ ‏قَالَتْ ‏ ‏هِنْدُ",
+      "needle": "رضي الله",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 22,
+          "end": 36,
+          "text": "رَضِيَ اللَّهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4951",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-058",
+      "haystack": "‏ ‏أَنَّ ‏ ‏عَبْدَ اللَّهِ بْنَ عُمَرَ ‏ ‏رَضِيَ اللَّهُ عَنْهُمَا ‏ ‏خَرَجَ مُعْتَمِرًا فِي الْفِتْنَةِ فَقَالَ إِنْ صُدِدْتُ",
+      "needle": "ان عمر",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 3,
+          "end": 8,
+          "text": "أَنَّ"
+        },
+        {
+          "start": 32,
+          "end": 38,
+          "text": "عُمَرَ"
+        },
+        {
+          "start": 113,
+          "end": 117,
+          "text": "إِنْ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3863",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-059",
+      "haystack": "اللَّهِ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏عَنْ النَّبِيِّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ",
+      "needle": "عن كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 26,
+          "end": 30,
+          "text": "عَنْ"
+        },
+        {
+          "start": 36,
+          "end": 40,
+          "text": "عَنْ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3258",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-060",
+      "haystack": "قَالَ ثُمَّ جَرَتْ السُّنَّةُ فِي مِيرَاثِهَا أَنَّهَا تَرِثُهُ وَيَرِثُ مِنْهَا مَا فَرَضَ",
+      "needle": "منها ما فرض",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 73,
+          "end": 91,
+          "text": "مِنْهَا مَا فَرَضَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4897",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-061",
+      "haystack": "نَافِعٍ ‏ ‏عَنْ ‏ ‏الْحَسَنِ بْنِ مُسْلِمٍ ‏ ‏عَنْ ‏ ‏صَفِيَّةَ بِنْتِ شَيْبَةَ ‏ ‏عَنْ ‏ ‏عَائِشَةَ ‏",
+      "needle": "نافع عن",
+      "options": {},
+      "expected": [
+        {
+          "start": 0,
+          "end": 15,
+          "text": "نَافِعٍ ‏ ‏عَنْ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "268",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-062",
+      "haystack": "رَمَضَانَ فَأُتِيَ النَّبِيُّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏بِمِكْتَلٍ ‏ ‏يُدْعَى ‏ ‏الْعَرَقَ ‏ ‏فَقَالَ أَيْنَ الْمُحْتَرِقُ قَالَ أَنَا قَالَ",
+      "needle": "يدعي العرق فقال",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 84,
+          "end": 115,
+          "text": "يُدْعَى ‏ ‏الْعَرَقَ ‏ ‏فَقَالَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1799",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-063",
+      "haystack": "تَثْنَوْنِي صُدُورُهُمْ قَالَ ‏ ‏كَانَ الرَّجُلُ يُجَامِعُ امْرَأَتَهُ فَيَسْتَحِي أَوْ ‏ ‏يَتَخَلَّى",
+      "needle": "تثنوني صدورهم",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 0,
+          "end": 11,
+          "text": "تَثْنَوْنِي"
+        },
+        {
+          "start": 12,
+          "end": 23,
+          "text": "صُدُورُهُمْ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4314",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-064",
+      "haystack": "الْهُذَيْلِ ‏ ‏عَنْ ‏ ‏أُمِّ عَطِيَّةَ ‏ ‏رَضِيَ اللَّهُ عَنْهَا ‏ ‏قَالَتْ ‏ ‏نُهِينَا عَنْ اتِّبَاعِ الْجَنَائِزِ وَلَمْ",
+      "needle": "اتباع كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 93,
+          "end": 102,
+          "text": "اتِّبَاعِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1199",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-065",
+      "haystack": "غَيْرِ أَبِيهِ وَهُوَ يَعْلَمُ فَالْجَنَّةُ عَلَيْهِ حَرَامٌ ‏ ‏وَقَالَ ‏ ‏هِشَامٌ ‏ ‏وَأَخْبَرَنَا ‏ ‏مَعْمَرٌ",
+      "needle": "يعلم فالجنة عليه",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 22,
+          "end": 52,
+          "text": "يَعْلَمُ فَالْجَنَّةُ عَلَيْهِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3982",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-066",
+      "haystack": "‏ ‏رَضِيَ اللَّهُ عَنْهُمَا ‏ ‏قَالَ ‏ ‏كُنْتُ أَعْرِفُ انْقِضَاءَ",
+      "needle": "الله",
+      "options": {},
+      "expected": [
+        {
+          "start": 10,
+          "end": 17,
+          "text": "اللَّهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "797",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-067",
+      "haystack": "يَأْكُلُ أَكْلًا كَثِيرًا فَأَسْلَمَ فَكَانَ يَأْكُلُ أَكْلًا قَلِيلًا فَذُكِرَ ذَلِكَ لِلنَّبِيِّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏فَقَالَ ‏",
+      "needle": "للنبي صلي",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 87,
+          "end": 108,
+          "text": "لِلنَّبِيِّ ‏ ‏صَلَّى"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4978",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-068",
+      "haystack": "‏ ‏قَالَ ‏ ‏كُنَّا نَتَزَوَّدُ لُحُومَ الْأَضَاحِيِّ عَلَى عَهْدِ النَّبِيِّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏إِلَى ‏ ‏الْمَدِينَةِ ‏",
+      "needle": "الي المدينة",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 117,
+          "end": 122,
+          "text": "إِلَى"
+        },
+        {
+          "start": 126,
+          "end": 138,
+          "text": "الْمَدِينَةِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5141",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-069",
+      "haystack": "كَانَ مَعَهُ هَدْيٌ فَلْيُهِلَّ بِالْحَجِّ وَالْعُمْرَةِ ثُمَّ لَا يَحِلُّ حَتَّى يَحِلَّ مِنْهُمَا فَقَدِمْتُ ‏ ‏مَكَّةَ ‏",
+      "needle": "فقدمت كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 100,
+          "end": 110,
+          "text": "فَقَدِمْتُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1530",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-070",
+      "haystack": "‏ ‏أَنَّ ‏ ‏مُعَاذَ بْنَ جَبَلٍ ‏ ‏كَانَ ‏",
+      "needle": "جبل كان",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 25,
+          "end": 40,
+          "text": "جَبَلٍ ‏ ‏كَانَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "659",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-071",
+      "haystack": "‏ ‏عَلَى جَمَلٍ أَحْمَرَ ‏ ‏مَخْطُومٍ ‏ ‏بِخُلْبَةٍ كَأَنِّي",
+      "needle": "علي جمل",
+      "options": {},
+      "expected": [
+        {
+          "start": 3,
+          "end": 15,
+          "text": "عَلَى جَمَلٍ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3106",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-072",
+      "haystack": "بْنِ عَبْدِ اللَّهِ ‏ ‏رَضِيَ اللَّهُ عَنْهُمَا ‏ ‏قَالَ ‏ ‏قَضَى رَسُولُ اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ",
+      "needle": "رسول الله صلي",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 66,
+          "end": 91,
+          "text": "رَسُولُ اللَّهِ ‏ ‏صَلَّى"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2097",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-073",
+      "haystack": "‏ ‏الْبَقَرَةَ ‏ ‏قَالَ فَتَجَوَّزَ رَجُلٌ فَصَلَّى صَلَاةً خَفِيفَةً فَبَلَغَ ذَلِكَ ‏ ‏مُعَاذًا ‏ ‏فَقَالَ إِنَّهُ مُنَافِقٌ فَبَلَغَ ذَلِكَ الرَّجُلَ",
+      "needle": "فبلغ انه",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 70,
+          "end": 78,
+          "text": "فَبَلَغَ"
+        },
+        {
+          "start": 109,
+          "end": 116,
+          "text": "إِنَّهُ"
+        },
+        {
+          "start": 127,
+          "end": 135,
+          "text": "فَبَلَغَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5641",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-074",
+      "haystack": "‏ ‏أَخْبَرَنَا ‏ ‏صَدَقَةُ بْنُ الْفَضْلِ ‏ ‏أَخْبَرَنَا ‏ ‏ابْنُ عُيَيْنَةَ ‏",
+      "needle": "ابن كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 60,
+          "end": 65,
+          "text": "ابْنُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3877",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-075",
+      "haystack": "اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏فِي ذَلِكَ وَمَا حَمَلَنِي عَلَى كَثْرَةِ مُرَاجَعَتِهِ إِلَّا أَنَّهُ لَمْ يَقَعْ فِي",
+      "needle": "ذلك",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 34,
+          "end": 40,
+          "text": "ذَلِكَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4090",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-076",
+      "haystack": "اللَّهُ عَنْهَا ‏ ‏قَالَتْ ‏ ‏كَانَ رَسُولُ اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏إِذَا سَلَّمَ قَامَ النِّسَاءُ حِينَ يَقْضِي تَسْلِيمَهُ",
+      "needle": "وسلم اذا سلم",
+      "options": {},
+      "expected": [
+        {
+          "start": 79,
+          "end": 105,
+          "text": "وَسَلَّمَ ‏ ‏إِذَا سَلَّمَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "793",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-077",
+      "haystack": "‏ ‏أَنَّ ‏ ‏أَصْحَابَ النَّبِيِّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏قَالُوا ‏ ‏لِلزُّبَيْرِ",
+      "needle": "الله عليه",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 43,
+          "end": 59,
+          "text": "اللَّهُ عَلَيْهِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3443",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-078",
+      "haystack": "وَسَلَّمَ ‏ ‏كَانَ يَمْكُثُ عِنْدَ ‏ ‏زَيْنَبَ بِنْتِ جَحْشٍ ‏ ‏وَيَشْرَبُ عِنْدَهَا عَسَلًا فَتَوَاصَيْتُ أَنَا ‏ ‏وَحَفْصَةُ",
+      "needle": "ويشرب عسلا",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 64,
+          "end": 74,
+          "text": "وَيَشْرَبُ"
+        },
+        {
+          "start": 85,
+          "end": 92,
+          "text": "عَسَلًا"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6197",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-079",
+      "haystack": "‏ ‏غُلَامٌ ‏ ‏وَعَنْ يَسَارِهِ الْأَشْيَاخُ فَقَالَ لِلْغُلَامِ ‏ ‏أَتَأْذَنُ لِي أَنْ أُعْطِيَ",
+      "needle": "اعطي كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 87,
+          "end": 95,
+          "text": "أُعْطِيَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2271",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-080",
+      "haystack": "بْنُ دِينَارٍ ‏ ‏قَالَ سَمِعْتُ ‏ ‏ابْنَ عُمَرَ ‏ ‏رَضِيَ اللَّهُ",
+      "needle": "سمعت",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 23,
+          "end": 31,
+          "text": "سَمِعْتُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5058",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-081",
+      "haystack": "‏ ‏قُتَيْبَةُ ‏ ‏حَدَّثَنَا ‏ ‏اللَّيْثُ ‏ ‏عَنْ ‏ ‏نَافِعٍ ‏ ‏أَنَّ ‏ ‏ابْنَ عُمَرَ ‏ ‏رَضِيَ اللَّهُ عَنْهُمَا",
+      "needle": "ابن عمر",
+      "options": {},
+      "expected": [
+        {
+          "start": 72,
+          "end": 84,
+          "text": "ابْنَ عُمَرَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4881",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-082",
+      "haystack": "‏ ‏قَالَ أَخْبَرَنِي ‏ ‏عَمْرٌو ‏ ‏قَالَ سَمِعْتُ ‏ ‏جَابِرَ بْنَ زَيْدٍ ‏ ‏قَالَ سَمِعْتُ ‏ ‏ابْنَ عَبَّاسٍ ‏",
+      "needle": "قال سمعت جابر",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 35,
+          "end": 60,
+          "text": "قَالَ سَمِعْتُ ‏ ‏جَابِرَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1624",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-083",
+      "haystack": "أَخْبَرَنِي ‏ ‏يُونُسُ ‏ ‏عَنْ ‏ ‏ابْنِ شِهَابٍ ‏ ‏قَالَ أَخْبَرَنِي",
+      "needle": "قال شهاب",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 40,
+          "end": 47,
+          "text": "شِهَابٍ"
+        },
+        {
+          "start": 51,
+          "end": 56,
+          "text": "قَالَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5884",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-084",
+      "haystack": "‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏اغْتَسَلَ مِنْ الْجَنَابَةِ فَغَسَلَ فَرْجَهُ بِيَدِهِ ثُمَّ دَلَكَ بِهَا",
+      "needle": "اغتسل كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 40,
+          "end": 49,
+          "text": "اغْتَسَلَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "252",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-085",
+      "haystack": "‏عَائِشَةَ ‏ ‏رَضِيَ اللَّهُ عَنْهَا ‏ ‏أَنَّهَا قَالَتْ ‏ ‏سُئِلَ النَّبِيُّ ‏ ‏صَلَّى",
+      "needle": "عائشة رضي الله",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 1,
+          "end": 28,
+          "text": "عَائِشَةَ ‏ ‏رَضِيَ اللَّهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5984",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-086",
+      "haystack": "قَالَ اللَّهُ تَعَالَى ‏ ‏يَشْتِمُنِي ابْنُ ‏ ‏آدَمَ ‏ ‏وَمَا يَنْبَغِي لَهُ أَنْ",
+      "needle": "وما ينبغي له",
+      "options": {},
+      "expected": [
+        {
+          "start": 56,
+          "end": 76,
+          "text": "وَمَا يَنْبَغِي لَهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2954",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-087",
+      "haystack": "‏عَبْدُ اللَّهِ بْنُ عَبْدِ الرَّحْمَنِ بْنِ أَبِي حُسَيْنٍ ‏ ‏حَدَّثَنَا ‏ ‏عَبْدُ اللَّهِ",
+      "needle": "بن عبد الرحمن",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 16,
+          "end": 39,
+          "text": "بْنُ عَبْدِ الرَّحْمَنِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1911",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-088",
+      "haystack": "وَسَلَّمَ ‏ ‏غَزَا تِسْعَ عَشْرَةَ غَزْوَةً وَأَنَّهُ حَجَّ بَعْدَ مَا هَاجَرَ حَجَّةً وَاحِدَةً لَمْ يَحُجَّ بَعْدَهَا حَجَّةَ الْوَدَاعِ ‏",
+      "needle": "هاجر غزا",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 13,
+          "end": 18,
+          "text": "غَزَا"
+        },
+        {
+          "start": 71,
+          "end": 78,
+          "text": "هَاجَرَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4052",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-089",
+      "haystack": "عَلَيْهِ وَسَلَّمَ ‏ ‏أَنَّ ‏ ‏فَارِسًا ‏ ‏مَلَّكُوا ابْنَةَ",
+      "needle": "ان كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 22,
+          "end": 27,
+          "text": "أَنَّ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6570",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-090",
+      "haystack": "عَبَّاسٍ ‏ ‏فَتَلَكَّأَتْ ‏ ‏وَنَكَصَتْ حَتَّى ظَنَنَّا أَنَّهَا تَرْجِعُ",
+      "needle": "عباس",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 0,
+          "end": 8,
+          "text": "عَبَّاسٍ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4378",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-091",
+      "haystack": "‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏قَالَ لَنَا وَنَحْنُ نَغْسِلُهَا ‏ ‏ابْدَءُوا بِمَيَامِنِهَا وَمَوَاضِعِ",
+      "needle": "قال لنا",
+      "options": {},
+      "expected": [
+        {
+          "start": 40,
+          "end": 51,
+          "text": "قَالَ لَنَا"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1178",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-092",
+      "haystack": "‏ ‏ابْنِ جُرَيْجٍ ‏ ‏قَالَ أَخْبَرَنِي ‏ ‏مُوسَى بْنُ عُقْبَةَ ‏ ‏عَنْ ‏ ‏نَافِعٍ ‏ ‏عَنْ ‏ ‏أَبِي هُرَيْرَةَ ‏ ‏عَنْ",
+      "needle": "موسي بن",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 42,
+          "end": 53,
+          "text": "مُوسَى بْنُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2970",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-093",
+      "haystack": "عَلَيْهِ وَسَلَّمَ ‏ ‏إِنِّي اتَّخَذْتُ خَاتَمًا مِنْ ذَهَبٍ فَنَبَذَهُ وَقَالَ إِنِّي لَنْ أَلْبَسَهُ أَبَدًا",
+      "needle": "اتخذت اني",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 22,
+          "end": 28,
+          "text": "إِنِّي"
+        },
+        {
+          "start": 29,
+          "end": 39,
+          "text": "اتَّخَذْتُ"
+        },
+        {
+          "start": 80,
+          "end": 86,
+          "text": "إِنِّي"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6754",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-094",
+      "haystack": "وَسَلَّمَ ‏ ‏قَالَ ‏ ‏لَا تَبَاغَضُوا وَلَا تَحَاسَدُوا وَلَا تَدَابَرُوا وَكُونُوا عِبَادَ اللَّهِ إِخْوَانًا وَلَا يَحِلُّ لِمُسْلِمٍ أَنْ",
+      "needle": "ولا كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 38,
+          "end": 43,
+          "text": "وَلَا"
+        },
+        {
+          "start": 56,
+          "end": 61,
+          "text": "وَلَا"
+        },
+        {
+          "start": 111,
+          "end": 116,
+          "text": "وَلَا"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5605",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-095",
+      "haystack": "عُمَرَ ‏ ‏يَقُولُ ‏ ‏جَاءَ ‏ ‏رَجُلَانِ ‏ ‏مِنْ الْمَشْرِقِ فَخَطَبَا فَقَالَ النَّبِيُّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "needle": "الله",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 99,
+          "end": 106,
+          "text": "اللَّهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4749",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-096",
+      "haystack": "‏ابْنِ عَبَّاسٍ ‏ ‏عَنْ ‏ ‏ابْنِ عَبَّاسٍ ‏ ‏رَضِيَ اللَّهُ عَنْهُمَا ‏ ‏قَالَ ‏",
+      "needle": "ابن عباس",
+      "options": {},
+      "expected": [
+        {
+          "start": 1,
+          "end": 15,
+          "text": "ابْنِ عَبَّاسٍ"
+        },
+        {
+          "start": 27,
+          "end": 41,
+          "text": "ابْنِ عَبَّاسٍ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4000",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-097",
+      "haystack": "‏ ‏عَمْرِو بْنِ مَيْمُونٍ ‏ ‏عَنْ ‏ ‏عَبْدِ اللَّهِ بْنِ مَسْعُودٍ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏قَالَ ‏ ‏اسْتَقْبَلَ النَّبِيُّ",
+      "needle": "الله",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 44,
+          "end": 51,
+          "text": "اللَّهِ"
+        },
+        {
+          "start": 77,
+          "end": 84,
+          "text": "اللَّهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3665",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-098",
+      "haystack": "‏قَالَ أَخْبَرَنِي ‏ ‏عُمَرُ بْنُ سَعِيدِ بْنِ أَبِي حُسَيْنٍ ‏ ‏عَنْ ‏ ‏ابْنِ أَبِي",
+      "needle": "عن ابي",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 47,
+          "end": 52,
+          "text": "أَبِي"
+        },
+        {
+          "start": 65,
+          "end": 69,
+          "text": "عَنْ"
+        },
+        {
+          "start": 79,
+          "end": 84,
+          "text": "أَبِي"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3467",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-099",
+      "haystack": "‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏أَنَّهُ كَانَ يَأْخُذُهُ ‏ ‏وَالْحَسَنَ ‏ ‏فَيَقُولُ ‏ ‏اللَّهُمَّ أَحِبَّهُمَا فَإِنِّي أُحِبُّهُمَا ‏ ‏وَقَالَ",
+      "needle": "فاني كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 120,
+          "end": 128,
+          "text": "فَإِنِّي"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3455",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-100",
+      "haystack": "‏ ‏مَسْرُوقٍ ‏ ‏قَالَ ‏ ‏دَخَلَ ‏ ‏حَسَّانُ بْنُ ثَابِتٍ",
+      "needle": "بن ثابت",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 44,
+          "end": 56,
+          "text": "بْنُ ثَابِتٍ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4386",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-101",
+      "haystack": "‏فِي ‏ ‏بَنِي إِسْرَائِيلَ ‏ ‏وَالْكَهْفِ ‏ ‏وَمَرْيَمَ ‏ ‏وَطه",
+      "needle": "بني اسرائيل والكهف",
+      "options": {},
+      "expected": [
+        {
+          "start": 8,
+          "end": 41,
+          "text": "بَنِي إِسْرَائِيلَ ‏ ‏وَالْكَهْفِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4610",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-102",
+      "haystack": "بْنُ عَبْدِ اللَّهِ بْنِ عُتْبَةَ ‏ ‏أَنَّ ‏ ‏عَبْدَ اللَّهِ بْنَ عَبَّاسٍ ‏ ‏أَخْبَرَهُ",
+      "needle": "عبد",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 5,
+          "end": 11,
+          "text": "عَبْدِ"
+        },
+        {
+          "start": 46,
+          "end": 52,
+          "text": "عَبْدَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2722",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-103",
+      "haystack": "فَقِيلَ ذَلِكَ ‏ ‏لِعَبْدِ اللَّهِ بْنِ مَسْعُودٍ ‏ ‏رَضِيَ اللَّهُ",
+      "needle": "الله بن",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 27,
+          "end": 34,
+          "text": "اللَّهِ"
+        },
+        {
+          "start": 35,
+          "end": 39,
+          "text": "بْنِ"
+        },
+        {
+          "start": 60,
+          "end": 67,
+          "text": "اللَّهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1022",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-104",
+      "haystack": "مَسْلَمَةَ ‏ ‏حَدَّثَنَا ‏ ‏حَاتِمُ بْنُ إِسْمَاعِيلَ ‏ ‏عَنْ ‏ ‏يَزِيدَ بْنِ أَبِي عُبَيْدٍ",
+      "needle": "ابي كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 78,
+          "end": 83,
+          "text": "أَبِي"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2684",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-105",
+      "haystack": "‏فَتَخَلَّفَ ‏ ‏أَبُو قَتَادَةَ ‏ ‏مَعَ بَعْضِ أَصْحَابِهِ وَهُمْ مُحْرِمُونَ وَهُوَ غَيْرُ مُحْرِمٍ فَرَأَوْا حِمَارًا وَحْشِيًّا",
+      "needle": "ابو",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 16,
+          "end": 21,
+          "text": "أَبُو"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2642",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-106",
+      "haystack": "‏ ‏عَنْ ‏ ‏أَبِي الزِّنَادِ ‏ ‏عَنْ ‏ ‏الْأَعْرَجِ ‏ ‏عَنْ ‏ ‏أَبِي هُرَيْرَةَ ‏ ‏عَنْ رَسُولِ اللَّهِ",
+      "needle": "الاعرج عن ابي",
+      "options": {},
+      "expected": [
+        {
+          "start": 39,
+          "end": 67,
+          "text": "الْأَعْرَجِ ‏ ‏عَنْ ‏ ‏أَبِي"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6009",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-107",
+      "haystack": "‏ ‏إِبْرَاهِيمُ بْنُ سَعْدٍ ‏ ‏عَنْ ‏ ‏ابْنِ شِهَابٍ ‏ ‏عَنْ ‏",
+      "needle": "ابن",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 39,
+          "end": 44,
+          "text": "ابْنِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3221",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-108",
+      "haystack": "‏عَوْفٍ ‏ ‏عَنْ ‏ ‏أَبِي عُثْمَانَ ‏ ‏قَالَ سَمِعْتُ ‏ ‏سَلْمَانَ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏يَقُولُ ‏ ‏أَنَا مِنْ",
+      "needle": "عوف عنه",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 1,
+          "end": 7,
+          "text": "عَوْفٍ"
+        },
+        {
+          "start": 84,
+          "end": 90,
+          "text": "عَنْهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3653",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-109",
+      "haystack": "فَيُصَلِّي إِنَّكُنَّ ‏ ‏صَوَاحِبُ ‏ ‏يُوسُفَ ‏ ‏تَابَعَهُ ‏ ‏الزُّبَيْدِيُّ ‏ ‏وَابْنُ أَخِي الزُّهْرِيِّ ‏ ‏وَإِسْحَاقُ بْنُ يَحْيَى الْكَلْبِيُّ ‏ ‏عَنْ",
+      "needle": "اخي كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 88,
+          "end": 93,
+          "text": "أَخِي"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "641",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-110",
+      "haystack": "‏أَبَا صَالِحٍ ‏ ‏يَقُولُ سَمِعْتُ ‏ ‏أَبَا هُرَيْرَةَ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏يَقُولُ ‏ ‏قَالَ رَسُولُ",
+      "needle": "صالح يقول",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 7,
+          "end": 25,
+          "text": "صَالِحٍ ‏ ‏يَقُولُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2186",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-111",
+      "haystack": "‏ ‏عَنْ ‏ ‏عَمْرِو بْنِ مَيْمُونٍ ‏ ‏قَالَ قَالَ ‏ ‏عُمَرُ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏إِنَّ",
+      "needle": "عن عمرو",
+      "options": {},
+      "expected": [
+        {
+          "start": 3,
+          "end": 18,
+          "text": "عَنْ ‏ ‏عَمْرِو"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3551",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-112",
+      "haystack": "‏ ‏لَهَا فَأَدَمَتْهُ ثُمَّ قَالَ فِيهِ رَسُولُ اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏مَا",
+      "needle": "رسول الله",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 40,
+          "end": 55,
+          "text": "رَسُولُ اللَّهِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6194",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-113",
+      "haystack": "قَالَ رَسُولُ اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏حِينَ أَرَدْنَا الْخُرُوجَ إِنِّي أَمَرْتُكُمْ أَنْ تُحْرِقُوا فُلَانًا",
+      "needle": "الله حين",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 14,
+          "end": 21,
+          "text": "اللَّهِ"
+        },
+        {
+          "start": 32,
+          "end": 39,
+          "text": "اللَّهُ"
+        },
+        {
+          "start": 62,
+          "end": 67,
+          "text": "حِينَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2793",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-114",
+      "haystack": "بَشَّارٍ ‏ ‏حَدَّثَنَا ‏ ‏غُنْدَرٌ ‏ ‏حَدَّثَنَا ‏ ‏شُعْبَةُ ‏ ‏عَنْ ‏ ‏مُحَمَّدِ",
+      "needle": "بشار كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 0,
+          "end": 8,
+          "text": "بَشَّارٍ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2194",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-115",
+      "haystack": "‏إِبْرَاهِيمَ ‏ ‏عَنْ ‏ ‏عَلْقَمَةَ ‏ ‏قَالَ ‏ ‏قَدِمْتُ ‏ ‏الشَّأْمَ ‏ ‏فَصَلَّيْتُ رَكْعَتَيْنِ ثُمَّ قُلْتُ اللَّهُمَّ يَسِّرْ",
+      "needle": "الشام فصليت",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 60,
+          "end": 84,
+          "text": "الشَّأْمَ ‏ ‏فَصَلَّيْتُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3459",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-116",
+      "haystack": "خَرِبَتْ ‏ ‏خَيْبَرُ ‏ ‏إِنَّا إِذَا نَزَلْنَا بِسَاحَةِ قَوْمٍ ‏",
+      "needle": "نزلنا",
+      "options": {},
+      "expected": [
+        {
+          "start": 37,
+          "end": 46,
+          "text": "نَزَلْنَا"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "895",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-117",
+      "haystack": "الْفِطْرَةِ فَأَبَوَاهُ يُهَوِّدَانِهِ أَوْ يُنَصِّرَانِهِ أَوْ يُمَجِّسَانِهِ كَمَثَلِ",
+      "needle": "يمجسانه كمثل",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 64,
+          "end": 87,
+          "text": "يُمَجِّسَانِهِ كَمَثَلِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1296",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-118",
+      "haystack": "الْمَسْجِدِ لِيَعُودَهُ مِنْ قَرِيبٍ فَلَمْ ‏ ‏يَرُعْهُمْ ‏ ‏وَفِي الْمَسْجِدِ خَيْمَةٌ مِنْ ‏",
+      "needle": "المسجد ليعوده",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 0,
+          "end": 11,
+          "text": "الْمَسْجِدِ"
+        },
+        {
+          "start": 12,
+          "end": 23,
+          "text": "لِيَعُودَهُ"
+        },
+        {
+          "start": 67,
+          "end": 78,
+          "text": "الْمَسْجِدِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "443",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-119",
+      "haystack": "عُبَيْدٍ ‏ ‏عَنْ ‏ ‏سَلَمَةَ ‏ ‏قَالَ ‏ ‏كَانَ ‏ ‏عَلِيٌّ ‏ ‏قَدْ تَخَلَّفَ",
+      "needle": "قال كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 32,
+          "end": 37,
+          "text": "قَالَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3426",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-120",
+      "haystack": "‏ ‏ح ‏ ‏حَدَّثَنَا ‏ ‏مُحَمَّدُ بْنُ سِنَانٍ ‏ ‏حَدَّثَنَا ‏ ‏هَمَّامٌ ‏ ‏عَنْ",
+      "needle": "حدثنا همام",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 48,
+          "end": 70,
+          "text": "حَدَّثَنَا ‏ ‏هَمَّامٌ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2704",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-121",
+      "haystack": "رَأَيْتُ رَسُولَ اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "needle": "الله صلي الله",
+      "options": {},
+      "expected": [
+        {
+          "start": 17,
+          "end": 42,
+          "text": "اللَّهِ ‏ ‏صَلَّى اللَّهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5459",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-122",
+      "haystack": "يَا ‏ ‏كَعْبُ ‏ ‏قَالَ لَبَّيْكَ يَا رَسُولَ اللَّهِ قَالَ ‏ ‏ضَعْ",
+      "needle": "كعب قال لبيك",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 7,
+          "end": 32,
+          "text": "كَعْبُ ‏ ‏قَالَ لَبَّيْكَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2240",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-123",
+      "haystack": "‏يَزِيدُ أَحَدُهُمَا عَلَى صَاحِبِهِ وَغَيْرُهُمَا قَدْ ‏ ‏سَمِعْتُهُ يُحَدِّثُهُ",
+      "needle": "يحدثه سمعته",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 59,
+          "end": 69,
+          "text": "سَمِعْتُهُ"
+        },
+        {
+          "start": 70,
+          "end": 81,
+          "text": "يُحَدِّثُهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2526",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-124",
+      "haystack": "مَسْعُودٍ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏قَالَ ‏ ‏دَخَلَ النَّبِيُّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏مَكَّةَ ‏ ‏وَحَوْلَ",
+      "needle": "عنه كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 28,
+          "end": 34,
+          "text": "عَنْهُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2298",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-125",
+      "haystack": "‏عَبْدُ اللَّهِ بْنُ يُوسُفَ ‏ ‏أَخْبَرَنَا ‏ ‏مَالِكٌ ‏ ‏عَنْ ‏ ‏ابْنِ شِهَابٍ ‏ ‏عَنْ ‏ ‏عُبَيْدِ اللَّهِ",
+      "needle": "عن",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 58,
+          "end": 62,
+          "text": "عَنْ"
+        },
+        {
+          "start": 83,
+          "end": 87,
+          "text": "عَنْ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1808",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-126",
+      "haystack": "‏الْأَعْرَجِ ‏ ‏عَنْ ‏ ‏أَبِي هُرَيْرَةَ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏قَالَ ‏ ‏قَالَ النَّبِيُّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏",
+      "needle": "الاعرج",
+      "options": {},
+      "expected": [
+        {
+          "start": 1,
+          "end": 12,
+          "text": "الْأَعْرَجِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1276",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-127",
+      "haystack": "أُخْرَى فَعَادَ أَحْسَنَ مَا كَانَ فَإِذَا هُوَ مَا جَاءَ بِهِ اللَّهُ مِنْ الْفَتْحِ وَاجْتِمَاعِ",
+      "needle": "فعاد احسن",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 8,
+          "end": 24,
+          "text": "فَعَادَ أَحْسَنَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3772",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-128",
+      "haystack": "فَإِذَا سَمِعَهُ الْمُشْرِكُونَ سَبُّوا الْقُرْآنَ وَمَنْ أَنْزَلَهُ وَمَنْ جَاءَ بِهِ فَقَالَ اللَّهُ لِنَبِيِّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ",
+      "needle": "المشركون فاذا",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 0,
+          "end": 7,
+          "text": "فَإِذَا"
+        },
+        {
+          "start": 17,
+          "end": 31,
+          "text": "الْمُشْرِكُونَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6971",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-129",
+      "haystack": "عَلَيْهِ وَسَلَّمَ ‏ ‏جَالِسٌ فَقَالَتْ إِنِّي قَدْ عَرَضْتُ ذَلِكَ",
+      "needle": "قد كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 47,
+          "end": 51,
+          "text": "قَدْ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2023",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-130",
+      "haystack": "أَجْرَانِ ‏ ‏ثُمَّ ‏ ‏قَالَ ‏ ‏عَامِرٌ ‏ ‏أَعْطَيْنَاكَهَا بِغَيْرِ",
+      "needle": "ثم قال عامر",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 13,
+          "end": 38,
+          "text": "ثُمَّ ‏ ‏قَالَ ‏ ‏عَامِرٌ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "95",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-131",
+      "haystack": "الرَّحْمَنِ بْنِ أَبِي بَكْرَةَ ‏ ‏عَنْ ‏ ‏أَبِيهِ ‏ ‏عَنْ النَّبِيِّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ",
+      "needle": "بكرة",
+      "options": {},
+      "expected": [
+        {
+          "start": 23,
+          "end": 31,
+          "text": "بَكْرَةَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1779",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-132",
+      "haystack": "‏حَدَّثَنَا ‏ ‏مُحَمَّدُ بْنُ مُقَاتِلٍ أَبُو الْحَسَنِ ‏",
+      "needle": "الحسن",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 46,
+          "end": 55,
+          "text": "الْحَسَنِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4233",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-133",
+      "haystack": "فَسَأَلْتُ ‏ ‏بِلَالًا ‏ ‏فَقَالَ صَلَّى فِيهِ فَقُلْتُ فِي أَيٍّ قَالَ بَيْنَ الْأُسْطُوَانَتَيْنِ قَالَ ‏ ‏ابْنُ",
+      "needle": "الاسطوانتين بلالا",
+      "options": {
+        "matchMode": "allWords"
+      },
+      "expected": [
+        {
+          "start": 14,
+          "end": 22,
+          "text": "بِلَالًا"
+        },
+        {
+          "start": 79,
+          "end": 99,
+          "text": "الْأُسْطُوَانَتَيْنِ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "448",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-134",
+      "haystack": "‏حَدَّثَنَا ‏ ‏صَدَقَةُ بْنُ الْفَضْلِ ‏ ‏قَالَ أَخْبَرَنَا ‏ ‏سُلَيْمَانُ بْنُ حَيَّانَ ‏ ‏قَالَ حَدَّثَنَا ‏ ‏عُبَيْدُ اللَّهِ ‏",
+      "needle": "سليمان كلمةغائبة",
+      "options": {
+        "matchMode": "anyWord"
+      },
+      "expected": [
+        {
+          "start": 63,
+          "end": 74,
+          "text": "سُلَيْمَانُ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "412",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-135",
+      "haystack": "‏قَالَ النَّبِيُّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏أَوْ قَالَ قَالَ ‏ ‏أَبُو الْقَاسِمِ ‏ ‏صَلَّى",
+      "needle": "وسلم او",
+      "options": {
+        "level": "loose"
+      },
+      "expected": [
+        {
+          "start": 45,
+          "end": 62,
+          "text": "وَسَلَّمَ ‏ ‏أَوْ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1776",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-136",
+      "haystack": "‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏قَالَ ‏ ‏إِذَا دُعِيَ",
+      "needle": "عليه وسلم",
+      "options": {},
+      "expected": [
+        {
+          "start": 18,
+          "end": 36,
+          "text": "عَلَيْهِ وَسَلَّمَ"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4775",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-search-137",
+      "haystack": "فُلَانٍ ‏ ‏يَعْنِي زَوْجَ ‏ ‏بَرِيرَةَ ‏ ‏كَأَنِّي أَنْظُرُ إِلَيْهِ",
+      "needle": "بريرة كاني",
+      "options": {
+        "wholeWord": true
+      },
+      "expected": [
+        {
+          "start": 29,
+          "end": 50,
+          "text": "بَرِيرَةَ ‏ ‏كَأَنِّي"
+        }
+      ],
+      "note": "مقطع مشكول من صحيح البخاري وعبارة بحث غير مشكولة (النتيجة من الحزمة المرجعية، ومتحقق منها بالأوراكل)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4873",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    }
   ]
 }

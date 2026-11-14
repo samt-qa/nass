@@ -8,6 +8,7 @@
 // Usage: node tools/check-vectors.mjs   (exit 1 on any error)
 
 import { readFileSync, readdirSync } from "node:fs";
+import { normalize as oracle } from "./oracle.mjs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -15,23 +16,21 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const vdir = join(root, "spec", "vectors");
 const tables = JSON.parse(readFileSync(join(root, "spec", "tables.json"), "utf8"));
 
-const cp = (h) => parseInt(h, 16);
-function setOf(list) {
+// tables.json: ranges are [[start, end], ...], maps are [[key, value], ...] (decimal).
+function setOf(ranges) {
   const s = new Set();
-  for (const it of list) {
-    if (Array.isArray(it)) for (let c = cp(it[0]); c <= cp(it[1]); c++) s.add(c);
-    else s.add(cp(it));
-  }
+  for (const [a, b] of ranges) for (let c = a; c <= b; c++) s.add(c);
   return s;
 }
+const keys = (pairs) => pairs.map(([k]) => k);
 // Characters that must never survive the search level.
 const forbiddenSearch = new Set([
   ...setOf(tables.marks), ...setOf(tables.invisibleAlways), ...setOf(tables.tatweel),
-  ...Object.keys(tables.letterMap).map(cp), ...Object.keys(tables.digitMap).map(cp),
-  ...Object.keys(tables.presentation).map(cp), ...setOf(tables.extraSeparators),
+  ...keys(tables.letterMap), ...keys(tables.digitMap),
+  ...keys(tables.presentation), ...keys(tables.presentationSearch), ...setOf(tables.extraSeparators),
 ]);
 const forbiddenLoose = new Set([
-  ...forbiddenSearch, ...Object.keys(tables.looseMap).map(cp), ...setOf(tables.looseRemove),
+  ...forbiddenSearch, ...keys(tables.looseMap), ...setOf(tables.looseRemove),
 ]);
 
 const LEVELS = new Set(["clean", "search", "loose"]);
@@ -94,12 +93,35 @@ for (const f of readdirSync(vdir).filter((f) => f.endsWith(".json")).sort()) {
           if (c.start[i] >= c.end[i]) err(id, `empty source group at ${i}`);
           if (c.end[i] > c.input.length) err(id, `end[${i}] beyond input`);
           if (i && c.start[i] < c.start[i - 1]) err(id, `start not monotonic at ${i}`);
+          // Oracle property: each non-space unit is produced by its own source group.
+          const unit = c.expected[i];
+          // Digit separators depend on context (S4), so they are exempt.
+          if (unit !== " " && unit !== "." && unit !== "," && !(unit >= "\uDC00" && unit <= "\uDFFF")) {
+            const g = oracle(c.input.slice(c.start[i], c.end[i]), c.level, c.options?.honorifics ?? "keep");
+            if (!g.includes(unit)) err(id, `unit ${i} "${unit}" not produced by its group "${c.input.slice(c.start[i], c.end[i])}" -> "${g}"`);
+          }
+        }
+        if (n && oracle(c.input, c.level) !== c.expected) err(id, "expected text differs from oracle");
+        break;
+      }
+      case "search": {
+        checkSpans(id, c.haystack, c.expected);
+        // Oracle property: every span normalizes to something containing a needle word.
+        const level = c.options?.level ?? "search";
+        const needle = oracle(c.needle, level);
+        const words = c.options?.matchMode && c.options.matchMode !== "phrase" ? needle.split(" ") : [needle];
+        for (const m of c.expected) {
+          const g = oracle(m.text, level);
+          if (!words.some((w) => w && g.includes(w))) err(id, `span "${m.text}" -> "${g}" contains no needle word`);
+        }
+        if (!c.options?.matchMode && !c.options?.wholeWord && needle) {
+          const hay = oracle(c.haystack, level);
+          let occ = 0;
+          for (let p = hay.indexOf(needle); p >= 0; p = hay.indexOf(needle, p + needle.length)) occ++;
+          if (c.expected.length > occ || (occ > 0 && c.expected.length === 0)) err(id, `${c.expected.length} matches but oracle finds ${occ}`);
         }
         break;
       }
-      case "search":
-        checkSpans(id, c.haystack, c.expected);
-        break;
       case "names":
         if (!("expected" in c || "same" in c || "different" in c)) err(id, "needs expected, same or different");
         if ("expected" in c) checkOutput(id, "loose", c.expected);

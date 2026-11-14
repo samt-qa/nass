@@ -499,6 +499,3816 @@
       "expected": "",
       "note": "ترقيم فقط",
       "review": "pending"
+    },
+    {
+      "id": "gen-norm-rule-001",
+      "rule": "C4",
+      "input": "ﺑِﺴْﻢِ",
+      "level": "clean",
+      "options": {},
+      "expected": "بِسْمِ",
+      "note": "C4 صيغ عرض مع حركات",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-002",
+      "rule": "C4",
+      "input": "ﹰ",
+      "level": "clean",
+      "options": {},
+      "expected": "ً",
+      "note": "C4 حركة منفردة بصيغة عرض تفقد المسافة",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-003",
+      "rule": "C4",
+      "input": "ﻷ",
+      "level": "clean",
+      "options": {},
+      "expected": "لأ",
+      "note": "C4 لام ألف بهمزة",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-004",
+      "rule": "C4",
+      "input": "ﻵ",
+      "level": "clean",
+      "options": {},
+      "expected": "لآ",
+      "note": "C4 لام ألف بمدة",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-005",
+      "rule": "C4",
+      "input": "ﷺ",
+      "level": "clean",
+      "options": {},
+      "expected": "ﷺ",
+      "note": "C4 رمز الصلاة يبقى في clean",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-006",
+      "rule": "C1",
+      "input": "آ",
+      "level": "clean",
+      "options": {},
+      "expected": "آ",
+      "note": "C1 ألف + مدة ← آ",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-007",
+      "rule": "C1",
+      "input": "ئ",
+      "level": "clean",
+      "options": {},
+      "expected": "ئ",
+      "note": "C1 ياء + همزة ← ئ",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-008",
+      "rule": "C1",
+      "input": "ؤ",
+      "level": "clean",
+      "options": {},
+      "expected": "ؤ",
+      "note": "C1 واو + همزة ← ؤ",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-009",
+      "rule": "C1",
+      "input": "إ",
+      "level": "clean",
+      "options": {},
+      "expected": "إ",
+      "note": "C1 ألف + همزة تحتية ← إ",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-010",
+      "rule": "C1",
+      "input": "بَّ",
+      "level": "clean",
+      "options": {},
+      "expected": "بَّ",
+      "note": "C1 الشدة بعد الفتحة بعد الترتيب القانوني",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-011",
+      "rule": "C1",
+      "input": "بِْ",
+      "level": "clean",
+      "options": {},
+      "expected": "بِْ",
+      "note": "C1 ترتيب الكسرة والسكون",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-012",
+      "rule": "C1",
+      "input": "ا‏ٔ",
+      "level": "clean",
+      "options": {},
+      "expected": "أ",
+      "note": "C1 يُطبَّق بعد حذف المحارف الخفية",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-013",
+      "rule": "C2",
+      "input": "ـ‍A",
+      "level": "clean",
+      "options": {},
+      "expected": "A",
+      "note": "C2 ZWJ بجوار تطويل (عربي) يُحذف",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-014",
+      "rule": "C2",
+      "input": "A‍B",
+      "level": "clean",
+      "options": {},
+      "expected": "A‍B",
+      "note": "C2 ZWJ بين لاتينيين يبقى",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-015",
+      "rule": "C2",
+      "input": "‫نص‬",
+      "level": "clean",
+      "options": {},
+      "expected": "نص",
+      "note": "C2 تضمين الاتجاه",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-016",
+      "rule": "C2",
+      "input": "⁧نص⁩",
+      "level": "clean",
+      "options": {},
+      "expected": "نص",
+      "note": "C2 عزل الاتجاه",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-017",
+      "rule": "C5",
+      "input": "قال  نعم",
+      "level": "clean",
+      "options": {},
+      "expected": "قال نعم",
+      "note": "C5 مسافات عريضة",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-018",
+      "rule": "C5",
+      "input": "قال\t\r\nنعم",
+      "level": "clean",
+      "options": {},
+      "expected": "قال نعم",
+      "note": "C5 جدولة وسطر",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-019",
+      "rule": "S1",
+      "input": "ﷻ",
+      "level": "search",
+      "options": {},
+      "expected": "جل جلاله",
+      "note": "S1 جل جلاله",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-020",
+      "rule": "S1",
+      "input": "﵁",
+      "level": "search",
+      "options": {},
+      "expected": "رضي الله عنه",
+      "note": "S1 رمز الترضي",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-021",
+      "rule": "S1",
+      "input": "عن أنس ﵁ قال",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عن انس قال",
+      "note": "S1 حذف رمز الترضي",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-022",
+      "rule": "S2+S3",
+      "input": "مُوسَىٰ",
+      "level": "search",
+      "options": {},
+      "expected": "موسي",
+      "note": "S2+S3 ألف خنجرية فوق الألف المقصورة",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-023",
+      "rule": "S2",
+      "input": "الصَّلَوٰةَ",
+      "level": "search",
+      "options": {},
+      "expected": "الصلوة",
+      "note": "S2 الألف الخنجرية في الرسم العثماني تُحذف",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-024",
+      "rule": "C4+S3",
+      "input": "ﺁﻣﻦ",
+      "level": "search",
+      "options": {},
+      "expected": "امن",
+      "note": "C4+S3 مدة في صيغة عرض",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-025",
+      "rule": "S3",
+      "input": "ٲ ٳ ٵ",
+      "level": "search",
+      "options": {},
+      "expected": "ا ا ا",
+      "note": "S3 صيغ الألف النادرة",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-026",
+      "rule": "S3",
+      "input": "ڪتاب",
+      "level": "search",
+      "options": {},
+      "expected": "كتاب",
+      "note": "S3 الكاف السندية",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-027",
+      "rule": "S3",
+      "input": "ۀ",
+      "level": "search",
+      "options": {},
+      "expected": "ه",
+      "note": "S3 الهاء مع ياء فوقها",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-028",
+      "rule": "S3",
+      "input": "ے",
+      "level": "search",
+      "options": {},
+      "expected": "ي",
+      "note": "S3 الياء البرّاني",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-029",
+      "rule": "S4",
+      "input": "٢٠٢٦",
+      "level": "search",
+      "options": {},
+      "expected": "2026",
+      "note": "S4 سنة بأرقام هندية",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-030",
+      "rule": "S4",
+      "input": "۱۴۴۸",
+      "level": "search",
+      "options": {},
+      "expected": "1448",
+      "note": "S4 سنة بأرقام فارسية",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-031",
+      "rule": "S4",
+      "input": "٥٠٪",
+      "level": "search",
+      "options": {},
+      "expected": "50%",
+      "note": "S4 علامة النسبة",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-032",
+      "rule": "S5",
+      "input": "50%",
+      "level": "search",
+      "options": {},
+      "expected": "50%",
+      "note": "S5 علامة % لا تُعد ترقيمًا",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-033",
+      "rule": "S4",
+      "input": "رقم 3. ثم",
+      "level": "search",
+      "options": {},
+      "expected": "رقم 3 ثم",
+      "note": "S4 نقطة ليست بين رقمين",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-034",
+      "rule": "S5",
+      "input": "1،2",
+      "level": "search",
+      "options": {},
+      "expected": "1 2",
+      "note": "S5 الفاصلة العربية بين رقمين فاصل",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-035",
+      "rule": "S5",
+      "input": "(حديث)",
+      "level": "search",
+      "options": {},
+      "expected": "حديث",
+      "note": "S5 أقواس",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-036",
+      "rule": "S5",
+      "input": "قال: \"نعم\"",
+      "level": "search",
+      "options": {},
+      "expected": "قال نعم",
+      "note": "S5 علامات تنصيص لاتينية",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-037",
+      "rule": "S5",
+      "input": "۞ تبارك",
+      "level": "search",
+      "options": {},
+      "expected": "تبارك",
+      "note": "S5 علامة الحزب",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-038",
+      "rule": "S7",
+      "input": "رحمه الله تعالى",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "",
+      "note": "S7 رحمه الله ثم تعالى بعد لفظ الجلالة الأصلي",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-039",
+      "rule": "S7",
+      "input": "عن علي عليه السلام قال",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عن علي قال",
+      "note": "S7 عليه السلام",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-040",
+      "rule": "S7",
+      "input": "الله سبحانه وتعالى",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "الله",
+      "note": "S7 الأطول أولًا",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-041",
+      "rule": "S7",
+      "input": "قال جعفر الصادق قدس سره",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "قال جعفر الصادق",
+      "note": "S7 قدس سره",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-042",
+      "rule": "S7",
+      "input": "والله عز وجل يقول",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "والله عز وجل يقول",
+      "note": "S7 «والله» ليست «الله»",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-043",
+      "rule": "L1",
+      "input": "رءوف",
+      "level": "loose",
+      "options": {},
+      "expected": "روف",
+      "note": "L1 همزة على السطر وسط الكلمة",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-044",
+      "rule": "L1",
+      "input": "مسؤول",
+      "level": "loose",
+      "options": {},
+      "expected": "مسوول",
+      "note": "L1 همزة على الواو",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-rule-045",
+      "rule": "L1",
+      "input": "الله ء تعالى",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "الله",
+      "note": "L1 قبل S7 فلا تمنع الهمزة المنفردة الحذف",
+      "synthetic": true,
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-091",
+      "input": "‏ ‏لِعَطَاءٍ ‏ ‏أَتَرَى حَقًّا عَلَى الْإِمَامِ",
+      "level": "search",
+      "options": {},
+      "expected": "لعطاء اتري حقا علي الامام",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "908",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-092",
+      "input": "‏ ‏سَأَلْتُ رَسُولَ اللَّهِ ‏ ‏صَلَّى",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "سالت رسول الله صلي",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1379",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-093",
+      "input": "‏ ‏نَهَى النَّبِيُّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "level": "loose",
+      "options": {},
+      "expected": "نهي النبي صلي الله عليه وسلم",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5167",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-094",
+      "input": "هِشَامٍ ‏ ‏قَالَ حَدَّثَنَا",
+      "level": "clean",
+      "options": {},
+      "expected": "هِشَامٍ قَالَ حَدَّثَنَا",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1075",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-095",
+      "input": "النَّبِيُّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏الْبَيْتَ",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "النبي البيت",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "383",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-096",
+      "input": "اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏فَأَتَيْتُهُ وَهُوَ فِي مَلَإٍ فَسَارَرْتُهُ فَغَضِبَ",
+      "level": "search",
+      "options": {},
+      "expected": "الله عليه وسلم فاتيته وهو في ملا فساررته فغضب",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5817",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-097",
+      "input": "عَلَى ذَلِكَ فَلَمْ يَنْحَرْ وَلَمْ يَحِلَّ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "علي ذلك فلم ينحر ولم يحل",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1532",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-098",
+      "input": "اللَّهِ كُفْرًا ‏} ‏قَالَ هُمْ وَاللَّهِ كُفَّارُ ‏ ‏قُرَيْشٍ ‏",
+      "level": "loose",
+      "options": {},
+      "expected": "الله كفرا قال هم والله كفار قريش",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3680",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-099",
+      "input": "بْنِ الْمُثَنَّى ‏ ‏قَالَ حَدَّثَنِي ‏ ‏أَبِي ‏",
+      "level": "clean",
+      "options": {},
+      "expected": "بْنِ الْمُثَنَّى قَالَ حَدَّثَنِي أَبِي",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2307",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-100",
+      "input": "‏هِشَامُ بْنُ عُرْوَةَ ‏ ‏عَنْ ‏ ‏أَبِيهِ ‏ ‏عَنْ ‏ ‏عَائِشَةَ ‏",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "هشام بن عروه عن ابيه عن عايشه",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1299",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-101",
+      "input": "‏ ‏هِشَامٌ ‏ ‏عَنْ ‏ ‏أَبِيهِ ‏ ‏عَنْ ‏ ‏أَبِي هُرَيْرَةَ ‏",
+      "level": "search",
+      "options": {},
+      "expected": "هشام عن ابيه عن ابي هريرة",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1338",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-102",
+      "input": "نَهَارٍ مَا شَاءَ غَيْرَ أَنْ لَا",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "نهار ما شاء غير ان لا",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "554",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-103",
+      "input": "‏قَالَ ‏ ‏كُنَّا عِنْدَ النَّبِيِّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏فَقَالَ",
+      "level": "loose",
+      "options": {},
+      "expected": "قال كنا عند النبي صلي الله عليه وسلم فقال",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6736",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-104",
+      "input": "‏ ‏حَدَّثَنَا ‏ ‏مُوسَى بْنُ إِسْمَاعِيلَ",
+      "level": "clean",
+      "options": {},
+      "expected": "حَدَّثَنَا مُوسَى بْنُ إِسْمَاعِيلَ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "82",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-105",
+      "input": "مَعَ ‏ ‏أَبِي هُرَيْرَةَ ‏ ‏الْعَتَمَةَ ‏ ‏فَقَرَأَ ‏ ‏إِذَا السَّمَاءُ",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "مع ابي هريره العتمه فقرا اذا السما",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "726",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-106",
+      "input": "اللَّهِ بْنَ عُمَرَ ‏ ‏رَضِيَ اللَّهُ عَنْهُمَا ‏ ‏قَالَ ‏",
+      "level": "search",
+      "options": {},
+      "expected": "الله بن عمر رضي الله عنهما قال",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1411",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-107",
+      "input": "‏ ‏الْمُتَلَاعِنَيْنِ ‏ ‏وَأَنَا ابْنُ خَمْسَ عَشْرَةَ سَنَةً فَرَّقَ بَيْنَهُمَا",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "المتلاعنين وانا ابن خمس عشرة سنة فرق بينهما",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6348",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-108",
+      "input": "‏ ‏سَمِعْتُ النَّبِيَّ ‏ ‏صَلَّى اللَّهُ",
+      "level": "loose",
+      "options": {},
+      "expected": "سمعت النبي صلي الله",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6617",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-109",
+      "input": "بُرْدَةَ ‏ ‏عَنْ ‏ ‏أَبِي مُوسَى ‏ ‏قَالَ ‏ ‏قَالَ النَّبِيُّ ‏",
+      "level": "clean",
+      "options": {},
+      "expected": "بُرْدَةَ عَنْ أَبِي مُوسَى قَالَ قَالَ النَّبِيُّ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "614",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-110",
+      "input": "أَنَّ اللَّهَ أَكْرَمَهُ قَالَتْ قُلْتُ",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "ان الله اكرمه قالت قلت",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3636",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-111",
+      "input": "أَصْحَابِي ذَاتَ الْيَمِينِ وَذَاتَ الشِّمَالِ",
+      "level": "search",
+      "options": {},
+      "expected": "اصحابي ذات اليمين وذات الشمال",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3191",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-112",
+      "input": "‏ ‏أَنَسِ بْنِ مَالِكٍ ‏ ‏أَنَّ رَجُلًا اطَّلَعَ مِنْ بَعْضِ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "انس بن مالك ان رجلا اطلع من بعض",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5773",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-113",
+      "input": "‏ ‏قَالَ ‏ ‏اطَّلَعْتُ",
+      "level": "loose",
+      "options": {},
+      "expected": "قال اطلعت",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4799",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-114",
+      "input": "‏كَانَ النَّبِيُّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏يُوجِزُ",
+      "level": "clean",
+      "options": {},
+      "expected": "كَانَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ يُوجِزُ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "665",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-115",
+      "input": "‏حَدَّثَنَا ‏ ‏مُحَمَّدُ بْنُ يُوسُفَ ‏ ‏أَخْبَرَنَا ‏ ‏سُفْيَانُ ‏ ‏عَنْ ‏ ‏الْأَعْمَشِ",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "حدثنا محمد بن يوسف اخبرنا سفيان عن الاعمش",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5599",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-116",
+      "input": "بْنُ الْجَرَّاحِ ‏ ‏نَرْصُدُ عِيرَ ‏ ‏قُرَيْشٍ",
+      "level": "search",
+      "options": {},
+      "expected": "بن الجراح نرصد عير قريش",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4013",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-117",
+      "input": "‏ ‏حَدَّثَنَا ‏ ‏هِشَامٌ ‏ ‏قَالَ أَخْبَرَنِي ‏",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "حدثنا هشام قال اخبرني",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4144",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-118",
+      "input": "‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏الْمُدَبَّرَ ‏ ‏حَدَّثَنَا ‏",
+      "level": "loose",
+      "options": {},
+      "expected": "صلي الله عليه وسلم المدبر حدثنا",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2078",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-119",
+      "input": "‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "level": "clean",
+      "options": {},
+      "expected": "صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6069",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-120",
+      "input": "‏ ‏عَائِشَةَ ‏ ‏رَضِيَ اللَّهُ عَنْهَا ‏ ‏قَالَتْ ‏ ‏كَانَ النَّبِيُّ ‏",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عايشه قالت كان النبي",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1090",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-121",
+      "input": "‏مَنْ حَدَّثَكَ أَنَّ ‏ ‏مُحَمَّدًا ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏",
+      "level": "search",
+      "options": {},
+      "expected": "من حدثك ان محمدا صلي الله عليه وسلم",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4246",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-122",
+      "input": "‏ ‏يُوسُفُ بْنُ يَعْقُوبَ الصَّفَّارُ ‏ ‏حَدَّثَنَا ‏ ‏إِسْمَاعِيلُ بْنُ عُلَيَّةَ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "يوسف بن يعقوب الصفار حدثنا اسماعيل بن علية",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2589",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-123",
+      "input": "رَبِّهِ فَلَهُ أَجْرَانِ ‏ ‏قَالَ ‏",
+      "level": "loose",
+      "options": {},
+      "expected": "ربه فله اجران قال",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4693",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-124",
+      "input": "‏ ‏لِي وَرَسُولُ اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏قَائِمٌ ‏ ‏يُصَلِّي",
+      "level": "clean",
+      "options": {},
+      "expected": "لِي وَرَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَائِمٌ يُصَلِّي",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1724",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-125",
+      "input": "بْنُ عُرْوَةَ ‏ ‏أَخْبَرَنَا عَنْ ‏ ‏أَبِيهِ ‏ ‏عَنْ ‏ ‏عَائِشَةَ",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "بن عروه اخبرنا عن ابيه عن عايشه",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6296",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-126",
+      "input": "الرَّزَّاقِ ‏ ‏أَخْبَرَنَا ‏ ‏مَعْمَرٌ ‏ ‏عَنْ ‏ ‏الزُّهْرِيِّ ‏",
+      "level": "search",
+      "options": {},
+      "expected": "الرزاق اخبرنا معمر عن الزهري",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2061",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-127",
+      "input": "‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏فِي مَشْرُبَةٍ لَهُ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "في مشربة له",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6721",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-128",
+      "input": "‏حَدَّثَنَا ‏ ‏خَالِدٌ ‏ ‏عَنْ ‏ ‏عِكْرِمَةَ ‏ ‏عَنْ",
+      "level": "loose",
+      "options": {},
+      "expected": "حدثنا خالد عن عكرمه عن",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3347",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-129",
+      "input": "‏عَنْ ‏ ‏عَمِّهِ ‏ ‏قَالَ ‏ ‏رَأَيْتُ النَّبِيَّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "level": "clean",
+      "options": {},
+      "expected": "عَنْ عَمِّهِ قَالَ رَأَيْتُ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "969",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-130",
+      "input": "‏ ‏عَبْدُ اللَّهِ بْنُ يُوسُفَ ‏ ‏قَالَ أَخْبَرَنَا",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عبد الله بن يوسف قال اخبرنا",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "401",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-131",
+      "input": "‏ ‏يَحْيَى بْنُ مُوسَى ‏ ‏حَدَّثَنَا ‏ ‏سَعِيدُ بْنُ مَنْصُورٍ ‏",
+      "level": "search",
+      "options": {},
+      "expected": "يحيي بن موسي حدثنا سعيد بن منصور",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "825",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-132",
+      "input": "عَلَيْهِ فَيَقُولُونَ أَيْ فُلَانُ مَا شَأْنُكَ أَلَيْسَ كُنْتَ تَأْمُرُنَا",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عليه فيقولون اي فلان ما شانك اليس كنت تامرنا",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3027",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-133",
+      "input": "‏ ‏قَالَ لَهُ ‏ ‏إِنَّكَ تَقْدَمُ عَلَى قَوْمٍ مِنْ",
+      "level": "loose",
+      "options": {},
+      "expected": "قال له انك تقدم علي قوم من",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6824",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-134",
+      "input": "يَرِثُنِي إِلَّا ‏ ‏ابْنَةٌ",
+      "level": "clean",
+      "options": {},
+      "expected": "يَرِثُنِي إِلَّا ابْنَةٌ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5236",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-135",
+      "input": "‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏قَالَ ‏ ‏سَبْعَةٌ يُظِلُّهُمْ اللَّهُ رَجُلٌ ذَكَرَ",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "قال سبعه يظلهم الله رجل ذكر",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5998",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-136",
+      "input": "‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏أَنَّهُ سَمِعَ خُصُومَةً بِبَابِ",
+      "level": "search",
+      "options": {},
+      "expected": "صلي الله عليه وسلم انه سمع خصومة بباب",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2278",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-137",
+      "input": "حَدِيثِهِ فَانْطَلَقْنَا فَإِذَا هُوَ فِي حَائِطٍ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "حديثه فانطلقنا فاذا هو في حائط",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "428",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-138",
+      "input": "‏ ‏حَدَّثَنَا ‏ ‏عَمْرُو بْنُ عَبَّاسٍ ‏ ‏قَالَ",
+      "level": "loose",
+      "options": {},
+      "expected": "حدثنا عمرو بن عباس قال",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "922",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-139",
+      "input": "‏ ‏هَهُنَا وَهَهُنَا بِالْأَذَانِ",
+      "level": "clean",
+      "options": {},
+      "expected": "هَهُنَا وَهَهُنَا بِالْأَذَانِ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "598",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-140",
+      "input": "‏عَنْ ‏ ‏يُونُسَ ‏ ‏بِهَذَا وَقَالَ",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عن يونس بهذا وقال",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6875",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-141",
+      "input": "اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏",
+      "level": "search",
+      "options": {},
+      "expected": "الله صلي الله عليه وسلم",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5572",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-142",
+      "input": "{ ‏لَتَرْكَبُنَّ طَبَقًا عَنْ طَبَقٍ ‏} ‏حَالًا بَعْدَ حَالٍ قَالَ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "لتركبن طبقا عن طبق حالا بعد حال قال",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4559",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-143",
+      "input": "‏ ‏عَنْ ‏ ‏عِمْرَانَ ‏ ‏عَنْ النَّبِيِّ ‏",
+      "level": "loose",
+      "options": {},
+      "expected": "عن عمران عن النبي",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1847",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-144",
+      "input": "بَكْرٍ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏وَحَمَلَ ‏ ‏الْحَسَنَ ‏ ‏وَهُوَ",
+      "level": "clean",
+      "options": {},
+      "expected": "بَكْرٍ رَضِيَ اللَّهُ عَنْهُ وَحَمَلَ الْحَسَنَ وَهُوَ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3467",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-145",
+      "input": "عَوَانَةَ ‏ ‏عَنْ ‏",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عوانه عن",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4504",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-146",
+      "input": "‏ ‏عَنْ ‏ ‏سَعِيدِ بْنِ جُبَيْرٍ ‏ ‏يَزِيدُ أَحَدُهُمَا عَلَى",
+      "level": "search",
+      "options": {},
+      "expected": "عن سعيد بن جبير يزيد احدهما علي",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2106",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-147",
+      "input": "‏وَقَالَ ‏ ‏لَوْ كُنْتُ مُتَّخِذًا خَلِيلًا لَاتَّخَذْتُهُ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "وقال لو كنت متخذا خليلا لاتخذته",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3384",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-148",
+      "input": "وَسَلَّمَ ‏ ‏فَسَأَلَهُ فَقَالَ ‏ ‏فِيهِ الْوُضُوءُ",
+      "level": "loose",
+      "options": {},
+      "expected": "وسلم فساله فقال فيه الوضو",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "129",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-149",
+      "input": "‏حَفْصُ بْنُ عُمَرَ ‏ ‏قَالَ حَدَّثَنَا ‏ ‏يَزِيدُ بْنُ إِبْرَاهِيمَ ‏ ‏قَالَ حَدَّثَنَا",
+      "level": "clean",
+      "options": {},
+      "expected": "حَفْصُ بْنُ عُمَرَ قَالَ حَدَّثَنَا يَزِيدُ بْنُ إِبْرَاهِيمَ قَالَ حَدَّثَنَا",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "501",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-150",
+      "input": "الصَّلَاةُ فَلْيُؤَذِّنْ لَكُمْ أَحَدُكُمْ",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "الصلاه فليوذن لكم احدكم",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "595",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-151",
+      "input": "عَبَّاسٍ ‏ ‏عَنْ ‏ ‏عُمَرَ ‏ ‏رَضِيَ اللَّهُ عَنْهُمْ ‏ ‏قَالَ ‏",
+      "level": "search",
+      "options": {},
+      "expected": "عباس عن عمر رضي الله عنهم قال",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6721",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-152",
+      "input": "‏حَدَّثَنَا ‏ ‏عَلِيٌّ ‏ ‏سَمِعَ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "حدثنا علي سمع",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4676",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-153",
+      "input": "رَسُولَ اللَّهِ اسْتَغْفِرْ لِي فَاعْتَزَلَ النَّبِيُّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ",
+      "level": "loose",
+      "options": {},
+      "expected": "رسول الله استغفر لي فاعتزل النبي صلي الله عليه",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4792",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-154",
+      "input": "وَسَلَّمَ ‏ ‏أَنَّ رَجُلًا رَأَى كَلْبًا يَأْكُلُ ‏ ‏الثَّرَى ‏ ‏مِنْ الْعَطَشِ فَأَخَذَ",
+      "level": "clean",
+      "options": {},
+      "expected": "وَسَلَّمَ أَنَّ رَجُلًا رَأَى كَلْبًا يَأْكُلُ الثَّرَى مِنْ الْعَطَشِ فَأَخَذَ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "168",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-155",
+      "input": "الرَّكْعَةِ الثَّانِيَةِ مِثْلَ ذَلِكَ ثُمَّ قَامَ فَقَالَ ‏ ‏إِنَّ الشَّمْسَ وَالْقَمَرَ لَا يَخْسِفَانِ",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "الركعه الثانيه مثل ذلك ثم قام فقال ان الشمس والقمر لا يخسفان",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "998",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-156",
+      "input": "‏عَنْ ‏ ‏عُبَيْدِ اللَّهِ ‏",
+      "level": "search",
+      "options": {},
+      "expected": "عن عبيد الله",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6299",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-157",
+      "input": "‏شَعَفَ ‏ ‏الْجِبَالِ وَمَوَاقِعَ ‏ ‏الْقَطْرِ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "شعف الجبال ومواقع القطر",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6561",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-158",
+      "input": "بْنَ أَبِي أَوْفَى ‏",
+      "level": "loose",
+      "options": {},
+      "expected": "بن ابي اوفي",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6315",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-159",
+      "input": "وَسَلَّمَ ‏ ‏كَانَ إِذَا أَوَى إِلَى فِرَاشِهِ",
+      "level": "clean",
+      "options": {},
+      "expected": "وَسَلَّمَ كَانَ إِذَا أَوَى إِلَى فِرَاشِهِ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4630",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-160",
+      "input": "‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏أَنَّ رَسُولَ اللَّهِ",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "ان رسول الله",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3093",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-161",
+      "input": "‏عَنْ ‏ ‏حَفْصَةَ ‏",
+      "level": "search",
+      "options": {},
+      "expected": "عن حفصة",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1464",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-162",
+      "input": "‏سُفْيَانُ ‏ ‏وَقَالَ ‏ ‏أَبُو هَارُونَ ‏ ‏يَحْيَى ‏ ‏وَكَانَ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "سفيان وقال ابو هارون يحيي وكان",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1263",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-163",
+      "input": "ثُمَّ يَحِلُّوا وَذَلِكَ لِمَنْ لَمْ يَكُنْ مَعَهُ بَدَنَةٌ ‏ ‏قَلَّدَهَا ‏ ‏وَمَنْ كَانَتْ",
+      "level": "loose",
+      "options": {},
+      "expected": "ثم يحلوا وذلك لمن لم يكن معه بدنه قلدها ومن كانت",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1444",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-164",
+      "input": "قَالَ أُولَئِكَ الْفُسَّاقُ أَجَلْ لَمْ يَبْقَ مِنْهُمْ إِلَّا أَرْبَعَةٌ",
+      "level": "clean",
+      "options": {},
+      "expected": "قَالَ أُولَئِكَ الْفُسَّاقُ أَجَلْ لَمْ يَبْقَ مِنْهُمْ إِلَّا أَرْبَعَةٌ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4291",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-165",
+      "input": "‏ ‏غُنْدَرٌ ‏ ‏حَدَّثَنَا ‏ ‏شُعْبَةُ ‏ ‏عَنْ ‏ ‏قَتَادَةَ ‏ ‏عَنْ ‏",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "غندر حدثنا شعبه عن قتاده عن",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1850",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-166",
+      "input": "‏ ‏أَحْمَدُ بْنُ يُونُسَ ‏ ‏حَدَّثَنَا ‏",
+      "level": "search",
+      "options": {},
+      "expected": "احمد بن يونس حدثنا",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3741",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-167",
+      "input": "‏ ‏حَدَّثَنَا ‏ ‏يَزِيدُ بْنُ هَارُونَ ‏ ‏أَخْبَرَنَا ‏ ‏شُعْبَةُ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "حدثنا يزيد بن هارون اخبرنا شعبة",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6601",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-168",
+      "input": "‏يَخْرُجُ مِنْ ‏ ‏ضِئْضِئِ ‏ ‏هَذَا قَوْمٌ ‏ ‏يَمْرُقُونَ",
+      "level": "loose",
+      "options": {},
+      "expected": "يخرج من ضيضي هذا قوم يمرقون",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4299",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-169",
+      "input": "‏قَتَادَةَ ‏ ‏أَنَّ ‏ ‏أَنَسًا ‏ ‏رَضِيَ",
+      "level": "clean",
+      "options": {},
+      "expected": "قَتَادَةَ أَنَّ أَنَسًا رَضِيَ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3833",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-170",
+      "input": "‏جَهْدِ ‏ ‏الْبَلَاءِ ‏",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "جهد البلا",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5871",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-171",
+      "input": "بْنِ إِبْرَاهِيمَ ‏ ‏قَالَ سَمِعْتُ ‏ ‏أَبَا سَلَمَةَ",
+      "level": "search",
+      "options": {},
+      "expected": "بن ابراهيم قال سمعت ابا سلمة",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2156",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-172",
+      "input": "سَمِعَ ‏ ‏أَنَسَ بْنَ مَالِكٍ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏يَقُولُ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "سمع انس بن مالك يقول",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1218",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-173",
+      "input": "‏ ‏هُنَيَّةً ‏ ‏فَقُلْتُ بِأَبِي وَأُمِّي يَا رَسُولَ اللَّهِ إِسْكَاتُكَ بَيْنَ التَّكْبِيرِ وَالْقِرَاءَةِ",
+      "level": "loose",
+      "options": {},
+      "expected": "هنيه فقلت بابي وامي يا رسول الله اسكاتك بين التكبير والقراه",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "702",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-174",
+      "input": "عُمَرَ ‏ ‏رَضِيَ اللَّهُ عَنْهُمَا ‏ ‏أَنَّ ‏ ‏أَبَا",
+      "level": "clean",
+      "options": {},
+      "expected": "عُمَرَ رَضِيَ اللَّهُ عَنْهُمَا أَنَّ أَبَا",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2030",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-175",
+      "input": "فَقِيلَ ‏ ‏ابْنَةُ ‏ ‏عَمْرٍو ‏ ‏أَوْ ‏",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "فقيل ابنه عمرو او",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2605",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-176",
+      "input": "‏عَبْدُ اللَّهِ بْنُ شَدَّادٍ ‏ ‏قَالَ سَمِعْتُ ‏",
+      "level": "search",
+      "options": {},
+      "expected": "عبد الله بن شداد قال سمعت",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2690",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-177",
+      "input": "أَبِي طَالِبٍ ‏ ‏وَأَصْحَابَهُ عِنْدَهُ فَقَالَ ‏",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "ابي طالب واصحابه عنده فقال",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2903",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-178",
+      "input": "‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏قَالَ ‏ ‏لِكُلِّ غَادِرٍ لِوَاءٌ يَوْمَ الْقِيَامَةِ قَالَ",
+      "level": "loose",
+      "options": {},
+      "expected": "صلي الله عليه وسلم قال لكل غادر لوا يوم القيامه قال",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2949",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-179",
+      "input": "اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏مَا تَصْنَعُ بِإِزَارِكَ إِنْ لَبِسْتَهُ لَمْ يَكُنْ عَلَيْهَا مِنْهُ",
+      "level": "clean",
+      "options": {},
+      "expected": "اللَّهُ عَلَيْهِ وَسَلَّمَ مَا تَصْنَعُ بِإِزَارِكَ إِنْ لَبِسْتَهُ لَمْ يَكُنْ عَلَيْهَا مِنْهُ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4642",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-180",
+      "input": "اللَّهُ عَلَيْهِ وَسَلَّمَ ‏",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "الله عليه وسلم",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6500",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-181",
+      "input": "بَعْضٍ ‏ ‏رَوَاهُ ‏",
+      "level": "search",
+      "options": {},
+      "expected": "بعض رواه",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6168",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-182",
+      "input": "عَنْهُ ‏ ‏أَنَّ رَسُولَ اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عنه ان رسول الله",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "739",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-183",
+      "input": "النَّاسَ يَقُولُونَ شَيْئًا فَقُلْتُهُ",
+      "level": "loose",
+      "options": {},
+      "expected": "الناس يقولون شييا فقلته",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "84",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-184",
+      "input": "‏ ‏حَدَّثَنَا ‏ ‏إِبْرَاهِيمُ ‏ ‏عَنْ ‏",
+      "level": "clean",
+      "options": {},
+      "expected": "حَدَّثَنَا إِبْرَاهِيمُ عَنْ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6594",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-185",
+      "input": "‏ ‏عَنْ ‏ ‏أَبِي وَائِلٍ ‏ ‏عَنْ ‏ ‏مَسْرُوقٍ ‏ ‏عَنْ ‏ ‏عَائِشَةَ",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عن ابي وايل عن مسروق عن عايشه",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1923",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-186",
+      "input": "‏ ‏وَأَيْنَ كَانَتْ التَّمْرَةُ تَقَعُ",
+      "level": "search",
+      "options": {},
+      "expected": "واين كانت التمرة تقع",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2761",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-187",
+      "input": "‏ ‏قَالَ حَدَّثَنَا ‏ ‏شُعْبَةُ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "قال حدثنا شعبة",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "328",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-188",
+      "input": "عَلَيْهِ وَسَلَّمَ ‏ ‏يَتَحَرَّى",
+      "level": "loose",
+      "options": {},
+      "expected": "عليه وسلم يتحري",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1867",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-189",
+      "input": "أَنْ تَدْخُلَ مَسْجِدَكَ فَتَقُومَ وَلَا ‏ ‏تَفْتُرَ ‏",
+      "level": "clean",
+      "options": {},
+      "expected": "أَنْ تَدْخُلَ مَسْجِدَكَ فَتَقُومَ وَلَا تَفْتُرَ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2577",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-190",
+      "input": "‏ ‏آخِرَ قَدْمَةٍ قَدِمَهَا فَخَطَبَنَا فَأَخْرَجَ ‏ ‏كُبَّةً",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "اخر قدمه قدمها فخطبنا فاخرج كبه",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3229",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-191",
+      "input": "‏ ‏آدَمُ ‏ ‏قَالَ حَدَّثَنَا ‏ ‏شُعْبَةُ ‏ ‏قَالَ حَدَّثَنَا ‏ ‏قَتَادَةُ",
+      "level": "search",
+      "options": {},
+      "expected": "ادم قال حدثنا شعبة قال حدثنا قتادة",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "396",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-192",
+      "input": "‏ ‏عَبْدُ اللَّهِ ‏ ‏أَخْبَرَنَا ‏ ‏مَعْمَرٌ ‏ ‏عَنْ ‏ ‏الزُّهْرِيِّ ‏",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عبد الله اخبرنا معمر عن الزهري",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1329",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-193",
+      "input": "‏ ‏الْأَنْصَارِ ‏ ‏فَقَالَ يَا رَسُولَ",
+      "level": "loose",
+      "options": {},
+      "expected": "الانصار فقال يا رسول",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6113",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-194",
+      "input": "مَعْمَرٍ ‏ ‏حَدَّثَنَا ‏ ‏عَبْدُ الْوَارِثِ ‏ ‏حَدَّثَنَا ‏ ‏أَيُّوبُ",
+      "level": "clean",
+      "options": {},
+      "expected": "مَعْمَرٍ حَدَّثَنَا عَبْدُ الْوَارِثِ حَدَّثَنَا أَيُّوبُ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6241",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-195",
+      "input": "عَنْهُ ‏ ‏قَالَ ‏ ‏انْكَسَفَتْ الشَّمْسُ عَلَى عَهْدِ رَسُولِ اللَّهِ ‏ ‏صَلَّى",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عنه قال انكسفت الشمس علي عهد رسول الله صلي",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1001",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-196",
+      "input": "عَنْهُ ‏ ‏يَوْمًا بِطَعَامِهِ فَقَالَ ‏ ‏قُتِلَ ‏ ‏مُصْعَبُ بْنُ",
+      "level": "search",
+      "options": {},
+      "expected": "عنه يوما بطعامه فقال قتل مصعب بن",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1195",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-197",
+      "input": "‏قَالَ سَمِعْتُ ‏ ‏أَبَا عُثْمَانَ النَّهْدِيَّ ‏ ‏أَتَانَا كِتَابُ ‏ ‏عُمَرَ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "قال سمعت ابا عثمان النهدي اتانا كتاب عمر",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5380",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-198",
+      "input": "فَقُتِلَ ‏ ‏عَبْدُ اللَّهِ بْنُ سَهْلٍ ‏ ‏فَجَاءَ ‏ ‏عَبْدُ",
+      "level": "loose",
+      "options": {},
+      "expected": "فقتل عبد الله بن سهل فجا عبد",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5677",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-199",
+      "input": "‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏قَالَ ‏ ‏صَلَّى النَّبِيُّ ‏ ‏صَلَّى",
+      "level": "clean",
+      "options": {},
+      "expected": "رَضِيَ اللَّهُ عَنْهُ قَالَ صَلَّى النَّبِيُّ صَلَّى",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1447",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-200",
+      "input": "‏حَدَّثَنَا ‏ ‏مُسَدَّدٌ ‏ ‏حَدَّثَنَا ‏ ‏خَالِدٌ هُوَ ابْنُ عَبْدِ اللَّهِ",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "حدثنا مسدد حدثنا خالد هو ابن عبد الله",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1961",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-201",
+      "input": "رَأْسَهُ ‏ ‏بِالْمِدْرَى ‏ ‏فَقَالَ ‏ ‏لَوْ عَلِمْتُ أَنَّكَ تَنْظُرُ لَطَعَنْتُ بِهَا فِي",
+      "level": "search",
+      "options": {},
+      "expected": "راسه بالمدري فقال لو علمت انك تنظر لطعنت بها في",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5469",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-202",
+      "input": "‏عَنْ ‏ ‏هِشَامٍ ‏ ‏عَنْ ‏ ‏أَبِيهِ ‏ ‏عَنْ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عن هشام عن ابيه عن",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4807",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-203",
+      "input": "‏ ‏حَدَّثَنَا ‏ ‏عَبْدُ اللَّهِ بْنُ يُوسُفَ ‏ ‏أَخْبَرَنَا ‏ ‏مَالِكٌ ‏ ‏ح",
+      "level": "loose",
+      "options": {},
+      "expected": "حدثنا عبد الله بن يوسف اخبرنا مالك ح",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5814",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-204",
+      "input": "‏ ‏مُسَدَّدٌ ‏ ‏قَالَ حَدَّثَنَا ‏",
+      "level": "clean",
+      "options": {},
+      "expected": "مُسَدَّدٌ قَالَ حَدَّثَنَا",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1009",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-205",
+      "input": "‏ ‏و حَدَّثَنَا ‏ ‏عَبْدُ اللَّهِ بْنُ يُوسُفَ ‏",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "و حدثنا عبد الله بن يوسف",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "820",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-206",
+      "input": "‏يَحْيَى ‏ ‏عَنْ ‏ ‏هِشَامٍ ‏",
+      "level": "search",
+      "options": {},
+      "expected": "يحيي عن هشام",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4061",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-207",
+      "input": "‏ ‏ابْنُ شِهَابٍ ‏ ‏عَنْ ‏ ‏عُرْوَةَ ‏ ‏أَنَّ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "ابن شهاب عن عروة ان",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "305",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-208",
+      "input": "اللَّهِ بْنِ عُمَرَ ‏ ‏رَضِيَ اللَّهُ",
+      "level": "loose",
+      "options": {},
+      "expected": "الله بن عمر رضي الله",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2708",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-209",
+      "input": "لَنْ ‏ ‏تُخَلَّفَ ‏ ‏فَتَعْمَلَ عَمَلًا صَالِحًا إِلَّا",
+      "level": "clean",
+      "options": {},
+      "expected": "لَنْ تُخَلَّفَ فَتَعْمَلَ عَمَلًا صَالِحًا إِلَّا",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1213",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-210",
+      "input": "‏ ‏أَبَا هُرَيْرَةَ ‏ ‏رَضِيَ اللَّهُ عَنْهُمْ",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "ابا هريره",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1239",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-211",
+      "input": "مِنْ كُتُبِ اللَّهِ وَغَيَّرُوا فَكَتَبُوا بِأَيْدِيهِمْ",
+      "level": "search",
+      "options": {},
+      "expected": "من كتب الله وغيروا فكتبوا بايديهم",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6969",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-212",
+      "input": "‏ ‏أَخْبَرَنَا ‏ ‏شُعَيْبٌ ‏ ‏عَنْ ‏ ‏الزُّهْرِيِّ ‏ ‏قَالَ حَدَّثَنِي ‏ ‏أَبُو",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "اخبرنا شعيب عن الزهري قال حدثني ابو",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5733",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-213",
+      "input": "وَائِلٍ ‏ ‏عَنْ ‏ ‏حُذَيْفَةَ ‏ ‏رَضِيَ اللَّهُ",
+      "level": "loose",
+      "options": {},
+      "expected": "وايل عن حذيفه رضي الله",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1068",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-214",
+      "input": "عَامَ الْفَتْحِ وَهُوَ ‏ ‏بِمَكَّةَ ‏ ‏إِنَّ اللَّهَ وَرَسُولَهُ",
+      "level": "clean",
+      "options": {},
+      "expected": "عَامَ الْفَتْحِ وَهُوَ بِمَكَّةَ إِنَّ اللَّهَ وَرَسُولَهُ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3958",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-215",
+      "input": "‏ ‏سَعِيدِ بْنِ الْمُسَيَّبِ ‏",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "سعيد بن المسيب",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5715",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-216",
+      "input": "‏مُحَمَّدُ بْنُ مُطَرِّفٍ ‏ ‏قَالَ",
+      "level": "search",
+      "options": {},
+      "expected": "محمد بن مطرف قال",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3017",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-217",
+      "input": "‏ ‏عَلِيُّ بْنُ عَبْدِ اللَّهِ ‏ ‏حَدَّثَنَا ‏ ‏سُفْيَانُ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "علي بن عبد الله حدثنا سفيان",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6454",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-218",
+      "input": "‏عُقْبَةَ بْنِ الْحَارِثِ ‏ ‏أَنَّهُ",
+      "level": "loose",
+      "options": {},
+      "expected": "عقبه بن الحارث انه",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "86",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-219",
+      "input": "عَلَيْهِ وَسَلَّمَ ‏ ‏وَهُوَ مُحْرِمٌ ‏ ‏ثُمَّ سَمِعْتُهُ يَقُولُ حَدَّثَنِي ‏ ‏طَاوُسٌ",
+      "level": "clean",
+      "options": {},
+      "expected": "عَلَيْهِ وَسَلَّمَ وَهُوَ مُحْرِمٌ ثُمَّ سَمِعْتُهُ يَقُولُ حَدَّثَنِي طَاوُسٌ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "1704",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-220",
+      "input": "‏ ‏أَبُو أُسَامَةَ ‏ ‏عَنْ ‏ ‏هِشَامِ بْنِ",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "ابو اسامه عن هشام بن",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2754",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-221",
+      "input": "‏عَيَّاشُ بْنُ الْوَلِيدِ ‏ ‏قَالَ حَدَّثَنَا",
+      "level": "search",
+      "options": {},
+      "expected": "عياش بن الوليد قال حدثنا",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "607",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-222",
+      "input": "اللَّحْمِ ‏ ‏سَبِطَ ‏ ‏الشَّعَرِ وَكَانَ الَّذِي ادَّعَى عَلَيْهِ أَنَّهُ وَجَدَهُ عِنْدَ",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "اللحم سبط الشعر وكان الذي ادعي عليه انه وجده عند",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6350",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-223",
+      "input": "أَوْ سَحَابَةٌ غَشِيَتْهُ فَذَكَرَهُ لِلنَّبِيِّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "level": "loose",
+      "options": {},
+      "expected": "او سحابه غشيته فذكره للنبي صلي الله عليه وسلم",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3345",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-224",
+      "input": "‏أَبِي هُرَيْرَةَ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏",
+      "level": "clean",
+      "options": {},
+      "expected": "أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2204",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-225",
+      "input": "تَسْأَلْ ‏ ‏الْإِمَارَةَ ‏ ‏فَإِنَّكَ إِنْ أُعْطِيتَهَا مِنْ غَيْرِ",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "تسال الاماره فانك ان اعطيتها من غير",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6227",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-226",
+      "input": "‏ ‏عَلِيُّ بْنُ عَبْدِ اللَّهِ ‏ ‏حَدَّثَنَا ‏ ‏سُفْيَانُ ‏ ‏عَنْ ‏ ‏عَمْرٍو",
+      "level": "search",
+      "options": {},
+      "expected": "علي بن عبد الله حدثنا سفيان عن عمرو",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2337",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-227",
+      "input": "‏شُعْبَةُ ‏ ‏قَالَ سَمِعْتُ ‏ ‏أَبَا إِسْحَاقَ ‏ ‏قَالَ سَمِعْتُ ‏",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "شعبة قال سمعت ابا اسحاق قال سمعت",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6076",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-228",
+      "input": "مِنْ نَارِ جَهَنَّمَ قِيلَ يَا رَسُولَ اللَّهِ إِنْ كَانَتْ",
+      "level": "loose",
+      "options": {},
+      "expected": "من نار جهنم قيل يا رسول الله ان كانت",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3025",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-229",
+      "input": "‏ ‏عَنْ ‏ ‏عَبْدِ اللَّهِ",
+      "level": "clean",
+      "options": {},
+      "expected": "عَنْ عَبْدِ اللَّهِ",
+      "note": "مقطع مشكول من صحيح البخاري (فيه RLM ومسافات مزدوجة كما في المصدر)",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2026",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-230",
+      "input": "عياش عن عبد الله بن عبد الرحمن بن أبي حسين عن شهر بن حوشب عن أبي",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عياش عن عبد الله بن عبد الرحمن بن ابي حسين عن شهر بن حوشب عن ابي",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "3449",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-231",
+      "input": "أسد حدثنا النضر بن شميل أخبرنا هرماس بن حبيب رجل من",
+      "level": "search",
+      "options": {},
+      "expected": "اسد حدثنا النضر بن شميل اخبرنا هرماس بن حبيب رجل من",
+      "note": "مقطع غير مشكول من سنن أبي داود",
+      "source": {
+        "work": "سنن أبي داود",
+        "ref": "3145",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-232",
+      "input": "الذي وسط الخط المربع وخطا خارجا",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "الذي وسط الخط المربع وخطا خارجا",
+      "note": "مقطع غير مشكول من سنن ابن ماجه",
+      "source": {
+        "work": "سنن ابن ماجه",
+        "ref": "4221",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-233",
+      "input": "الله بن الحارث أخبره أن ابن عباس رضي الله عنهما أخبره { لا يستوي القاعدون",
+      "level": "loose",
+      "options": {},
+      "expected": "الله بن الحارث اخبره ان ابن عباس رضي الله عنهما اخبره لا يستوي القاعدون",
+      "note": "مقطع غير مشكول من صحيح البخاري",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4229",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-234",
+      "input": "عهد رسول الله صلى الله عليه وسلم في يوم غيم ثم طلعت الشمس قلت",
+      "level": "clean",
+      "options": {},
+      "expected": "عهد رسول الله صلى الله عليه وسلم في يوم غيم ثم طلعت الشمس قلت",
+      "note": "مقطع غير مشكول من سنن ابن ماجه",
+      "source": {
+        "work": "سنن ابن ماجه",
+        "ref": "1664",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-235",
+      "input": "قال الغسل يوم الجمعة واجب على",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "قال الغسل يوم الجمعه واجب علي",
+      "note": "مقطع غير مشكول من صحيح مسلم",
+      "source": {
+        "work": "صحيح مسلم",
+        "ref": "1397",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-236",
+      "input": "الله أخبرني نافع عن ابن عمر أن رسول الله صلى",
+      "level": "search",
+      "options": {},
+      "expected": "الله اخبرني نافع عن ابن عمر ان رسول الله صلي",
+      "note": "مقطع غير مشكول من صحيح مسلم",
+      "source": {
+        "work": "صحيح مسلم",
+        "ref": "2896",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-237",
+      "input": "فلما صنع له المنبر وكان",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "فلما صنع له المنبر وكان",
+      "note": "مقطع غير مشكول من صحيح البخاري",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "3320",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-238",
+      "input": "حدثنا عمي يحيى بن عيسى عن الأعمش عن أبي صالح",
+      "level": "loose",
+      "options": {},
+      "expected": "حدثنا عمي يحيي بن عيسي عن الاعمش عن ابي صالح",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "2778",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-239",
+      "input": "الله بن عمرو قال قال رسول الله",
+      "level": "clean",
+      "options": {},
+      "expected": "الله بن عمرو قال قال رسول الله",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "701",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-240",
+      "input": "يمان عن شريك عن أبي إسحق عن عبد الله بن سعيد بن جبير عن",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "يمان عن شريك عن ابي اسحق عن عبد الله بن سعيد بن جبير عن",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "794",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-241",
+      "input": "عليه وسلم فأمر له بالدية فقال يا رسول الله إني أريد",
+      "level": "search",
+      "options": {},
+      "expected": "عليه وسلم فامر له بالدية فقال يا رسول الله اني اريد",
+      "note": "مقطع غير مشكول من سنن ابن ماجه",
+      "source": {
+        "work": "سنن ابن ماجه",
+        "ref": "2626",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-242",
+      "input": "قال أخبرني سليمان بن بلال عن يحيى بن سعيد عن حميد الطويل",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "قال اخبرني سليمان بن بلال عن يحيي بن سعيد عن حميد الطويل",
+      "note": "مقطع غير مشكول من سنن النسائي",
+      "source": {
+        "work": "سنن النسائي",
+        "ref": "3335",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-243",
+      "input": "عن داود عن الشعبي عن عبد الرحمن بن أبي ليلى عن كعب بن",
+      "level": "loose",
+      "options": {},
+      "expected": "عن داود عن الشعبي عن عبد الرحمن بن ابي ليلي عن كعب بن",
+      "note": "مقطع غير مشكول من سنن أبي داود",
+      "source": {
+        "work": "سنن أبي داود",
+        "ref": "1583",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-244",
+      "input": "بلى فأخرج لي كتابا هذا ما اشترى العداء",
+      "level": "clean",
+      "options": {},
+      "expected": "بلى فأخرج لي كتابا هذا ما اشترى العداء",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "1137",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-245",
+      "input": "أرى أن أصرفها فيه من صنوف التجارات وأخرج بما شئت",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "اري ان اصرفها فيه من صنوف التجارات واخرج بما شيت",
+      "note": "مقطع غير مشكول من سنن النسائي",
+      "source": {
+        "work": "سنن النسائي",
+        "ref": "3875",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-246",
+      "input": "محمد بن قدامة قال حدثنا جرير",
+      "level": "search",
+      "options": {},
+      "expected": "محمد بن قدامة قال حدثنا جرير",
+      "note": "مقطع غير مشكول من سنن النسائي",
+      "source": {
+        "work": "سنن النسائي",
+        "ref": "525",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-247",
+      "input": "أبا هر قلت لبيك يا رسول الله قال بقيت أنا وأنت قلت صدقت يا رسول",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "ابا هر قلت لبيك يا رسول الله قال بقيت انا وانت قلت صدقت يا رسول",
+      "note": "مقطع غير مشكول من صحيح البخاري",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5971",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-248",
+      "input": "أنبأنا حماد بن زيد حدثنا",
+      "level": "loose",
+      "options": {},
+      "expected": "انبانا حماد بن زيد حدثنا",
+      "note": "مقطع غير مشكول من سنن ابن ماجه",
+      "source": {
+        "work": "سنن ابن ماجه",
+        "ref": "3997",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-249",
+      "input": "عليه وسلم ثلاث مرات كل ذلك لا يكلمك ما أخلقك بأن ينزل فيك قرآن",
+      "level": "clean",
+      "options": {},
+      "expected": "عليه وسلم ثلاث مرات كل ذلك لا يكلمك ما أخلقك بأن ينزل فيك قرآن",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "3185",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-250",
+      "input": "بن جبير عن ابن عباس قال قال رسول الله صلى الله عليه وسلم في الحجر والله",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "بن جبير عن ابن عباس قال قال رسول الله في الحجر والله",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "884",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-251",
+      "input": "أن خيلا تخرج من سفح هذا الجبل أكنتم مصدقي قالوا ما جربنا عليك",
+      "level": "search",
+      "options": {},
+      "expected": "ان خيلا تخرج من سفح هذا الجبل اكنتم مصدقي قالوا ما جربنا عليك",
+      "note": "مقطع غير مشكول من صحيح البخاري",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4589",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-252",
+      "input": "بن منيع حدثنا وكيع عن أسامة بن زيد عن صالح بن كيسان",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "بن منيع حدثنا وكيع عن اسامة بن زيد عن صالح بن كيسان",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "3008",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-253",
+      "input": "قال ابن شهاب حدثني سالم بن عبد الله عن أبيه أن",
+      "level": "loose",
+      "options": {},
+      "expected": "قال ابن شهاب حدثني سالم بن عبد الله عن ابيه ان",
+      "note": "مقطع غير مشكول من سنن النسائي",
+      "source": {
+        "work": "سنن النسائي",
+        "ref": "4445",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-254",
+      "input": "فيه البقرة لا يدخله الشيطان قال أبو عيسى هذا",
+      "level": "clean",
+      "options": {},
+      "expected": "فيه البقرة لا يدخله الشيطان قال أبو عيسى هذا",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "2802",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-255",
+      "input": "عثمان النهدي عن أسامة بن زيد رضي الله",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عثمان النهدي عن اسامه بن زيد رضي الله",
+      "note": "مقطع غير مشكول من صحيح البخاري",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "4706",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-256",
+      "input": "أبيه عن عامر بن ربيعة",
+      "level": "search",
+      "options": {},
+      "expected": "ابيه عن عامر بن ربيعة",
+      "note": "مقطع غير مشكول من سنن أبي داود",
+      "source": {
+        "work": "سنن أبي داود",
+        "ref": "2758",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-257",
+      "input": "أخبرنا عمرو بن علي قال حدثنا يحيى قال حدثنا عبد الملك عن عطاء عن جابر قال",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "اخبرنا عمرو بن علي قال حدثنا يحيي قال حدثنا عبد الملك عن عطاء عن جابر قال",
+      "note": "مقطع غير مشكول من سنن النسائي",
+      "source": {
+        "work": "سنن النسائي",
+        "ref": "3815",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-258",
+      "input": "الله عليه وسلم ما أحل",
+      "level": "loose",
+      "options": {},
+      "expected": "الله عليه وسلم ما احل",
+      "note": "مقطع غير مشكول من سنن أبي داود",
+      "source": {
+        "work": "سنن أبي داود",
+        "ref": "1862",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-259",
+      "input": "فقال ألا أخبرك بما هو أيسر عليك من هذا أو أفضل",
+      "level": "clean",
+      "options": {},
+      "expected": "فقال ألا أخبرك بما هو أيسر عليك من هذا أو أفضل",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "3491",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-260",
+      "input": "محمد بن أبي إسمعيل عن عبد الرحمن بن هلال قال سمعت جرير بن",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "محمد بن ابي اسمعيل عن عبد الرحمن بن هلال قال سمعت جرير بن",
+      "note": "مقطع غير مشكول من صحيح مسلم",
+      "source": {
+        "work": "صحيح مسلم",
+        "ref": "4696",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-261",
+      "input": "بن وكيع حدثنا إسمعيل بن محمد بن جحادة حدثنا",
+      "level": "search",
+      "options": {},
+      "expected": "بن وكيع حدثنا اسمعيل بن محمد بن جحادة حدثنا",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "3352",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-262",
+      "input": "عن أبي زرعة عن أبي هريرة",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عن ابي زرعة عن ابي هريرة",
+      "note": "مقطع غير مشكول من صحيح مسلم",
+      "source": {
+        "work": "صحيح مسلم",
+        "ref": "297",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-263",
+      "input": "هريرة رضي الله عنه عن النبي صلى الله عليه وسلم قال",
+      "level": "loose",
+      "options": {},
+      "expected": "هريره رضي الله عنه عن النبي صلي الله عليه وسلم قال",
+      "note": "مقطع غير مشكول من صحيح البخاري",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "2372",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-264",
+      "input": "بن عبد الله يقول كان في",
+      "level": "clean",
+      "options": {},
+      "expected": "بن عبد الله يقول كان في",
+      "note": "مقطع غير مشكول من سنن أبي داود",
+      "source": {
+        "work": "سنن أبي داود",
+        "ref": "4198",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-265",
+      "input": "قال إبراهيم مثل أذاننا قال بشر فقلت له أعد علي",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "قال ابراهيم مثل اذاننا قال بشر فقلت له اعد علي",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "176",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-266",
+      "input": "حدثني أبو بكر بن إسحق حدثنا يحيى بن بكير حدثني المغيرة يعني الحزامي",
+      "level": "search",
+      "options": {},
+      "expected": "حدثني ابو بكر بن اسحق حدثنا يحيي بن بكير حدثني المغيرة يعني الحزامي",
+      "note": "مقطع غير مشكول من صحيح مسلم",
+      "source": {
+        "work": "صحيح مسلم",
+        "ref": "4991",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-267",
+      "input": "سليمان بن حرب يقول في هذا الحديث وما منا ولكن الله يذهبه",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "سليمان بن حرب يقول في هذا الحديث وما منا ولكن الله يذهبه",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "1539",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-268",
+      "input": "الليلة بعيري وأركب بعيرك فتنظرين وأنظر قالت بلى",
+      "level": "loose",
+      "options": {},
+      "expected": "الليله بعيري واركب بعيرك فتنظرين وانظر قالت بلي",
+      "note": "مقطع غير مشكول من صحيح مسلم",
+      "source": {
+        "work": "صحيح مسلم",
+        "ref": "4477",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-269",
+      "input": "سمعت ابن أبي مليكة يحدث",
+      "level": "clean",
+      "options": {},
+      "expected": "سمعت ابن أبي مليكة يحدث",
+      "note": "مقطع غير مشكول من سنن النسائي",
+      "source": {
+        "work": "سنن النسائي",
+        "ref": "3214",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-270",
+      "input": "إسمعيل بن رجاء عن أوس بن ضمعج عن أبي مسعود أن رسول الله صلى الله",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "اسمعيل بن رجا عن اوس بن ضمعج عن ابي مسعود ان رسول الله صلي الله",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "2696",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-271",
+      "input": "رضي الله عنهما عن النبي صلى الله عليه وسلم أنه",
+      "level": "search",
+      "options": {},
+      "expected": "رضي الله عنهما عن النبي صلي الله عليه وسلم انه",
+      "note": "مقطع غير مشكول من صحيح مسلم",
+      "source": {
+        "work": "صحيح مسلم",
+        "ref": "1795",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-272",
+      "input": "وينبت الشعر أبو عبد الرحمن عبد الله بن عثمان",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "وينبت الشعر ابو عبد الرحمن عبد الله بن عثمان",
+      "note": "مقطع غير مشكول من سنن النسائي",
+      "source": {
+        "work": "سنن النسائي",
+        "ref": "5024",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-273",
+      "input": "عبد الله قال مرت جنازة فقام لها رسول الله صلى الله عليه وسلم وقمنا",
+      "level": "loose",
+      "options": {},
+      "expected": "عبد الله قال مرت جنازه فقام لها رسول الله صلي الله عليه وسلم وقمنا",
+      "note": "مقطع غير مشكول من صحيح مسلم",
+      "source": {
+        "work": "صحيح مسلم",
+        "ref": "1593",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-274",
+      "input": "والمروة ثم حل فطفت بالبيت",
+      "level": "clean",
+      "options": {},
+      "expected": "والمروة ثم حل فطفت بالبيت",
+      "note": "مقطع غير مشكول من سنن النسائي",
+      "source": {
+        "work": "سنن النسائي",
+        "ref": "2688",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-275",
+      "input": "يحيى قال قرأت على مالك عن عبد الله",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "يحيي قال قرات علي مالك عن عبد الله",
+      "note": "مقطع غير مشكول من صحيح مسلم",
+      "source": {
+        "work": "صحيح مسلم",
+        "ref": "1986",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-276",
+      "input": "نمير عن عبيد الله بن",
+      "level": "search",
+      "options": {},
+      "expected": "نمير عن عبيد الله بن",
+      "note": "مقطع غير مشكول من سنن ابن ماجه",
+      "source": {
+        "work": "سنن ابن ماجه",
+        "ref": "3364",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-277",
+      "input": "وسلم لقاتلتهم على منعها فوالله ما هو إلا أن",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "وسلم لقاتلتهم علي منعها فوالله ما هو الا ان",
+      "note": "مقطع غير مشكول من سنن النسائي",
+      "source": {
+        "work": "سنن النسائي",
+        "ref": "3040",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-278",
+      "input": "لو أعلم أنك تنتظرني لطعنت به",
+      "level": "loose",
+      "options": {},
+      "expected": "لو اعلم انك تنتظرني لطعنت به",
+      "note": "مقطع غير مشكول من صحيح البخاري",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "6392",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-279",
+      "input": "قوموا فلما فرغ من صلاته",
+      "level": "clean",
+      "options": {},
+      "expected": "قوموا فلما فرغ من صلاته",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "333",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-280",
+      "input": "علينا رسول الله صلى الله عليه وسلم ونحن نغسل ابنته فقال اغسلنها ثلاثا أو خمسا أو",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "علينا رسول الله ونحن نغسل ابنته فقال اغسلنها ثلاثا او خمسا او",
+      "note": "مقطع غير مشكول من سنن النسائي",
+      "source": {
+        "work": "سنن النسائي",
+        "ref": "1863",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-281",
+      "input": "بشار حدثنا أبو بكر الحنفي حدثنا الضحاك بن عثمان حدثني",
+      "level": "search",
+      "options": {},
+      "expected": "بشار حدثنا ابو بكر الحنفي حدثنا الضحاك بن عثمان حدثني",
+      "note": "مقطع غير مشكول من سنن ابن ماجه",
+      "source": {
+        "work": "سنن ابن ماجه",
+        "ref": "765",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-282",
+      "input": "وصية يوصى بها أو دين غير مضار وصية من الله إلى قوله ذلك الفوز العظيم",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "وصية يوصي بها او دين غير مضار وصية من الله الي قوله ذلك الفوز العظيم",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "2043",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-283",
+      "input": "الذاكرون الله أفضل منه درجة قال أبو عيسى هذا حديث غريب إنما نعرفه",
+      "level": "loose",
+      "options": {},
+      "expected": "الذاكرون الله افضل منه درجه قال ابو عيسي هذا حديث غريب انما نعرفه",
+      "note": "مقطع غير مشكول من جامع الترمذي",
+      "source": {
+        "work": "جامع الترمذي",
+        "ref": "3298",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-284",
+      "input": "الأشجعي قال رأيت النبي صلى الله عليه وسلم على",
+      "level": "clean",
+      "options": {},
+      "expected": "الأشجعي قال رأيت النبي صلى الله عليه وسلم على",
+      "note": "مقطع غير مشكول من سنن النسائي",
+      "source": {
+        "work": "سنن النسائي",
+        "ref": "3954",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-285",
+      "input": "الناس فرية لرجل هاجى رجلا فهجا القبيلة بأسرها ورجل انتفى من",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "الناس فريه لرجل هاجي رجلا فهجا القبيله باسرها ورجل انتفي من",
+      "note": "مقطع غير مشكول من سنن ابن ماجه",
+      "source": {
+        "work": "سنن ابن ماجه",
+        "ref": "3751",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-286",
+      "input": "عبد الملك بن عمير عن أبي بردة بن أبي موسى عن أبي موسى قال لما أصيب",
+      "level": "search",
+      "options": {},
+      "expected": "عبد الملك بن عمير عن ابي بردة بن ابي موسي عن ابي موسي قال لما اصيب",
+      "note": "مقطع غير مشكول من صحيح مسلم",
+      "source": {
+        "work": "صحيح مسلم",
+        "ref": "1541",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-287",
+      "input": "حدثنا إبراهيم بن موسى الرازي حدثنا عيسى عن الأوزاعي عن عبد الله بن سعد عن",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "حدثنا ابراهيم بن موسي الرازي حدثنا عيسي عن الاوزاعي عن عبد الله بن سعد عن",
+      "note": "مقطع غير مشكول من سنن أبي داود",
+      "source": {
+        "work": "سنن أبي داود",
+        "ref": "3171",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-288",
+      "input": "حدثني أنس بن مالك أن رسول",
+      "level": "loose",
+      "options": {},
+      "expected": "حدثني انس بن مالك ان رسول",
+      "note": "مقطع غير مشكول من سنن أبي داود",
+      "source": {
+        "work": "سنن أبي داود",
+        "ref": "2247",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-289",
+      "input": "بجنازة أخرى بامرأة فقالوا يا أبا حمزة صل عليها فقام",
+      "level": "clean",
+      "options": {},
+      "expected": "بجنازة أخرى بامرأة فقالوا يا أبا حمزة صل عليها فقام",
+      "note": "مقطع غير مشكول من سنن ابن ماجه",
+      "source": {
+        "work": "سنن ابن ماجه",
+        "ref": "1483",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-290",
+      "input": "عائشة زوج النبي صلى الله عليه وسلم أنها قالت",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عايشه زوج النبي انها قالت",
+      "note": "مقطع غير مشكول من صحيح مسلم",
+      "source": {
+        "work": "صحيح مسلم",
+        "ref": "505",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-291",
+      "input": "عبد الرحيم البزاز أخبرنا سعيد بن سليمان حدثنا منصور بن أبي الأسود عن المختار",
+      "level": "search",
+      "options": {},
+      "expected": "عبد الرحيم البزاز اخبرنا سعيد بن سليمان حدثنا منصور بن ابي الاسود عن المختار",
+      "note": "مقطع غير مشكول من سنن أبي داود",
+      "source": {
+        "work": "سنن أبي داود",
+        "ref": "1090",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-292",
+      "input": "وسفيان بن عقبة السوائي هو أخو قبيصة وحميد بن خوار عن سفيان الثوري",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "وسفيان بن عقبة السوائي هو اخو قبيصة وحميد بن خوار عن سفيان الثوري",
+      "note": "مقطع غير مشكول من سنن أبي داود",
+      "source": {
+        "work": "سنن أبي داود",
+        "ref": "3658",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-293",
+      "input": "عن عبد العزيز بن صهيب عن أنس قال",
+      "level": "loose",
+      "options": {},
+      "expected": "عن عبد العزيز بن صهيب عن انس قال",
+      "note": "مقطع غير مشكول من سنن أبي داود",
+      "source": {
+        "work": "سنن أبي داود",
+        "ref": "458",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-294",
+      "input": "عليه وسلم يقول إن الشيطان قعد لابن آدم بأطرقه فقعد له",
+      "level": "clean",
+      "options": {},
+      "expected": "عليه وسلم يقول إن الشيطان قعد لابن آدم بأطرقه فقعد له",
+      "note": "مقطع غير مشكول من سنن النسائي",
+      "source": {
+        "work": "سنن النسائي",
+        "ref": "3083",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-295",
+      "input": "الهمداني عن أبي موسى الأشعري عن النبي صلى الله عليه وسلم قال كمل من",
+      "level": "loose",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "الهمداني عن ابي موسي الاشعري عن النبي قال كمل من",
+      "note": "مقطع غير مشكول من سنن ابن ماجه",
+      "source": {
+        "work": "سنن ابن ماجه",
+        "ref": "3271",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-296",
+      "input": "محمد بن سلمة والحارث بن مسكين قراءة عليه وأنا",
+      "level": "search",
+      "options": {},
+      "expected": "محمد بن سلمة والحارث بن مسكين قراءة عليه وانا",
+      "note": "مقطع غير مشكول من سنن النسائي",
+      "source": {
+        "work": "سنن النسائي",
+        "ref": "2456",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-297",
+      "input": "عن الشعبي عن ابن عمر",
+      "level": "search",
+      "options": {
+        "honorifics": "strip"
+      },
+      "expected": "عن الشعبي عن ابن عمر",
+      "note": "مقطع غير مشكول من صحيح البخاري",
+      "source": {
+        "work": "صحيح البخاري",
+        "ref": "5161",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-298",
+      "input": "حيان قال غير مسدد حيان بن العلاء حدثنا قطن بن قبيصة عن أبيه قال",
+      "level": "loose",
+      "options": {},
+      "expected": "حيان قال غير مسدد حيان بن العلا حدثنا قطن بن قبيصه عن ابيه قال",
+      "note": "مقطع غير مشكول من سنن أبي داود",
+      "source": {
+        "work": "سنن أبي داود",
+        "ref": "3408",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
+    },
+    {
+      "id": "gen-norm-corpus-299",
+      "input": "بن حرب عن جابر بن سمرة أن بلالا كان يؤذن الظهر إذا",
+      "level": "clean",
+      "options": {},
+      "expected": "بن حرب عن جابر بن سمرة أن بلالا كان يؤذن الظهر إذا",
+      "note": "مقطع غير مشكول من سنن أبي داود",
+      "source": {
+        "work": "سنن أبي داود",
+        "ref": "342",
+        "dataset": "Open-Hadith-Data (ODbL/DbCL), github.com/mhashim6/Open-Hadith-Data",
+        "verified": true
+      },
+      "review": "approved"
     }
   ]
 }

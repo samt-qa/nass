@@ -3,3 +3,10 @@ node_modules/
 vendor/
 dist/
 .DS_Store
+tools/ucd/
+tools/corpus/
+packages/dart/.dart_tool/
+packages/dart/pubspec.lock
+packages/js/node_modules/
+packages/js/dist/
+packages/js/coverage/
