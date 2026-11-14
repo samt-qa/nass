@@ -1,0 +1,35 @@
+{
+  "note": "Libraries compared against spec/vectors. Each is checked out at the exact commit below. See tools/compare/README.md.",
+  "competitors": [
+    {
+      "name": "arabic-normalize-ts",
+      "label": "Ifazawezk/arabic-normalize (TypeScript)",
+      "repo": "https://github.com/Ifazawezk/arabic-normalize",
+      "commit": "353b6936e2c53a369d6f4ce0aacaef5988511dd8",
+      "commitDate": "2026-11-04",
+      "version": "0.1.0",
+      "license": "MIT",
+      "adapter": "ts"
+    },
+    {
+      "name": "arabic-normalize-rs",
+      "label": "AbdeldjalilChougui/arabic-normalize (Rust)",
+      "repo": "https://github.com/AbdeldjalilChougui/arabic-normalize",
+      "commit": "a2cf9d5aefd791951af63ae1a4ea0a9938b4be1d",
+      "commitDate": "2026-09-04",
+      "version": "0.1.0",
+      "license": "MIT",
+      "adapter": "rust"
+    },
+    {
+      "name": "arabic_dev_utils",
+      "label": "BilalFali/arabic_dev_utils (Dart)",
+      "repo": "https://github.com/BilalFali/arabic_dev_utils",
+      "commit": "46c07179a582a247ab210e47eb14e94d6acdf02b",
+      "commitDate": "2026-09-22",
+      "version": "0.2.0",
+      "license": "MIT",
+      "adapter": "dart"
+    }
+  ]
+}

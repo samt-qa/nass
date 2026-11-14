@@ -93,4 +93,4 @@ node tools/eval-isnad.mjs test        # accuracy on the held-out set
 ```
 
 ### Known errors outside the sample / أخطاء معروفة خارج العينة
-- صحيح البخاري 1: «سمعت عمر بن الخطاب رضي الله عنه **على المنبر** قال سمعت رسول الله ﷺ يقول». The matn should start at «إنما الأعمال», but the parser stops after the honorific because «على المنبر» is not a link. This was found while building the demo and kept for the next version.
+- صحيح البخاري 1: «سمعت عمر بن الخطاب رضي الله عنه **على المنبر** قال سمعت رسول الله ﷺ يقول». The matn should start at «إنما الأعمال», but the parser stops after the honorific because «على المنبر» is not a link. It was found outside the sample and kept for the next version.
