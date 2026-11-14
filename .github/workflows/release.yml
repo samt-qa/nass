@@ -1,26 +1,37 @@
 name: Release
 
 # Push a tag such as v0.2.0 to publish:
-#   - npm      @samt-qa/nass  (trusted publishing, OIDC; no token)
+#   - npm      @samt-qa/nass  (trusted publishing, OIDC; no token; staged, see below)
 #   - pub.dev  nass           (automated publishing, OIDC; no token)
 #   - Packagist samt/nass reads the tag itself.
 # The tag must match the version in packages/js/package.json and packages/dart/pubspec.yaml.
+# Run the workflow by hand with an existing tag to retry npm only (pub.dev accepts tag pushes only).
 
 on:
   push:
     tags: ["v[0-9]+.[0-9]+.[0-9]+*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing tag to publish to npm (e.g. v0.2.0)"
+        required: true
 
 permissions:
   contents: read
+
+env:
+  TAG: ${{ inputs.tag || github.ref_name }}
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.TAG }}
       - name: Tag matches every package version
         run: |
-          tag="${GITHUB_REF_NAME#v}"
+          tag="${TAG#v}"
           js=$(node -p "require('./packages/js/package.json').version")
           dart=$(sed -n 's/^version: *//p' packages/dart/pubspec.yaml)
           echo "tag=$tag js=$js dart=$dart"
@@ -38,15 +49,21 @@ jobs:
         working-directory: packages/js
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.TAG }}
       - uses: actions/setup-node@v5
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org
       - run: npm install -g npm@latest # trusted publishing needs npm >= 11.5.1
       - run: npm ci
-      - run: npm publish # prepublishOnly runs typecheck, tests, build and size
+      - run: npm run typecheck && npm test && npm run build && npm run size
+      # The trusted publisher allows staged publishing only: the version waits on npmjs.com
+      # until a maintainer approves it with 2FA (npm stage approve <id>).
+      - run: npm stage publish .
 
   pub:
+    if: github.event_name == 'push'
     needs: check
     permissions:
       id-token: write
