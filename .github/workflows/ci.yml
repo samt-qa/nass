@@ -76,6 +76,7 @@ jobs:
     name: PHP ${{ matrix.php }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         include:
           # Minimum releases patched for PHP2Shell (CVE-2026-109618, CVE-2026-109619).
@@ -96,6 +97,6 @@ jobs:
         run: php -r 'if (version_compare(PHP_VERSION, "${{ matrix.min }}", "<")) { fwrite(STDERR, "PHP " . PHP_VERSION . " is older than ${{ matrix.min }}\n"); exit(1); } echo PHP_VERSION, " OK\n";'
       - run: composer validate --strict
       - name: Tests with coverage (>= 95% lines)
-        run: php -d pcov.enabled=1 -d pcov.directory=src tests/run.php
+        run: php -d pcov.enabled=1 -d pcov.directory="$PWD/src" tests/run.php
         env:
           NASS_COVERAGE: "95"

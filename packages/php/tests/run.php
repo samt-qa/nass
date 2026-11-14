@@ -138,9 +138,11 @@ if ($minCoverage !== false && $minCoverage !== '') {
         exit(1);
     }
     $src = realpath(__DIR__ . '/../src');
-    $files = glob($src . DIRECTORY_SEPARATOR . '*.php');
     $hit = $total = 0;
-    foreach (\pcov\collect(\pcov\inclusive, $files) as $lines) {
+    foreach (\pcov\collect(\pcovll) as $file => $lines) {
+        if (!str_starts_with((string) realpath($file), $src . DIRECTORY_SEPARATOR)) {
+            continue;
+        }
         foreach ($lines as $count) {
             if ($count > 0) {
                 $hit++;
