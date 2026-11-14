@@ -1,3 +1,9 @@
+## 0.3.0
+
+- Experimental `splitIsnad`: new rules; 88.3% on a new held-out set of 300 hadiths (dev 98.0% on 500).
+- No change to normalization: keys from 0.2 stay valid.
+- Implements SPEC v0.3 and passes all 1,554 shared test vectors. Full notes in the repository CHANGELOG.md.
+
 ## 0.2.0
 
 - `search`: U+06E7 (small high yeh) becomes «ي» instead of being deleted («ٱلنَّبِيِّـۧنَ» → «النبيين»).

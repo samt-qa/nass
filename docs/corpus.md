@@ -30,8 +30,8 @@ node tools/fetch-corpus.mjs     # downloads the CSV files into tools/corpus (git
 
 | File | Built by | Cases |
 |---|---|---|
-| `normalize.json`, `offsets.json`, `search.json`, `names.json` | hand-written cases + `tools/gen-vectors.mjs` (deterministic, seeded) | 302 / 100 / 150 / 200 |
-| `isnad.json` | `tools/gen-isnad-vectors.mjs` from the hand labels in `tools/isnad-labels.mjs` | 200 |
+| `normalize.json`, `offsets.json`, `search.json`, `names.json` | hand-written cases + `tools/gen-vectors.mjs` (deterministic, seeded) | 304 / 100 / 150 / 200 |
+| `isnad.json` | `tools/gen-isnad-vectors.mjs` from the hand labels in `tools/isnad-labels.mjs` | 800 |
 
 - Generated cases (`gen-…`) take real lines from the corpus, or are marked `synthetic: true` when they are built from rule fragments. The expected value comes from the Dart reference package and must agree with the independent oracle (`tools/oracle.mjs`).
 - `tools/check-vectors.mjs` checks the structure and properties of every case. Text that looks sacred (Quranic marks, or two or more vocalized words) must have a `source` unless it is `synthetic`.
@@ -40,22 +40,24 @@ node tools/fetch-corpus.mjs     # downloads the CSV files into tools/corpus (git
 ## The isnad set / مجموعة الإسناد
 
 ### Sampling / الاختيار
-`tools/corpus/isnad-sample.json` (committed) holds 500 hadiths from the six books, interleaved by book:
+`tools/corpus/isnad-sample.json` (committed) holds 800 hadiths from the six books, interleaved by book:
 
-| Indices | Drawn for | Role in 0.2 |
+| Indices | Drawn for | Role in 0.3 |
 |---|---|---|
 | 0–99 | v0.1 dev | dev |
-| 100–199 | v0.1 test (held out in v0.1) | dev: its errors guided the 0.2 changes |
+| 100–199 | v0.1 test (held out in v0.1) | dev |
 | 200–299 | v0.2 dev | dev |
-| 300–499 | v0.2 test | **held out**, measured once |
+| 300–499 | v0.2 test (held out in v0.2) | dev: its errors guided the 0.3 changes |
+| 500–799 | v0.3 test | **held out**, measured once |
 
-The v0.1 sample (0–199) was a one-off draw. The v0.2 draw is `tools/sample-isnad.mjs`: 50 hadiths per book with a fixed seed, none already in the sample. Case ids keep their original names (`isnad-test-100`…`199` are now in the `dev` split).
+The v0.1 sample (0–199) was a one-off draw. Later draws come from `tools/sample-isnad.mjs`: 50 hadiths per book per round with a fixed seed, none already in the sample. After each release the held-out set joins dev, and the next release draws a new one. Case ids keep their original names (`isnad-test-100`…`499` are now in the `dev` split).
 
 ### Labelling / الوسم
 The labels are in `tools/isnad-labels.mjs`. Each label is the first words of the matn, plus any alternatives that are equally defensible. The convention is SPEC §8.1. In short: the formula that raises the hadith to the Prophet ﷺ and is followed by speech belongs to the isnad; otherwise the matn starts with the reported content.
 
 - v0.1 (0–199): written by hand **before** any algorithm existed.
 - v0.2 (200–499): two independent annotators labelled each hadith blind, seeing only the convention and the numbered words, **before** any change to `splitIsnad`. They chose the same start in 299 of 300; the one disagreement (`isnad-test-346`) was settled by the convention. An alternative is kept only when both annotators accepted it. The anchors are words of the corpus text itself. Mohammed approved them after a delegated review (SPEC §13): every case where an annotator was unsure (47) was checked against the convention, plus a random 30 of the rest; no label was wrong.
+- v0.3 (500–799): same method, labelled blind before any 0.3 change. They chose the same start in 297 of 300; the three disagreements (`isnad-test-567`, `592`, `754`) were settled by the convention. Mohammed approved them after a delegated review (SPEC §14): all 40 cases where an annotator was unsure, plus a random 30 of the rest; no label was wrong.
 
 القاعدة: صيغة الرفع إلى النبي ﷺ المتبوعة بقول تتبع الإسناد، وإلا فالمتن يبدأ بالمحتوى المروي. الوسوم كُتبت قبل أي تعديل على الخوارزمية.
 
@@ -64,40 +66,38 @@ The labels are in `tools/isnad-labels.mjs`. Each label is the first words of the
 2. Change `splitIsnad` while looking **only** at dev failures.
 3. Freeze the design and measure the test set **once**.
 
-### Results (v0.2) / النتائج
+### Results (v0.3) / النتائج
 
-| Work / الكتاب | dev (300) | test (200, held out) |
+| Work / الكتاب | dev (500) | test (300, held out) |
 |---|---|---|
-| صحيح البخاري | 51/51 | 29/33 |
-| صحيح مسلم | 49/51 | 24/33 |
-| سنن أبي داود | 48/50 | 31/33 |
-| جامع الترمذي | 49/50 | 29/33 |
-| سنن النسائي | 49/49 | 31/34 |
-| سنن ابن ماجه | 49/49 | 32/34 |
-| **Total** | **295/300 (98.3%)** | **176/200 (88.0%)** |
+| صحيح البخاري | 84/84 | 37/50 |
+| صحيح مسلم | 82/84 | 41/50 |
+| سنن أبي داود | 80/83 | 46/50 |
+| جامع الترمذي | 79/83 | 46/50 |
+| سنن النسائي | 82/83 | 47/50 |
+| سنن ابن ماجه | 83/83 | 48/50 |
+| **Total** | **490/500 (98.0%)** | **265/300 (88.3%)** |
 
 Read these numbers with care:
-- **The held-out result is 88.0%.** The v0.1 algorithm scores 87.5% (175/200) on the same set, so the 0.2 changes barely help on unseen hadiths. Most of the dev gain (92.0% → 98.3%) came from patterns specific to the dev set.
-- After the measurement, three test errors turned out to be a bug in a new 0.2 rule (`واللفظ لابن المثنى` is three words, the rule skipped two). The bug was fixed, which brings the test set to 180/200 (90.0%). **That figure is not held out**, because the fix was made after seeing the test set.
-- The target for removing the experimental tag is ≥90% on a held-out set. 88.0% misses it, so **`splitIsnad` stays experimental**. The next measurement needs a new test set.
+- **The held-out result is 88.3%.** The 0.2 algorithm scores 86.7% (260/300) on the same set, so 0.3 gains 1.6 points on unseen hadiths, against 3 points on dev (95.0% → 98.0%).
+- Nothing was changed after the measurement.
+- Every held-out result so far is close to 88% (v0.1 87.5%, v0.2 88.0%, v0.3 88.3%). The remaining errors are mostly rare forms that a new sample brings in each time. The target for removing the experimental tag is ≥90% on a held-out set, so **`splitIsnad` stays experimental**.
 
-v0.1 for reference: dev 98/100, held-out test 91/100.
+History: v0.1 dev 98/100, held-out 91/100. v0.2 dev 295/300, held-out 176/200 (88.0%).
 
-### Held-out errors (v0.2) / أخطاء مجموعة الاختبار
-Listed to guide the next version. They were not fixed, except the «واللفظ» bug.
+### Held-out errors (v0.3) / أخطاء مجموعة الاختبار
+Listed to guide the next version. None was fixed.
 
 | Pattern / النمط | Cases | What happens |
 |---|---|---|
-| «واللفظ **لابن المثنى** قالا» | test-327, 369, 435 | fixed after measurement (see above) |
-| «**هذا ما حدثنا** أبو هريرة» (صحيفة همام) | test-411, 453 | formula not in the lexicon |
-| «قال رسول الله ﷺ **لعلي** / **لبلال**» | test-419, 467 | the addressee is not absorbed before the speech |
-| «عن **مولى لأبي سعيد** عن…» | test-313 | an unnamed client is not read as a narrator |
-| «قال **واقد بن عبد الله أخبرني** عن أبيه» | test-320 | name before the transmission verb |
-| «**حُدِّثت** أن أبا هريرة» | test-431 | passive transmission |
-| «فاطمة بنت رسول الله ﷺ قالت **كان رسول الله**» | test-481 | «بنت رسول الله» read as a Prophet formula |
-| story framing, action or speech misread | test-302, 303, 318, 339, 344, 346, 420, 459, 462, 472, 483, 485, 488 | various |
+| A narrator's or compiler's aside inside the chain («والصواب…», «قال إسحق أخبرنا وقال عبد حدثنا», «وأظنني قد سمعته», «وزعم عروة», «وجدت في كتابي», «صاحب أحمد بن حنبل») | test-507, 508, 519, 611, 621, 651, 662, 669, 678, 732, 771 | the aside is read as the matn, or breaks the chain |
+| «أن فلانًا …» as a link (e.g. «أن أم سلمة **حدثتهم**», «أن ابن عمر قال» without a Prophet formula) | test-527, 560, 572, 605, 626, 692, 728 | the link is not accepted, so the matn starts at «أن» |
+| A description not in the lexicon: «أنس **خادم النبي ﷺ**», «رجل **من أصحاب النبي ﷺ**», «**يبلغ به** النبي ﷺ» | test-524, 586, 674 | read as a Prophet formula or a name |
+| Story, question or framing by a narrator | test-517, 554, 566, 567, 575, 644, 645, 705 | the boundary lands one step early or late |
+| The addressee: «قالت **لعروة**», «قال **لي جرير**», «**لرسول الله** ﷺ» | test-588, 596, 620 | the addressee is split from the speech |
+| Other | test-568, 577, 688 | various |
 
-Design-set errors (0.2): dev-027 («وكانت ممن بايعت النبي ﷺ»), dev-089 («أتاني ابن عباس فسألني»), test-133 and test-158 (a story after «قال قال»: «قال أبو جهل اللهم», «قال عبادة بن الصامت لابنه»; ambiguous with «قال قال أنس ║»), test-175 (rare formula), dev-208 («فإن نافعا»).
+Design-set errors (0.3): dev-027 («وكانت ممن بايعت النبي ﷺ»), test-133 («يقولا» then «قال أبو جهل»), test-158 («قال عبادة بن الصامت لابنه»), test-175 (rare formula), test-346, test-419 and test-467 (addressee «لبلال», «لعلي»), test-420, test-431 («حُدِّثت»), test-472.
 
 ## Reproduce / إعادة القياس
 

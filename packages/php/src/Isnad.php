@@ -88,24 +88,28 @@ final class Isnad
             'nameLink' => self::set('بن ابن بنت'),
             // First-person narrative verbs: a story, never a narrator's name (SPEC §8.2).
             'narrative' => self::set(
-                'أتيت أتينا أتاني أتانا سألت سألنا سألني دخلت دخلنا خرجت خرجنا رأيت رأينا شهدت جاءنا جاءني قدمت قدمنا صليت صلينا',
+                'أتيت أتينا أتاني أتانا لقيت سألت سألنا سألني دخلت دخلنا خرجت خرجنا رأيت رأينا شهدت جاءنا جاءني قدمت قدمنا صليت صلينا',
             ),
             'heardHim' => self::set('سمعته سمعتها سمعه'),
             // «قراءة عليه وأنا أسمع» (al-Nasa'i) between a narrator and the next link.
             'qira2a' => explode(' ', $N('قراءة عليه وأنا أسمع')),
             'honorTail' => self::set('عنه عنها عنهما عنهم'),
             'salawat' => explode(' ', $N('صلى الله عليه وسلم')),
+            // Hammam's sahifa: «هذا ما حدثنا أبو هريرة عن رسول الله ﷺ فذكر أحاديث منها وقال رسول الله ﷺ».
+            'dhakara' => explode(' ', $N('فذكر أحاديث منها')),
+            // Anonymous people: never a narrator's name after «قال قال» (SPEC §8.3).
+            'anonymous' => self::set('رجل رجلا امرأة أعرابي ناس قوم'),
             'peace' => explode(' ', $N('عليه السلام')),
         ];
         $L['stop'] = $L['tv'] + $L['abbr'] + $L['pronTv'] + $L['say'] + $L['hear'] + $L['skip'] + $L['raise']
-            + $L['qualifier'] + $L['client']
+            + $L['qualifier'] + $L['client'] + $L['narrative']
             + self::set('عن أن أنه أنها أنهم أنهما يحدث رضي رسول النبي نبي نبيكم صلى في يا لما إذا إذ كان كانت كانوا كنا كنت لا ما لم لن هل قد ثم إلى قراءة واللفظ');
         foreach ([
             'rasul' => 'رسول', 'nabiAl' => 'النبي', 'nabi' => 'نبي', 'allah' => 'الله', 'nabikum' => 'نبيكم', 'radi' => 'رضي',
             'mawla' => 'مولى', 'ha' => 'ح', 'wording' => 'واللفظ',
             'an' => 'أن', 'anhu' => 'أنه', 'anha' => 'أنها', 'aan' => 'عن', 'yuhaddith' => 'يحدث',
             'li' => 'لي', 'lana' => 'لنا', 'kana' => 'كان', 'qara2tu' => 'قرأت', 'ala' => 'على', 'min' => 'من',
-            'waw' => 'و',
+            'waw' => 'و', 'hatha' => 'هذا', 'ma' => 'ما', 'waqala' => 'وقال',
         ] as $k => $v) {
             $L[$k] = $N($v);
         }
@@ -199,7 +203,12 @@ final class Isnad
     private function name(int $i, string $form, int $max): int
     {
         $j = $i;
-        while ($j < $this->n && !isset($this->L['stop'][$this->w[$j]]) && !$this->isTv($j)) {
+        // «عن مولى لأبي سعيد»: an unnamed client is still a narrator.
+        while (
+            $j < $this->n
+            && (!isset($this->L['stop'][$this->w[$j]]) || ($j === $i && $this->w[$j] === $this->L['mawla']))
+            && !$this->isTv($j)
+        ) {
             if ($j - $i === $max) {
                 return -1;
             }
@@ -248,7 +257,12 @@ final class Isnad
             return $this->link($i + 1, $max);
         }
         if ($this->isTv($i) || ($x === $L['qara2tu'] && $this->at($i + 1) === $L['ala'])) {
-            $j = $this->name($x === $L['qara2tu'] ? $i + 2 : $i + 1, $this->text($i), $max);
+            $from = $x === $L['qara2tu'] ? $i + 2 : $i + 1;
+            // «قال واقد بن عبد الله أخبرني عن أبيه»: the name came first.
+            if ($this->at($from) === $L['aan']) {
+                return $this->link($from, $max);
+            }
+            $j = $this->name($from, $this->text($i), $max);
             return $j < 0 ? -1 : $this->after($j, true);
         }
         if ($x === $L['aan']) {
@@ -274,7 +288,7 @@ final class Isnad
             if (isset($L['say'][$this->at($i + 1)])) {
                 return $this->say($i + 1);
             }
-            if (isset($L['hear'][$this->at($i + 1)])) {
+            if (isset($L['hear'][$this->at($i + 1)]) || isset($L['pronTv'][$this->at($i + 1)])) {
                 return $this->link($i + 1);
             }
             return -1;
@@ -283,7 +297,7 @@ final class Isnad
             $p = $this->prophet($i + 1);
             if ($p >= 0) {
                 if (isset($L['say'][$this->at($p)])) {
-                    return $this->done($p + 1, 3);
+                    return $this->prophetSay($p + 1);
                 }
                 if ($this->at($p) === $L['kana'] && isset($L['say'][$this->at($p + 1)])) {
                     return $this->done($p + 2, 3);
@@ -297,14 +311,24 @@ final class Isnad
                 }
                 [$k, $honored] = $this->tail($j);
                 if ($honored) {
-                    return $this->after($k, true);
+                    // «أن عليا رضي الله عنه حرق قوما»: a story about him, not a link.
+                    $r = $this->after($k, true);
+                    return $r === $k && $this->how === 1 ? -1 : $r;
                 }
                 if (isset($L['pronTv'][$this->at($k)])) {
                     return $this->link($k);
                 }
-                // «أن أبا هريرة قال قال رسول الله ﷺ»: accepted only when it reaches the Prophet.
+                // «أن أبا هريرة كان يحدث أن …»
+                if ($this->at($k) === $L['kana'] && $this->at($k + 1) === $L['yuhaddith']) {
+                    return $this->link($k + 1);
+                }
                 if (isset($L['say'][$this->at($k)])) {
                     $r = $this->say($k);
+                    // «أن عائشة زوج النبي ﷺ قالت»: a qualified narrator speaks.
+                    if ($k > $j) {
+                        return $r;
+                    }
+                    // «أن أبا هريرة قال قال رسول الله ﷺ»: accepted only when it reaches the Prophet.
                     return $this->how === 3 ? $r : -1;
                 }
                 return -1;
@@ -343,7 +367,13 @@ final class Isnad
             $j++;
         }
         if (isset($this->L['say'][$this->at($j)])) {
-            return $this->done($j + 1, 3);
+            return $this->prophetSay($j + 1);
+        }
+        if ($this->seq($p, $this->L['dhakara']) && $this->at($p + 3) === $this->L['waqala']) {
+            $q = $this->prophet($p + 4);
+            if ($q >= 0) {
+                return $this->done($q, 3);
+            }
         }
         // Another chain follows: «… عن النبي ﷺ ح و حدثنا …».
         if ($this->at($p) === $this->L['ha'] && $p + 1 < $this->n) {
@@ -353,6 +383,18 @@ final class Isnad
             }
         }
         return $this->done($p, 3);
+    }
+
+    /** After «… رسول الله ﷺ قال»: the matn, unless another chain follows («ح و حدثنا …»). */
+    private function prophetSay(int $b): int
+    {
+        if ($this->at($b) === $this->L['ha'] && $b + 1 < $this->n) {
+            $r = $this->try(fn (): int => $this->link($b));
+            if ($r >= 0) {
+                return $r;
+            }
+        }
+        return $this->done($b, 3);
     }
 
     private function sayCont(int $i): int
@@ -382,6 +424,19 @@ final class Isnad
                 return $r;
             }
         }
+        if ($x === $L['hatha'] && $this->at($j + 1) === $L['ma'] && $this->isTv($j + 2)) {
+            $r = $this->try(fn (): int => $this->link($j + 2));
+            if ($r >= 0) {
+                return $r;
+            }
+        }
+        // «قال قال يعني رسول الله ﷺ»
+        if (isset($L['qualifier'][$x])) {
+            $p = $this->prophet($j + 1);
+            if ($p >= 0) {
+                return $this->done($p, 3);
+            }
+        }
         if ($x === $L['li'] || $x === $L['lana']) {
             $p = $this->prophet($j + 1);
             if ($p >= 0) {
@@ -407,7 +462,10 @@ final class Isnad
     {
         $L = $this->L;
         $unit = function (int $k) use ($L): int {
-            if ($k >= $this->n || isset($L['stop'][$this->w[$k]]) || $this->isTv($k)) {
+            if (
+                $k >= $this->n || isset($L['stop'][$this->w[$k]]) || isset($L['anonymous'][$this->w[$k]])
+                || $this->isTv($k)
+            ) {
                 return -1;
             }
             if (isset($L['nameHead'][$this->w[$k]])) {
@@ -478,6 +536,13 @@ final class Isnad
     {
         $L = $this->L;
         $honored = false;
+        // «فاطمة بنت رسول الله ﷺ»: the Prophet's kin.
+        if ($j > 0 && isset($L['nameLink'][$this->w[$j - 1]])) {
+            $p = $this->prophet($j);
+            if ($p >= 0) {
+                $j = $p;
+            }
+        }
         for (;;) {
             $h = $this->honorific($j);
             if ($h >= 0) {

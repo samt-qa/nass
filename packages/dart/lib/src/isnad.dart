@@ -44,7 +44,7 @@ final _nameHead = _set('أبو أبي أبا أم ابن بنت عبد');
 final _nameLink = _set('بن ابن بنت');
 // First-person narrative verbs: a story, never a narrator's name (SPEC §8.2).
 final _narrative = _set(
-  'أتيت أتينا أتاني أتانا سألت سألنا سألني دخلت دخلنا خرجت خرجنا رأيت رأينا شهدت جاءنا جاءني قدمت قدمنا صليت صلينا',
+  'أتيت أتينا أتاني أتانا لقيت سألت سألنا سألني دخلت دخلنا خرجت خرجنا رأيت رأينا شهدت جاءنا جاءني قدمت قدمنا صليت صلينا',
 );
 final _heardHim = _set('سمعته سمعتها سمعه');
 // «قراءة عليه وأنا أسمع» (al-Nasa'i) between a narrator and the next link.
@@ -59,6 +59,7 @@ final _stop = {
   ..._raise,
   ..._qualifier,
   ..._client,
+  ..._narrative,
   ..._set(
     'عن أن أنه أنها أنهم أنهما يحدث رضي رسول النبي نبي نبيكم صلى في يا لما إذا إذ كان كانت كانوا كنا كنت لا ما لم لن هل قد ثم إلى قراءة واللفظ',
   ),
@@ -81,6 +82,11 @@ final _yuhaddith = _w('يحدث'),
     _lana = _w('لنا'),
     _kana = _w('كان');
 final _qara2tu = _w('قرأت'), _3ala = _w('على'), _min = _w('من');
+// Hammam's sahifa: «هذا ما حدثنا أبو هريرة عن رسول الله ﷺ فذكر أحاديث منها وقال رسول الله ﷺ».
+final _hatha = _w('هذا'), _ma = _w('ما'), _waqala = _w('وقال');
+final _dhakara = normalize('فذكر أحاديث منها').split(' ');
+// Anonymous people: never a narrator's name after «قال قال» (SPEC §8.3).
+final _anonymous = _set('رجل رجلا امرأة أعرابي ناس قوم');
 
 const _maxStrongName = 14, _maxWeakName = 6;
 
@@ -156,7 +162,10 @@ class _Parser {
   /// Consumes a narrator name from [i]; returns its end, or -1.
   int name(int i, String form, int max) {
     var j = i;
-    while (j < n && !_stop.contains(w[j]) && !isTv(j)) {
+    // «عن مولى لأبي سعيد»: an unnamed client is still a narrator.
+    while (j < n &&
+        (!_stop.contains(w[j]) || (j == i && w[j] == _mawla)) &&
+        !isTv(j)) {
       if (j - i == max) return -1;
       j++;
     }
@@ -179,6 +188,8 @@ class _Parser {
     if (_skip.contains(x)) return link(i + 1, max: max);
     if (isTv(i) || (x == _qara2tu && at(i + 1) == _3ala)) {
       final from = x == _qara2tu ? i + 2 : i + 1;
+      // «قال واقد بن عبد الله أخبرني عن أبيه»: the name came first.
+      if (at(from) == _3an) return link(from, max: max);
       final j = name(from, text.substring(st[i], en[i]), max);
       return j < 0 ? -1 : after(j, strong: true);
     }
@@ -199,13 +210,15 @@ class _Parser {
     }
     if (x == _anhu || x == _anha) {
       if (_say.contains(at(i + 1))) return say(i + 1);
-      if (_hear.contains(at(i + 1))) return link(i + 1);
+      if (_hear.contains(at(i + 1)) || _pronTv.contains(at(i + 1))) {
+        return link(i + 1);
+      }
       return -1;
     }
     if (x == _an) {
       final p = prophet(i + 1);
       if (p >= 0) {
-        if (_say.contains(at(p))) return _done(p + 1, 3);
+        if (_say.contains(at(p))) return prophetSay(p + 1);
         if (at(p) == _kana && _say.contains(at(p + 1))) return _done(p + 2, 3);
         return _done(i, 3);
       }
@@ -213,11 +226,19 @@ class _Parser {
         var j = name(i + 1, text.substring(st[i], en[i]), _maxStrongName);
         if (j < 0) return -1;
         final (k, honored) = tail(j);
-        if (honored) return after(k, strong: true);
+        if (honored) {
+          // «أن عليا رضي الله عنه حرق قوما»: a story about him, not a link.
+          final r = after(k, strong: true);
+          return r == k && how == 1 ? -1 : r;
+        }
         if (_pronTv.contains(at(k))) return link(k);
-        // «أن أبا هريرة قال قال رسول الله ﷺ»: accepted only when it reaches the Prophet.
+        // «أن أبا هريرة كان يحدث أن …»
+        if (at(k) == _kana && at(k + 1) == _yuhaddith) return link(k + 1);
         if (_say.contains(at(k))) {
           final r = say(k);
+          // «أن عائشة زوج النبي ﷺ قالت»: a qualified narrator speaks.
+          if (k > j) return r;
+          // «أن أبا هريرة قال قال رسول الله ﷺ»: accepted only when it reaches the Prophet.
           return how == 3 ? r : -1;
         }
         return -1;
@@ -265,13 +286,26 @@ class _Parser {
   int prophetEnd(int p) {
     var j = p;
     if (at(j) == _anhu) j++;
-    if (_say.contains(at(j))) return _done(j + 1, 3);
+    if (_say.contains(at(j))) return prophetSay(j + 1);
+    if (_seq(p, _dhakara) && at(p + 3) == _waqala) {
+      final q = prophet(p + 4);
+      if (q >= 0) return _done(q, 3);
+    }
     // Another chain follows: «… عن النبي ﷺ ح و حدثنا …».
     if (at(p) == _ha && p + 1 < n) {
       final r = _try(() => link(p));
       if (r >= 0) return r;
     }
     return _done(p, 3);
+  }
+
+  /// After «… رسول الله ﷺ قال»: the matn, unless another chain follows («ح و حدثنا …»).
+  int prophetSay(int b) {
+    if (at(b) == _ha && b + 1 < n) {
+      final r = _try(() => link(b));
+      if (r >= 0) return r;
+    }
+    return _done(b, 3);
   }
 
   /// A speech verb at [i]: returns the matn start if the chain continues
@@ -301,6 +335,15 @@ class _Parser {
       final r = _try(() => link(j));
       if (r >= 0) return r;
     }
+    if (x == _hatha && at(j + 1) == _ma && isTv(j + 2)) {
+      final r = _try(() => link(j + 2));
+      if (r >= 0) return r;
+    }
+    // «قال قال يعني رسول الله ﷺ»
+    if (_qualifier.contains(x)) {
+      final p = prophet(j + 1);
+      if (p >= 0) return _done(p, 3);
+    }
     if (x == _li || x == _lana) {
       final p = prophet(j + 1);
       if (p >= 0) return _done(p, 3);
@@ -319,7 +362,12 @@ class _Parser {
   int shortName(int i) {
     var j = i;
     int unit(int k) {
-      if (k >= n || _stop.contains(w[k]) || isTv(k)) return -1;
+      if (k >= n ||
+          _stop.contains(w[k]) ||
+          _anonymous.contains(w[k]) ||
+          isTv(k)) {
+        return -1;
+      }
       if (_nameHead.contains(w[k])) {
         return k + 1 < n && !_stop.contains(w[k + 1]) && !isTv(k + 1)
             ? k + 2
@@ -375,6 +423,11 @@ class _Parser {
   /// «زوج النبي ﷺ», «قراءة عليه وأنا أسمع». Returns the end and whether an honorific was seen.
   (int, bool) tail(int j) {
     var honored = false;
+    // «فاطمة بنت رسول الله ﷺ»: the Prophet's kin.
+    if (j > 0 && _nameLink.contains(w[j - 1])) {
+      final p = prophet(j);
+      if (p >= 0) j = p;
+    }
     for (;;) {
       final h = honorific(j);
       if (h >= 0) {
