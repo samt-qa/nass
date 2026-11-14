@@ -63,7 +63,8 @@
     "test": "vitest run",
     "coverage": "vitest run --coverage --coverage.include=src --coverage.thresholds.lines=95 --coverage.thresholds.branches=90",
     "size": "node scripts/size.mjs",
-    "bench": "node scripts/bench.mjs"
+    "bench": "node scripts/bench.mjs",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build && npm run size"
   },
   "devDependencies": {
     "@types/node": "^22.20.5",
@@ -71,5 +72,9 @@
     "tsup": "^8.5.0",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": false
   }
 }
