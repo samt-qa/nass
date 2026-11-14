@@ -189,7 +189,8 @@ class _Parser {
       return j < 0 ? -1 : after(j, strong: true);
     }
     if (_hear.contains(x)) {
-      if (_heardHim.contains(x) && _say.contains(at(i + 1))) return _done(i + 2, 2);
+      if (_heardHim.contains(x) && _say.contains(at(i + 1)))
+        return _done(i + 2, 2);
       final p = prophet(i + 1);
       if (p >= 0) return prophetEnd(p);
       final from = at(i + 1) == _min ? i + 2 : i + 1;
@@ -282,9 +283,16 @@ class _Parser {
       final r = _try(() => sayCont(j));
       if (r >= 0) return r;
       // «قال قال أنس ║ …»: a short name, then the matn.
-      final k = at(j + 1) == _li || at(j + 1) == _lana ? j + 1 : shortName(j + 1);
+      final k = at(j + 1) == _li || at(j + 1) == _lana
+          ? j + 1
+          : shortName(j + 1);
       if (k > j + 1) {
-        narrators.add(Narrator(text.substring(st[j + 1], en[k - 1]), text.substring(st[j], en[j])));
+        narrators.add(
+          Narrator(
+            text.substring(st[j + 1], en[k - 1]),
+            text.substring(st[j], en[j]),
+          ),
+        );
         return _done(k, 2);
       }
       return _done(j, 2);
@@ -313,10 +321,13 @@ class _Parser {
     int unit(int k) {
       if (k >= n || _stop.contains(w[k]) || isTv(k)) return -1;
       if (_nameHead.contains(w[k])) {
-        return k + 1 < n && !_stop.contains(w[k + 1]) && !isTv(k + 1) ? k + 2 : -1;
+        return k + 1 < n && !_stop.contains(w[k + 1]) && !isTv(k + 1)
+            ? k + 2
+            : -1;
       }
       return k + 1;
     }
+
     final u = unit(j);
     if (u < 0) return i;
     j = u;
