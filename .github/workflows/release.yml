@@ -1,0 +1,57 @@
+name: Release
+
+# Push a tag such as v0.2.0 to publish:
+#   - npm      @samt-qa/nass  (trusted publishing, OIDC; no token)
+#   - pub.dev  nass           (automated publishing, OIDC; no token)
+#   - Packagist samt/nass reads the tag itself.
+# The tag must match the version in packages/js/package.json and packages/dart/pubspec.yaml.
+
+on:
+  push:
+    tags: ["v[0-9]+.[0-9]+.[0-9]+*"]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Tag matches every package version
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          js=$(node -p "require('./packages/js/package.json').version")
+          dart=$(sed -n 's/^version: *//p' packages/dart/pubspec.yaml)
+          echo "tag=$tag js=$js dart=$dart"
+          test "$tag" = "$js" && test "$tag" = "$dart"
+
+  npm:
+    needs: check
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write
+    defaults:
+      run:
+        working-directory: packages/js
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - run: npm install -g npm@latest # trusted publishing needs npm >= 11.5.1
+      - run: npm ci
+      - run: npm publish # prepublishOnly runs typecheck, tests, build and size
+
+  pub:
+    needs: check
+    permissions:
+      id-token: write
+    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
+    with:
+      working-directory: packages/dart
+      environment: pub.dev
+      use-flutter: false
