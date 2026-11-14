@@ -11,6 +11,9 @@ use Samt\Nass\MatchMode;
 use Samt\Nass\Nass;
 use Samt\Nass\Offsets;
 
+if ((string) getenv('NASS_COVERAGE') !== '' && extension_loaded('pcov')) {
+    \pcov\start(); // before src/ is loaded, so its lines are tracked
+}
 require __DIR__ . '/bootstrap.php';
 
 $pass = 0;
