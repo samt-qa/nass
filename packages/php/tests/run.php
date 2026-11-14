@@ -139,7 +139,7 @@ if ($minCoverage !== false && $minCoverage !== '') {
     }
     $src = realpath(__DIR__ . '/../src');
     $hit = $total = 0;
-    foreach (\pcov\collect(\pcovll) as $file => $lines) {
+    foreach (\pcov\collect(\pcov\all) as $file => $lines) {
         if (!str_starts_with((string) realpath($file), $src . DIRECTORY_SEPARATOR)) {
             continue;
         }
