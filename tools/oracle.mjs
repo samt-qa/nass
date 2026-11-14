@@ -85,7 +85,9 @@ export function normalize(text, level = "search", honorifics = "keep") {
   s = s.replace(/[A-Z]/g, (c) => c.toLowerCase());
   if (level === "loose") s = looseText(s);
   s = collapse(s);
-  if (honorifics === "strip") s = collapse(s.replace(level === "loose" ? RE_HON_LOOSE : RE_HON, ""));
+  if (honorifics === "strip") {
+    for (let prev = null; prev !== s; ) { prev = s; s = collapse(s.replace(level === "loose" ? RE_HON_LOOSE : RE_HON, "")); }
+  }
   return s;
 }
 

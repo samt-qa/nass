@@ -435,7 +435,13 @@ Buf normalizeBuf(String text, Level level, Honorifics honorifics) {
   _c1(b);
   if (level == Level.clean) return b;
   b = _pass3(b, honorifics, level == Level.loose);
-  if (honorifics == Honorifics.strip) b = _s7(b, level == Level.loose);
+  if (honorifics == Honorifics.strip) {
+    // Repeat until stable: a removal can make «الله» precede another formula.
+    for (var prev = -1; prev != b.length;) {
+      prev = b.length;
+      b = _s7(b, level == Level.loose);
+    }
+  }
   return b;
 }
 

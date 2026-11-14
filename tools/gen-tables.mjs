@@ -192,9 +192,23 @@ const dart =
   Object.entries(fields).map(([k, v]) => `const List<int> ${k} = [${v.join(",")}];`).join("\n") + "\n" +
   Object.entries(strFields).map(([k, v]) => `const List<String> ${k} = [${v.map((s) => JSON.stringify(s)).join(", ")}];`).join("\n") + "\n";
 
+// Presentation forms come in runs of consecutive code points with the same
+// expansion (isolated/final/initial/medial), so TS stores them as
+// [startKey, runLength, n, ...values] instead of one entry per key.
+const runs = (m) => {
+  const out = [];
+  for (let i = 0; i < m.length; ) {
+    let j = i + 1;
+    while (j < m.length && m[j][0] === m[j - 1][0] + 1 && m[j][1].join() === m[i][1].join()) j++;
+    out.push(m[i][0], j - i, m[i][1].length, ...m[i][1]);
+    i = j;
+  }
+  return out;
+};
+const tsFields = { ...fields, presentation: runs(T.presentation), presentationSearch: runs(T.presentationSearch) };
 const ts =
-  header("//") + "\n" +
-  Object.entries(fields).map(([k, v]) => `export const ${k}: readonly number[] = [${v.join(",")}];`).join("\n") + "\n" +
+  header("//") + "// presentation/presentationSearch are runs: [startKey, runLength, n, ...values].\n\n" +
+  Object.entries(tsFields).map(([k, v]) => `export const ${k}: readonly number[] = [${v.join(",")}];`).join("\n") + "\n" +
   Object.entries(strFields).map(([k, v]) => `export const ${k}: readonly string[] = ${JSON.stringify(v)};`).join("\n") + "\n";
 
 const php =
