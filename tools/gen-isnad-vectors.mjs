@@ -32,6 +32,14 @@ function find(text, anchor) {
   }
 }
 
+// Indices (tools/corpus/isnad-sample.json):
+//   0-99    v0.1 dev     -> split "dev"
+//   100-199 v0.1 test    -> split "dev" since 0.2 (its errors guided the 0.2 changes); ids keep "test"
+//   200-299 v0.2 dev     -> split "dev"
+//   300-499 v0.2 test    -> split "test" (held out)
+const idOf = (idx) => `isnad-${idx < 100 || (idx >= 200 && idx < 300) ? "dev" : "test"}-${String(idx).padStart(3, "0")}`;
+const splitOf = (idx) => (idx >= 300 ? "test" : "dev");
+
 const cases = [];
 const errors = [];
 for (const [idx, primary, ...alts] of LABELS) {
@@ -52,10 +60,10 @@ for (const [idx, primary, ...alts] of LABELS) {
   const isnad = input.slice(0, start).trim();
   if (show) console.log(`${idx}\t…${isnad.split(" ").slice(-6).join(" ")} ║ ${tail.slice(0, 5).join(" ")}`);
   cases.push({
-    id: `isnad-${idx < 100 ? "dev" : "test"}-${String(idx).padStart(3, "0")}`,
+    id: idOf(idx),
     note: `Isnad/matn boundary in ${h.work} #${h.n} (excerpt).`,
-    split: idx < 100 ? "dev" : "test",
-    review: reviewOf(`isnad-${idx < 100 ? "dev" : "test"}-${String(idx).padStart(3, "0")}`, input, accept),
+    split: splitOf(idx),
+    review: reviewOf(idOf(idx), input, accept),
     source: { work: h.work, ref: String(h.n), dataset: DATASET, verified: true, excerpt: true },
     input,
     expected: { isnad, matn: input.slice(start) },
@@ -76,9 +84,9 @@ cases.forEach((c, k) => {
 });
 writeVectors("isnad", {
   file: "isnad",
-  specVersion: "0.1",
+  specVersion: "0.2",
   status: "draft",
-  description: "Isnad/matn boundaries hand-labelled per SPEC §8.1. 'dev' cases guided the design; 'test' cases are held out. A split is correct when the matn starts at any offset in acceptMatnStart (UTF-16). 'reference' is the output of the reference implementation, which every package must reproduce exactly (matnStart -1 = no split).",
+  description: "Isnad/matn boundaries hand-labelled per SPEC §8.1. 'dev' cases guided the design (since 0.2 this includes the v0.1 test cases, ids isnad-test-100..199); 'test' cases (300-499) are held out. A split is correct when the matn starts at any offset in acceptMatnStart (UTF-16). 'reference' is the output of the reference implementation, which every package must reproduce exactly (matnStart -1 = no split).",
   cases,
 });
 console.log(`isnad.json: ${cases.length} cases`);
