@@ -7,6 +7,8 @@
 مواصفة واحدة · ثلاث حزم متطابقة المخرجات · Dart و TypeScript و PHP
 
 [![CI](https://github.com/samt-qa/nass/actions/workflows/ci.yml/badge.svg)](https://github.com/samt-qa/nass/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/@samt-qa/nass?logo=npm&label=npm)](https://www.npmjs.com/package/@samt-qa/nass)
+[![Packagist](https://img.shields.io/packagist/v/samt/nass?logo=packagist&logoColor=white&label=packagist)](https://packagist.org/packages/samt/nass)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Test vectors: CC0](https://img.shields.io/badge/test%20vectors-CC0-lightgrey.svg)](spec/vectors)
 [![Unicode 17](https://img.shields.io/badge/Unicode-17.0-informational.svg)](spec/SPEC.md)
@@ -59,7 +61,7 @@
 | PHP 8.3 فأحدث | `samt/nass` | `composer require samt/nass` | [packages/php](packages/php) |
 
 > [!NOTE]
-> **الإصدار 0.1.0، لم يُنشر بعد.** الكود مكتمل ومختبَر، والنشر على pub.dev و npm و Packagist قادم. حالات الاختبار `review: pending` حتى يراجعها مختص.
+> **الإصدار 0.1.0.** منشور على [npm](https://www.npmjs.com/package/@samt-qa/nass) و[Packagist](https://packagist.org/packages/samt/nass)، وحزمة Dart على pub.dev قادمة. حالات الاختبار `review: pending` حتى يراجعها مختص.
 
 ## أمثلة سريعة
 
