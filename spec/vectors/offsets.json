@@ -19,7 +19,7 @@
         6
       ],
       "note": "كل حرف يأخذ حركته التي تليه",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "off-clean-001",
@@ -39,7 +39,7 @@
         1
       ],
       "note": "تمدد: وحدة واحدة ← أربع",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "off-clean-002",
@@ -55,7 +55,7 @@
         1
       ],
       "note": "تمدد اللام ألف",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "off-search-002",
@@ -81,7 +81,7 @@
         8
       ],
       "note": "المسافة الباقية تُنسب للفاصلة، والمسافة المدموجة لا تُنسب",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "off-search-003",
@@ -101,7 +101,7 @@
         5
       ],
       "note": "علامة في أول النص تُهمل",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "off-clean-003",
@@ -121,7 +121,7 @@
         5
       ],
       "note": "التطويل يلحق الحاء قبله",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "off-search-004",
@@ -135,7 +135,7 @@
         2
       ],
       "note": "انكماش NFC: وحدتان ← وحدة",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "off-search-005",
@@ -153,7 +153,7 @@
         5
       ],
       "note": "مسافات الأطراف لا تُنسب",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "off-search-006",
@@ -209,7 +209,7 @@
         5
       ],
       "note": "تمدد رمز الصلاة إلى عبارة، والمسافات داخلها تُنسب للرمز",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "gen-off-001",

@@ -11,7 +11,7 @@
       "options": {},
       "expected": "سلامعليكم",
       "note": "RLM بين كلمتين يُحذف ولا يصير مسافة",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-clean-002",
@@ -21,7 +21,7 @@
       "options": {},
       "expected": "بسم",
       "note": "BOM في أول النص",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-clean-003",
@@ -31,7 +31,7 @@
       "options": {},
       "expected": "میخواهم",
       "note": "ZWNJ بجوار حرف عربي/فارسي يُحذف",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-clean-004",
@@ -41,7 +41,7 @@
       "options": {},
       "expected": "👨‍👩‍👧",
       "note": "ZWJ في رمز تعبيري لا يُمس [معتمد 1]",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-clean-005",
@@ -51,7 +51,7 @@
       "options": {},
       "expected": "محمد",
       "note": "تطويل متكرر",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-clean-006",
@@ -61,7 +61,7 @@
       "options": {},
       "expected": "مُحَمَّد",
       "note": "clean يحذف التطويل ويُبقي التشكيل",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-clean-007",
@@ -71,7 +71,7 @@
       "options": {},
       "expected": "لا",
       "note": "لام ألف U+FEFB",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-clean-008",
@@ -81,7 +81,7 @@
       "options": {},
       "expected": "الله",
       "note": "لفظ الجلالة U+FDF2",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-clean-009",
@@ -91,7 +91,7 @@
       "options": {},
       "expected": "محمد",
       "note": "صيغ عرض لحروف مفردة",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-clean-010",
@@ -101,7 +101,7 @@
       "options": {},
       "expected": "النبي ﷺ",
       "note": "رمز الصلاة لا يُفك في clean [معتمد 2]",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-clean-011",
@@ -111,7 +111,7 @@
       "options": {},
       "expected": "قال رسول الله",
       "note": "مسافة غير منكسرة وسطر جديد ومسافات الأطراف [معتمد 3]",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-clean-012",
@@ -121,7 +121,7 @@
       "options": {},
       "expected": "أ",
       "note": "ألف + همزة مركّبة تصير أ بـ NFC",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-001",
@@ -136,7 +136,7 @@
         "ref": "1",
         "verified": false
       },
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-002",
@@ -146,7 +146,7 @@
       "options": {},
       "expected": "كتاب",
       "note": "تنوين ضم",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-003",
@@ -161,7 +161,7 @@
         "ref": "الفاتحة 2",
         "verified": false
       },
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-004",
@@ -176,7 +176,7 @@
         "ref": "الفاتحة 1",
         "verified": false
       },
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-005",
@@ -186,7 +186,7 @@
       "options": {},
       "expected": "انه",
       "note": "الواو الصغيرة U+06E5 تُحذف",
-      "review": "pending",
+      "review": "approved",
       "source": {
         "work": "القرآن الكريم، رسم عثماني (Tanzil)",
         "ref": "كلمة ترد كثيرًا، منها البقرة 37",
@@ -201,7 +201,7 @@
       "options": {},
       "expected": "النبين",
       "note": "سلوك 1.0 الموثَّق: الياء الصغيرة تُحذف فتنقص ياء. يتغير مع quranicAlef في 1.1",
-      "review": "pending",
+      "review": "approved",
       "source": {
         "work": "القرآن الكريم، رسم عثماني (Tanzil)",
         "ref": "البقرة 61",
@@ -216,7 +216,7 @@
       "options": {},
       "expected": "قال",
       "note": "علامة وقف قرآنية منفردة U+06DA",
-      "review": "pending",
+      "review": "approved",
       "synthetic": true
     },
     {
@@ -227,7 +227,7 @@
       "options": {},
       "expected": "احمد ابراهيم امنة",
       "note": "توحيد الألف، والتاء المربوطة تبقى في search",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-009",
@@ -237,7 +237,7 @@
       "options": {},
       "expected": "مصطفي علي",
       "note": "الألف المقصورة ← ياء",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-010",
@@ -247,7 +247,7 @@
       "options": {},
       "expected": "كتاب فارسي",
       "note": "الكاف والياء الفارسيتان",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-011",
@@ -257,7 +257,7 @@
       "options": {},
       "expected": "هذه",
       "note": "الهاء الأردية بصيغتيها",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-012",
@@ -267,7 +267,7 @@
       "options": {},
       "expected": "الحديث 123 و 45",
       "note": "أرقام هندية وفارسية",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-013",
@@ -277,7 +277,7 @@
       "options": {},
       "expected": "3.5 و 1,000",
       "note": "الفاصلة العشرية وفاصل الآلاف بين رقمين",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-014",
@@ -287,7 +287,7 @@
       "options": {},
       "expected": "قال نعم ثم سكت",
       "note": "الترقيم يصير مسافة ثم تُوحَّد المسافات",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-015",
@@ -297,7 +297,7 @@
       "options": {},
       "expected": "العلم والعمل",
       "note": "فاصلة بلا مسافة: يجب ألا تلتصق الكلمتان",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-016",
@@ -307,7 +307,7 @@
       "options": {},
       "expected": "الاية 5",
       "note": "علامة نهاية الآية فاصل والرقم يبقى",
-      "review": "pending",
+      "review": "approved",
       "synthetic": true
     },
     {
@@ -318,7 +318,7 @@
       "options": {},
       "expected": "الربح +5$",
       "note": "الرموز (تصنيف S) لا تُمس",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-018",
@@ -328,7 +328,7 @@
       "options": {},
       "expected": "مكتبة flutter",
       "note": "تصغير ASCII [معتمد 5]",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-019",
@@ -338,7 +338,7 @@
       "options": {},
       "expected": "قال النبي صلي الله عليه وسلم",
       "note": "honorifics=keep يفك الرمز، ثم S3 يحوّل الألف المقصورة",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-020",
@@ -350,7 +350,7 @@
       },
       "expected": "قال النبي",
       "note": "honorifics=strip يحذف الرمز",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-021",
@@ -362,7 +362,7 @@
       },
       "expected": "قال رسول الله",
       "note": "الصيغة المكتوبة",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-022",
@@ -374,7 +374,7 @@
       },
       "expected": "عن عائشة",
       "note": "ترضّي المؤنث",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-023",
@@ -386,7 +386,7 @@
       },
       "expected": "قال الله",
       "note": "«تعالى» بعد لفظ الجلالة تُحذف",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-024",
@@ -398,7 +398,7 @@
       },
       "expected": "فتعالي الله الملك الحق",
       "note": "«تعالى» ليست بعد لفظ الجلالة فلا تُمس [معتمد 6]",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-025",
@@ -410,7 +410,7 @@
       },
       "expected": "ثم تعالي النهار",
       "note": "«تعالى» فعلًا",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-026",
@@ -422,7 +422,7 @@
       },
       "expected": "بسم الله الرحمن الرحيم",
       "note": "البسملة تُفك دائمًا ولا تُحذف",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-loose-001",
@@ -432,7 +432,7 @@
       "options": {},
       "expected": "مدرسه",
       "note": "التاء المربوطة",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-loose-002",
@@ -442,7 +442,7 @@
       "options": {},
       "expected": "مومن قايم",
       "note": "الهمزة على الواو والياء",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-loose-003",
@@ -452,7 +452,7 @@
       "options": {},
       "expected": "سما",
       "note": "حذف الهمزة المنفردة، دمج مقصود",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-loose-004",
@@ -462,7 +462,7 @@
       "options": {},
       "expected": "شي",
       "note": "همزة متطرفة بعد التشكيل",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-edge-001",
@@ -471,7 +471,7 @@
       "options": {},
       "expected": "",
       "note": "نص فارغ",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-edge-002",
@@ -480,7 +480,7 @@
       "options": {},
       "expected": "",
       "note": "علامات فقط بلا حروف",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-edge-003",
@@ -489,7 +489,7 @@
       "options": {},
       "expected": "hello world",
       "note": "نص لاتيني خالص",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-edge-004",
@@ -498,7 +498,7 @@
       "options": {},
       "expected": "",
       "note": "ترقيم فقط",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-edge-005",
@@ -509,7 +509,7 @@
         "honorifics": "strip"
       },
       "note": "S7 يتكرر حتى يستقر: حذف «تعالى» يجعل الثانية بعد لفظ الجلالة (اختبار انحدار)",
-      "review": "pending",
+      "review": "approved",
       "synthetic": true,
       "expected": "قال الله"
     },
@@ -522,7 +522,7 @@
         "honorifics": "strip"
       },
       "note": "في loose يسبق L1 قاعدةَ S7، فالهمزة المنفردة تُحذف ولا تمنع المطابقة",
-      "review": "pending",
+      "review": "approved",
       "synthetic": true,
       "expected": "سبحان الله"
     },

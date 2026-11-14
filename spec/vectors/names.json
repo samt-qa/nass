@@ -8,14 +8,14 @@
       "input": "أبو هريرة",
       "expected": "ابو هريره",
       "note": "كنية بالرفع",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "names-key-002",
       "input": "أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ",
       "expected": "ابو هريره",
       "note": "كنية بالجر مع تشكيل وترضّ",
-      "review": "pending",
+      "review": "approved",
       "synthetic": true
     },
     {
@@ -23,63 +23,63 @@
       "input": "عبد الله بن عمر",
       "expected": "عبدالله بن عمر",
       "note": "ضم عبد",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "names-key-004",
       "input": "ابن عباس",
       "expected": "بن عباس",
       "note": "ابن في أول الاسم [معتمد 9]",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "names-key-005",
       "input": "أبو عبد الله البخاري",
       "expected": "ابو عبدالله البخاري",
       "note": "كنية ثم مركّب",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "names-key-006",
       "input": "ذا اليدين",
       "expected": "ذو اليدين",
       "note": "ذا قبل اسم معروف [معتمد 8]",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "names-key-007",
       "input": "عائشة رضي الله عنها",
       "expected": "عايشه",
       "note": "ترضّي المؤنث ثم الهمزة والتاء",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "names-key-008",
       "input": "فاطمة ابنة محمد",
       "expected": "فاطمه بنت محمد",
       "note": "ابنة ← بنت",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "names-key-009",
       "input": "عبد المطلب",
       "expected": "عبدالمطلب",
       "note": "عبد مع غير الأسماء الحسنى [معتمد 11]",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "names-key-010",
       "input": "مالك بن أنس الإمام",
       "expected": "مالك بن انس",
       "note": "لقب ملحق في الآخر [معتمد 7]",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "names-key-011",
       "input": "الإمام مالك",
       "expected": "الامام مالك",
       "note": "اللقب في الأول لا يُحذف",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "names-same-001",
@@ -90,7 +90,7 @@
         "ابى بكر"
       ],
       "note": "حالات الكنية الثلاث مع ألف مقصورة",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "names-same-002",
@@ -100,7 +100,7 @@
         "عَبْدُ الرَّحْمَنِ بْنُ عَوْفٍ"
       ],
       "note": "مركّب ومشكول",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "names-same-003",
@@ -109,7 +109,7 @@
         "بن مسعود"
       ],
       "note": "ابن وبن",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "names-diff-001",
@@ -118,7 +118,7 @@
         "سفيان بن عيينة"
       ],
       "note": "اسمان مختلفان يبقيان مختلفين",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "names-diff-002",
@@ -127,7 +127,7 @@
         "أبو بكر"
       ],
       "note": "الكنية وحدها لا تكفي للدمج",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "gen-names-key-016",

@@ -21,7 +21,7 @@
         "ref": "1",
         "verified": false
       },
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "search-phrase-002",
@@ -41,7 +41,7 @@
         "ref": "1",
         "verified": false
       },
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "search-phrase-003",
@@ -61,7 +61,7 @@
         }
       ],
       "note": "تطابقان، والثاني داخل «والعلم»",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "search-whole-001",
@@ -78,7 +78,7 @@
         }
       ],
       "note": "wholeWord يستبعد «والعلم»",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "search-whole-002",
@@ -95,7 +95,7 @@
         }
       ],
       "note": "الترقيم حد للكلمة",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "search-overlap-001",
@@ -110,7 +110,7 @@
         }
       ],
       "note": "لا تداخل",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "search-lig-001",
@@ -125,7 +125,7 @@
         }
       ],
       "note": "تطابق جزء من رمز ممتد يظلل الرمز كله",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "search-all-001",
@@ -147,7 +147,7 @@
         }
       ],
       "note": "كل الكلمات موجودة، والنتائج مرتبة بالموضع",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "search-all-002",
@@ -158,7 +158,7 @@
       },
       "expected": [],
       "note": "كلمة غائبة ← لا نتائج",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "search-any-001",
@@ -175,7 +175,7 @@
         }
       ],
       "note": "أي كلمة",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "search-empty-001",
@@ -184,7 +184,7 @@
       "options": {},
       "expected": [],
       "note": "عبارة بحث فارغة بعد التطبيع",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "search-loose-001",
@@ -201,7 +201,7 @@
         }
       ],
       "note": "loose يطابق الهاء بالتاء",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "search-loose-002",
@@ -210,7 +210,7 @@
       "options": {},
       "expected": [],
       "note": "search لا يطابقهما [القرار المفتوح 2]",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "gen-search-001",

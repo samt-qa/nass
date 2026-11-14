@@ -62,7 +62,7 @@
 | PHP 8.3 فأحدث | `samt/nass` | `composer require samt/nass` | [packages/php](packages/php) |
 
 > [!NOTE]
-> **الإصدار 0.1.0.** منشور على [pub.dev](https://pub.dev/packages/nass) و[npm](https://www.npmjs.com/package/@samt-qa/nass) و[Packagist](https://packagist.org/packages/samt/nass). حالات الاختبار `review: pending` حتى يراجعها مختص.
+> **الإصدار 0.1.0.** منشور على [pub.dev](https://pub.dev/packages/nass) و[npm](https://www.npmjs.com/package/@samt-qa/nass) و[Packagist](https://packagist.org/packages/samt/nass). حالات الاختبار كلها مراجَعة ومعتمدة ([المواصفة، القسم 12](spec/SPEC.md)).
 
 ## أمثلة سريعة
 

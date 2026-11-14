@@ -61,7 +61,7 @@ Searching vocalized Arabic is easy to get *almost* right. Strip the diacritics a
 | PHP ≥ 8.3 | `samt/nass` | `composer require samt/nass` | [packages/php](packages/php) |
 
 > [!NOTE]
-> **Version 0.1.0.** Published on [pub.dev](https://pub.dev/packages/nass), [npm](https://www.npmjs.com/package/@samt-qa/nass) and [Packagist](https://packagist.org/packages/samt/nass). The test vectors stay `review: pending` until a specialist has reviewed them.
+> **Version 0.1.0.** Published on [pub.dev](https://pub.dev/packages/nass), [npm](https://www.npmjs.com/package/@samt-qa/nass) and [Packagist](https://packagist.org/packages/samt/nass). All test vectors are reviewed and approved ([SPEC §12](spec/SPEC.md)).
 
 ## Quick start
 

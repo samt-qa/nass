@@ -2,8 +2,18 @@
 // Usage: node tools/gen-isnad-vectors.mjs [--show]
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { root, DATASET, writeVectors, dart } from "./lib.mjs";
+import { root, DATASET, readVectors, writeVectors, dart } from "./lib.mjs";
 import { LABELS } from "./isnad-labels.mjs";
+
+// Keep each case's review status across regenerations. A case is "approved" only while its
+// label (input and accepted boundaries) is unchanged; any change sends it back to "pending".
+const previous = new Map();
+try { for (const c of readVectors("isnad").cases) previous.set(c.id, c); } catch {}
+const reviewOf = (id, input, accept) => {
+  const p = previous.get(id);
+  return p && p.review === "approved" && p.input === input && JSON.stringify(p.acceptMatnStart) === JSON.stringify(accept)
+    ? "approved" : "pending";
+};
 
 const sample = JSON.parse(readFileSync(join(root, "tools", "corpus", "isnad-sample.json"), "utf8"));
 const show = process.argv.includes("--show");
@@ -45,7 +55,7 @@ for (const [idx, primary, ...alts] of LABELS) {
     id: `isnad-${idx < 100 ? "dev" : "test"}-${String(idx).padStart(3, "0")}`,
     note: `Isnad/matn boundary in ${h.work} #${h.n} (excerpt).`,
     split: idx < 100 ? "dev" : "test",
-    review: "pending",
+    review: reviewOf(`isnad-${idx < 100 ? "dev" : "test"}-${String(idx).padStart(3, "0")}`, input, accept),
     source: { work: h.work, ref: String(h.n), dataset: DATASET, verified: true, excerpt: true },
     input,
     expected: { isnad, matn: input.slice(start) },
