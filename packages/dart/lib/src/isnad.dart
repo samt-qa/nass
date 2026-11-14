@@ -30,14 +30,25 @@ final _tv = _set(
 );
 final _abbr = _set('ثنا نا أنا أنبا');
 final _pronTv = _set(
-  'حدثه حدثته حدثها حدثهم أخبره أخبرته أخبرها أخبرهم حدث أخبر',
+  'حدثه حدثته حدثها حدثهم حدثهما أخبره أخبرته أخبرها أخبرهم أخبرهما حدث أخبر',
 );
 final _say = _set('قال قالت قالا قالوا يقول تقول يقولا يقولان');
 final _hear = _set('سمعت سمع سمعه سمعنا سمعته سمعتها');
 final _skip = _set('و ح أحسبه');
 final _raise = _set('يرويه يرفعه رفعه');
 final _qualifier = _set('يعني تعني وهو هو واسمه');
-final _client = _set('زوج مولى');
+final _client = _set('زوج مولى صاحب');
+final _mawla = _w('مولى'), _ha = _w('ح'), _wording = _w('واللفظ');
+// Names that may follow «قال قال» (SPEC §8.3): a kunya/patronymic head takes the next word.
+final _nameHead = _set('أبو أبي أبا أم ابن بنت عبد');
+final _nameLink = _set('بن ابن بنت');
+// First-person narrative verbs: a story, never a narrator's name (SPEC §8.2).
+final _narrative = _set(
+  'أتيت أتينا أتاني أتانا سألت سألنا سألني دخلت دخلنا خرجت خرجنا رأيت رأينا شهدت جاءنا جاءني قدمت قدمنا صليت صلينا',
+);
+final _heardHim = _set('سمعته سمعتها سمعه');
+// «قراءة عليه وأنا أسمع» (al-Nasa'i) between a narrator and the next link.
+final _qira2a = normalize('قراءة عليه وأنا أسمع').split(' ');
 final _stop = {
   ..._tv,
   ..._abbr,
@@ -49,7 +60,7 @@ final _stop = {
   ..._qualifier,
   ..._client,
   ..._set(
-    'عن أن أنه أنها يحدث رضي رسول النبي نبي صلى في يا لما إذا إذ كان كانت كانوا كنا كنت لا ما لم لن هل قد ثم إلى',
+    'عن أن أنه أنها أنهم أنهما يحدث رضي رسول النبي نبي نبيكم صلى في يا لما إذا إذ كان كانت كانوا كنا كنت لا ما لم لن هل قد ثم إلى قراءة واللفظ',
   ),
 };
 final _prophet = [
@@ -57,6 +68,7 @@ final _prophet = [
   _set('النبي').single,
   _set('نبي').single,
   _set('الله').single,
+  _set('نبيكم').single,
 ];
 final _salawat = normalize('صلى الله عليه وسلم').split(' ');
 final _peace = normalize('عليه السلام').split(' ');
@@ -117,6 +129,8 @@ class _Parser {
       j = i + 1;
     } else if (at(i) == _prophet[2] && at(i + 1) == _prophet[3]) {
       j = i + 2;
+    } else if (at(i) == _prophet[4]) {
+      j = i + 1;
     } else {
       return -1;
     }
@@ -175,6 +189,7 @@ class _Parser {
       return j < 0 ? -1 : after(j, strong: true);
     }
     if (_hear.contains(x)) {
+      if (_heardHim.contains(x) && _say.contains(at(i + 1))) return _done(i + 2, 2);
       final p = prophet(i + 1);
       if (p >= 0) return prophetEnd(p);
       final from = at(i + 1) == _min ? i + 2 : i + 1;
@@ -194,11 +209,17 @@ class _Parser {
         return _done(i, 3);
       }
       return _try(() {
-        final j = name(i + 1, text.substring(st[i], en[i]), _maxWeakName);
+        var j = name(i + 1, text.substring(st[i], en[i]), _maxStrongName);
         if (j < 0) return -1;
-        final h = honorific(j);
-        if (h >= 0) return after(h, strong: true);
-        return _pronTv.contains(at(j)) ? link(j) : -1;
+        final (k, honored) = tail(j);
+        if (honored) return after(k, strong: true);
+        if (_pronTv.contains(at(k))) return link(k);
+        // «أن أبا هريرة قال قال رسول الله ﷺ»: accepted only when it reaches the Prophet.
+        if (_say.contains(at(k))) {
+          final r = say(k);
+          return how == 3 ? r : -1;
+        }
+        return -1;
       });
     }
     if (_pronTv.contains(x)) {
@@ -244,6 +265,11 @@ class _Parser {
     var j = p;
     if (at(j) == _anhu) j++;
     if (_say.contains(at(j))) return _done(j + 1, 3);
+    // Another chain follows: «… عن النبي ﷺ ح و حدثنا …».
+    if (at(p) == _ha && p + 1 < n) {
+      final r = _try(() => link(p));
+      if (r >= 0) return r;
+    }
     return _done(p, 3);
   }
 
@@ -254,7 +280,18 @@ class _Parser {
     final x = at(j);
     if (_say.contains(x)) {
       final r = _try(() => sayCont(j));
-      return r >= 0 ? r : _done(j, 2);
+      if (r >= 0) return r;
+      // «قال قال أنس ║ …»: a short name, then the matn.
+      final k = at(j + 1) == _li || at(j + 1) == _lana ? j + 1 : shortName(j + 1);
+      if (k > j + 1) {
+        narrators.add(Narrator(text.substring(st[j + 1], en[k - 1]), text.substring(st[j], en[j])));
+        return _done(k, 2);
+      }
+      return _done(j, 2);
+    }
+    if (_pronTv.contains(x) || (x == _qara2tu && at(j + 1) == _3ala)) {
+      final r = _try(() => link(j));
+      if (r >= 0) return r;
     }
     if (x == _li || x == _lana) {
       final p = prophet(j + 1);
@@ -270,7 +307,29 @@ class _Parser {
     return _try(() => _weak(j, i));
   }
 
+  /// End of a short name at [i] («أنس», «ابن عباس», «عبد الله بن عمرو»), or [i].
+  int shortName(int i) {
+    var j = i;
+    int unit(int k) {
+      if (k >= n || _stop.contains(w[k]) || isTv(k)) return -1;
+      if (_nameHead.contains(w[k])) {
+        return k + 1 < n && !_stop.contains(w[k + 1]) && !isTv(k + 1) ? k + 2 : -1;
+      }
+      return k + 1;
+    }
+    final u = unit(j);
+    if (u < 0) return i;
+    j = u;
+    while (_nameLink.contains(at(j))) {
+      final v = unit(j + 1);
+      if (v < 0) break;
+      j = v;
+    }
+    return j;
+  }
+
   int _weak(int i, int formAt) {
+    if (_narrative.contains(at(i))) return -1;
     final j = name(i, text.substring(st[formAt], en[formAt]), _maxWeakName);
     if (j < 0) return -1;
     return after(j, strong: false);
@@ -283,6 +342,27 @@ class _Parser {
 
   /// Continues after a narrator name ending at [j].
   int after(int j, {required bool strong}) {
+    final (k, honored) = tail(j);
+    j = k;
+    if (j >= n) return -1;
+    if (_say.contains(at(j))) {
+      final r = sayCont(j);
+      return r >= 0 ? r : _done(j + 1, 2);
+    }
+    if (isTv(j, abbr: true) || _isLinkWord(j)) {
+      final r = _try(
+        () => link(j, max: strong ? _maxStrongName : _maxWeakName),
+      );
+      if (r >= 0) return r;
+      // A transmission word cannot start the matn: the chain is broken.
+      if (isTv(j, abbr: true)) return -1;
+    }
+    return strong || honored ? _done(j, 1) : -1;
+  }
+
+  /// Skips what may follow a narrator's name: honorifics, «يعني …», «مولى …»,
+  /// «زوج النبي ﷺ», «قراءة عليه وأنا أسمع». Returns the end and whether an honorific was seen.
+  (int, bool) tail(int j) {
     var honored = false;
     for (;;) {
       final h = honorific(j);
@@ -305,23 +385,28 @@ class _Parser {
           j = p;
           continue;
         }
+        // «أبي مرة مولى عقيل بن أبي طالب»: the patron's name qualifies the narrator.
+        if (at(j) == _mawla) {
+          final k = _try(() => name(j + 1, '', _maxWeakName));
+          if (k >= 0) {
+            narrators.removeLast();
+            j = k;
+            continue;
+          }
+        }
+      }
+      // «واللفظ له» / «واللفظ لسعيد»: whose wording is given.
+      if (at(j) == _wording && j + 2 < n) {
+        j += 2;
+        continue;
+      }
+      if (_seq(j, _qira2a)) {
+        j += _qira2a.length;
+        continue;
       }
       break;
     }
-    if (j >= n) return -1;
-    if (_say.contains(at(j))) {
-      final r = sayCont(j);
-      return r >= 0 ? r : _done(j + 1, 2);
-    }
-    if (isTv(j, abbr: true) || _isLinkWord(j)) {
-      final r = _try(
-        () => link(j, max: strong ? _maxStrongName : _maxWeakName),
-      );
-      if (r >= 0) return r;
-      // A transmission word cannot start the matn: the chain is broken.
-      if (isTv(j, abbr: true)) return -1;
-    }
-    return strong || honored ? _done(j, 1) : -1;
+    return (j, honored);
   }
 }
 
