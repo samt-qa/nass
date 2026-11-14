@@ -1,0 +1,5265 @@
+{
+ "library": "Ifazawezk/arabic-normalize (TypeScript)",
+ "repo": "https://github.com/Ifazawezk/arabic-normalize",
+ "commit": "353b6936e2c53a369d6f4ce0aacaef5988511dd8",
+ "date": "2026-11-14",
+ "specVersion": "0.1",
+ "totals": {
+  "normalize\tC2": {
+   "pass": 8,
+   "fail": 0,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tC3": {
+   "pass": 2,
+   "fail": 0,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tC4": {
+   "pass": 7,
+   "fail": 2,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tC5": {
+   "pass": 3,
+   "fail": 0,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tC1": {
+   "pass": 8,
+   "fail": 0,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tS2": {
+   "pass": 8,
+   "fail": 0,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tS3": {
+   "pass": 6,
+   "fail": 2,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tS4": {
+   "pass": 5,
+   "fail": 1,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tS5": {
+   "pass": 4,
+   "fail": 5,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tS6": {
+   "pass": 0,
+   "fail": 1,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tS1": {
+   "pass": 2,
+   "fail": 1,
+   "unsupported": 3,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tS7": {
+   "pass": 0,
+   "fail": 0,
+   "unsupported": 11,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tL1": {
+   "pass": 3,
+   "fail": 3,
+   "unsupported": 2,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tedge": {
+   "pass": 2,
+   "fail": 2,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tS2+S3": {
+   "pass": 1,
+   "fail": 0,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tC4+S3": {
+   "pass": 1,
+   "fail": 0,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tcorpus/search": {
+   "pass": 42,
+   "fail": 0,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tcorpus/search+strip": {
+   "pass": 0,
+   "fail": 0,
+   "unsupported": 42,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tcorpus/loose": {
+   "pass": 35,
+   "fail": 7,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tcorpus/clean": {
+   "pass": 42,
+   "fail": 0,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "normalize\tcorpus/loose+strip": {
+   "pass": 0,
+   "fail": 0,
+   "unsupported": 41,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "search\tphrase": {
+   "pass": 35,
+   "fail": 0,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "search\twholeWord": {
+   "pass": 0,
+   "fail": 0,
+   "unsupported": 30,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "search\tallWords": {
+   "pass": 0,
+   "fail": 0,
+   "unsupported": 29,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "search\tanyWord": {
+   "pass": 0,
+   "fail": 0,
+   "unsupported": 28,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  },
+  "search\tphrase/loose": {
+   "pass": 28,
+   "fail": 0,
+   "unsupported": 0,
+   "wsOnly": 0,
+   "boolAgree": 0,
+   "boolTotal": 0
+  }
+ },
+ "results": [
+  {
+   "file": "normalize",
+   "id": "norm-clean-001",
+   "family": "C2",
+   "status": "pass",
+   "input": "سلام‏عليكم",
+   "level": "clean",
+   "options": {},
+   "expected": "سلامعليكم",
+   "actual": "سلامعليكم"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-clean-002",
+   "family": "C2",
+   "status": "pass",
+   "input": "﻿بسم",
+   "level": "clean",
+   "options": {},
+   "expected": "بسم",
+   "actual": "بسم"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-clean-003",
+   "family": "C2",
+   "status": "pass",
+   "input": "می‌خواهم",
+   "level": "clean",
+   "options": {},
+   "expected": "میخواهم",
+   "actual": "میخواهم"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-clean-004",
+   "family": "C2",
+   "status": "pass",
+   "input": "👨‍👩‍👧",
+   "level": "clean",
+   "options": {},
+   "expected": "👨‍👩‍👧",
+   "actual": "👨‍👩‍👧"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-clean-005",
+   "family": "C3",
+   "status": "pass",
+   "input": "محـــمد",
+   "level": "clean",
+   "options": {},
+   "expected": "محمد",
+   "actual": "محمد"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-clean-006",
+   "family": "C3",
+   "status": "pass",
+   "input": "مُحَـمَّد",
+   "level": "clean",
+   "options": {},
+   "expected": "مُحَمَّد",
+   "actual": "مُحَمَّد"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-clean-007",
+   "family": "C4",
+   "status": "pass",
+   "input": "ﻻ",
+   "level": "clean",
+   "options": {},
+   "expected": "لا",
+   "actual": "لا"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-clean-008",
+   "family": "C4",
+   "status": "pass",
+   "input": "ﷲ",
+   "level": "clean",
+   "options": {},
+   "expected": "الله",
+   "actual": "الله"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-clean-009",
+   "family": "C4",
+   "status": "pass",
+   "input": "ﻣﺤﻤﺪ",
+   "level": "clean",
+   "options": {},
+   "expected": "محمد",
+   "actual": "محمد"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-clean-010",
+   "family": "C4",
+   "status": "fail",
+   "input": "النبي ﷺ",
+   "level": "clean",
+   "options": {},
+   "expected": "النبي ﷺ",
+   "actual": "النبي صلى الله عليه وسلم"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-clean-011",
+   "family": "C5",
+   "status": "pass",
+   "input": "  قال  رسول\nالله  ",
+   "level": "clean",
+   "options": {},
+   "expected": "قال رسول الله",
+   "actual": "قال رسول الله"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-clean-012",
+   "family": "C1",
+   "status": "pass",
+   "input": "أ",
+   "level": "clean",
+   "options": {},
+   "expected": "أ",
+   "actual": "أ"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-001",
+   "family": "S2",
+   "status": "pass",
+   "input": "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ",
+   "level": "search",
+   "options": {},
+   "expected": "انما الاعمال بالنيات",
+   "actual": "انما الاعمال بالنيات"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-002",
+   "family": "S2",
+   "status": "pass",
+   "input": "كِتَابٌ",
+   "level": "search",
+   "options": {},
+   "expected": "كتاب",
+   "actual": "كتاب"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-003",
+   "family": "S2",
+   "status": "pass",
+   "input": "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ",
+   "level": "search",
+   "options": {},
+   "expected": "الحمد لله رب العلمين",
+   "actual": "الحمد لله رب العلمين"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-004",
+   "family": "S2",
+   "status": "pass",
+   "input": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+   "level": "search",
+   "options": {},
+   "expected": "بسم الله الرحمن الرحيم",
+   "actual": "بسم الله الرحمن الرحيم"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-005",
+   "family": "S2",
+   "status": "pass",
+   "input": "إِنَّهُۥ",
+   "level": "search",
+   "options": {},
+   "expected": "انه",
+   "actual": "انه"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-006",
+   "family": "S2",
+   "status": "pass",
+   "input": "ٱلنَّبِيِّـۧنَ",
+   "level": "search",
+   "options": {},
+   "expected": "النبين",
+   "actual": "النبين"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-007",
+   "family": "S2",
+   "status": "pass",
+   "input": "قَالَ ۚ",
+   "level": "search",
+   "options": {},
+   "expected": "قال",
+   "actual": "قال"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-008",
+   "family": "S3",
+   "status": "pass",
+   "input": "أحمد إبراهيم آمنة",
+   "level": "search",
+   "options": {},
+   "expected": "احمد ابراهيم امنة",
+   "actual": "احمد ابراهيم امنة"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-009",
+   "family": "S3",
+   "status": "pass",
+   "input": "مصطفى على",
+   "level": "search",
+   "options": {},
+   "expected": "مصطفي علي",
+   "actual": "مصطفي علي"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-010",
+   "family": "S3",
+   "status": "pass",
+   "input": "کتاب فارسی",
+   "level": "search",
+   "options": {},
+   "expected": "كتاب فارسي",
+   "actual": "كتاب فارسي"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-011",
+   "family": "S3",
+   "status": "pass",
+   "input": "ھذہ",
+   "level": "search",
+   "options": {},
+   "expected": "هذه",
+   "actual": "هذه"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-012",
+   "family": "S4",
+   "status": "pass",
+   "input": "الحديث ١٢٣ و ۴۵",
+   "level": "search",
+   "options": {},
+   "expected": "الحديث 123 و 45",
+   "actual": "الحديث 123 و 45"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-013",
+   "family": "S4",
+   "status": "pass",
+   "input": "٣٫٥ و ١٬٠٠٠",
+   "level": "search",
+   "options": {},
+   "expected": "3.5 و 1,000",
+   "actual": "3.5 و 1,000"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-014",
+   "family": "S5",
+   "status": "fail",
+   "input": "قال: «نعم»، ثم سكت.",
+   "level": "search",
+   "options": {},
+   "expected": "قال نعم ثم سكت",
+   "actual": "قال: «نعم»، ثم سكت."
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-015",
+   "family": "S5",
+   "status": "fail",
+   "input": "العلم،والعمل",
+   "level": "search",
+   "options": {},
+   "expected": "العلم والعمل",
+   "actual": "العلم،والعمل"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-016",
+   "family": "S5",
+   "status": "pass",
+   "input": "الآية ۝٥",
+   "level": "search",
+   "options": {},
+   "expected": "الاية 5",
+   "actual": "الاية 5"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-017",
+   "family": "S5",
+   "status": "pass",
+   "input": "الربح +5$",
+   "level": "search",
+   "options": {},
+   "expected": "الربح +5$",
+   "actual": "الربح +5$"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-018",
+   "family": "S6",
+   "status": "fail",
+   "input": "مكتبة Flutter",
+   "level": "search",
+   "options": {},
+   "expected": "مكتبة flutter",
+   "actual": "مكتبة Flutter"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-019",
+   "family": "S1",
+   "status": "pass",
+   "input": "قال النبي ﷺ",
+   "level": "search",
+   "options": {},
+   "expected": "قال النبي صلي الله عليه وسلم",
+   "actual": "قال النبي صلي الله عليه وسلم"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-020",
+   "family": "S1",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-021",
+   "family": "S7",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-022",
+   "family": "S7",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-023",
+   "family": "S7",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-024",
+   "family": "S7",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-025",
+   "family": "S7",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-search-026",
+   "family": "S1",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-loose-001",
+   "family": "L1",
+   "status": "pass",
+   "input": "مدرسة",
+   "level": "loose",
+   "options": {},
+   "expected": "مدرسه",
+   "actual": "مدرسه"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-loose-002",
+   "family": "L1",
+   "status": "pass",
+   "input": "مؤمن قائم",
+   "level": "loose",
+   "options": {},
+   "expected": "مومن قايم",
+   "actual": "مومن قايم"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-loose-003",
+   "family": "L1",
+   "status": "fail",
+   "input": "سماء",
+   "level": "loose",
+   "options": {},
+   "expected": "سما",
+   "actual": "سماء"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-loose-004",
+   "family": "L1",
+   "status": "fail",
+   "input": "شَيْءٌ",
+   "level": "loose",
+   "options": {},
+   "expected": "شي",
+   "actual": "شيء"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-edge-001",
+   "family": "edge",
+   "status": "pass",
+   "input": "",
+   "level": "search",
+   "options": {},
+   "expected": "",
+   "actual": ""
+  },
+  {
+   "file": "normalize",
+   "id": "norm-edge-002",
+   "family": "edge",
+   "status": "pass",
+   "input": "ًٌٍَُِّْ",
+   "level": "search",
+   "options": {},
+   "expected": "",
+   "actual": ""
+  },
+  {
+   "file": "normalize",
+   "id": "norm-edge-003",
+   "family": "edge",
+   "status": "fail",
+   "input": "Hello, World!",
+   "level": "search",
+   "options": {},
+   "expected": "hello world",
+   "actual": "Hello, World!"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-edge-004",
+   "family": "edge",
+   "status": "fail",
+   "input": "،،،",
+   "level": "search",
+   "options": {},
+   "expected": "",
+   "actual": "،،،"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-edge-005",
+   "family": "S7",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "norm-edge-006",
+   "family": "L1",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-001",
+   "family": "C4",
+   "status": "pass",
+   "input": "ﺑِﺴْﻢِ",
+   "level": "clean",
+   "options": {},
+   "expected": "بِسْمِ",
+   "actual": "بِسْمِ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-002",
+   "family": "C4",
+   "status": "pass",
+   "input": "ﹰ",
+   "level": "clean",
+   "options": {},
+   "expected": "ً",
+   "actual": "ً"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-003",
+   "family": "C4",
+   "status": "pass",
+   "input": "ﻷ",
+   "level": "clean",
+   "options": {},
+   "expected": "لأ",
+   "actual": "لأ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-004",
+   "family": "C4",
+   "status": "pass",
+   "input": "ﻵ",
+   "level": "clean",
+   "options": {},
+   "expected": "لآ",
+   "actual": "لآ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-005",
+   "family": "C4",
+   "status": "fail",
+   "input": "ﷺ",
+   "level": "clean",
+   "options": {},
+   "expected": "ﷺ",
+   "actual": "صلى الله عليه وسلم"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-006",
+   "family": "C1",
+   "status": "pass",
+   "input": "آ",
+   "level": "clean",
+   "options": {},
+   "expected": "آ",
+   "actual": "آ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-007",
+   "family": "C1",
+   "status": "pass",
+   "input": "ئ",
+   "level": "clean",
+   "options": {},
+   "expected": "ئ",
+   "actual": "ئ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-008",
+   "family": "C1",
+   "status": "pass",
+   "input": "ؤ",
+   "level": "clean",
+   "options": {},
+   "expected": "ؤ",
+   "actual": "ؤ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-009",
+   "family": "C1",
+   "status": "pass",
+   "input": "إ",
+   "level": "clean",
+   "options": {},
+   "expected": "إ",
+   "actual": "إ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-010",
+   "family": "C1",
+   "status": "pass",
+   "input": "بَّ",
+   "level": "clean",
+   "options": {},
+   "expected": "بَّ",
+   "actual": "بَّ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-011",
+   "family": "C1",
+   "status": "pass",
+   "input": "بِْ",
+   "level": "clean",
+   "options": {},
+   "expected": "بِْ",
+   "actual": "بِْ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-012",
+   "family": "C1",
+   "status": "pass",
+   "input": "ا‏ٔ",
+   "level": "clean",
+   "options": {},
+   "expected": "أ",
+   "actual": "أ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-013",
+   "family": "C2",
+   "status": "pass",
+   "input": "ـ‍A",
+   "level": "clean",
+   "options": {},
+   "expected": "A",
+   "actual": "A"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-014",
+   "family": "C2",
+   "status": "pass",
+   "input": "A‍B",
+   "level": "clean",
+   "options": {},
+   "expected": "A‍B",
+   "actual": "A‍B"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-015",
+   "family": "C2",
+   "status": "pass",
+   "input": "‫نص‬",
+   "level": "clean",
+   "options": {},
+   "expected": "نص",
+   "actual": "نص"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-016",
+   "family": "C2",
+   "status": "pass",
+   "input": "⁧نص⁩",
+   "level": "clean",
+   "options": {},
+   "expected": "نص",
+   "actual": "نص"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-017",
+   "family": "C5",
+   "status": "pass",
+   "input": "قال  نعم",
+   "level": "clean",
+   "options": {},
+   "expected": "قال نعم",
+   "actual": "قال نعم"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-018",
+   "family": "C5",
+   "status": "pass",
+   "input": "قال\t\r\nنعم",
+   "level": "clean",
+   "options": {},
+   "expected": "قال نعم",
+   "actual": "قال نعم"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-019",
+   "family": "S1",
+   "status": "pass",
+   "input": "ﷻ",
+   "level": "search",
+   "options": {},
+   "expected": "جل جلاله",
+   "actual": "جل جلاله"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-020",
+   "family": "S1",
+   "status": "fail",
+   "input": "﵁",
+   "level": "search",
+   "options": {},
+   "expected": "رضي الله عنه",
+   "actual": "﵁"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-021",
+   "family": "S1",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-022",
+   "family": "S2+S3",
+   "status": "pass",
+   "input": "مُوسَىٰ",
+   "level": "search",
+   "options": {},
+   "expected": "موسي",
+   "actual": "موسي"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-023",
+   "family": "S2",
+   "status": "pass",
+   "input": "الصَّلَوٰةَ",
+   "level": "search",
+   "options": {},
+   "expected": "الصلوة",
+   "actual": "الصلوة"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-024",
+   "family": "C4+S3",
+   "status": "pass",
+   "input": "ﺁﻣﻦ",
+   "level": "search",
+   "options": {},
+   "expected": "امن",
+   "actual": "امن"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-025",
+   "family": "S3",
+   "status": "fail",
+   "input": "ٲ ٳ ٵ",
+   "level": "search",
+   "options": {},
+   "expected": "ا ا ا",
+   "actual": "ٲ ٳ ٵ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-026",
+   "family": "S3",
+   "status": "pass",
+   "input": "ڪتاب",
+   "level": "search",
+   "options": {},
+   "expected": "كتاب",
+   "actual": "كتاب"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-027",
+   "family": "S3",
+   "status": "pass",
+   "input": "ۀ",
+   "level": "search",
+   "options": {},
+   "expected": "ه",
+   "actual": "ه"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-028",
+   "family": "S3",
+   "status": "fail",
+   "input": "ے",
+   "level": "search",
+   "options": {},
+   "expected": "ي",
+   "actual": "ے"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-029",
+   "family": "S4",
+   "status": "pass",
+   "input": "٢٠٢٦",
+   "level": "search",
+   "options": {},
+   "expected": "2026",
+   "actual": "2026"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-030",
+   "family": "S4",
+   "status": "pass",
+   "input": "۱۴۴۸",
+   "level": "search",
+   "options": {},
+   "expected": "1448",
+   "actual": "1448"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-031",
+   "family": "S4",
+   "status": "pass",
+   "input": "٥٠٪",
+   "level": "search",
+   "options": {},
+   "expected": "50%",
+   "actual": "50%"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-032",
+   "family": "S5",
+   "status": "pass",
+   "input": "50%",
+   "level": "search",
+   "options": {},
+   "expected": "50%",
+   "actual": "50%"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-033",
+   "family": "S4",
+   "status": "fail",
+   "input": "رقم 3. ثم",
+   "level": "search",
+   "options": {},
+   "expected": "رقم 3 ثم",
+   "actual": "رقم 3. ثم"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-034",
+   "family": "S5",
+   "status": "fail",
+   "input": "1،2",
+   "level": "search",
+   "options": {},
+   "expected": "1 2",
+   "actual": "1،2"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-035",
+   "family": "S5",
+   "status": "fail",
+   "input": "(حديث)",
+   "level": "search",
+   "options": {},
+   "expected": "حديث",
+   "actual": "(حديث)"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-036",
+   "family": "S5",
+   "status": "fail",
+   "input": "قال: \"نعم\"",
+   "level": "search",
+   "options": {},
+   "expected": "قال نعم",
+   "actual": "قال: \"نعم\""
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-037",
+   "family": "S5",
+   "status": "pass",
+   "input": "۞ تبارك",
+   "level": "search",
+   "options": {},
+   "expected": "تبارك",
+   "actual": "تبارك"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-038",
+   "family": "S7",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-039",
+   "family": "S7",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-040",
+   "family": "S7",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-041",
+   "family": "S7",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-042",
+   "family": "S7",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-043",
+   "family": "L1",
+   "status": "fail",
+   "input": "رءوف",
+   "level": "loose",
+   "options": {},
+   "expected": "روف",
+   "actual": "رءوف"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-044",
+   "family": "L1",
+   "status": "pass",
+   "input": "مسؤول",
+   "level": "loose",
+   "options": {},
+   "expected": "مسوول",
+   "actual": "مسوول"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-rule-045",
+   "family": "L1",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-091",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "‏ ‏لِعَطَاءٍ ‏ ‏أَتَرَى حَقًّا عَلَى الْإِمَامِ",
+   "level": "search",
+   "options": {},
+   "expected": "لعطاء اتري حقا علي الامام",
+   "actual": "لعطاء اتري حقا علي الامام"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-092",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-093",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "‏ ‏نَهَى النَّبِيُّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+   "level": "loose",
+   "options": {},
+   "expected": "نهي النبي صلي الله عليه وسلم",
+   "actual": "نهي النبي صلي الله عليه وسلم"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-094",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "هِشَامٍ ‏ ‏قَالَ حَدَّثَنَا",
+   "level": "clean",
+   "options": {},
+   "expected": "هِشَامٍ قَالَ حَدَّثَنَا",
+   "actual": "هِشَامٍ قَالَ حَدَّثَنَا"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-095",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-096",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏فَأَتَيْتُهُ وَهُوَ فِي مَلَإٍ فَسَارَرْتُهُ فَغَضِبَ",
+   "level": "search",
+   "options": {},
+   "expected": "الله عليه وسلم فاتيته وهو في ملا فساررته فغضب",
+   "actual": "الله عليه وسلم فاتيته وهو في ملا فساررته فغضب"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-097",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-098",
+   "family": "corpus/loose",
+   "status": "fail",
+   "input": "اللَّهِ كُفْرًا ‏} ‏قَالَ هُمْ وَاللَّهِ كُفَّارُ ‏ ‏قُرَيْشٍ ‏",
+   "level": "loose",
+   "options": {},
+   "expected": "الله كفرا قال هم والله كفار قريش",
+   "actual": "الله كفرا } قال هم والله كفار قريش"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-099",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "بْنِ الْمُثَنَّى ‏ ‏قَالَ حَدَّثَنِي ‏ ‏أَبِي ‏",
+   "level": "clean",
+   "options": {},
+   "expected": "بْنِ الْمُثَنَّى قَالَ حَدَّثَنِي أَبِي",
+   "actual": "بْنِ الْمُثَنَّى قَالَ حَدَّثَنِي أَبِي"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-100",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-101",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "‏ ‏هِشَامٌ ‏ ‏عَنْ ‏ ‏أَبِيهِ ‏ ‏عَنْ ‏ ‏أَبِي هُرَيْرَةَ ‏",
+   "level": "search",
+   "options": {},
+   "expected": "هشام عن ابيه عن ابي هريرة",
+   "actual": "هشام عن ابيه عن ابي هريرة"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-102",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-103",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "‏قَالَ ‏ ‏كُنَّا عِنْدَ النَّبِيِّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏فَقَالَ",
+   "level": "loose",
+   "options": {},
+   "expected": "قال كنا عند النبي صلي الله عليه وسلم فقال",
+   "actual": "قال كنا عند النبي صلي الله عليه وسلم فقال"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-104",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "‏ ‏حَدَّثَنَا ‏ ‏مُوسَى بْنُ إِسْمَاعِيلَ",
+   "level": "clean",
+   "options": {},
+   "expected": "حَدَّثَنَا مُوسَى بْنُ إِسْمَاعِيلَ",
+   "actual": "حَدَّثَنَا مُوسَى بْنُ إِسْمَاعِيلَ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-105",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-106",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "اللَّهِ بْنَ عُمَرَ ‏ ‏رَضِيَ اللَّهُ عَنْهُمَا ‏ ‏قَالَ ‏",
+   "level": "search",
+   "options": {},
+   "expected": "الله بن عمر رضي الله عنهما قال",
+   "actual": "الله بن عمر رضي الله عنهما قال"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-107",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-108",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "‏ ‏سَمِعْتُ النَّبِيَّ ‏ ‏صَلَّى اللَّهُ",
+   "level": "loose",
+   "options": {},
+   "expected": "سمعت النبي صلي الله",
+   "actual": "سمعت النبي صلي الله"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-109",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "بُرْدَةَ ‏ ‏عَنْ ‏ ‏أَبِي مُوسَى ‏ ‏قَالَ ‏ ‏قَالَ النَّبِيُّ ‏",
+   "level": "clean",
+   "options": {},
+   "expected": "بُرْدَةَ عَنْ أَبِي مُوسَى قَالَ قَالَ النَّبِيُّ",
+   "actual": "بُرْدَةَ عَنْ أَبِي مُوسَى قَالَ قَالَ النَّبِيُّ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-110",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-111",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "أَصْحَابِي ذَاتَ الْيَمِينِ وَذَاتَ الشِّمَالِ",
+   "level": "search",
+   "options": {},
+   "expected": "اصحابي ذات اليمين وذات الشمال",
+   "actual": "اصحابي ذات اليمين وذات الشمال"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-112",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-113",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "‏ ‏قَالَ ‏ ‏اطَّلَعْتُ",
+   "level": "loose",
+   "options": {},
+   "expected": "قال اطلعت",
+   "actual": "قال اطلعت"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-114",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "‏كَانَ النَّبِيُّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏يُوجِزُ",
+   "level": "clean",
+   "options": {},
+   "expected": "كَانَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ يُوجِزُ",
+   "actual": "كَانَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ يُوجِزُ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-115",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-116",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "بْنُ الْجَرَّاحِ ‏ ‏نَرْصُدُ عِيرَ ‏ ‏قُرَيْشٍ",
+   "level": "search",
+   "options": {},
+   "expected": "بن الجراح نرصد عير قريش",
+   "actual": "بن الجراح نرصد عير قريش"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-117",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-118",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏الْمُدَبَّرَ ‏ ‏حَدَّثَنَا ‏",
+   "level": "loose",
+   "options": {},
+   "expected": "صلي الله عليه وسلم المدبر حدثنا",
+   "actual": "صلي الله عليه وسلم المدبر حدثنا"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-119",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+   "level": "clean",
+   "options": {},
+   "expected": "صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+   "actual": "صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-120",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-121",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "‏مَنْ حَدَّثَكَ أَنَّ ‏ ‏مُحَمَّدًا ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏",
+   "level": "search",
+   "options": {},
+   "expected": "من حدثك ان محمدا صلي الله عليه وسلم",
+   "actual": "من حدثك ان محمدا صلي الله عليه وسلم"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-122",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-123",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "رَبِّهِ فَلَهُ أَجْرَانِ ‏ ‏قَالَ ‏",
+   "level": "loose",
+   "options": {},
+   "expected": "ربه فله اجران قال",
+   "actual": "ربه فله اجران قال"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-124",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "‏ ‏لِي وَرَسُولُ اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏قَائِمٌ ‏ ‏يُصَلِّي",
+   "level": "clean",
+   "options": {},
+   "expected": "لِي وَرَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَائِمٌ يُصَلِّي",
+   "actual": "لِي وَرَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَائِمٌ يُصَلِّي"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-125",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-126",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "الرَّزَّاقِ ‏ ‏أَخْبَرَنَا ‏ ‏مَعْمَرٌ ‏ ‏عَنْ ‏ ‏الزُّهْرِيِّ ‏",
+   "level": "search",
+   "options": {},
+   "expected": "الرزاق اخبرنا معمر عن الزهري",
+   "actual": "الرزاق اخبرنا معمر عن الزهري"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-127",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-128",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "‏حَدَّثَنَا ‏ ‏خَالِدٌ ‏ ‏عَنْ ‏ ‏عِكْرِمَةَ ‏ ‏عَنْ",
+   "level": "loose",
+   "options": {},
+   "expected": "حدثنا خالد عن عكرمه عن",
+   "actual": "حدثنا خالد عن عكرمه عن"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-129",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "‏عَنْ ‏ ‏عَمِّهِ ‏ ‏قَالَ ‏ ‏رَأَيْتُ النَّبِيَّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+   "level": "clean",
+   "options": {},
+   "expected": "عَنْ عَمِّهِ قَالَ رَأَيْتُ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+   "actual": "عَنْ عَمِّهِ قَالَ رَأَيْتُ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-130",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-131",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "‏ ‏يَحْيَى بْنُ مُوسَى ‏ ‏حَدَّثَنَا ‏ ‏سَعِيدُ بْنُ مَنْصُورٍ ‏",
+   "level": "search",
+   "options": {},
+   "expected": "يحيي بن موسي حدثنا سعيد بن منصور",
+   "actual": "يحيي بن موسي حدثنا سعيد بن منصور"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-132",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-133",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "‏ ‏قَالَ لَهُ ‏ ‏إِنَّكَ تَقْدَمُ عَلَى قَوْمٍ مِنْ",
+   "level": "loose",
+   "options": {},
+   "expected": "قال له انك تقدم علي قوم من",
+   "actual": "قال له انك تقدم علي قوم من"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-134",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "يَرِثُنِي إِلَّا ‏ ‏ابْنَةٌ",
+   "level": "clean",
+   "options": {},
+   "expected": "يَرِثُنِي إِلَّا ابْنَةٌ",
+   "actual": "يَرِثُنِي إِلَّا ابْنَةٌ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-135",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-136",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏أَنَّهُ سَمِعَ خُصُومَةً بِبَابِ",
+   "level": "search",
+   "options": {},
+   "expected": "صلي الله عليه وسلم انه سمع خصومة بباب",
+   "actual": "صلي الله عليه وسلم انه سمع خصومة بباب"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-137",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-138",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "‏ ‏حَدَّثَنَا ‏ ‏عَمْرُو بْنُ عَبَّاسٍ ‏ ‏قَالَ",
+   "level": "loose",
+   "options": {},
+   "expected": "حدثنا عمرو بن عباس قال",
+   "actual": "حدثنا عمرو بن عباس قال"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-139",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "‏ ‏هَهُنَا وَهَهُنَا بِالْأَذَانِ",
+   "level": "clean",
+   "options": {},
+   "expected": "هَهُنَا وَهَهُنَا بِالْأَذَانِ",
+   "actual": "هَهُنَا وَهَهُنَا بِالْأَذَانِ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-140",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-141",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏",
+   "level": "search",
+   "options": {},
+   "expected": "الله صلي الله عليه وسلم",
+   "actual": "الله صلي الله عليه وسلم"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-142",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-143",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "‏ ‏عَنْ ‏ ‏عِمْرَانَ ‏ ‏عَنْ النَّبِيِّ ‏",
+   "level": "loose",
+   "options": {},
+   "expected": "عن عمران عن النبي",
+   "actual": "عن عمران عن النبي"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-144",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "بَكْرٍ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏وَحَمَلَ ‏ ‏الْحَسَنَ ‏ ‏وَهُوَ",
+   "level": "clean",
+   "options": {},
+   "expected": "بَكْرٍ رَضِيَ اللَّهُ عَنْهُ وَحَمَلَ الْحَسَنَ وَهُوَ",
+   "actual": "بَكْرٍ رَضِيَ اللَّهُ عَنْهُ وَحَمَلَ الْحَسَنَ وَهُوَ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-145",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-146",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "‏ ‏عَنْ ‏ ‏سَعِيدِ بْنِ جُبَيْرٍ ‏ ‏يَزِيدُ أَحَدُهُمَا عَلَى",
+   "level": "search",
+   "options": {},
+   "expected": "عن سعيد بن جبير يزيد احدهما علي",
+   "actual": "عن سعيد بن جبير يزيد احدهما علي"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-147",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-148",
+   "family": "corpus/loose",
+   "status": "fail",
+   "input": "وَسَلَّمَ ‏ ‏فَسَأَلَهُ فَقَالَ ‏ ‏فِيهِ الْوُضُوءُ",
+   "level": "loose",
+   "options": {},
+   "expected": "وسلم فساله فقال فيه الوضو",
+   "actual": "وسلم فساله فقال فيه الوضوء"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-149",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "‏حَفْصُ بْنُ عُمَرَ ‏ ‏قَالَ حَدَّثَنَا ‏ ‏يَزِيدُ بْنُ إِبْرَاهِيمَ ‏ ‏قَالَ حَدَّثَنَا",
+   "level": "clean",
+   "options": {},
+   "expected": "حَفْصُ بْنُ عُمَرَ قَالَ حَدَّثَنَا يَزِيدُ بْنُ إِبْرَاهِيمَ قَالَ حَدَّثَنَا",
+   "actual": "حَفْصُ بْنُ عُمَرَ قَالَ حَدَّثَنَا يَزِيدُ بْنُ إِبْرَاهِيمَ قَالَ حَدَّثَنَا"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-150",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-151",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "عَبَّاسٍ ‏ ‏عَنْ ‏ ‏عُمَرَ ‏ ‏رَضِيَ اللَّهُ عَنْهُمْ ‏ ‏قَالَ ‏",
+   "level": "search",
+   "options": {},
+   "expected": "عباس عن عمر رضي الله عنهم قال",
+   "actual": "عباس عن عمر رضي الله عنهم قال"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-152",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-153",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "رَسُولَ اللَّهِ اسْتَغْفِرْ لِي فَاعْتَزَلَ النَّبِيُّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ",
+   "level": "loose",
+   "options": {},
+   "expected": "رسول الله استغفر لي فاعتزل النبي صلي الله عليه",
+   "actual": "رسول الله استغفر لي فاعتزل النبي صلي الله عليه"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-154",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "وَسَلَّمَ ‏ ‏أَنَّ رَجُلًا رَأَى كَلْبًا يَأْكُلُ ‏ ‏الثَّرَى ‏ ‏مِنْ الْعَطَشِ فَأَخَذَ",
+   "level": "clean",
+   "options": {},
+   "expected": "وَسَلَّمَ أَنَّ رَجُلًا رَأَى كَلْبًا يَأْكُلُ الثَّرَى مِنْ الْعَطَشِ فَأَخَذَ",
+   "actual": "وَسَلَّمَ أَنَّ رَجُلًا رَأَى كَلْبًا يَأْكُلُ الثَّرَى مِنْ الْعَطَشِ فَأَخَذَ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-155",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-156",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "‏عَنْ ‏ ‏عُبَيْدِ اللَّهِ ‏",
+   "level": "search",
+   "options": {},
+   "expected": "عن عبيد الله",
+   "actual": "عن عبيد الله"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-157",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-158",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "بْنَ أَبِي أَوْفَى ‏",
+   "level": "loose",
+   "options": {},
+   "expected": "بن ابي اوفي",
+   "actual": "بن ابي اوفي"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-159",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "وَسَلَّمَ ‏ ‏كَانَ إِذَا أَوَى إِلَى فِرَاشِهِ",
+   "level": "clean",
+   "options": {},
+   "expected": "وَسَلَّمَ كَانَ إِذَا أَوَى إِلَى فِرَاشِهِ",
+   "actual": "وَسَلَّمَ كَانَ إِذَا أَوَى إِلَى فِرَاشِهِ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-160",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-161",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "‏عَنْ ‏ ‏حَفْصَةَ ‏",
+   "level": "search",
+   "options": {},
+   "expected": "عن حفصة",
+   "actual": "عن حفصة"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-162",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-163",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "ثُمَّ يَحِلُّوا وَذَلِكَ لِمَنْ لَمْ يَكُنْ مَعَهُ بَدَنَةٌ ‏ ‏قَلَّدَهَا ‏ ‏وَمَنْ كَانَتْ",
+   "level": "loose",
+   "options": {},
+   "expected": "ثم يحلوا وذلك لمن لم يكن معه بدنه قلدها ومن كانت",
+   "actual": "ثم يحلوا وذلك لمن لم يكن معه بدنه قلدها ومن كانت"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-164",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "قَالَ أُولَئِكَ الْفُسَّاقُ أَجَلْ لَمْ يَبْقَ مِنْهُمْ إِلَّا أَرْبَعَةٌ",
+   "level": "clean",
+   "options": {},
+   "expected": "قَالَ أُولَئِكَ الْفُسَّاقُ أَجَلْ لَمْ يَبْقَ مِنْهُمْ إِلَّا أَرْبَعَةٌ",
+   "actual": "قَالَ أُولَئِكَ الْفُسَّاقُ أَجَلْ لَمْ يَبْقَ مِنْهُمْ إِلَّا أَرْبَعَةٌ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-165",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-166",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "‏ ‏أَحْمَدُ بْنُ يُونُسَ ‏ ‏حَدَّثَنَا ‏",
+   "level": "search",
+   "options": {},
+   "expected": "احمد بن يونس حدثنا",
+   "actual": "احمد بن يونس حدثنا"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-167",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-168",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "‏يَخْرُجُ مِنْ ‏ ‏ضِئْضِئِ ‏ ‏هَذَا قَوْمٌ ‏ ‏يَمْرُقُونَ",
+   "level": "loose",
+   "options": {},
+   "expected": "يخرج من ضيضي هذا قوم يمرقون",
+   "actual": "يخرج من ضيضي هذا قوم يمرقون"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-169",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "‏قَتَادَةَ ‏ ‏أَنَّ ‏ ‏أَنَسًا ‏ ‏رَضِيَ",
+   "level": "clean",
+   "options": {},
+   "expected": "قَتَادَةَ أَنَّ أَنَسًا رَضِيَ",
+   "actual": "قَتَادَةَ أَنَّ أَنَسًا رَضِيَ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-170",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-171",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "بْنِ إِبْرَاهِيمَ ‏ ‏قَالَ سَمِعْتُ ‏ ‏أَبَا سَلَمَةَ",
+   "level": "search",
+   "options": {},
+   "expected": "بن ابراهيم قال سمعت ابا سلمة",
+   "actual": "بن ابراهيم قال سمعت ابا سلمة"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-172",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-173",
+   "family": "corpus/loose",
+   "status": "fail",
+   "input": "‏ ‏هُنَيَّةً ‏ ‏فَقُلْتُ بِأَبِي وَأُمِّي يَا رَسُولَ اللَّهِ إِسْكَاتُكَ بَيْنَ التَّكْبِيرِ وَالْقِرَاءَةِ",
+   "level": "loose",
+   "options": {},
+   "expected": "هنيه فقلت بابي وامي يا رسول الله اسكاتك بين التكبير والقراه",
+   "actual": "هنيه فقلت بابي وامي يا رسول الله اسكاتك بين التكبير والقراءه"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-174",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "عُمَرَ ‏ ‏رَضِيَ اللَّهُ عَنْهُمَا ‏ ‏أَنَّ ‏ ‏أَبَا",
+   "level": "clean",
+   "options": {},
+   "expected": "عُمَرَ رَضِيَ اللَّهُ عَنْهُمَا أَنَّ أَبَا",
+   "actual": "عُمَرَ رَضِيَ اللَّهُ عَنْهُمَا أَنَّ أَبَا"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-175",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-176",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "‏عَبْدُ اللَّهِ بْنُ شَدَّادٍ ‏ ‏قَالَ سَمِعْتُ ‏",
+   "level": "search",
+   "options": {},
+   "expected": "عبد الله بن شداد قال سمعت",
+   "actual": "عبد الله بن شداد قال سمعت"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-177",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-178",
+   "family": "corpus/loose",
+   "status": "fail",
+   "input": "‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏قَالَ ‏ ‏لِكُلِّ غَادِرٍ لِوَاءٌ يَوْمَ الْقِيَامَةِ قَالَ",
+   "level": "loose",
+   "options": {},
+   "expected": "صلي الله عليه وسلم قال لكل غادر لوا يوم القيامه قال",
+   "actual": "صلي الله عليه وسلم قال لكل غادر لواء يوم القيامه قال"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-179",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏مَا تَصْنَعُ بِإِزَارِكَ إِنْ لَبِسْتَهُ لَمْ يَكُنْ عَلَيْهَا مِنْهُ",
+   "level": "clean",
+   "options": {},
+   "expected": "اللَّهُ عَلَيْهِ وَسَلَّمَ مَا تَصْنَعُ بِإِزَارِكَ إِنْ لَبِسْتَهُ لَمْ يَكُنْ عَلَيْهَا مِنْهُ",
+   "actual": "اللَّهُ عَلَيْهِ وَسَلَّمَ مَا تَصْنَعُ بِإِزَارِكَ إِنْ لَبِسْتَهُ لَمْ يَكُنْ عَلَيْهَا مِنْهُ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-180",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-181",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "بَعْضٍ ‏ ‏رَوَاهُ ‏",
+   "level": "search",
+   "options": {},
+   "expected": "بعض رواه",
+   "actual": "بعض رواه"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-182",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-183",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "النَّاسَ يَقُولُونَ شَيْئًا فَقُلْتُهُ",
+   "level": "loose",
+   "options": {},
+   "expected": "الناس يقولون شييا فقلته",
+   "actual": "الناس يقولون شييا فقلته"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-184",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "‏ ‏حَدَّثَنَا ‏ ‏إِبْرَاهِيمُ ‏ ‏عَنْ ‏",
+   "level": "clean",
+   "options": {},
+   "expected": "حَدَّثَنَا إِبْرَاهِيمُ عَنْ",
+   "actual": "حَدَّثَنَا إِبْرَاهِيمُ عَنْ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-185",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-186",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "‏ ‏وَأَيْنَ كَانَتْ التَّمْرَةُ تَقَعُ",
+   "level": "search",
+   "options": {},
+   "expected": "واين كانت التمرة تقع",
+   "actual": "واين كانت التمرة تقع"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-187",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-188",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "عَلَيْهِ وَسَلَّمَ ‏ ‏يَتَحَرَّى",
+   "level": "loose",
+   "options": {},
+   "expected": "عليه وسلم يتحري",
+   "actual": "عليه وسلم يتحري"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-189",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "أَنْ تَدْخُلَ مَسْجِدَكَ فَتَقُومَ وَلَا ‏ ‏تَفْتُرَ ‏",
+   "level": "clean",
+   "options": {},
+   "expected": "أَنْ تَدْخُلَ مَسْجِدَكَ فَتَقُومَ وَلَا تَفْتُرَ",
+   "actual": "أَنْ تَدْخُلَ مَسْجِدَكَ فَتَقُومَ وَلَا تَفْتُرَ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-190",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-191",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "‏ ‏آدَمُ ‏ ‏قَالَ حَدَّثَنَا ‏ ‏شُعْبَةُ ‏ ‏قَالَ حَدَّثَنَا ‏ ‏قَتَادَةُ",
+   "level": "search",
+   "options": {},
+   "expected": "ادم قال حدثنا شعبة قال حدثنا قتادة",
+   "actual": "ادم قال حدثنا شعبة قال حدثنا قتادة"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-192",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-193",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "‏ ‏الْأَنْصَارِ ‏ ‏فَقَالَ يَا رَسُولَ",
+   "level": "loose",
+   "options": {},
+   "expected": "الانصار فقال يا رسول",
+   "actual": "الانصار فقال يا رسول"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-194",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "مَعْمَرٍ ‏ ‏حَدَّثَنَا ‏ ‏عَبْدُ الْوَارِثِ ‏ ‏حَدَّثَنَا ‏ ‏أَيُّوبُ",
+   "level": "clean",
+   "options": {},
+   "expected": "مَعْمَرٍ حَدَّثَنَا عَبْدُ الْوَارِثِ حَدَّثَنَا أَيُّوبُ",
+   "actual": "مَعْمَرٍ حَدَّثَنَا عَبْدُ الْوَارِثِ حَدَّثَنَا أَيُّوبُ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-195",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-196",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "عَنْهُ ‏ ‏يَوْمًا بِطَعَامِهِ فَقَالَ ‏ ‏قُتِلَ ‏ ‏مُصْعَبُ بْنُ",
+   "level": "search",
+   "options": {},
+   "expected": "عنه يوما بطعامه فقال قتل مصعب بن",
+   "actual": "عنه يوما بطعامه فقال قتل مصعب بن"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-197",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-198",
+   "family": "corpus/loose",
+   "status": "fail",
+   "input": "فَقُتِلَ ‏ ‏عَبْدُ اللَّهِ بْنُ سَهْلٍ ‏ ‏فَجَاءَ ‏ ‏عَبْدُ",
+   "level": "loose",
+   "options": {},
+   "expected": "فقتل عبد الله بن سهل فجا عبد",
+   "actual": "فقتل عبد الله بن سهل فجاء عبد"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-199",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏قَالَ ‏ ‏صَلَّى النَّبِيُّ ‏ ‏صَلَّى",
+   "level": "clean",
+   "options": {},
+   "expected": "رَضِيَ اللَّهُ عَنْهُ قَالَ صَلَّى النَّبِيُّ صَلَّى",
+   "actual": "رَضِيَ اللَّهُ عَنْهُ قَالَ صَلَّى النَّبِيُّ صَلَّى"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-200",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-201",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "رَأْسَهُ ‏ ‏بِالْمِدْرَى ‏ ‏فَقَالَ ‏ ‏لَوْ عَلِمْتُ أَنَّكَ تَنْظُرُ لَطَعَنْتُ بِهَا فِي",
+   "level": "search",
+   "options": {},
+   "expected": "راسه بالمدري فقال لو علمت انك تنظر لطعنت بها في",
+   "actual": "راسه بالمدري فقال لو علمت انك تنظر لطعنت بها في"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-202",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-203",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "‏ ‏حَدَّثَنَا ‏ ‏عَبْدُ اللَّهِ بْنُ يُوسُفَ ‏ ‏أَخْبَرَنَا ‏ ‏مَالِكٌ ‏ ‏ح",
+   "level": "loose",
+   "options": {},
+   "expected": "حدثنا عبد الله بن يوسف اخبرنا مالك ح",
+   "actual": "حدثنا عبد الله بن يوسف اخبرنا مالك ح"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-204",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "‏ ‏مُسَدَّدٌ ‏ ‏قَالَ حَدَّثَنَا ‏",
+   "level": "clean",
+   "options": {},
+   "expected": "مُسَدَّدٌ قَالَ حَدَّثَنَا",
+   "actual": "مُسَدَّدٌ قَالَ حَدَّثَنَا"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-205",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-206",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "‏يَحْيَى ‏ ‏عَنْ ‏ ‏هِشَامٍ ‏",
+   "level": "search",
+   "options": {},
+   "expected": "يحيي عن هشام",
+   "actual": "يحيي عن هشام"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-207",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-208",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "اللَّهِ بْنِ عُمَرَ ‏ ‏رَضِيَ اللَّهُ",
+   "level": "loose",
+   "options": {},
+   "expected": "الله بن عمر رضي الله",
+   "actual": "الله بن عمر رضي الله"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-209",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "لَنْ ‏ ‏تُخَلَّفَ ‏ ‏فَتَعْمَلَ عَمَلًا صَالِحًا إِلَّا",
+   "level": "clean",
+   "options": {},
+   "expected": "لَنْ تُخَلَّفَ فَتَعْمَلَ عَمَلًا صَالِحًا إِلَّا",
+   "actual": "لَنْ تُخَلَّفَ فَتَعْمَلَ عَمَلًا صَالِحًا إِلَّا"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-210",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-211",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "مِنْ كُتُبِ اللَّهِ وَغَيَّرُوا فَكَتَبُوا بِأَيْدِيهِمْ",
+   "level": "search",
+   "options": {},
+   "expected": "من كتب الله وغيروا فكتبوا بايديهم",
+   "actual": "من كتب الله وغيروا فكتبوا بايديهم"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-212",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-213",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "وَائِلٍ ‏ ‏عَنْ ‏ ‏حُذَيْفَةَ ‏ ‏رَضِيَ اللَّهُ",
+   "level": "loose",
+   "options": {},
+   "expected": "وايل عن حذيفه رضي الله",
+   "actual": "وايل عن حذيفه رضي الله"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-214",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "عَامَ الْفَتْحِ وَهُوَ ‏ ‏بِمَكَّةَ ‏ ‏إِنَّ اللَّهَ وَرَسُولَهُ",
+   "level": "clean",
+   "options": {},
+   "expected": "عَامَ الْفَتْحِ وَهُوَ بِمَكَّةَ إِنَّ اللَّهَ وَرَسُولَهُ",
+   "actual": "عَامَ الْفَتْحِ وَهُوَ بِمَكَّةَ إِنَّ اللَّهَ وَرَسُولَهُ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-215",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-216",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "‏مُحَمَّدُ بْنُ مُطَرِّفٍ ‏ ‏قَالَ",
+   "level": "search",
+   "options": {},
+   "expected": "محمد بن مطرف قال",
+   "actual": "محمد بن مطرف قال"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-217",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-218",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "‏عُقْبَةَ بْنِ الْحَارِثِ ‏ ‏أَنَّهُ",
+   "level": "loose",
+   "options": {},
+   "expected": "عقبه بن الحارث انه",
+   "actual": "عقبه بن الحارث انه"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-219",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "عَلَيْهِ وَسَلَّمَ ‏ ‏وَهُوَ مُحْرِمٌ ‏ ‏ثُمَّ سَمِعْتُهُ يَقُولُ حَدَّثَنِي ‏ ‏طَاوُسٌ",
+   "level": "clean",
+   "options": {},
+   "expected": "عَلَيْهِ وَسَلَّمَ وَهُوَ مُحْرِمٌ ثُمَّ سَمِعْتُهُ يَقُولُ حَدَّثَنِي طَاوُسٌ",
+   "actual": "عَلَيْهِ وَسَلَّمَ وَهُوَ مُحْرِمٌ ثُمَّ سَمِعْتُهُ يَقُولُ حَدَّثَنِي طَاوُسٌ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-220",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-221",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "‏عَيَّاشُ بْنُ الْوَلِيدِ ‏ ‏قَالَ حَدَّثَنَا",
+   "level": "search",
+   "options": {},
+   "expected": "عياش بن الوليد قال حدثنا",
+   "actual": "عياش بن الوليد قال حدثنا"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-222",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-223",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "أَوْ سَحَابَةٌ غَشِيَتْهُ فَذَكَرَهُ لِلنَّبِيِّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+   "level": "loose",
+   "options": {},
+   "expected": "او سحابه غشيته فذكره للنبي صلي الله عليه وسلم",
+   "actual": "او سحابه غشيته فذكره للنبي صلي الله عليه وسلم"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-224",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "‏أَبِي هُرَيْرَةَ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏",
+   "level": "clean",
+   "options": {},
+   "expected": "أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ",
+   "actual": "أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-225",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-226",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "‏ ‏عَلِيُّ بْنُ عَبْدِ اللَّهِ ‏ ‏حَدَّثَنَا ‏ ‏سُفْيَانُ ‏ ‏عَنْ ‏ ‏عَمْرٍو",
+   "level": "search",
+   "options": {},
+   "expected": "علي بن عبد الله حدثنا سفيان عن عمرو",
+   "actual": "علي بن عبد الله حدثنا سفيان عن عمرو"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-227",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-228",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "مِنْ نَارِ جَهَنَّمَ قِيلَ يَا رَسُولَ اللَّهِ إِنْ كَانَتْ",
+   "level": "loose",
+   "options": {},
+   "expected": "من نار جهنم قيل يا رسول الله ان كانت",
+   "actual": "من نار جهنم قيل يا رسول الله ان كانت"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-229",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "‏ ‏عَنْ ‏ ‏عَبْدِ اللَّهِ",
+   "level": "clean",
+   "options": {},
+   "expected": "عَنْ عَبْدِ اللَّهِ",
+   "actual": "عَنْ عَبْدِ اللَّهِ"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-230",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-231",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "أسد حدثنا النضر بن شميل أخبرنا هرماس بن حبيب رجل من",
+   "level": "search",
+   "options": {},
+   "expected": "اسد حدثنا النضر بن شميل اخبرنا هرماس بن حبيب رجل من",
+   "actual": "اسد حدثنا النضر بن شميل اخبرنا هرماس بن حبيب رجل من"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-232",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-233",
+   "family": "corpus/loose",
+   "status": "fail",
+   "input": "الله بن الحارث أخبره أن ابن عباس رضي الله عنهما أخبره { لا يستوي القاعدون",
+   "level": "loose",
+   "options": {},
+   "expected": "الله بن الحارث اخبره ان ابن عباس رضي الله عنهما اخبره لا يستوي القاعدون",
+   "actual": "الله بن الحارث اخبره ان ابن عباس رضي الله عنهما اخبره { لا يستوي القاعدون"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-234",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "عهد رسول الله صلى الله عليه وسلم في يوم غيم ثم طلعت الشمس قلت",
+   "level": "clean",
+   "options": {},
+   "expected": "عهد رسول الله صلى الله عليه وسلم في يوم غيم ثم طلعت الشمس قلت",
+   "actual": "عهد رسول الله صلى الله عليه وسلم في يوم غيم ثم طلعت الشمس قلت"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-235",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-236",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "الله أخبرني نافع عن ابن عمر أن رسول الله صلى",
+   "level": "search",
+   "options": {},
+   "expected": "الله اخبرني نافع عن ابن عمر ان رسول الله صلي",
+   "actual": "الله اخبرني نافع عن ابن عمر ان رسول الله صلي"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-237",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-238",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "حدثنا عمي يحيى بن عيسى عن الأعمش عن أبي صالح",
+   "level": "loose",
+   "options": {},
+   "expected": "حدثنا عمي يحيي بن عيسي عن الاعمش عن ابي صالح",
+   "actual": "حدثنا عمي يحيي بن عيسي عن الاعمش عن ابي صالح"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-239",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "الله بن عمرو قال قال رسول الله",
+   "level": "clean",
+   "options": {},
+   "expected": "الله بن عمرو قال قال رسول الله",
+   "actual": "الله بن عمرو قال قال رسول الله"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-240",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-241",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "عليه وسلم فأمر له بالدية فقال يا رسول الله إني أريد",
+   "level": "search",
+   "options": {},
+   "expected": "عليه وسلم فامر له بالدية فقال يا رسول الله اني اريد",
+   "actual": "عليه وسلم فامر له بالدية فقال يا رسول الله اني اريد"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-242",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-243",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "عن داود عن الشعبي عن عبد الرحمن بن أبي ليلى عن كعب بن",
+   "level": "loose",
+   "options": {},
+   "expected": "عن داود عن الشعبي عن عبد الرحمن بن ابي ليلي عن كعب بن",
+   "actual": "عن داود عن الشعبي عن عبد الرحمن بن ابي ليلي عن كعب بن"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-244",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "بلى فأخرج لي كتابا هذا ما اشترى العداء",
+   "level": "clean",
+   "options": {},
+   "expected": "بلى فأخرج لي كتابا هذا ما اشترى العداء",
+   "actual": "بلى فأخرج لي كتابا هذا ما اشترى العداء"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-245",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-246",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "محمد بن قدامة قال حدثنا جرير",
+   "level": "search",
+   "options": {},
+   "expected": "محمد بن قدامة قال حدثنا جرير",
+   "actual": "محمد بن قدامة قال حدثنا جرير"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-247",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-248",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "أنبأنا حماد بن زيد حدثنا",
+   "level": "loose",
+   "options": {},
+   "expected": "انبانا حماد بن زيد حدثنا",
+   "actual": "انبانا حماد بن زيد حدثنا"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-249",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "عليه وسلم ثلاث مرات كل ذلك لا يكلمك ما أخلقك بأن ينزل فيك قرآن",
+   "level": "clean",
+   "options": {},
+   "expected": "عليه وسلم ثلاث مرات كل ذلك لا يكلمك ما أخلقك بأن ينزل فيك قرآن",
+   "actual": "عليه وسلم ثلاث مرات كل ذلك لا يكلمك ما أخلقك بأن ينزل فيك قرآن"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-250",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-251",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "أن خيلا تخرج من سفح هذا الجبل أكنتم مصدقي قالوا ما جربنا عليك",
+   "level": "search",
+   "options": {},
+   "expected": "ان خيلا تخرج من سفح هذا الجبل اكنتم مصدقي قالوا ما جربنا عليك",
+   "actual": "ان خيلا تخرج من سفح هذا الجبل اكنتم مصدقي قالوا ما جربنا عليك"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-252",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-253",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "قال ابن شهاب حدثني سالم بن عبد الله عن أبيه أن",
+   "level": "loose",
+   "options": {},
+   "expected": "قال ابن شهاب حدثني سالم بن عبد الله عن ابيه ان",
+   "actual": "قال ابن شهاب حدثني سالم بن عبد الله عن ابيه ان"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-254",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "فيه البقرة لا يدخله الشيطان قال أبو عيسى هذا",
+   "level": "clean",
+   "options": {},
+   "expected": "فيه البقرة لا يدخله الشيطان قال أبو عيسى هذا",
+   "actual": "فيه البقرة لا يدخله الشيطان قال أبو عيسى هذا"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-255",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-256",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "أبيه عن عامر بن ربيعة",
+   "level": "search",
+   "options": {},
+   "expected": "ابيه عن عامر بن ربيعة",
+   "actual": "ابيه عن عامر بن ربيعة"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-257",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-258",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "الله عليه وسلم ما أحل",
+   "level": "loose",
+   "options": {},
+   "expected": "الله عليه وسلم ما احل",
+   "actual": "الله عليه وسلم ما احل"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-259",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "فقال ألا أخبرك بما هو أيسر عليك من هذا أو أفضل",
+   "level": "clean",
+   "options": {},
+   "expected": "فقال ألا أخبرك بما هو أيسر عليك من هذا أو أفضل",
+   "actual": "فقال ألا أخبرك بما هو أيسر عليك من هذا أو أفضل"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-260",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-261",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "بن وكيع حدثنا إسمعيل بن محمد بن جحادة حدثنا",
+   "level": "search",
+   "options": {},
+   "expected": "بن وكيع حدثنا اسمعيل بن محمد بن جحادة حدثنا",
+   "actual": "بن وكيع حدثنا اسمعيل بن محمد بن جحادة حدثنا"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-262",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-263",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "هريرة رضي الله عنه عن النبي صلى الله عليه وسلم قال",
+   "level": "loose",
+   "options": {},
+   "expected": "هريره رضي الله عنه عن النبي صلي الله عليه وسلم قال",
+   "actual": "هريره رضي الله عنه عن النبي صلي الله عليه وسلم قال"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-264",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "بن عبد الله يقول كان في",
+   "level": "clean",
+   "options": {},
+   "expected": "بن عبد الله يقول كان في",
+   "actual": "بن عبد الله يقول كان في"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-265",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-266",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "حدثني أبو بكر بن إسحق حدثنا يحيى بن بكير حدثني المغيرة يعني الحزامي",
+   "level": "search",
+   "options": {},
+   "expected": "حدثني ابو بكر بن اسحق حدثنا يحيي بن بكير حدثني المغيرة يعني الحزامي",
+   "actual": "حدثني ابو بكر بن اسحق حدثنا يحيي بن بكير حدثني المغيرة يعني الحزامي"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-267",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-268",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "الليلة بعيري وأركب بعيرك فتنظرين وأنظر قالت بلى",
+   "level": "loose",
+   "options": {},
+   "expected": "الليله بعيري واركب بعيرك فتنظرين وانظر قالت بلي",
+   "actual": "الليله بعيري واركب بعيرك فتنظرين وانظر قالت بلي"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-269",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "سمعت ابن أبي مليكة يحدث",
+   "level": "clean",
+   "options": {},
+   "expected": "سمعت ابن أبي مليكة يحدث",
+   "actual": "سمعت ابن أبي مليكة يحدث"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-270",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-271",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "رضي الله عنهما عن النبي صلى الله عليه وسلم أنه",
+   "level": "search",
+   "options": {},
+   "expected": "رضي الله عنهما عن النبي صلي الله عليه وسلم انه",
+   "actual": "رضي الله عنهما عن النبي صلي الله عليه وسلم انه"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-272",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-273",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "عبد الله قال مرت جنازة فقام لها رسول الله صلى الله عليه وسلم وقمنا",
+   "level": "loose",
+   "options": {},
+   "expected": "عبد الله قال مرت جنازه فقام لها رسول الله صلي الله عليه وسلم وقمنا",
+   "actual": "عبد الله قال مرت جنازه فقام لها رسول الله صلي الله عليه وسلم وقمنا"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-274",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "والمروة ثم حل فطفت بالبيت",
+   "level": "clean",
+   "options": {},
+   "expected": "والمروة ثم حل فطفت بالبيت",
+   "actual": "والمروة ثم حل فطفت بالبيت"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-275",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-276",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "نمير عن عبيد الله بن",
+   "level": "search",
+   "options": {},
+   "expected": "نمير عن عبيد الله بن",
+   "actual": "نمير عن عبيد الله بن"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-277",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-278",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "لو أعلم أنك تنتظرني لطعنت به",
+   "level": "loose",
+   "options": {},
+   "expected": "لو اعلم انك تنتظرني لطعنت به",
+   "actual": "لو اعلم انك تنتظرني لطعنت به"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-279",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "قوموا فلما فرغ من صلاته",
+   "level": "clean",
+   "options": {},
+   "expected": "قوموا فلما فرغ من صلاته",
+   "actual": "قوموا فلما فرغ من صلاته"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-280",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-281",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "بشار حدثنا أبو بكر الحنفي حدثنا الضحاك بن عثمان حدثني",
+   "level": "search",
+   "options": {},
+   "expected": "بشار حدثنا ابو بكر الحنفي حدثنا الضحاك بن عثمان حدثني",
+   "actual": "بشار حدثنا ابو بكر الحنفي حدثنا الضحاك بن عثمان حدثني"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-282",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-283",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "الذاكرون الله أفضل منه درجة قال أبو عيسى هذا حديث غريب إنما نعرفه",
+   "level": "loose",
+   "options": {},
+   "expected": "الذاكرون الله افضل منه درجه قال ابو عيسي هذا حديث غريب انما نعرفه",
+   "actual": "الذاكرون الله افضل منه درجه قال ابو عيسي هذا حديث غريب انما نعرفه"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-284",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "الأشجعي قال رأيت النبي صلى الله عليه وسلم على",
+   "level": "clean",
+   "options": {},
+   "expected": "الأشجعي قال رأيت النبي صلى الله عليه وسلم على",
+   "actual": "الأشجعي قال رأيت النبي صلى الله عليه وسلم على"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-285",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-286",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "عبد الملك بن عمير عن أبي بردة بن أبي موسى عن أبي موسى قال لما أصيب",
+   "level": "search",
+   "options": {},
+   "expected": "عبد الملك بن عمير عن ابي بردة بن ابي موسي عن ابي موسي قال لما اصيب",
+   "actual": "عبد الملك بن عمير عن ابي بردة بن ابي موسي عن ابي موسي قال لما اصيب"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-287",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-288",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "حدثني أنس بن مالك أن رسول",
+   "level": "loose",
+   "options": {},
+   "expected": "حدثني انس بن مالك ان رسول",
+   "actual": "حدثني انس بن مالك ان رسول"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-289",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "بجنازة أخرى بامرأة فقالوا يا أبا حمزة صل عليها فقام",
+   "level": "clean",
+   "options": {},
+   "expected": "بجنازة أخرى بامرأة فقالوا يا أبا حمزة صل عليها فقام",
+   "actual": "بجنازة أخرى بامرأة فقالوا يا أبا حمزة صل عليها فقام"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-290",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-291",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "عبد الرحيم البزاز أخبرنا سعيد بن سليمان حدثنا منصور بن أبي الأسود عن المختار",
+   "level": "search",
+   "options": {},
+   "expected": "عبد الرحيم البزاز اخبرنا سعيد بن سليمان حدثنا منصور بن ابي الاسود عن المختار",
+   "actual": "عبد الرحيم البزاز اخبرنا سعيد بن سليمان حدثنا منصور بن ابي الاسود عن المختار"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-292",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-293",
+   "family": "corpus/loose",
+   "status": "pass",
+   "input": "عن عبد العزيز بن صهيب عن أنس قال",
+   "level": "loose",
+   "options": {},
+   "expected": "عن عبد العزيز بن صهيب عن انس قال",
+   "actual": "عن عبد العزيز بن صهيب عن انس قال"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-294",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "عليه وسلم يقول إن الشيطان قعد لابن آدم بأطرقه فقعد له",
+   "level": "clean",
+   "options": {},
+   "expected": "عليه وسلم يقول إن الشيطان قعد لابن آدم بأطرقه فقعد له",
+   "actual": "عليه وسلم يقول إن الشيطان قعد لابن آدم بأطرقه فقعد له"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-295",
+   "family": "corpus/loose+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-296",
+   "family": "corpus/search",
+   "status": "pass",
+   "input": "محمد بن سلمة والحارث بن مسكين قراءة عليه وأنا",
+   "level": "search",
+   "options": {},
+   "expected": "محمد بن سلمة والحارث بن مسكين قراءة عليه وانا",
+   "actual": "محمد بن سلمة والحارث بن مسكين قراءة عليه وانا"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-297",
+   "family": "corpus/search+strip",
+   "status": "unsupported",
+   "reason": "no option to remove written honorific phrases"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-298",
+   "family": "corpus/loose",
+   "status": "fail",
+   "input": "حيان قال غير مسدد حيان بن العلاء حدثنا قطن بن قبيصة عن أبيه قال",
+   "level": "loose",
+   "options": {},
+   "expected": "حيان قال غير مسدد حيان بن العلا حدثنا قطن بن قبيصه عن ابيه قال",
+   "actual": "حيان قال غير مسدد حيان بن العلاء حدثنا قطن بن قبيصه عن ابيه قال"
+  },
+  {
+   "file": "normalize",
+   "id": "gen-norm-corpus-299",
+   "family": "corpus/clean",
+   "status": "pass",
+   "input": "بن حرب عن جابر بن سمرة أن بلالا كان يؤذن الظهر إذا",
+   "level": "clean",
+   "options": {},
+   "expected": "بن حرب عن جابر بن سمرة أن بلالا كان يؤذن الظهر إذا",
+   "actual": "بن حرب عن جابر بن سمرة أن بلالا كان يؤذن الظهر إذا"
+  },
+  {
+   "file": "search",
+   "id": "search-phrase-001",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ",
+   "needle": "الاعمال",
+   "options": {},
+   "expected": [
+    {
+     "start": 9,
+     "end": 21,
+     "text": "الْأَعْمَالُ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 9,
+     "end": 21,
+     "text": "الْأَعْمَالُ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "search-phrase-002",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ",
+   "needle": "الأعمال بالنيات",
+   "options": {},
+   "expected": [
+    {
+     "start": 9,
+     "end": 35,
+     "text": "الْأَعْمَالُ بِالنِّيَّاتِ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 9,
+     "end": 35,
+     "text": "الْأَعْمَالُ بِالنِّيَّاتِ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "search-phrase-003",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "العلم نور والعلم ميراث",
+   "needle": "العلم",
+   "options": {},
+   "expected": [
+    {
+     "start": 0,
+     "end": 5,
+     "text": "العلم"
+    },
+    {
+     "start": 11,
+     "end": 16,
+     "text": "العلم"
+    }
+   ],
+   "actual": [
+    {
+     "start": 0,
+     "end": 5,
+     "text": "العلم"
+    },
+    {
+     "start": 11,
+     "end": 16,
+     "text": "العلم"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "search-whole-001",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "search-whole-002",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "search-overlap-001",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "ااا",
+   "needle": "اا",
+   "options": {},
+   "expected": [
+    {
+     "start": 0,
+     "end": 2,
+     "text": "اا"
+    }
+   ],
+   "actual": [
+    {
+     "start": 0,
+     "end": 2,
+     "text": "اا"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "search-lig-001",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "بسم ﷲ",
+   "needle": "لل",
+   "options": {},
+   "expected": [
+    {
+     "start": 4,
+     "end": 5,
+     "text": "ﷲ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 4,
+     "end": 5,
+     "text": "ﷲ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "search-all-001",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "search-all-002",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "search-any-001",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "search-empty-001",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "نص ما",
+   "needle": "ًَُ",
+   "options": {},
+   "expected": [],
+   "actual": []
+  },
+  {
+   "file": "search",
+   "id": "search-loose-001",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "مدرسة",
+   "needle": "مدرسه",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 0,
+     "end": 5,
+     "text": "مدرسة"
+    }
+   ],
+   "actual": [
+    {
+     "start": 0,
+     "end": 5,
+     "text": "مدرسة"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "search-loose-002",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "مدرسة",
+   "needle": "مدرسه",
+   "options": {},
+   "expected": [],
+   "actual": []
+  },
+  {
+   "file": "search",
+   "id": "gen-search-001",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏ ‏مُسَدَّدٌ ‏ ‏عَنْ ‏ ‏يَحْيَى ‏ ‏عَنْ ‏ ‏عُبَيْدِ اللَّهِ بْنِ عُمَرَ ‏ ‏قَالَ حَدَّثَنِي ‏",
+   "needle": "مسدد عن يحيي",
+   "options": {},
+   "expected": [
+    {
+     "start": 3,
+     "end": 31,
+     "text": "مُسَدَّدٌ ‏ ‏عَنْ ‏ ‏يَحْيَى"
+    }
+   ],
+   "actual": [
+    {
+     "start": 3,
+     "end": 31,
+     "text": "مُسَدَّدٌ ‏ ‏عَنْ ‏ ‏يَحْيَى"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-002",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-003",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-004",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-005",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "نُعَيْمٍ ‏ ‏قَالَ حَدَّثَنَا ‏ ‏إِبْرَاهِيمُ بْنُ نَافِعٍ ‏ ‏عَنْ ‏ ‏ابْنِ أَبِي نَجِيحٍ ‏ ‏عَنْ ‏ ‏مُجَاهِدٍ ‏ ‏قَالَ قَالَتْ",
+   "needle": "بن نافع عن",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 45,
+     "end": 65,
+     "text": "بْنُ نَافِعٍ ‏ ‏عَنْ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 45,
+     "end": 65,
+     "text": "بْنُ نَافِعٍ ‏ ‏عَنْ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-006",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏يَقُولُ ‏ ‏آخِرُ آيَةٍ نَزَلَتْ ‏ { ‏يَسْتَفْتُونَكَ قُلْ اللَّهُ يُفْتِيكُمْ فِي ‏ ‏الْكَلَالَةِ ‏",
+   "needle": "رضي الله عنه",
+   "options": {},
+   "expected": [
+    {
+     "start": 3,
+     "end": 24,
+     "text": "رَضِيَ اللَّهُ عَنْهُ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 3,
+     "end": 24,
+     "text": "رَضِيَ اللَّهُ عَنْهُ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-007",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-008",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-009",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-010",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏أَبُو الْيَمَانِ ‏ ‏أَخْبَرَنَا ‏ ‏شُعَيْبٌ ‏ ‏عَنْ ‏ ‏الزُّهْرِيِّ ‏ ‏قَالَ حَدَّثَنِي ‏",
+   "needle": "شعيب عن الزهري",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 36,
+     "end": 68,
+     "text": "شُعَيْبٌ ‏ ‏عَنْ ‏ ‏الزُّهْرِيِّ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 36,
+     "end": 68,
+     "text": "شُعَيْبٌ ‏ ‏عَنْ ‏ ‏الزُّهْرِيِّ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-011",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "قَالَ لَكَ أَجْرَانِ قَالَ نَعَمْ مَا مِنْ مُسْلِمٍ يُصِيبُهُ أَذًى مَرَضٌ",
+   "needle": "من مسلم يصيبه",
+   "options": {},
+   "expected": [
+    {
+     "start": 38,
+     "end": 61,
+     "text": "مِنْ مُسْلِمٍ يُصِيبُهُ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 38,
+     "end": 61,
+     "text": "مِنْ مُسْلِمٍ يُصِيبُهُ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-012",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-013",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-014",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-015",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏مِثْلَهُ ‏ ‏وَقَالَ ‏ ‏مُوسَى ‏ ‏حَدَّثَنَا ‏ ‏أَبَانُ",
+   "needle": "وقال موسي حدثنا",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 13,
+     "end": 44,
+     "text": "وَقَالَ ‏ ‏مُوسَى ‏ ‏حَدَّثَنَا"
+    }
+   ],
+   "actual": [
+    {
+     "start": 13,
+     "end": 44,
+     "text": "وَقَالَ ‏ ‏مُوسَى ‏ ‏حَدَّثَنَا"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-016",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏ ‏حَدَّثَنَا ‏ ‏إِسْمَاعِيلُ ‏ ‏قَالَ حَدَّثَنِي ‏ ‏مَالِكٌ",
+   "needle": "قال حدثني مالك",
+   "options": {},
+   "expected": [
+    {
+     "start": 33,
+     "end": 60,
+     "text": "قَالَ حَدَّثَنِي ‏ ‏مَالِكٌ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 33,
+     "end": 60,
+     "text": "قَالَ حَدَّثَنِي ‏ ‏مَالِكٌ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-017",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-018",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-019",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-020",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏عَبْدُ اللَّهِ ‏ ‏أَخْبَرَنَا ‏ ‏عَاصِمُ بْنُ سُلَيْمَانَ ‏ ‏عَنْ ‏ ‏الشَّعْبِيِّ ‏ ‏أَنَّهُ سَمِعَ ‏ ‏جَابِرَ بْنَ عَبْدِ اللَّهِ",
+   "needle": "عبد الله اخبرنا",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 1,
+     "end": 30,
+     "text": "عَبْدُ اللَّهِ ‏ ‏أَخْبَرَنَا"
+    }
+   ],
+   "actual": [
+    {
+     "start": 1,
+     "end": 30,
+     "text": "عَبْدُ اللَّهِ ‏ ‏أَخْبَرَنَا"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-021",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏أَنَّ رَسُولَ اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏نَهَى أَنْ",
+   "needle": "رسول الله",
+   "options": {},
+   "expected": [
+    {
+     "start": 34,
+     "end": 49,
+     "text": "رَسُولَ اللَّهِ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 34,
+     "end": 49,
+     "text": "رَسُولَ اللَّهِ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-022",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-023",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-024",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-025",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "وَسَلَّمَ ‏ ‏زَمَنَ ‏ ‏الْحُدَيْبِيَةِ ‏ ‏وَالْقَمْلُ يَتَنَاثَرُ عَلَى وَجْهِي فَقَالَ ‏ ‏أَيُؤْذِيكَ ‏ ‏هَوَامُّ ‏ ‏رَأْسِكَ قُلْتُ نَعَمْ قَالَ فَاحْلِقْ",
+   "needle": "الحديبية والقمل",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 23,
+     "end": 53,
+     "text": "الْحُدَيْبِيَةِ ‏ ‏وَالْقَمْلُ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 23,
+     "end": 53,
+     "text": "الْحُدَيْبِيَةِ ‏ ‏وَالْقَمْلُ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-026",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏ ‏نَافِعٍ ‏ ‏أَنَّ ‏ ‏عَبْدَ اللَّهِ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏قَالَ ‏",
+   "needle": "عبد",
+   "options": {},
+   "expected": [
+    {
+     "start": 23,
+     "end": 29,
+     "text": "عَبْدَ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 23,
+     "end": 29,
+     "text": "عَبْدَ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-027",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-028",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-029",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-030",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "فَقَالَ أَعْطُوهُ فَطَلَبُوا ‏ ‏سِنَّهُ ‏ ‏فَلَمْ يَجِدُوا لَهُ إِلَّا ‏ ‏سِنًّا ‏ ‏فَوْقَهَا فَقَالَ أَعْطُوهُ",
+   "needle": "فقال اعطوه فطلبوا",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 0,
+     "end": 28,
+     "text": "فَقَالَ أَعْطُوهُ فَطَلَبُوا"
+    }
+   ],
+   "actual": [
+    {
+     "start": 0,
+     "end": 28,
+     "text": "فَقَالَ أَعْطُوهُ فَطَلَبُوا"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-031",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏عَنْ ‏ ‏أَبِي هُرَيْرَةَ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏",
+   "needle": "رضي الله عنه",
+   "options": {},
+   "expected": [
+    {
+     "start": 29,
+     "end": 50,
+     "text": "رَضِيَ اللَّهُ عَنْهُ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 29,
+     "end": 50,
+     "text": "رَضِيَ اللَّهُ عَنْهُ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-032",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-033",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-034",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-035",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏ ‏قَالَ ‏ ‏لَا يَزْنِي الزَّانِي حِينَ يَزْنِي",
+   "needle": "قال لا",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 3,
+     "end": 15,
+     "text": "قَالَ ‏ ‏لَا"
+    }
+   ],
+   "actual": [
+    {
+     "start": 3,
+     "end": 15,
+     "text": "قَالَ ‏ ‏لَا"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-036",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏ ‏فَقَالَ هُوَ لَكَ يَا ‏ ‏عَبْدُ بْنَ زَمْعَةَ ‏ ‏الْوَلَدُ ‏ ‏لِلْفِرَاشِ ‏ ‏وَلِلْعَاهِرِ ‏ ‏الْحَجَرُ وَاحْتَجِبِي مِنْهُ",
+   "needle": "للفراش وللعاهر الحجر",
+   "options": {},
+   "expected": [
+    {
+     "start": 65,
+     "end": 106,
+     "text": "لِلْفِرَاشِ ‏ ‏وَلِلْعَاهِرِ ‏ ‏الْحَجَرُ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 65,
+     "end": 106,
+     "text": "لِلْفِرَاشِ ‏ ‏وَلِلْعَاهِرِ ‏ ‏الْحَجَرُ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-037",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-038",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-039",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-040",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏عَنْ ‏ ‏ثَابِتٍ ‏ ‏عَنْ ‏ ‏أَبِي رَافِعٍ ‏ ‏عَنْ ‏ ‏أَبِي هُرَيْرَةَ ‏ ‏أَنَّ",
+   "needle": "ابي رافع",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 28,
+     "end": 41,
+     "text": "أَبِي رَافِعٍ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 28,
+     "end": 41,
+     "text": "أَبِي رَافِعٍ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-041",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏صَدَاقٍ ‏ ‏وَقَالَ بَعْضُ النَّاسِ إِنْ احْتَالَ حَتَّى تَزَوَّجَ عَلَى الشِّغَارِ فَهُوَ جَائِزٌ وَالشَّرْطُ",
+   "needle": "تزوج علي الشغار",
+   "options": {},
+   "expected": [
+    {
+     "start": 57,
+     "end": 83,
+     "text": "تَزَوَّجَ عَلَى الشِّغَارِ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 57,
+     "end": 83,
+     "text": "تَزَوَّجَ عَلَى الشِّغَارِ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-042",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-043",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-044",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-045",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏الْمَكِّيُّ بْنُ إِبْرَاهِيمَ ‏ ‏أَخْبَرَنَا ‏ ‏حَنْظَلَةُ بْنُ أَبِي سُفْيَانَ ‏ ‏قَالَ سَمِعْتُ ‏ ‏سَالِمًا",
+   "needle": "قال",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 84,
+     "end": 89,
+     "text": "قَالَ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 84,
+     "end": 89,
+     "text": "قَالَ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-046",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "فَأَدْخَلْتُ فِيهِ مَا أُخْرِجَ مِنْهُ وَأَلْزَقْتُهُ بِالْأَرْضِ وَجَعَلْتُ لَهُ",
+   "needle": "منه والزقته",
+   "options": {},
+   "expected": [
+    {
+     "start": 32,
+     "end": 53,
+     "text": "مِنْهُ وَأَلْزَقْتُهُ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 32,
+     "end": 53,
+     "text": "مِنْهُ وَأَلْزَقْتُهُ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-047",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-048",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-049",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-050",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏عُبَادَةَ بْنَ الصَّامِتِ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏قَالَ ‏ ‏كُنَّا عِنْدَ النَّبِيِّ ‏",
+   "needle": "الصامت رضي الله",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 16,
+     "end": 44,
+     "text": "الصَّامِتِ ‏ ‏رَضِيَ اللَّهُ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 16,
+     "end": 44,
+     "text": "الصَّامِتِ ‏ ‏رَضِيَ اللَّهُ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-051",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏الْأَعْمَشُ ‏ ‏حَدَّثَنَا ‏ ‏مُسْلِمٌ ‏ ‏عَنْ ‏ ‏مَسْرُوقٍ ‏",
+   "needle": "عن مسروق",
+   "options": {},
+   "expected": [
+    {
+     "start": 42,
+     "end": 59,
+     "text": "عَنْ ‏ ‏مَسْرُوقٍ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 42,
+     "end": 59,
+     "text": "عَنْ ‏ ‏مَسْرُوقٍ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-052",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-053",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-054",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-055",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏أَبِي مُوسَى ‏ ‏عَنْ النَّبِيِّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏قَالَ ‏ ‏الْخَازِنُ ‏ ‏الْمُسْلِمُ الْأَمِينُ الَّذِي يُنْفِذُ ‏ ‏وَرُبَّمَا",
+   "needle": "عن النبي",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 17,
+     "end": 32,
+     "text": "عَنْ النَّبِيِّ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 17,
+     "end": 32,
+     "text": "عَنْ النَّبِيِّ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-056",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏ ‏كُنْتُ أَتَسَحَّرُ فِي أَهْلِي ثُمَّ تَكُونُ سُرْعَتِي أَنْ أُدْرِكَ السُّجُودَ مَعَ رَسُولِ اللَّهِ ‏ ‏صَلَّى اللَّهُ",
+   "needle": "رسول الله",
+   "options": {},
+   "expected": [
+    {
+     "start": 88,
+     "end": 103,
+     "text": "رَسُولِ اللَّهِ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 88,
+     "end": 103,
+     "text": "رَسُولِ اللَّهِ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-057",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-058",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-059",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-060",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "قَالَ ثُمَّ جَرَتْ السُّنَّةُ فِي مِيرَاثِهَا أَنَّهَا تَرِثُهُ وَيَرِثُ مِنْهَا مَا فَرَضَ",
+   "needle": "منها ما فرض",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 73,
+     "end": 91,
+     "text": "مِنْهَا مَا فَرَضَ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 73,
+     "end": 91,
+     "text": "مِنْهَا مَا فَرَضَ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-061",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "نَافِعٍ ‏ ‏عَنْ ‏ ‏الْحَسَنِ بْنِ مُسْلِمٍ ‏ ‏عَنْ ‏ ‏صَفِيَّةَ بِنْتِ شَيْبَةَ ‏ ‏عَنْ ‏ ‏عَائِشَةَ ‏",
+   "needle": "نافع عن",
+   "options": {},
+   "expected": [
+    {
+     "start": 0,
+     "end": 15,
+     "text": "نَافِعٍ ‏ ‏عَنْ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 0,
+     "end": 15,
+     "text": "نَافِعٍ ‏ ‏عَنْ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-062",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-063",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-064",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-065",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "غَيْرِ أَبِيهِ وَهُوَ يَعْلَمُ فَالْجَنَّةُ عَلَيْهِ حَرَامٌ ‏ ‏وَقَالَ ‏ ‏هِشَامٌ ‏ ‏وَأَخْبَرَنَا ‏ ‏مَعْمَرٌ",
+   "needle": "يعلم فالجنة عليه",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 22,
+     "end": 52,
+     "text": "يَعْلَمُ فَالْجَنَّةُ عَلَيْهِ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 22,
+     "end": 52,
+     "text": "يَعْلَمُ فَالْجَنَّةُ عَلَيْهِ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-066",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏ ‏رَضِيَ اللَّهُ عَنْهُمَا ‏ ‏قَالَ ‏ ‏كُنْتُ أَعْرِفُ انْقِضَاءَ",
+   "needle": "الله",
+   "options": {},
+   "expected": [
+    {
+     "start": 10,
+     "end": 17,
+     "text": "اللَّهُ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 10,
+     "end": 17,
+     "text": "اللَّهُ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-067",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-068",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-069",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-070",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏ ‏أَنَّ ‏ ‏مُعَاذَ بْنَ جَبَلٍ ‏ ‏كَانَ ‏",
+   "needle": "جبل كان",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 25,
+     "end": 40,
+     "text": "جَبَلٍ ‏ ‏كَانَ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 25,
+     "end": 40,
+     "text": "جَبَلٍ ‏ ‏كَانَ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-071",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏ ‏عَلَى جَمَلٍ أَحْمَرَ ‏ ‏مَخْطُومٍ ‏ ‏بِخُلْبَةٍ كَأَنِّي",
+   "needle": "علي جمل",
+   "options": {},
+   "expected": [
+    {
+     "start": 3,
+     "end": 15,
+     "text": "عَلَى جَمَلٍ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 3,
+     "end": 15,
+     "text": "عَلَى جَمَلٍ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-072",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-073",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-074",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-075",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏فِي ذَلِكَ وَمَا حَمَلَنِي عَلَى كَثْرَةِ مُرَاجَعَتِهِ إِلَّا أَنَّهُ لَمْ يَقَعْ فِي",
+   "needle": "ذلك",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 34,
+     "end": 40,
+     "text": "ذَلِكَ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 34,
+     "end": 40,
+     "text": "ذَلِكَ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-076",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "اللَّهُ عَنْهَا ‏ ‏قَالَتْ ‏ ‏كَانَ رَسُولُ اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏إِذَا سَلَّمَ قَامَ النِّسَاءُ حِينَ يَقْضِي تَسْلِيمَهُ",
+   "needle": "وسلم اذا سلم",
+   "options": {},
+   "expected": [
+    {
+     "start": 79,
+     "end": 105,
+     "text": "وَسَلَّمَ ‏ ‏إِذَا سَلَّمَ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 79,
+     "end": 105,
+     "text": "وَسَلَّمَ ‏ ‏إِذَا سَلَّمَ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-077",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-078",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-079",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-080",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "بْنُ دِينَارٍ ‏ ‏قَالَ سَمِعْتُ ‏ ‏ابْنَ عُمَرَ ‏ ‏رَضِيَ اللَّهُ",
+   "needle": "سمعت",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 23,
+     "end": 31,
+     "text": "سَمِعْتُ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 23,
+     "end": 31,
+     "text": "سَمِعْتُ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-081",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏ ‏قُتَيْبَةُ ‏ ‏حَدَّثَنَا ‏ ‏اللَّيْثُ ‏ ‏عَنْ ‏ ‏نَافِعٍ ‏ ‏أَنَّ ‏ ‏ابْنَ عُمَرَ ‏ ‏رَضِيَ اللَّهُ عَنْهُمَا",
+   "needle": "ابن عمر",
+   "options": {},
+   "expected": [
+    {
+     "start": 72,
+     "end": 84,
+     "text": "ابْنَ عُمَرَ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 72,
+     "end": 84,
+     "text": "ابْنَ عُمَرَ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-082",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-083",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-084",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-085",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏عَائِشَةَ ‏ ‏رَضِيَ اللَّهُ عَنْهَا ‏ ‏أَنَّهَا قَالَتْ ‏ ‏سُئِلَ النَّبِيُّ ‏ ‏صَلَّى",
+   "needle": "عائشة رضي الله",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 1,
+     "end": 28,
+     "text": "عَائِشَةَ ‏ ‏رَضِيَ اللَّهُ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 1,
+     "end": 28,
+     "text": "عَائِشَةَ ‏ ‏رَضِيَ اللَّهُ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-086",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "قَالَ اللَّهُ تَعَالَى ‏ ‏يَشْتِمُنِي ابْنُ ‏ ‏آدَمَ ‏ ‏وَمَا يَنْبَغِي لَهُ أَنْ",
+   "needle": "وما ينبغي له",
+   "options": {},
+   "expected": [
+    {
+     "start": 56,
+     "end": 76,
+     "text": "وَمَا يَنْبَغِي لَهُ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 56,
+     "end": 76,
+     "text": "وَمَا يَنْبَغِي لَهُ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-087",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-088",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-089",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-090",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "عَبَّاسٍ ‏ ‏فَتَلَكَّأَتْ ‏ ‏وَنَكَصَتْ حَتَّى ظَنَنَّا أَنَّهَا تَرْجِعُ",
+   "needle": "عباس",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 0,
+     "end": 8,
+     "text": "عَبَّاسٍ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 0,
+     "end": 8,
+     "text": "عَبَّاسٍ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-091",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏قَالَ لَنَا وَنَحْنُ نَغْسِلُهَا ‏ ‏ابْدَءُوا بِمَيَامِنِهَا وَمَوَاضِعِ",
+   "needle": "قال لنا",
+   "options": {},
+   "expected": [
+    {
+     "start": 40,
+     "end": 51,
+     "text": "قَالَ لَنَا"
+    }
+   ],
+   "actual": [
+    {
+     "start": 40,
+     "end": 51,
+     "text": "قَالَ لَنَا"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-092",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-093",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-094",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-095",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "عُمَرَ ‏ ‏يَقُولُ ‏ ‏جَاءَ ‏ ‏رَجُلَانِ ‏ ‏مِنْ الْمَشْرِقِ فَخَطَبَا فَقَالَ النَّبِيُّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+   "needle": "الله",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 99,
+     "end": 106,
+     "text": "اللَّهُ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 99,
+     "end": 106,
+     "text": "اللَّهُ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-096",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏ابْنِ عَبَّاسٍ ‏ ‏عَنْ ‏ ‏ابْنِ عَبَّاسٍ ‏ ‏رَضِيَ اللَّهُ عَنْهُمَا ‏ ‏قَالَ ‏",
+   "needle": "ابن عباس",
+   "options": {},
+   "expected": [
+    {
+     "start": 1,
+     "end": 15,
+     "text": "ابْنِ عَبَّاسٍ"
+    },
+    {
+     "start": 27,
+     "end": 41,
+     "text": "ابْنِ عَبَّاسٍ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 1,
+     "end": 15,
+     "text": "ابْنِ عَبَّاسٍ"
+    },
+    {
+     "start": 27,
+     "end": 41,
+     "text": "ابْنِ عَبَّاسٍ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-097",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-098",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-099",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-100",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏ ‏مَسْرُوقٍ ‏ ‏قَالَ ‏ ‏دَخَلَ ‏ ‏حَسَّانُ بْنُ ثَابِتٍ",
+   "needle": "بن ثابت",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 44,
+     "end": 56,
+     "text": "بْنُ ثَابِتٍ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 44,
+     "end": 56,
+     "text": "بْنُ ثَابِتٍ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-101",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏فِي ‏ ‏بَنِي إِسْرَائِيلَ ‏ ‏وَالْكَهْفِ ‏ ‏وَمَرْيَمَ ‏ ‏وَطه",
+   "needle": "بني اسرائيل والكهف",
+   "options": {},
+   "expected": [
+    {
+     "start": 8,
+     "end": 41,
+     "text": "بَنِي إِسْرَائِيلَ ‏ ‏وَالْكَهْفِ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 8,
+     "end": 41,
+     "text": "بَنِي إِسْرَائِيلَ ‏ ‏وَالْكَهْفِ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-102",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-103",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-104",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-105",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏فَتَخَلَّفَ ‏ ‏أَبُو قَتَادَةَ ‏ ‏مَعَ بَعْضِ أَصْحَابِهِ وَهُمْ مُحْرِمُونَ وَهُوَ غَيْرُ مُحْرِمٍ فَرَأَوْا حِمَارًا وَحْشِيًّا",
+   "needle": "ابو",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 16,
+     "end": 21,
+     "text": "أَبُو"
+    }
+   ],
+   "actual": [
+    {
+     "start": 16,
+     "end": 21,
+     "text": "أَبُو"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-106",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏ ‏عَنْ ‏ ‏أَبِي الزِّنَادِ ‏ ‏عَنْ ‏ ‏الْأَعْرَجِ ‏ ‏عَنْ ‏ ‏أَبِي هُرَيْرَةَ ‏ ‏عَنْ رَسُولِ اللَّهِ",
+   "needle": "الاعرج عن ابي",
+   "options": {},
+   "expected": [
+    {
+     "start": 39,
+     "end": 67,
+     "text": "الْأَعْرَجِ ‏ ‏عَنْ ‏ ‏أَبِي"
+    }
+   ],
+   "actual": [
+    {
+     "start": 39,
+     "end": 67,
+     "text": "الْأَعْرَجِ ‏ ‏عَنْ ‏ ‏أَبِي"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-107",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-108",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-109",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-110",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏أَبَا صَالِحٍ ‏ ‏يَقُولُ سَمِعْتُ ‏ ‏أَبَا هُرَيْرَةَ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏يَقُولُ ‏ ‏قَالَ رَسُولُ",
+   "needle": "صالح يقول",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 7,
+     "end": 25,
+     "text": "صَالِحٍ ‏ ‏يَقُولُ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 7,
+     "end": 25,
+     "text": "صَالِحٍ ‏ ‏يَقُولُ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-111",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏ ‏عَنْ ‏ ‏عَمْرِو بْنِ مَيْمُونٍ ‏ ‏قَالَ قَالَ ‏ ‏عُمَرُ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏إِنَّ",
+   "needle": "عن عمرو",
+   "options": {},
+   "expected": [
+    {
+     "start": 3,
+     "end": 18,
+     "text": "عَنْ ‏ ‏عَمْرِو"
+    }
+   ],
+   "actual": [
+    {
+     "start": 3,
+     "end": 18,
+     "text": "عَنْ ‏ ‏عَمْرِو"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-112",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-113",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-114",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-115",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏إِبْرَاهِيمَ ‏ ‏عَنْ ‏ ‏عَلْقَمَةَ ‏ ‏قَالَ ‏ ‏قَدِمْتُ ‏ ‏الشَّأْمَ ‏ ‏فَصَلَّيْتُ رَكْعَتَيْنِ ثُمَّ قُلْتُ اللَّهُمَّ يَسِّرْ",
+   "needle": "الشام فصليت",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 60,
+     "end": 84,
+     "text": "الشَّأْمَ ‏ ‏فَصَلَّيْتُ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 60,
+     "end": 84,
+     "text": "الشَّأْمَ ‏ ‏فَصَلَّيْتُ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-116",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "خَرِبَتْ ‏ ‏خَيْبَرُ ‏ ‏إِنَّا إِذَا نَزَلْنَا بِسَاحَةِ قَوْمٍ ‏",
+   "needle": "نزلنا",
+   "options": {},
+   "expected": [
+    {
+     "start": 37,
+     "end": 46,
+     "text": "نَزَلْنَا"
+    }
+   ],
+   "actual": [
+    {
+     "start": 37,
+     "end": 46,
+     "text": "نَزَلْنَا"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-117",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-118",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-119",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-120",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏ ‏ح ‏ ‏حَدَّثَنَا ‏ ‏مُحَمَّدُ بْنُ سِنَانٍ ‏ ‏حَدَّثَنَا ‏ ‏هَمَّامٌ ‏ ‏عَنْ",
+   "needle": "حدثنا همام",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 48,
+     "end": 70,
+     "text": "حَدَّثَنَا ‏ ‏هَمَّامٌ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 48,
+     "end": 70,
+     "text": "حَدَّثَنَا ‏ ‏هَمَّامٌ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-121",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "رَأَيْتُ رَسُولَ اللَّهِ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+   "needle": "الله صلي الله",
+   "options": {},
+   "expected": [
+    {
+     "start": 17,
+     "end": 42,
+     "text": "اللَّهِ ‏ ‏صَلَّى اللَّهُ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 17,
+     "end": 42,
+     "text": "اللَّهِ ‏ ‏صَلَّى اللَّهُ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-122",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-123",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-124",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-125",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏عَبْدُ اللَّهِ بْنُ يُوسُفَ ‏ ‏أَخْبَرَنَا ‏ ‏مَالِكٌ ‏ ‏عَنْ ‏ ‏ابْنِ شِهَابٍ ‏ ‏عَنْ ‏ ‏عُبَيْدِ اللَّهِ",
+   "needle": "عن",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 58,
+     "end": 62,
+     "text": "عَنْ"
+    },
+    {
+     "start": 83,
+     "end": 87,
+     "text": "عَنْ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 58,
+     "end": 62,
+     "text": "عَنْ"
+    },
+    {
+     "start": 83,
+     "end": 87,
+     "text": "عَنْ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-126",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏الْأَعْرَجِ ‏ ‏عَنْ ‏ ‏أَبِي هُرَيْرَةَ ‏ ‏رَضِيَ اللَّهُ عَنْهُ ‏ ‏قَالَ ‏ ‏قَالَ النَّبِيُّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏",
+   "needle": "الاعرج",
+   "options": {},
+   "expected": [
+    {
+     "start": 1,
+     "end": 12,
+     "text": "الْأَعْرَجِ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 1,
+     "end": 12,
+     "text": "الْأَعْرَجِ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-127",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-128",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-129",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-130",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "أَجْرَانِ ‏ ‏ثُمَّ ‏ ‏قَالَ ‏ ‏عَامِرٌ ‏ ‏أَعْطَيْنَاكَهَا بِغَيْرِ",
+   "needle": "ثم قال عامر",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 13,
+     "end": 38,
+     "text": "ثُمَّ ‏ ‏قَالَ ‏ ‏عَامِرٌ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 13,
+     "end": 38,
+     "text": "ثُمَّ ‏ ‏قَالَ ‏ ‏عَامِرٌ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-131",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "الرَّحْمَنِ بْنِ أَبِي بَكْرَةَ ‏ ‏عَنْ ‏ ‏أَبِيهِ ‏ ‏عَنْ النَّبِيِّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ",
+   "needle": "بكرة",
+   "options": {},
+   "expected": [
+    {
+     "start": 23,
+     "end": 31,
+     "text": "بَكْرَةَ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 23,
+     "end": 31,
+     "text": "بَكْرَةَ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-132",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-133",
+   "family": "allWords",
+   "status": "unsupported",
+   "reason": "no allWords mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-134",
+   "family": "anyWord",
+   "status": "unsupported",
+   "reason": "no anyWord mode"
+  },
+  {
+   "file": "search",
+   "id": "gen-search-135",
+   "family": "phrase/loose",
+   "status": "pass",
+   "haystack": "‏قَالَ النَّبِيُّ ‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏أَوْ قَالَ قَالَ ‏ ‏أَبُو الْقَاسِمِ ‏ ‏صَلَّى",
+   "needle": "وسلم او",
+   "options": {
+    "level": "loose"
+   },
+   "expected": [
+    {
+     "start": 45,
+     "end": 62,
+     "text": "وَسَلَّمَ ‏ ‏أَوْ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 45,
+     "end": 62,
+     "text": "وَسَلَّمَ ‏ ‏أَوْ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-136",
+   "family": "phrase",
+   "status": "pass",
+   "haystack": "‏ ‏صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ ‏ ‏قَالَ ‏ ‏إِذَا دُعِيَ",
+   "needle": "عليه وسلم",
+   "options": {},
+   "expected": [
+    {
+     "start": 18,
+     "end": 36,
+     "text": "عَلَيْهِ وَسَلَّمَ"
+    }
+   ],
+   "actual": [
+    {
+     "start": 18,
+     "end": 36,
+     "text": "عَلَيْهِ وَسَلَّمَ"
+    }
+   ]
+  },
+  {
+   "file": "search",
+   "id": "gen-search-137",
+   "family": "wholeWord",
+   "status": "unsupported",
+   "reason": "no whole-word option"
+  }
+ ]
+}
