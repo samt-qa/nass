@@ -81,7 +81,8 @@ class Charset {
       ccc[t.ccc[i]] = t.ccc[i + 1];
     }
     for (var i = 0; i < t.compositions.length; i += 3) {
-      (compose[t.compositions[i + 1]] ??= {})[t.compositions[i]] = t.compositions[i + 2];
+      (compose[t.compositions[i + 1]] ??= {})[t.compositions[i]] =
+          t.compositions[i + 2];
     }
     _expansions(t.presentation, pres);
     _expansions(t.presentationSearch, presSearch);
@@ -97,6 +98,8 @@ class Charset {
   int flagsOf(int c) => c < 0x10000 ? flags[c] : 0;
   int cccOf(int c) => c < 0x10000 ? ccc[c] : 0;
   bool isArabic(int c) => c < 0x10000 && flags[c] & fArabic != 0;
-  bool isSep(int c) => c < 0x10000 ? flags[c] & fSep != 0 : astralSep.contains(c);
-  bool isSpace(int c) => c < 0x10000 ? flags[c] & fSpace != 0 : astralSpace.contains(c);
+  bool isSep(int c) =>
+      c < 0x10000 ? flags[c] & fSep != 0 : astralSep.contains(c);
+  bool isSpace(int c) =>
+      c < 0x10000 ? flags[c] & fSpace != 0 : astralSpace.contains(c);
 }

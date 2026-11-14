@@ -13,14 +13,22 @@ class Match {
 
   @override
   bool operator ==(Object other) =>
-      other is Match && other.start == start && other.end == end && other.text == text;
+      other is Match &&
+      other.start == start &&
+      other.end == end &&
+      other.text == text;
   @override
   int get hashCode => Object.hash(start, end, text);
   @override
   String toString() => 'Match($start, $end, "$text")';
 }
 
-List<Match> _phrase(String haystack, NormalizedText hay, String needle, bool wholeWord) {
+List<Match> _phrase(
+  String haystack,
+  NormalizedText hay,
+  String needle,
+  bool wholeWord,
+) {
   final out = <Match>[];
   if (needle.isEmpty) return out;
   final t = hay.text;
@@ -30,7 +38,8 @@ List<Match> _phrase(String haystack, NormalizedText hay, String needle, bool who
     final s = t.indexOf(needle, from);
     if (s < 0) break;
     final e = s + needle.length;
-    final boundaryOk = !wholeWord ||
+    final boundaryOk =
+        !wholeWord ||
         ((s == 0 || t.codeUnitAt(s - 1) == 0x20) &&
             (e == t.length || t.codeUnitAt(e) == 0x20));
     if (boundaryOk) {
@@ -49,7 +58,11 @@ List<Match> _phrase(String haystack, NormalizedText hay, String needle, bool who
 
 /// Sorts by start, longer first on ties, and drops matches overlapping an earlier one.
 List<Match> _merge(List<Match> all) {
-  all.sort((a, b) => a.start != b.start ? a.start - b.start : (b.end - b.start) - (a.end - a.start));
+  all.sort(
+    (a, b) => a.start != b.start
+        ? a.start - b.start
+        : (b.end - b.start) - (a.end - a.start),
+  );
   final out = <Match>[];
   var lastEnd = -1;
   for (final m in all) {
@@ -97,10 +110,14 @@ bool contains(
   MatchMode matchMode = MatchMode.phrase,
   bool wholeWord = false,
   Honorifics honorifics = Honorifics.keep,
-}) =>
-    findAll(haystack, needle,
-            level: level, matchMode: matchMode, wholeWord: wholeWord, honorifics: honorifics)
-        .isNotEmpty;
+}) => findAll(
+  haystack,
+  needle,
+  level: level,
+  matchMode: matchMode,
+  wholeWord: wholeWord,
+  honorifics: honorifics,
+).isNotEmpty;
 
 /// Wraps every match in the ORIGINAL [haystack] with [open] and [close].
 /// Does not escape HTML; escape [haystack] yourself if it is untrusted.
@@ -114,8 +131,14 @@ String highlight(
   String open = '<mark>',
   String close = '</mark>',
 }) {
-  final ms = findAll(haystack, needle,
-      level: level, matchMode: matchMode, wholeWord: wholeWord, honorifics: honorifics);
+  final ms = findAll(
+    haystack,
+    needle,
+    level: level,
+    matchMode: matchMode,
+    wholeWord: wholeWord,
+    honorifics: honorifics,
+  );
   if (ms.isEmpty) return haystack;
   final sb = StringBuffer();
   var pos = 0;

@@ -5,12 +5,79 @@ import 'package:nass/nass.dart' hide contains;
 import 'package:test/test.dart';
 
 const pieces = [
-  'ب', 'س', 'م', 'ا', 'أ', 'إ', 'آ', 'ٱ', 'ى', 'ي', 'ة', 'ه', 'ؤ', 'ئ', 'ء', 'ک', 'ی', 'ھ',
-  'َ', 'ُ', 'ِ', 'ّ', 'ْ', 'ً', 'ٰ', 'ۥ', 'ۦ',
-  'ۚ', 'ٔ', 'ٓ', 'ؐ', 'ـ', 'ﷲ', 'ﻻ', 'ﷺ', '﷽', 'ﷻ', '﵁', 'ﻣ', 'ﹰ',
-  ' ', '  ', '\n', ' ', '،', '.', ',', '؟', '«', '»', '٫', '۝', '%', '٪',
-  '١', '٢', '۳', '3', '7', '‍', '‌', '‏', '﻿', '👨', 'A', 'z',
-  ' الله ', ' تعالى ', ' رضي الله عنه ', ' صلى الله عليه وسلم ', ' عز وجل ', ' عبد ', ' أبي ',
+  'ب',
+  'س',
+  'م',
+  'ا',
+  'أ',
+  'إ',
+  'آ',
+  'ٱ',
+  'ى',
+  'ي',
+  'ة',
+  'ه',
+  'ؤ',
+  'ئ',
+  'ء',
+  'ک',
+  'ی',
+  'ھ',
+  'َ',
+  'ُ',
+  'ِ',
+  'ّ',
+  'ْ',
+  'ً',
+  'ٰ',
+  'ۥ',
+  'ۦ',
+  'ۚ',
+  'ٔ',
+  'ٓ',
+  'ؐ',
+  'ـ',
+  'ﷲ',
+  'ﻻ',
+  'ﷺ',
+  '﷽',
+  'ﷻ',
+  '﵁',
+  'ﻣ',
+  'ﹰ',
+  ' ',
+  '  ',
+  '\n',
+  ' ',
+  '،',
+  '.',
+  ',',
+  '؟',
+  '«',
+  '»',
+  '٫',
+  '۝',
+  '%',
+  '٪',
+  '١',
+  '٢',
+  '۳',
+  '3',
+  '7',
+  '‍',
+  '‌',
+  '‏',
+  '﻿',
+  '👨',
+  'A',
+  'z',
+  ' الله ',
+  ' تعالى ',
+  ' رضي الله عنه ',
+  ' صلى الله عليه وسلم ',
+  ' عز وجل ',
+  ' عبد ',
+  ' أبي ',
 ];
 
 String randomText(Random r) {
@@ -27,7 +94,11 @@ void main() {
       test('idempotent: ${level.name}/${h.name}', () {
         for (final x in samples) {
           final once = normalize(x, level: level, honorifics: h);
-          expect(normalize(once, level: level, honorifics: h), once, reason: 'input: ${x.runes.toList()}');
+          expect(
+            normalize(once, level: level, honorifics: h),
+            once,
+            reason: 'input: ${x.runes.toList()}',
+          );
         }
       });
     }
@@ -37,12 +108,17 @@ void main() {
     for (final x in samples) {
       for (final h in Honorifics.values) {
         final clean = normalize(x, level: Level.clean, honorifics: h);
-        expect(normalize(clean, honorifics: h), normalize(x, honorifics: h),
-            reason: 'input: ${x.runes.toList()}');
+        expect(
+          normalize(clean, honorifics: h),
+          normalize(x, honorifics: h),
+          reason: 'input: ${x.runes.toList()}',
+        );
         final search = normalize(x, honorifics: h);
-        expect(normalize(search, level: Level.loose, honorifics: h),
-            normalize(x, level: Level.loose, honorifics: h),
-            reason: 'input: ${x.runes.toList()}');
+        expect(
+          normalize(search, level: Level.loose, honorifics: h),
+          normalize(x, level: Level.loose, honorifics: h),
+          reason: 'input: ${x.runes.toList()}',
+        );
       }
     }
   });
@@ -55,7 +131,12 @@ void main() {
         expect(m.end.length, m.text.length);
         for (var i = 0; i < m.start.length; i++) {
           expect(m.start[i] < m.end[i] && m.end[i] <= x.length, isTrue);
-          if (i > 0) expect(m.start[i] >= m.start[i - 1], isTrue, reason: 'input: ${x.runes.toList()}');
+          if (i > 0)
+            expect(
+              m.start[i] >= m.start[i - 1],
+              isTrue,
+              reason: 'input: ${x.runes.toList()}',
+            );
         }
       }
     }
@@ -68,8 +149,11 @@ void main() {
         for (final w in norm.split(' ').where((w) => w.isNotEmpty)) {
           final needle = normalize(w, level: level);
           for (final m in findAll(x, w, level: level)) {
-            expect(normalize(m.text, level: level), contains(needle),
-                reason: 'input: ${x.runes.toList()} needle: $w');
+            expect(
+              normalize(m.text, level: level),
+              contains(needle),
+              reason: 'input: ${x.runes.toList()} needle: $w',
+            );
           }
         }
       }

@@ -15,7 +15,11 @@ final Set<String> _bint = t.bint.toSet();
 /// Equal keys do NOT mean the same person.
 String nameKey(String name) {
   // 1. search level with honorifics stripped.
-  final base = normalize(name, level: Level.search, honorifics: Honorifics.strip);
+  final base = normalize(
+    name,
+    level: Level.search,
+    honorifics: Honorifics.strip,
+  );
   if (base.isEmpty) return '';
   final w = base.split(' ');
   // 2. trailing titles.
@@ -27,7 +31,9 @@ String nameKey(String name) {
     final k = _kunya[w[i]];
     if (k != null) {
       w[i] = k;
-    } else if (w[i] == 'ذا' && i + 1 < w.length && _dhaFollowers.contains(w[i + 1])) {
+    } else if (w[i] == 'ذا' &&
+        i + 1 < w.length &&
+        _dhaFollowers.contains(w[i + 1])) {
       w[i] = 'ذو';
     } else if (_ibn.contains(w[i])) {
       w[i] = 'بن';

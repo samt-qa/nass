@@ -9,5 +9,4 @@ export type { Level, Honorifics, NormalizeOptions, NormalizedText } from "./norm
 export { findAll, contains, highlight } from "./search.js";
 export type { MatchMode, SearchOptions, HighlightOptions, Match } from "./search.js";
 export { nameKey } from "./names.js";
-export { splitIsnad } from "./isnad.js";
-export type { IsnadSplit, Narrator } from "./isnad.js";
+// splitIsnad (experimental) lives in the separate entry "@samt/nass/isnad".

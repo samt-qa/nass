@@ -37,6 +37,16 @@
         "types": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
       }
+    },
+    "./isnad": {
+      "import": {
+        "types": "./dist/isnad.d.ts",
+        "default": "./dist/isnad.js"
+      },
+      "require": {
+        "types": "./dist/isnad.d.cts",
+        "default": "./dist/isnad.cjs"
+      }
     }
   },
   "files": [
@@ -48,7 +58,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts --clean --minify --target es2020",
+    "build": "tsup",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "coverage": "vitest run --coverage",

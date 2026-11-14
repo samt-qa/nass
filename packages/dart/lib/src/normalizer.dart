@@ -29,7 +29,8 @@ class NormalizedText {
 
   /// Maps a span [s, e) of [text] back to the original string.
   /// Returns `null` for an empty span.
-  (int, int)? toOriginal(int s, int e) => s >= e ? null : (start[s], end[e - 1]);
+  (int, int)? toOriginal(int s, int e) =>
+      s >= e ? null : (start[s], end[e - 1]);
 }
 
 const int _space = 0x20;
@@ -40,9 +41,9 @@ class Buf {
   Int32List cp, s, e;
   int length = 0;
   Buf(int capacity)
-      : cp = Int32List(capacity < 8 ? 8 : capacity),
-        s = Int32List(capacity < 8 ? 8 : capacity),
-        e = Int32List(capacity < 8 ? 8 : capacity);
+    : cp = Int32List(capacity < 8 ? 8 : capacity),
+      s = Int32List(capacity < 8 ? 8 : capacity),
+      e = Int32List(capacity < 8 ? 8 : capacity);
 
   void _grow() {
     final n = cp.length * 2;
@@ -347,14 +348,18 @@ void _emit(Buf out, int c, int st, int en, int next, bool loose) {
 // ---------------------------------------------------------------- pass 4 (S7)
 
 // Longest phrase first, so «سبحانه وتعالي» wins over «سبحانه».
-List<List<String>> _byLength(List<String> list, bool loose) => list
-    .map((p) => (loose ? normalize(p, level: Level.loose) : p).split(' '))
-    .toList()
-  ..sort((a, b) => b.length - a.length);
+List<List<String>> _byLength(List<String> list, bool loose) =>
+    list
+        .map((p) => (loose ? normalize(p, level: Level.loose) : p).split(' '))
+        .toList()
+      ..sort((a, b) => b.length - a.length);
 final List<List<String>> _always = _byLength(t.honorificsAlways, false);
 final List<List<String>> _afterAllah = _byLength(t.honorificsAfterAllah, false);
 final List<List<String>> _alwaysLoose = _byLength(t.honorificsAlways, true);
-final List<List<String>> _afterAllahLoose = _byLength(t.honorificsAfterAllah, true);
+final List<List<String>> _afterAllahLoose = _byLength(
+  t.honorificsAfterAllah,
+  true,
+);
 
 /// Remove written honorific formulas (SPEC S7). [a] is already collapsed.
 Buf _s7(Buf a, bool loose) {
@@ -374,7 +379,10 @@ Buf _s7(Buf a, bool loose) {
     i = j + 1;
   }
   final nw = ws.length ~/ 2;
-  final texts = [for (var w = 0; w < nw; w++) String.fromCharCodes(a.cp, ws[2 * w], ws[2 * w + 1])];
+  final texts = [
+    for (var w = 0; w < nw; w++)
+      String.fromCharCodes(a.cp, ws[2 * w], ws[2 * w + 1]),
+  ];
   final removed = List<bool>.filled(nw, false);
   bool matchAt(int w, List<String> p) {
     if (w + p.length > nw) return false;
@@ -446,14 +454,19 @@ Buf normalizeBuf(String text, Level level, Honorifics honorifics) {
 }
 
 /// Normalizes [text] (SPEC §1). Deterministic and idempotent.
-String normalize(String text,
-        {Level level = Level.search, Honorifics honorifics = Honorifics.keep}) =>
-    normalizeBuf(text, level, honorifics).text;
+String normalize(
+  String text, {
+  Level level = Level.search,
+  Honorifics honorifics = Honorifics.keep,
+}) => normalizeBuf(text, level, honorifics).text;
 
 /// Normalizes [text] and returns, for each UTF-16 unit of the result, the
 /// span of its source in [text] (SPEC §5).
-NormalizedText normalizeWithMap(String text,
-    {Level level = Level.search, Honorifics honorifics = Honorifics.keep}) {
+NormalizedText normalizeWithMap(
+  String text, {
+  Level level = Level.search,
+  Honorifics honorifics = Honorifics.keep,
+}) {
   final b = normalizeBuf(text, level, honorifics);
   final start = <int>[], end = <int>[];
   for (var k = 0; k < b.length; k++) {
@@ -463,5 +476,9 @@ NormalizedText normalizeWithMap(String text,
       end.add(b.e[k]);
     }
   }
-  return NormalizedText(b.text, List.unmodifiable(start), List.unmodifiable(end));
+  return NormalizedText(
+    b.text,
+    List.unmodifiable(start),
+    List.unmodifiable(end),
+  );
 }

@@ -2,7 +2,8 @@
 import 'package:nass/nass.dart';
 
 void main() {
-  const unit = 'إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى ﷺ. ';
+  const unit =
+      'إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى ﷺ. ';
   final sb = StringBuffer();
   while (sb.length < 1 << 20) {
     sb.write(unit);
@@ -17,7 +18,9 @@ void main() {
     for (var i = 0; i < runs; i++) {
       normalize(text, level: level);
     }
-    print('${level.name}: ${(sw.elapsedMicroseconds / runs / 1000).toStringAsFixed(1)} ms '
-        'per ${(text.length / 1024).round()} K units');
+    print(
+      '${level.name}: ${(sw.elapsedMicroseconds / runs / 1000).toStringAsFixed(1)} ms '
+      'per ${(text.length / 1024).round()} K units',
+    );
   }
 }

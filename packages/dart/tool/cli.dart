@@ -14,16 +14,23 @@ Object? handle(Map<String, dynamic> r) {
     case 'normalize':
       return normalize(r['text'] as String, level: level, honorifics: hon);
     case 'map':
-      final m = normalizeWithMap(r['text'] as String, level: level, honorifics: hon);
+      final m = normalizeWithMap(
+        r['text'] as String,
+        level: level,
+        honorifics: hon,
+      );
       return {'text': m.text, 'start': m.start, 'end': m.end};
     case 'findAll':
-      return findAll(r['haystack'] as String, r['needle'] as String,
-              level: level,
-              honorifics: hon,
-              matchMode: MatchMode.values.byName((r['matchMode'] as String?) ?? 'phrase'),
-              wholeWord: (r['wholeWord'] as bool?) ?? false)
-          .map((m) => {'start': m.start, 'end': m.end, 'text': m.text})
-          .toList();
+      return findAll(
+        r['haystack'] as String,
+        r['needle'] as String,
+        level: level,
+        honorifics: hon,
+        matchMode: MatchMode.values.byName(
+          (r['matchMode'] as String?) ?? 'phrase',
+        ),
+        wholeWord: (r['wholeWord'] as bool?) ?? false,
+      ).map((m) => {'start': m.start, 'end': m.end, 'text': m.text}).toList();
     case 'nameKey':
       return nameKey(r['text'] as String);
     case 'splitIsnad':
@@ -32,7 +39,9 @@ Object? handle(Map<String, dynamic> r) {
         'isnad': s.isnad,
         'matn': s.matn,
         'confidence': s.confidence,
-        'narrators': [for (final n in s.narrators) {'name': n.name, 'form': n.form}],
+        'narrators': [
+          for (final n in s.narrators) {'name': n.name, 'form': n.form},
+        ],
       };
   }
   throw ArgumentError('unknown op ${r['op']}');

@@ -78,8 +78,34 @@ foreach (vectors('names') as $c) {
     }
 }
 
+// splitIsnad: reproduce the reference output exactly; keep the reference accurate.
+$acc = ['dev' => [0, 0], 'test' => [0, 0]];
+foreach (vectors('isnad') as $c) {
+    $r = Nass::splitIsnad($c['input']);
+    $cpStart = $r->isnad === '' ? -1 : mb_strlen($c['input']) - mb_strlen($r->matn);
+    $start = $cpStart < 0 ? -1 : Offsets::toUtf16($c['input'], $cpStart);
+    $got = [
+        'matnStart' => $start,
+        'confidence' => $r->confidence,
+        'narrators' => array_map(static fn ($n) => ['name' => $n->name, 'form' => $n->form], $r->narrators),
+    ];
+    $want = $c['reference'];
+    $want['confidence'] = (float) $want['confidence'];
+    check($got == $want, "{$c['id']}", $got, $want);
+    $acc[$c['split']][1]++;
+    if (in_array($c['reference']['matnStart'], $c['acceptMatnStart'], true)) {
+        $acc[$c['split']][0]++;
+    }
+}
+check($acc['dev'][0] / $acc['dev'][1] >= 0.95, 'isnad dev accuracy', $acc['dev'], '>= 95%');
+check($acc['test'][0] / $acc['test'][1] >= 0.90, 'isnad test accuracy', $acc['test'], '>= 90%');
+$plain = Nass::splitIsnad('الحمد لله رب العالمين');
+check($plain->isnad === '' && $plain->matn === 'الحمد لله رب العالمين' && $plain->confidence === 0.0, 'isnad: no split for plain text');
+$v = Nass::splitIsnad('حَدَّثَنَا مَالِكٌ عَنْ نَافِعٍ عَنِ ابْنِ عُمَرَ أَنَّ رَسُولَ اللَّهِ ﷺ قَالَ لَا يَبِعْ بَعْضُكُمْ');
+check($v->matn === 'لَا يَبِعْ بَعْضُكُمْ', 'isnad: vocalized text', $v->matn, 'لَا يَبِعْ بَعْضُكُمْ');
+
 // API
-$h = 'إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ';
+$h ='إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ';
 check(Nass::highlight($h, 'الاعمال') === 'إِنَّمَا <mark>الْأَعْمَالُ</mark> بِالنِّيَّاتِ', 'highlight', Nass::highlight($h, 'الاعمال'), '');
 check(Nass::contains($h, 'انما الاعمال'), 'contains');
 check(!Nass::contains($h, 'عمال', wholeWord: true), 'contains wholeWord');
