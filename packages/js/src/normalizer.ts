@@ -88,6 +88,26 @@ export class Buf {
 
 // ---------------------------------------------------------------- pass 1
 
+const ZWNJ = 0x200c;
+const ZWJ = 0x200d;
+
+/** Whether the ZWNJ at k has an Arabic neighbour: the nearest code point on either side that is not ZWNJ or ZWJ (SPEC S2). */
+function zwnjNearArabic(a: Buf, k: number): boolean {
+  const arabic = (x: number) => x < 0x10000 && (flags[x]! & F_ARABIC) !== 0;
+  for (let m = k - 1; m >= 0; m--) {
+    const x = a.cp[m]!;
+    if (x === ZWNJ || x === ZWJ) continue;
+    if (arabic(x)) return true;
+    break;
+  }
+  for (let m = k + 1; m < a.length; m++) {
+    const x = a.cp[m]!;
+    if (x === ZWNJ || x === ZWJ) continue;
+    return arabic(x);
+  }
+  return false;
+}
+
 function pass1(text: string): Buf {
   const n = text.length;
   const out = new Buf(n + 16);
@@ -137,7 +157,8 @@ function pass1(text: string): Buf {
           }
         }
       }
-      if (near) out.attach(en);
+      // ZWNJ next to Arabic is kept in clean and removed in search (SPEC C2, S2).
+      if (near && c !== ZWNJ) out.attach(en);
       else out.add(c, st, en);
       continue;
     }
@@ -240,6 +261,10 @@ function pass3(a: Buf, h: Honorifics, loose: boolean): Buf {
           const off = p >> 8, len = p & 0xff;
           for (let m = 0; m < len; m++) emit(out, presData[off + m]!, st, en, -1, loose);
         }
+        continue;
+      }
+      if (c === ZWNJ && zwnjNearArabic(a, k)) {
+        out.attach(en);
         continue;
       }
       if ((flags[c]! & F_MARK) !== 0) {

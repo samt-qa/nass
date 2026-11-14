@@ -123,7 +123,8 @@ final class Normalizer
                         }
                     }
                 }
-                if ($near) {
+                // ZWNJ next to Arabic is kept in clean and removed in search (SPEC C2, S2).
+                if ($near && $c !== 0x200C) {
                     self::attach($s, $e, $n, $i + 1);
                 } else {
                     $cp[$n] = $c; $s[$n] = $i; $e[$n] = $i + 1; $n++;
@@ -219,6 +220,31 @@ final class Normalizer
 
     // ------------------------------------------------------------ pass 3
 
+    /** Whether the ZWNJ at $k has an Arabic neighbour: the nearest code point on either side that is not ZWNJ or ZWJ (SPEC S2). */
+    private static function zwnjNearArabic(array $a, int $k): bool
+    {
+        $flags = Charset::$flags;
+        for ($m = $k - 1; $m >= 0; $m--) {
+            $x = $a[$m];
+            if ($x === 0x200C || $x === 0x200D) {
+                continue;
+            }
+            if ((($flags[$x] ?? 0) & Charset::F_ARABIC) !== 0) {
+                return true;
+            }
+            break;
+        }
+        $len = count($a);
+        for ($m = $k + 1; $m < $len; $m++) {
+            $x = $a[$m];
+            if ($x === 0x200C || $x === 0x200D) {
+                continue;
+            }
+            return (($flags[$x] ?? 0) & Charset::F_ARABIC) !== 0;
+        }
+        return false;
+    }
+
     private static function pass3(array $a, array $as, array $ae, Honorifics $h, bool $loose): array
     {
         $flags = Charset::$flags;
@@ -241,6 +267,10 @@ final class Normalizer
                 continue;
             }
             $f = $flags[$c] ?? 0;
+            if ($c === 0x200C && self::zwnjNearArabic($a, $k)) {
+                self::attach($s, $e, count($cp), $en);
+                continue;
+            }
             if ($f & Charset::F_MARK) {
                 // attach() inlined: marks are about half of vocalized text.
                 $n = count($cp);

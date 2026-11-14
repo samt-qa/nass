@@ -34,6 +34,8 @@ class NormalizedText {
 }
 
 const int _space = 0x20;
+const int _zwnj = 0x200C;
+const int _zwj = 0x200D;
 final Charset _cs = Charset.instance;
 
 /// Growable triple of typed arrays: code point, source start, source end.
@@ -145,7 +147,8 @@ Buf _pass1(String text) {
           m++;
         }
       }
-      if (near) {
+      // ZWNJ next to Arabic is kept in clean and removed in search (SPEC C2, S2).
+      if (near && c != _zwnj) {
         out.attach(en);
       } else {
         out.add(c, st, en);
@@ -278,6 +281,11 @@ Buf _pass3(Buf a, Honorifics h, bool loose) {
         }
         continue;
       }
+      // S2 ZWNJ next to Arabic in the clean text.
+      if (c == _zwnj && _zwnjNearArabic(a, k)) {
+        out.attach(en);
+        continue;
+      }
       // S2 marks.
       if (flags[c] & fMark != 0) {
         out.attach(en);
@@ -297,6 +305,24 @@ Buf _pass3(Buf a, Honorifics h, bool loose) {
   }
   out.trimEnd();
   return out;
+}
+
+/// Whether the ZWNJ at [k] has an Arabic neighbour: the nearest code point on
+/// either side that is not ZWNJ or ZWJ (SPEC S2).
+bool _zwnjNearArabic(Buf a, int k) {
+  bool arabic(int x) => x < 0x10000 && _cs.flags[x] & fArabic != 0;
+  for (var m = k - 1; m >= 0; m--) {
+    final x = a.cp[m];
+    if (x == _zwnj || x == _zwj) continue;
+    if (arabic(x)) return true;
+    break;
+  }
+  for (var m = k + 1; m < a.length; m++) {
+    final x = a.cp[m];
+    if (x == _zwnj || x == _zwj) continue;
+    return arabic(x);
+  }
+  return false;
 }
 
 /// S3–S6 (and L1 when [loose]) for one code point.

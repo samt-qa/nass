@@ -16,7 +16,7 @@ All hadith text in `spec/vectors/` comes from **[Open-Hadith-Data](https://githu
 | سنن النسائي | `sunan_al-nasai_ahadith.utf8.csv` |
 | سنن ابن ماجه | `sunan_ibn-maja_ahadith.utf8.csv` |
 
-Every case that quotes a hadith has a `source`, for example `{"work": "صحيح مسلم", "ref": "3222", "dataset": "Open-Hadith-Data …", "verified": true}`. Here `ref` is the hadith **number in that dataset**, which may differ from other numbering systems. `verified: true` means the text was copied by script from the dataset row, not typed. It does **not** mean a scholar compared it with a printed edition. `review: approved` means Mohammed approved the expected value (2026-11-14, see SPEC §12): 152 pending cases were reviewed one by one, and 134 isnad cases were approved on the strength of an independent blind relabel that agreed with them.
+Every case that quotes a hadith has a `source`, for example `{"work": "صحيح مسلم", "ref": "3222", "dataset": "Open-Hadith-Data …", "verified": true}`. Here `ref` is the hadith **number in that dataset**, which may differ from other numbering systems. `verified: true` means the text was copied by script from the dataset row, not typed. It does **not** mean a scholar compared it with a printed edition. `review: approved` means Mohammed approved the expected value (2026-11-14, see SPEC §12): all 286 pending cases were reviewed one by one in a review page, after an independent blind relabel of the 200 isnad cases that agreed with the labels.
 
 We did **not** use corpora without a clear licence, such as the LK Hadith Corpus or Sanadset.
 

@@ -29,9 +29,9 @@
       "input": "می‌خواهم",
       "level": "clean",
       "options": {},
-      "expected": "میخواهم",
-      "note": "ZWNJ بجوار حرف عربي/فارسي يُحذف",
-      "review": "approved"
+      "expected": "می‌خواهم",
+      "note": "ZWNJ يبقى في clean لأنه جزء من شكل الكلمة الفارسية (0.2). يُحذف في search",
+      "review": "pending"
     },
     {
       "id": "norm-clean-004",
@@ -199,8 +199,8 @@
       "input": "ٱلنَّبِيِّـۧنَ",
       "level": "search",
       "options": {},
-      "expected": "النبين",
-      "note": "سلوك 1.0 الموثَّق: الياء الصغيرة تُحذف فتنقص ياء. يتغير مع quranicAlef في 1.1",
+      "expected": "النبيين",
+      "note": "الياء الصغيرة العليا U+06E7 تنوب عن ياء محذوفة فتصير «ي» (0.2). الألف الخنجرية تُحذف",
       "review": "approved",
       "source": {
         "work": "القرآن الكريم، رسم عثماني (Tanzil)",
@@ -423,6 +423,26 @@
       "expected": "بسم الله الرحمن الرحيم",
       "note": "البسملة تُفك دائمًا ولا تُحذف",
       "review": "approved"
+    },
+    {
+      "id": "norm-search-027",
+      "rule": "S2",
+      "input": "می‌خواهم",
+      "level": "search",
+      "options": {},
+      "expected": "ميخواهم",
+      "note": "ZWNJ بجوار حرف عربي يُحذف في search (0.2)، و«ی» الفارسية تصير «ي»",
+      "review": "pending"
+    },
+    {
+      "id": "norm-search-028",
+      "rule": "S2",
+      "input": "a‌b",
+      "level": "search",
+      "options": {},
+      "expected": "a‌b",
+      "note": "ZWNJ بين حرفين غير عربيين لا يُمس",
+      "review": "pending"
     },
     {
       "id": "norm-loose-001",

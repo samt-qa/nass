@@ -32,7 +32,8 @@ const SEPS = mapOf(T.digitSeparators);
 const LOOSE = mapOf(T.looseMap);
 const RE_LOOSE_REMOVE = new RegExp(cls(T.looseRemove), "gu");
 
-const collapse = (s) => s.replace(/ +/g, " ").trim();
+const ZWNJ = "‌";
+const collapse =(s) => s.replace(/ +/g, " ").trim();
 const replaceChars = (s, map) => [...s].map((c) => map.get(c) ?? c).join("");
 
 function clean(text) {
@@ -46,7 +47,8 @@ function clean(text) {
       while (p >= 0 && NEAR.has(a[p])) p--;
       let j = i + 1;
       while (j < a.length && NEAR.has(a[j])) j++;
-      if ((p >= 0 && ARABIC.test(a[p])) || (j < a.length && ARABIC.test(a[j]))) continue;
+      // ZWNJ next to Arabic stays in clean; search removes it (below).
+      if (a[i] !== ZWNJ &&((p >= 0 && ARABIC.test(a[p])) || (j < a.length && ARABIC.test(a[j])))) continue;
     }
     out.push(a[i]);
   }
@@ -67,6 +69,18 @@ const RE_HON_LOOSE = phraseRegex(T.honorificsAlways.map(looseText), T.honorifics
 export function normalize(text, level = "search", honorifics = "keep") {
   let s = clean(text);
   if (level === "clean") return s;
+  // S2: ZWNJ whose nearest non-ZWNJ/ZWJ neighbour in the clean text is Arabic (before S1 expands ligatures).
+  {
+    const a = [...s];
+    s = a.filter((c, i) => {
+      if (c !== ZWNJ) return true;
+      let p = i - 1;
+      while (p >= 0 && NEAR.has(a[p])) p--;
+      let j = i + 1;
+      while (j < a.length && NEAR.has(a[j])) j++;
+      return !((p >= 0 && ARABIC.test(a[p])) || (j < a.length && ARABIC.test(a[j])));
+    }).join("");
+  }
   // S1
   s = [...s].map((c) => {
     if (!PRES_S.has(c)) return c;
