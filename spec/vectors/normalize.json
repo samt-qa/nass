@@ -31,7 +31,7 @@
       "options": {},
       "expected": "می‌خواهم",
       "note": "ZWNJ يبقى في clean لأنه جزء من شكل الكلمة الفارسية (0.2). يُحذف في search",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-clean-004",
@@ -432,7 +432,7 @@
       "options": {},
       "expected": "ميخواهم",
       "note": "ZWNJ بجوار حرف عربي يُحذف في search (0.2)، و«ی» الفارسية تصير «ي»",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-search-028",
@@ -442,7 +442,7 @@
       "options": {},
       "expected": "a‌b",
       "note": "ZWNJ بين حرفين غير عربيين لا يُمس",
-      "review": "pending"
+      "review": "approved"
     },
     {
       "id": "norm-loose-001",

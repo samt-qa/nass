@@ -55,7 +55,7 @@ The v0.1 sample (0–199) was a one-off draw. The v0.2 draw is `tools/sample-isn
 The labels are in `tools/isnad-labels.mjs`. Each label is the first words of the matn, plus any alternatives that are equally defensible. The convention is SPEC §8.1. In short: the formula that raises the hadith to the Prophet ﷺ and is followed by speech belongs to the isnad; otherwise the matn starts with the reported content.
 
 - v0.1 (0–199): written by hand **before** any algorithm existed.
-- v0.2 (200–499): two independent annotators labelled each hadith blind, seeing only the convention and the numbered words, **before** any change to `splitIsnad`. They chose the same start in 299 of 300; the one disagreement (`isnad-test-346`) was settled by the convention. An alternative is kept only when both annotators accepted it. The anchors are words of the corpus text itself. These cases are pending Mohammed's review.
+- v0.2 (200–499): two independent annotators labelled each hadith blind, seeing only the convention and the numbered words, **before** any change to `splitIsnad`. They chose the same start in 299 of 300; the one disagreement (`isnad-test-346`) was settled by the convention. An alternative is kept only when both annotators accepted it. The anchors are words of the corpus text itself. Mohammed approved them after a delegated review (SPEC §13): every case where an annotator was unsure (47) was checked against the convention, plus a random 30 of the rest; no label was wrong.
 
 القاعدة: صيغة الرفع إلى النبي ﷺ المتبوعة بقول تتبع الإسناد، وإلا فالمتن يبدأ بالمحتوى المروي. الوسوم كُتبت قبل أي تعديل على الخوارزمية.
 
