@@ -54,7 +54,7 @@ Searching vocalized Arabic is easy to get *almost* right. Strip the diacritics a
 | Language | Package | Install | Docs |
 |---|---|---|---|
 | Dart / Flutter | `nass` | `dart pub add nass` | [packages/dart](packages/dart) |
-| TypeScript / JavaScript | `@samt/nass` | `npm i @samt/nass` | [packages/js](packages/js) |
+| TypeScript / JavaScript | `@samt-qa/nass` | `npm i @samt-qa/nass` | [packages/js](packages/js) |
 | PHP ≥ 8.3 | `samt/nass` | `composer require samt/nass` | [packages/php](packages/php) |
 
 > [!NOTE]
@@ -66,8 +66,8 @@ Searching vocalized Arabic is easy to get *almost* right. Strip the diacritics a
 <summary><b>TypeScript / JavaScript</b></summary>
 
 ```ts
-import { normalize, findAll, highlight, nameKey } from "@samt/nass";
-import { splitIsnad } from "@samt/nass/isnad"; // experimental, separate entry
+import { normalize, findAll, highlight, nameKey } from "@samt-qa/nass";
+import { splitIsnad } from "@samt-qa/nass/isnad"; // experimental, separate entry
 
 normalize("إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ");            // "انما الاعمال بالنيات"
 findAll("إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ", "الاعمال");   // [{ start: 9, end: 21, text: "الْأَعْمَالُ" }]
@@ -150,7 +150,7 @@ Per-book results and the error analysis are in [docs/corpus.md](docs/corpus.md).
 | PHP 8.5, JIT on (`opcache.jit=tracing`) | 47 ms | 72 ms | 76 ms |
 | PHP 8.5, no JIT | 132 ms | 227 ms | 238 ms |
 
-The core JS bundle is **7.9 KB** min+gzip; `@samt/nass/isnad` adds about 2 KB and reuses the core.
+The core JS bundle is **7.9 KB** min+gzip; `@samt-qa/nass/isnad` adds about 2 KB and reuses the core.
 
 ## Compared with other libraries
 

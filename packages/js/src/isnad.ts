@@ -1,7 +1,7 @@
 // Experimental isnad/matn split (SPEC §8). A small recursive-descent parser over
 // search-normalized words: the isnad is a chain of links (a transmission word
 // followed by a narrator), and the matn starts where no link can continue.
-// Shipped as the separate entry "@samt/nass/isnad" to keep the core bundle small.
+// Shipped as the separate entry "@samt-qa/nass/isnad" to keep the core bundle small.
 import { normalize, normalizeWithMap } from "./normalizer.js";
 
 export interface Narrator {

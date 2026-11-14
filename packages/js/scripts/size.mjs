@@ -1,5 +1,5 @@
 // Reports minified + gzipped size of each ESM entry together with the chunks it
-// imports. The core entry must stay under 8 KB gzip (PRD §6.4); "@samt/nass/isnad"
+// imports. The core entry must stay under 8 KB gzip (PRD §6.4); "@samt-qa/nass/isnad"
 // is reported separately.
 import { readFileSync } from "node:fs";
 import { gzipSync } from "node:zlib";

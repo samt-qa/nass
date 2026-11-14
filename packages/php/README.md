@@ -4,7 +4,7 @@ Arabic text normalization and diacritic-insensitive search for Quran, hadith and
 
 تطبيع النص العربي والبحث فيه بلا اعتبار للحركات، مع مواضع التطابق في النص الأصلي المشكول.
 
-Part of [nass](https://github.com/samt-qa/nass): the Dart (`nass`) and TypeScript (`@samt/nass`) packages behave identically.
+Part of [nass](https://github.com/samt-qa/nass): the Dart (`nass`) and TypeScript (`@samt-qa/nass`) packages behave identically.
 
 > **Security: PHP2Shell.** CVE-2026-109618 and CVE-2026-109619 were fixed on 2026-10-21. Run this package, and anything else, only on a patched PHP: **8.3.36+, 8.4.27+ or 8.5.12+**. PHP 8.2 is not supported.
 

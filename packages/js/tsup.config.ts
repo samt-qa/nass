@@ -1,5 +1,5 @@
-// Two entries without shared chunks: the core ("@samt/nass") is one self-contained
-// file, and "@samt/nass/isnad" imports normalize() from the core entry at run time
+// Two entries without shared chunks: the core ("@samt-qa/nass") is one self-contained
+// file, and "@samt-qa/nass/isnad" imports normalize() from the core entry at run time
 // instead of bundling a second copy of the tables.
 import type { Plugin } from "esbuild";
 import { defineConfig, type Options } from "tsup";

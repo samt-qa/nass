@@ -269,7 +269,7 @@ highlight(haystack, needle, {level, matchMode, wholeWord, open, close}) → stri
 splitIsnad(text) → { isnad, matn, confidence, narrators: [{name, form}] }
 ```
 
-**تجريبي:** قد تتغير الواجهة والسلوك قبل 2.0. في TypeScript تُستورد من مدخل منفصل `@samt/nass/isnad` حتى لا تكبر الحزمة الأساسية.
+**تجريبي:** قد تتغير الواجهة والسلوك قبل 2.0. في TypeScript تُستورد من مدخل منفصل `@samt-qa/nass/isnad` حتى لا تكبر الحزمة الأساسية.
 
 ### 8.1 أين يبدأ المتن (اصطلاح الوسم)
 - المتن يبدأ بأول كلمة من **المحتوى المروي**: قول، أو وصف، أو قصة.
@@ -395,4 +395,4 @@ splitIsnad(text) → { isnad, matn, confidence, narrators: [{name, form}] }
 | 8 | قوائم S7 تشمل نصوص U+FD40–FD4F | S7 | اتساق S1 مع S7 |
 | 9 | مواضع PHP بالمحارف، مع صنف `Offsets` | 0 | `mb_substr` |
 | 10 | تفصيل `splitIsnad` | 8 | المرحلة 4 |
-| 11 | `@samt/nass/isnad` مدخل منفصل في TS | 8 | حد الحجم 8 KB |
+| 11 | `@samt-qa/nass/isnad` مدخل منفصل في TS | 8 | حد الحجم 8 KB |
