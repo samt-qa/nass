@@ -2,9 +2,9 @@
 
 All packages (Dart `nass`, npm `@samt-qa/nass`, Packagist `samt/nass`, crates.io `nass`) share one version and one spec.
 
-## Unreleased
+## 0.3.0 (Rust)
 
-### Rust package (new, not yet published)
+### Rust package (new, published on crates.io)
 - `packages/rust`, crate `nass` 0.3.0: SPEC v0.3 in Rust, no runtime dependencies, `#![forbid(unsafe_code)]`, MSRV 1.70.
 - `normalize`, `normalize_into`, `normalize_with_map` (with `Normalized::source_range`), `find_all`, `contains`, `highlight`, `name_key`; `isnad::split_isnad` behind the `isnad` feature.
 - Offsets are UTF-8 bytes; `byte_to_utf16_offset`, `byte_to_char_offset` and `utf16_to_byte_offset` convert to the other packages' units.

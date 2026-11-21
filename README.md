@@ -10,6 +10,7 @@ One specification · four byte-identical packages · Dart, TypeScript, PHP and R
 [![pub.dev](https://img.shields.io/pub/v/nass?logo=dart&label=pub.dev)](https://pub.dev/packages/nass)
 [![npm](https://img.shields.io/npm/v/@samt-qa/nass?logo=npm&label=npm)](https://www.npmjs.com/package/@samt-qa/nass)
 [![Packagist](https://img.shields.io/packagist/v/samt/nass?logo=packagist&logoColor=white&label=packagist)](https://packagist.org/packages/samt/nass)
+[![crates.io](https://img.shields.io/crates/v/nass?logo=rust&label=crates.io)](https://crates.io/crates/nass)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Test vectors: CC0](https://img.shields.io/badge/test%20vectors-CC0-lightgrey.svg)](spec/vectors)
 [![Unicode 17](https://img.shields.io/badge/Unicode-17.0-informational.svg)](spec/SPEC.md)
@@ -60,10 +61,10 @@ Searching vocalized Arabic is easy to get *almost* right. Strip the diacritics a
 | Dart / Flutter | `nass` | `dart pub add nass` | [packages/dart](packages/dart) |
 | TypeScript / JavaScript | `@samt-qa/nass` | `npm i @samt-qa/nass` | [packages/js](packages/js) |
 | PHP ≥ 8.3 | `samt/nass` | `composer require samt/nass` | [packages/php](packages/php) |
-| Rust ≥ 1.70 | `nass` *(not yet on crates.io)* | `nass = { git = "https://github.com/samt-qa/nass" }` | [packages/rust](packages/rust) |
+| Rust ≥ 1.70 | `nass` | `cargo add nass` | [packages/rust](packages/rust) |
 
 > [!NOTE]
-> **Version 0.3.0.** Published on [pub.dev](https://pub.dev/packages/nass), [npm](https://www.npmjs.com/package/@samt-qa/nass) and [Packagist](https://packagist.org/packages/samt/nass). All test vectors are reviewed and approved ([SPEC §12–14](spec/SPEC.md)).
+> **Version 0.3.0.** Published on [pub.dev](https://pub.dev/packages/nass), [npm](https://www.npmjs.com/package/@samt-qa/nass), [Packagist](https://packagist.org/packages/samt/nass) and [crates.io](https://crates.io/crates/nass). All test vectors are reviewed and approved ([SPEC §12–14](spec/SPEC.md)).
 
 ## Quick start
 
