@@ -4,7 +4,7 @@ Arabic text normalization and diacritic-insensitive search for Quran, hadith and
 
 تطبيع النص العربي والبحث فيه بلا اعتبار للحركات، مع مواضع التطابق في النص الأصلي المشكول.
 
-Part of [nass](https://github.com/samt-qa/nass): the Dart (`nass`) and PHP (`samt/nass`) packages behave identically.
+Part of [nass](https://github.com/samt-qa/nass): the Dart (`nass`), PHP (`samt/nass`) and Rust (`nass` crate) packages behave identically.
 
 ```bash
 npm i @samt-qa/nass

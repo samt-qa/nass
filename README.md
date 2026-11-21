@@ -154,7 +154,7 @@ Per-book results and the error analysis are in [docs/corpus.md](docs/corpus.md).
 |---|---|
 | Shared test vectors (normalize, offsets, search, names, isnad) | 1,554 cases, all four packages |
 | Differential test vs. independent oracle (six books) | 0 mismatches / 172,463 (Dart and Rust) |
-| Line coverage | Dart 99.3% · TypeScript 99.6% · PHP 97.9% · Rust not measured yet |
+| Line coverage | Dart 99.3% · TypeScript 99.6% · PHP 97.9% · Rust 98.2% |
 | CI matrix | Dart 3.13 · Node 20 / 22 / 24 · PHP 8.3 / 8.4 / 8.5 · Rust stable / 1.70 on Linux and Windows |
 | Property tests | idempotence and `clean ⊂ search` on random input; Rust also checks `search ⊂ loose`, offset maps and match spans |
 

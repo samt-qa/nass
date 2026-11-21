@@ -11,7 +11,8 @@ documentation = "https://docs.rs/nass"
 readme = "README.md"
 keywords = ["arabic", "normalization", "search", "quran", "hadith"]
 categories = ["text-processing", "internationalization"]
-include = ["src/**/*.rs", "README.md", "LICENSE", "Cargo.toml"]
+# tests/vectors.rs is left out: it reads spec/vectors/ from the repository.
+include = ["src/**/*.rs", "benches/**/*.rs", "examples/**/*.rs", "tests/props.rs", "README.md", "LICENSE", "Cargo.toml"]
 
 [features]
 default = []

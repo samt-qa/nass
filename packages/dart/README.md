@@ -4,7 +4,7 @@ Arabic text normalization and diacritic-insensitive search for Quran, hadith and
 
 تطبيع النص العربي والبحث فيه بلا اعتبار للحركات، مع مواضع التطابق في النص الأصلي المشكول.
 
-This is the reference package of [nass](https://github.com/samt-qa/nass). The TypeScript (`@samt-qa/nass`) and PHP (`samt/nass`) packages behave identically: all three pass the same shared test vectors.
+This is the reference package of [nass](https://github.com/samt-qa/nass). The TypeScript (`@samt-qa/nass`), PHP (`samt/nass`) and Rust (`nass` crate) packages behave identically: all four pass the same shared test vectors.
 
 ```dart
 import 'package:nass/nass.dart';
