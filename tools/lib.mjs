@@ -17,6 +17,18 @@ export function dart(requests) {
   return JSON.parse(out.toString("utf8"));
 }
 
+/**
+ * Batch-call the Rust CLI example (packages/rust/examples/cli.rs), same protocol as dart().
+ * Offsets in its answers are UTF-16 units, like the vectors.
+ */
+export function rust(requests) {
+  const dir = join(root, "packages", "rust");
+  const exe = join(dir, "target", "release", "examples", process.platform === "win32" ? "cli.exe" : "cli");
+  execFileSync("cargo", ["build", "--quiet", "--release", "--all-features", "--example", "cli"], { cwd: dir, stdio: "inherit" });
+  const out = execFileSync(exe, { input: JSON.stringify(requests), maxBuffer: 1 << 28 });
+  return JSON.parse(out.toString("utf8"));
+}
+
 /** Parse the two-column "number","text" CSV of Open-Hadith-Data. */
 export function readHadith(file) {
   const raw = readFileSync(join(root, "tools", "corpus", file), "utf8");

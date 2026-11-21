@@ -14,3 +14,4 @@ packages/js/coverage/
 packages/php/vendor/
 packages/php/composer.lock
 packages/dart/coverage/
+packages/rust/target/

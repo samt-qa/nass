@@ -1,0 +1,34 @@
+[package]
+name = "nass"
+version = "0.3.0"
+edition = "2021"
+rust-version = "1.70"
+description = "Arabic text normalization and diacritic-insensitive search for Quran, hadith and heritage texts, with offsets in the original text."
+license = "MIT"
+repository = "https://github.com/samt-qa/nass"
+homepage = "https://github.com/samt-qa/nass"
+documentation = "https://docs.rs/nass"
+readme = "README.md"
+keywords = ["arabic", "normalization", "search", "quran", "hadith"]
+categories = ["text-processing", "internationalization"]
+include = ["src/**/*.rs", "README.md", "LICENSE", "Cargo.toml"]
+
+[features]
+default = []
+# Experimental isnad/matn split (SPEC §8). The API may change before 2.0.
+isnad = []
+
+[dependencies]
+
+[dev-dependencies]
+serde_json = "1"
+proptest = { version = "1", default-features = false, features = ["std"] }
+criterion = { version = "0.5", default-features = false }
+
+[[bench]]
+name = "normalize"
+harness = false
+
+[[example]]
+name = "cli"
+required-features = ["isnad"]

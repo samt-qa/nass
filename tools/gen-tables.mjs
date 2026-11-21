@@ -7,6 +7,7 @@
 //   packages/dart/lib/src/tables.g.dart      Dart
 //   packages/js/src/tables.g.ts              TypeScript
 //   packages/php/src/Tables.php              PHP
+//   packages/rust/src/tables.rs              Rust
 //
 // Usage: node tools/gen-tables.mjs           write all outputs
 //        node tools/gen-tables.mjs --check   exit 1 if any output is stale (CI)
@@ -218,11 +219,19 @@ const php =
 
 function snake(k) { return k.replace(/[A-Z]/g, (m) => "_" + m).toUpperCase(); }
 
+// Rust: plain slices; packages/rust/src/charset.rs builds the lookups once at first use.
+// lib.rs declares this module with #[rustfmt::skip], so the long lines stay as generated.
+const rust =
+  header("//") + "// presentation/presentationSearch are [key, n, ...values]; ranges are inclusive pairs.\n\n" +
+  Object.entries(fields).map(([k, v]) => `pub(crate) const ${snake(k)}: &[u32] = &[${v.join(",")}];`).join("\n") + "\n" +
+  Object.entries(strFields).map(([k, v]) => `pub(crate) const ${snake(k)}: &[&str] = &[${v.map((s) => JSON.stringify(s)).join(", ")}];`).join("\n") + "\n";
+
 const outputs = [
   ["spec/tables.json", humanJson],
   ["packages/dart/lib/src/tables.g.dart", dart],
   ["packages/js/src/tables.g.ts", ts],
   ["packages/php/src/Tables.php", php],
+  ["packages/rust/src/tables.rs", rust],
 ];
 
 let stale = 0;

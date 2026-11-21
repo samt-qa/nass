@@ -4,7 +4,7 @@
 
 **Arabic text normalization and diacritic-insensitive search for Quran, hadith and heritage texts —<br>with match offsets in the original vocalized text.**
 
-One specification · three byte-identical packages · Dart, TypeScript and PHP
+One specification · four byte-identical packages · Dart, TypeScript, PHP and Rust
 
 [![CI](https://github.com/samt-qa/nass/actions/workflows/ci.yml/badge.svg)](https://github.com/samt-qa/nass/actions/workflows/ci.yml)
 [![pub.dev](https://img.shields.io/pub/v/nass?logo=dart&label=pub.dev)](https://pub.dev/packages/nass)
@@ -16,6 +16,7 @@ One specification · three byte-identical packages · Dart, TypeScript and PHP
 ![Dart](https://img.shields.io/badge/Dart-3.x-0175C2?logo=dart&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-ESM%20%7C%20CJS-3178C6?logo=typescript&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-%E2%89%A5%208.3-777BB4?logo=php&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust-%E2%89%A5%201.70-B7410E?logo=rust&logoColor=white)
 
 [العربية](README.ar.md) · [Specification](spec/SPEC.md) · [Test vectors](spec/vectors) · [Corpus & isnad accuracy](docs/corpus.md)
 
@@ -48,9 +49,9 @@ Searching vocalized Arabic is easy to get *almost* right. Strip the diacritics a
 | | |
 |---|---|
 | **Offsets in the original** | Every normalized character maps back to its source span, so you highlight the vocalized text the user is actually reading. |
-| **One spec, three languages** | Dart, TypeScript and PHP pass the same 1,554 shared test vectors, plus a differential test against an independent implementation: 0 mismatches in 172,463 comparisons over the six books. |
+| **One spec, four languages** | Dart, TypeScript, PHP and Rust pass the same 1,554 shared test vectors, plus a differential test against an independent implementation: 0 mismatches in 172,463 comparisons over the six books. |
 | **Built for religious texts** | Honorifics («ﷺ», «رضي الله عنه», «عز وجل» only after «الله»), a `nameKey` for narrator names, and an experimental isnad/matn splitter measured on hand-labelled hadiths. |
-| **Small and dependency-free** | The core JS bundle is 7.9 KB min+gzip with no runtime dependencies; the Dart and PHP packages have none either. |
+| **Small and dependency-free** | The core JS bundle is 7.9 KB min+gzip with no runtime dependencies; the Dart, PHP and Rust packages have none either. |
 
 ## Packages
 
@@ -59,6 +60,7 @@ Searching vocalized Arabic is easy to get *almost* right. Strip the diacritics a
 | Dart / Flutter | `nass` | `dart pub add nass` | [packages/dart](packages/dart) |
 | TypeScript / JavaScript | `@samt-qa/nass` | `npm i @samt-qa/nass` | [packages/js](packages/js) |
 | PHP ≥ 8.3 | `samt/nass` | `composer require samt/nass` | [packages/php](packages/php) |
+| Rust ≥ 1.70 | `nass` *(not yet on crates.io)* | `nass = { git = "https://github.com/samt-qa/nass" }` | [packages/rust](packages/rust) |
 
 > [!NOTE]
 > **Version 0.3.0.** Published on [pub.dev](https://pub.dev/packages/nass), [npm](https://www.npmjs.com/package/@samt-qa/nass) and [Packagist](https://packagist.org/packages/samt/nass). All test vectors are reviewed and approved ([SPEC §12–14](spec/SPEC.md)).
@@ -102,6 +104,18 @@ Nass::highlight($text, 'الاعمال');                          // offsets ar
 ```
 </details>
 
+<details>
+<summary><b>Rust</b></summary>
+
+```rust
+use nass::*;
+
+normalize("إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ", &Options::default());   // "انما الاعمال بالنيات"
+find_all(text, "الاعمال", &SearchOptions::default());          // offsets are UTF-8 bytes in Rust
+highlight(text, "الاعمال", &HighlightOptions::default());
+```
+</details>
+
 ## Normalization levels
 
 | Level | Use | What it does |
@@ -138,11 +152,11 @@ Per-book results and the error analysis are in [docs/corpus.md](docs/corpus.md).
 
 | Check | Result |
 |---|---|
-| Shared test vectors (normalize, offsets, search, names, isnad) | 1,554 cases, all three packages |
-| Differential test vs. independent oracle (six books) | 0 mismatches / 172,463 |
-| Line coverage | Dart 99.3% · TypeScript 99.6% · PHP 97.9% |
-| CI matrix | Dart 3.13 · Node 20 / 22 / 24 · PHP 8.3 / 8.4 / 8.5 |
-| Property tests | idempotence and `clean ⊂ search` on random input |
+| Shared test vectors (normalize, offsets, search, names, isnad) | 1,554 cases, all four packages |
+| Differential test vs. independent oracle (six books) | 0 mismatches / 172,463 (Dart and Rust) |
+| Line coverage | Dart 99.3% · TypeScript 99.6% · PHP 97.9% · Rust not measured yet |
+| CI matrix | Dart 3.13 · Node 20 / 22 / 24 · PHP 8.3 / 8.4 / 8.5 · Rust stable / 1.70 on Linux and Windows |
+| Property tests | idempotence and `clean ⊂ search` on random input; Rust also checks `search ⊂ loose`, offset maps and match spans |
 
 ## Performance
 
@@ -154,8 +168,9 @@ Per-book results and the error analysis are in [docs/corpus.md](docs/corpus.md).
 | Node 22 | 34 ms | 38 ms | 39 ms |
 | PHP 8.5, JIT on (`opcache.jit=tracing`) | 47 ms | 72 ms | 76 ms |
 | PHP 8.5, no JIT | 132 ms | 227 ms | 238 ms |
+| Rust 1.95, release (`cargo bench`) | 16 ms | 21 ms | 22 ms |
 
-The core JS bundle is **7.9 KB** min+gzip; `@samt-qa/nass/isnad` adds about 2 KB and reuses the core.
+The Rust row was measured later on the same machine; Dart measured in the same session gave 29 / 30 / 31 ms. The core JS bundle is **7.9 KB** min+gzip; `@samt-qa/nass/isnad` adds about 2 KB and reuses the core.
 
 ## Compared with other libraries
 
@@ -168,7 +183,7 @@ From a review in November 2026 (all MIT-licensed). nass was written from scratch
 | Presentation forms (ﷲ ﻻ ﷺ) | ✅ | ✅ | — | — |
 | Quranic marks (dagger alef, pause marks) | ✅ | ✅ | ? | — |
 | Narrator `nameKey`, isnad split | ✅ | — | — | — |
-| Same behaviour across languages | Dart · TS · PHP | TS | Rust · Python | Dart |
+| Same behaviour across languages | Dart · TS · PHP · Rust | TS | Rust · Python | Dart |
 | Shared test vectors (CC0) | 1,554 | — | — | — |
 
 ✅ supported · — not supported · ? not checked in the review
@@ -185,7 +200,7 @@ tools/
   tables.src.json      single source of the character tables
   *.mjs                generators, independent oracle, checks, isnad evaluation
 packages/
-  dart/  js/  php/     the three implementations
+  dart/  js/  php/  rust/   the four implementations
 docs/
   corpus.md            text sources, licences, isnad protocol and results
 ```
@@ -194,13 +209,14 @@ docs/
 node tools/gen-tables.mjs --check                           # tables match the source and Unicode 17
 node tools/check-vectors.mjs                                # structure and properties of every case
 node tools/fetch-corpus.mjs && node tools/differential.mjs  # reference vs. independent oracle
+node tools/differential.mjs rust                            # the Rust package vs. the oracle
 ```
 
 CI runs all of the above on every push ([ci.yml](.github/workflows/ci.yml)).
 
 ## Contributing
 
-1. Behaviour changes start in `spec/SPEC.md` and `spec/vectors/`; all three packages then follow.
+1. Behaviour changes start in `spec/SPEC.md` and `spec/vectors/`; all four packages then follow.
 2. Never add Quran or hadith text to the tests without a cited source.
 3. Commit messages are in English; documentation is in both languages.
 

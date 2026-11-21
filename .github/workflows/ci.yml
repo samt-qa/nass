@@ -100,3 +100,39 @@ jobs:
         run: php -d pcov.enabled=1 -d pcov.directory="$PWD/src" tests/run.php
         env:
           NASS_COVERAGE: "95"
+
+  rust:
+    name: Rust ${{ matrix.rust }} (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        # stable and the MSRV (rust-version in packages/rust/Cargo.toml).
+        rust: [stable, "1.70"]
+    defaults:
+      run:
+        working-directory: packages/rust
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ matrix.rust }}
+          components: clippy, rustfmt
+      - name: Format (generated tables excluded)
+        if: matrix.rust == 'stable'
+        run: cargo fmt --check
+      - run: cargo clippy --locked --all-targets --all-features -- -D warnings
+      - run: cargo clippy --locked --all-targets -- -D warnings
+      - run: cargo test --locked --all-features
+      - run: cargo test --locked
+      - uses: actions/setup-node@v5
+        if: matrix.rust == 'stable' && matrix.os == 'ubuntu-latest'
+        with:
+          node-version: 22
+      - name: Differential test against the independent oracle (six books)
+        if: matrix.rust == 'stable' && matrix.os == 'ubuntu-latest'
+        working-directory: .
+        run: |
+          node tools/fetch-corpus.mjs
+          node tools/differential.mjs rust

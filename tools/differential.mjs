@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-// Differential test: the Dart reference vs the independent oracle, over a
-// sample of six hadith books (+ vocalized Bukhari) and 20k random strings.
-// Usage: node tools/differential.mjs   (needs tools/corpus, see docs/corpus.md)
-import { dart, readHadith, BOOKS, VOCALIZED, rng } from "./lib.mjs";
+// Differential test: a package vs the independent oracle, over a sample of six
+// hadith books (+ vocalized Bukhari) and 20k random strings.
+// Usage: node tools/differential.mjs [dart|rust]   (default dart; needs tools/corpus, see docs/corpus.md)
+import { dart, rust, readHadith, BOOKS, VOCALIZED, rng } from "./lib.mjs";
 import { normalize, nameKey } from "./oracle.mjs";
 
 const texts = [];
@@ -27,14 +27,17 @@ for (const t of texts) {
   }
   if (t.length < 80) { reqs.push({ op: "nameKey", text: t }); exp.push(nameKey(t)); }
 }
-const got = dart(reqs);
+const impl = process.argv[2] ?? "dart";
+const run = { dart, rust }[impl];
+if (!run) throw new Error(`unknown package ${impl}: use dart or rust`);
+const got = run(reqs);
 let bad = 0;
 for (let i = 0; i < got.length; i++) {
   if (got[i] !== exp[i] && bad++ < 8) {
     console.log("DIFF", JSON.stringify(reqs[i]).slice(0, 240));
-    console.log("  dart  :", JSON.stringify(got[i]).slice(0, 200));
+    console.log(`  ${impl.padEnd(6)}:`, JSON.stringify(got[i]).slice(0, 200));
     console.log("  oracle:", JSON.stringify(exp[i]).slice(0, 200));
   }
 }
-console.log(`differential: ${bad} mismatches / ${got.length} comparisons`);
+console.log(`differential (${impl}): ${bad} mismatches / ${got.length} comparisons`);
 process.exit(bad ? 1 : 0);

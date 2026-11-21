@@ -4,7 +4,7 @@
 
 **تطبيع النص العربي والبحث فيه بلا اعتبار للحركات، للقرآن والحديث وكتب التراث،<br>مع مواضع التطابق في النص الأصلي المشكول.**
 
-مواصفة واحدة · ثلاث حزم متطابقة المخرجات · Dart و TypeScript و PHP
+مواصفة واحدة · أربع حزم متطابقة المخرجات · Dart و TypeScript و PHP و Rust
 
 [![CI](https://github.com/samt-qa/nass/actions/workflows/ci.yml/badge.svg)](https://github.com/samt-qa/nass/actions/workflows/ci.yml)
 [![pub.dev](https://img.shields.io/pub/v/nass?logo=dart&label=pub.dev)](https://pub.dev/packages/nass)
@@ -16,6 +16,7 @@
 ![Dart](https://img.shields.io/badge/Dart-3.x-0175C2?logo=dart&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-ESM%20%7C%20CJS-3178C6?logo=typescript&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-%E2%89%A5%208.3-777BB4?logo=php&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust-%E2%89%A5%201.70-B7410E?logo=rust&logoColor=white)
 
 [English](README.md) · [المواصفة](spec/SPEC.md) · [ملفات الاختبار](spec/vectors) · [مصادر النصوص ودقة الإسناد](docs/corpus.md)
 
@@ -49,9 +50,9 @@
 | | |
 |---|---|
 | **المواضع في الأصل** | كل محرف مطبَّع يُعرف مصدره، فتُظلِّل النص المشكول الذي يراه القارئ فعلًا. |
-| **مواصفة واحدة، ثلاث لغات** | الحزم الثلاث تجتاز 1,554 حالة اختبار مشتركة، ومعها اختبار تفاضلي مع نسخة مستقلة: صفر اختلاف في 172,463 مقارنة على الكتب الستة. |
+| **مواصفة واحدة، أربع لغات** | الحزم الأربع تجتاز 1,554 حالة اختبار مشتركة، ومعها اختبار تفاضلي مع نسخة مستقلة: صفر اختلاف في 172,463 مقارنة على الكتب الستة. |
 | **مصمَّم للنص الشرعي** | يفهم صيغ الترضّي («ﷺ»، «رضي الله عنه»، «عز وجل» بعد لفظ الجلالة فقط)، وفيه مفتاح لأسماء الرواة `nameKey`، وتقسيم تجريبي للإسناد والمتن مقيس على أحاديث موسومة باليد. |
-| **خفيف بلا اعتماديات** | حزمة JS الأساسية 7.9 كيلوبايت بعد الضغط، وحزمتا Dart و PHP بلا اعتماديات كذلك. |
+| **خفيف بلا اعتماديات** | حزمة JS الأساسية 7.9 كيلوبايت بعد الضغط، وحزم Dart و PHP و Rust بلا اعتماديات كذلك. |
 
 ## الحزم
 
@@ -60,6 +61,7 @@
 | Dart / Flutter | `nass` | `dart pub add nass` | [packages/dart](packages/dart) |
 | TypeScript / JavaScript | `@samt-qa/nass` | `npm i @samt-qa/nass` | [packages/js](packages/js) |
 | PHP 8.3 فأحدث | `samt/nass` | `composer require samt/nass` | [packages/php](packages/php) |
+| Rust 1.70 فأحدث | `nass` *(لم يُنشر على crates.io بعد)* | `nass = { git = "https://github.com/samt-qa/nass" }` | [packages/rust](packages/rust) |
 
 > [!NOTE]
 > **الإصدار 0.3.0.** منشور على [pub.dev](https://pub.dev/packages/nass) و[npm](https://www.npmjs.com/package/@samt-qa/nass) و[Packagist](https://packagist.org/packages/samt/nass). حالات الاختبار كلها مراجَعة ومعتمدة ([المواصفة، الأقسام 12–14](spec/SPEC.md)).
@@ -88,6 +90,13 @@ normalize('إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ'
 use Samt\Nass\Nass;
 
 Nass::normalize('إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ');           // 'انما الاعمال بالنيات'
+```
+
+```rust
+use nass::*;
+
+normalize("إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ", &Options::default());   // "انما الاعمال بالنيات"
+find_all(text, "الاعمال", &SearchOptions::default());          // المواضع في Rust بايتات UTF-8
 ```
 
 <div dir="rtl">
@@ -120,10 +129,10 @@ Nass::normalize('إِنَّمَا الْأَعْمَالُ بِالنِّيَّ�
 
 | الفحص | النتيجة |
 |---|---|
-| حالات الاختبار المشتركة | 1,554 حالة في الحزم الثلاث |
-| الاختبار التفاضلي مع نسخة مستقلة (الكتب الستة) | صفر اختلاف في 172,463 مقارنة |
-| تغطية الأسطر | Dart ‏99.3% · TypeScript ‏99.6% · PHP ‏97.9% |
-| مصفوفة CI | Dart 3.13 · Node 20 / 22 / 24 · PHP 8.3 / 8.4 / 8.5 |
+| حالات الاختبار المشتركة | 1,554 حالة في الحزم الأربع |
+| الاختبار التفاضلي مع نسخة مستقلة (الكتب الستة) | صفر اختلاف في 172,463 مقارنة (Dart و Rust) |
+| تغطية الأسطر | Dart ‏99.3% · TypeScript ‏99.6% · PHP ‏97.9% · Rust لم تُقس بعد |
+| مصفوفة CI | Dart 3.13 · Node 20 / 22 / 24 · PHP 8.3 / 8.4 / 8.5 · Rust stable / 1.70 على Linux و Windows |
 
 ## الأداء
 
@@ -135,14 +144,17 @@ Nass::normalize('إِنَّمَا الْأَعْمَالُ بِالنِّيَّ�
 | Node 22 | 34 | 38 | 39 |
 | PHP 8.5 مع JIT | 47 | 72 | 76 |
 | PHP 8.5 بلا JIT | 132 | 227 | 238 |
+| Rust 1.95 (`cargo bench`) | 16 | 21 | 22 |
+
+قيس سطر Rust لاحقًا على الحاسوب نفسه، وأعطت Dart في الجلسة نفسها 29 / 30 / 31.
 
 ## مقارنة بالمكتبات الأخرى
 
-شغّلنا حالات الاختبار المشتركة على ثلاث مكتبات أخرى (TypeScript و Rust و Dart). في حالات التطبيع التي تدعمها كل مكتبة (205 حالات، مواصفة 0.2) كانت نسب النجاح 87% و37% و32%. الإخفاق معناه أن المخرج يخالف مواصفة «نَصّ»، لا أن المكتبة مخطئة في غرضها. التفاصيل وطريقة إعادة التشغيل في **[docs/comparison.md](docs/comparison.md)**.
+شغّلنا حالات الاختبار المشتركة على ثلاث مكتبات أخرى (TypeScript و Rust و Dart)، وليست منها حزمة Rust في «نَصّ». في حالات التطبيع التي تدعمها كل مكتبة (205 حالات، مواصفة 0.2) كانت نسب النجاح 87% و37% و32%. الإخفاق معناه أن المخرج يخالف مواصفة «نَصّ»، لا أن المكتبة مخطئة في غرضها. التفاصيل وطريقة إعادة التشغيل في **[docs/comparison.md](docs/comparison.md)**.
 
 ## المساهمة
 
-1. كل تغيير في السلوك يبدأ في `spec/SPEC.md` و`spec/vectors/`، ثم تتبعه الحزم الثلاث.
+1. كل تغيير في السلوك يبدأ في `spec/SPEC.md` و`spec/vectors/`، ثم تتبعه الحزم الأربع.
 2. لا يدخل نص قرآني أو حديث في الاختبارات بلا مصدر مذكور.
 3. رسائل الإيداع بالإنجليزية، والتوثيق باللغتين.
 
