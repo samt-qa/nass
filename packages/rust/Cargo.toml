@@ -33,3 +33,7 @@ harness = false
 [[example]]
 name = "cli"
 required-features = ["isnad"]
+
+[package.metadata.docs.rs]
+# Document the experimental isnad module too.
+all-features = true
