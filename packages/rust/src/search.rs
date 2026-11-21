@@ -82,7 +82,7 @@ fn phrase(haystack: &str, hay: &Normalized, needle: &str, whole_word: bool) -> V
         let e = s + needle.len();
         let ok = !whole_word || ((s == 0 || b[s - 1] == b' ') && (e == t.len() || b[e] == b' '));
         if ok {
-            let (os, oe) = (hay.start[s], hay.end[e - 1]);
+            let (os, oe) = (hay.start[s] as usize, hay.end[e - 1] as usize);
             if last_end.map_or(true, |l| os >= l) {
                 out.push(Match {
                     start: os,

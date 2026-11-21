@@ -1,6 +1,6 @@
 [package]
 name = "nass"
-version = "0.3.1"
+version = "0.4.0"
 edition = "2021"
 rust-version = "1.70"
 description = "Arabic text normalization and diacritic-insensitive search for Quran, hadith and heritage texts, with offsets in the original text."

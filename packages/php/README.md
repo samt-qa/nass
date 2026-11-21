@@ -49,12 +49,12 @@ The full rules are in the [specification](https://github.com/samt-qa/nass/blob/m
 
 ## Performance
 
-1 MB of fully vocalized text, PHP 8.5 on a desktop machine:
+About 2 MB (1,048,576 UTF-16 units, 1,658 hadiths) of fully vocalized Ṣaḥīḥ al-Bukhārī, PHP 8.5 on a desktop machine:
 
 | | clean | search | loose |
 |---|---|---|---|
-| with JIT (`opcache.enable_cli=1`, `opcache.jit=tracing`) | 47 ms | 72 ms | 76 ms |
-| without JIT | 132 ms | 227 ms | 238 ms |
+| with JIT (`opcache.enable_cli=1`, `opcache.jit=tracing`) | 93 ms | 135 ms | 139 ms |
+| without JIT | 248 ms | 380 ms | 396 ms |
 
 The project target is under 150 ms per MB. That holds **with the JIT** (the usual setup with PHP-FPM and opcache) but not without it. For bulk indexing without the JIT, normalize once and store the result.
 

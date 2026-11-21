@@ -8,9 +8,9 @@ Part of [nass](https://github.com/samt-qa/nass): the TypeScript (`@samt-qa/nass`
 
 ```toml
 [dependencies]
-nass = "0.3"
+nass = "0.4"
 # or, with the experimental isnad splitter:
-nass = { version = "0.3", features = ["isnad"] }
+nass = { version = "0.4", features = ["isnad"] }
 ```
 
 ## Usage
@@ -122,7 +122,14 @@ It finds the right boundary on 88.3% of 300 held-out hadiths from the six books 
 
 ## Performance
 
-1 MB of fully vocalized hadith text (Ṣaḥīḥ al-Bukhārī), `cargo bench`, one desktop machine (Windows 11): clean 15.9 ms, search 21.4 ms, loose 21.7 ms.
+1 Mi UTF-16 units (about 2 MB of UTF-8, 1,658 hadiths) of fully vocalized Ṣaḥīḥ al-Bukhārī, `cargo bench`, one desktop machine (Windows 11):
+
+| | clean | search | loose |
+|---|--:|--:|--:|
+| `normalize` / `normalize_into` | 11 ms | 15 ms | 15 ms |
+| `normalize_with_map` | 18 ms | 21 ms | 22 ms |
+
+`normalize` and `normalize_into` skip the offset map entirely. With the map, offsets are `u32`: `Normalized` takes 8 bytes per byte of normalized text for `start` and `end`, and the working buffer 12 bytes per code point (4 without the map).
 
 ## License
 

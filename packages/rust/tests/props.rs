@@ -187,15 +187,15 @@ proptest! {
                 prop_assert_eq!(m.start.len(), m.text.len());
                 prop_assert_eq!(m.end.len(), m.text.len());
                 for (i, ch) in m.text.char_indices() {
-                    let (s, e) = (m.start[i], m.end[i]);
+                    let (s, e) = (m.start[i] as usize, m.end[i] as usize);
                     prop_assert!(s < e && e <= x.len());
                     prop_assert!(x.is_char_boundary(s) && x.is_char_boundary(e));
                     // Every byte of one char shares its span.
                     for k in i..i + ch.len_utf8() {
-                        prop_assert_eq!((m.start[k], m.end[k]), (s, e));
+                        prop_assert_eq!((m.start[k] as usize, m.end[k] as usize), (s, e));
                     }
                     if i > 0 {
-                        prop_assert!(s >= m.start[i - 1]);
+                        prop_assert!(s >= m.start[i - 1] as usize);
                     }
                     // Any normalized char range maps to a valid slice of the original.
                     let r = m.source_range(i..i + ch.len_utf8()).unwrap();

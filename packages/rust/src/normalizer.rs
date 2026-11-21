@@ -54,14 +54,17 @@ impl Options {
 
 /// Normalized text plus, for every byte of [`text`](Self::text), the `[start, end)` byte span
 /// of its source group in the original text (SPEC §5).
+///
+/// Offsets are stored as `u32` to halve the memory of the map, so the original text must be
+/// shorter than 4 GiB; [`normalize_with_map`] panics otherwise.
 #[derive(Debug, Clone, PartialEq, Eq, Default)]
 pub struct Normalized {
     /// The normalized text.
     pub text: String,
     /// `start[i]`: start of the source group of byte `i` of `text`, in the original.
-    pub start: Vec<usize>,
+    pub start: Vec<u32>,
     /// `end[i]`: end (exclusive) of the source group of byte `i` of `text`, in the original.
-    pub end: Vec<usize>,
+    pub end: Vec<u32>,
 }
 
 impl Normalized {
@@ -72,26 +75,118 @@ impl Normalized {
         if range.start >= range.end || range.end > self.text.len() {
             return None;
         }
-        Some(self.start[range.start]..self.end[range.end - 1])
+        Some(self.start[range.start] as usize..self.end[range.end - 1] as usize)
     }
 }
 
 const SPACE: u32 = 0x20;
 const ZWNJ: u32 = 0x200c;
 
-/// Code point, source start, source end.
-pub(crate) struct Buf {
-    pub(crate) cp: Vec<u32>,
-    pub(crate) s: Vec<usize>,
-    pub(crate) e: Vec<usize>,
+/// Source spans of the units of a [`Buf`]. `Vec<(u32, u32)>` tracks them; [`NoSpans`] is the
+/// fast path for plain [`normalize`], where every span operation compiles to nothing. Both run
+/// the same pipeline code, so the two paths cannot drift apart.
+pub(crate) trait Spans {
+    fn with_capacity(n: usize) -> Self;
+    fn push(&mut self, st: u32, en: u32);
+    fn pop(&mut self);
+    fn truncate(&mut self, n: usize);
+    /// `(start, end)` of unit `k`; `(0, 0)` when spans are not tracked.
+    fn get(&self, k: usize) -> (u32, u32);
+    fn set(&mut self, k: usize, v: (u32, u32));
+    /// A deleted mark joins the source group of the last kept unit (SPEC §5).
+    fn attach(&mut self, en: u32);
+    /// C1 reordering: units `r` share one span, the union of theirs.
+    fn merge(&mut self, r: Range<usize>);
+    /// C1 composition: unit `k` also covers source up to `en`.
+    fn extend_end(&mut self, k: usize, en: u32);
 }
 
-impl Buf {
+impl Spans for Vec<(u32, u32)> {
+    fn with_capacity(n: usize) -> Self {
+        Vec::with_capacity(n)
+    }
+    #[inline]
+    fn push(&mut self, st: u32, en: u32) {
+        Vec::push(self, (st, en));
+    }
+    fn pop(&mut self) {
+        Vec::pop(self);
+    }
+    fn truncate(&mut self, n: usize) {
+        Vec::truncate(self, n);
+    }
+    #[inline]
+    fn get(&self, k: usize) -> (u32, u32) {
+        self[k]
+    }
+    #[inline]
+    fn set(&mut self, k: usize, v: (u32, u32)) {
+        self[k] = v;
+    }
+    fn attach(&mut self, en: u32) {
+        let Some(&(st, _)) = self.last() else {
+            return;
+        };
+        for x in self.iter_mut().rev() {
+            if x.0 != st {
+                break;
+            }
+            if x.1 < en {
+                x.1 = en;
+            }
+        }
+    }
+    fn merge(&mut self, r: Range<usize>) {
+        let s = &mut self[r];
+        let lo = s.iter().map(|x| x.0).min().unwrap_or(0);
+        let hi = s.iter().map(|x| x.1).max().unwrap_or(0);
+        s.fill((lo, hi));
+    }
+    fn extend_end(&mut self, k: usize, en: u32) {
+        if self[k].1 < en {
+            self[k].1 = en;
+        }
+    }
+}
+
+/// No span tracking: the fast path of [`normalize`] and [`normalize_into`].
+pub(crate) struct NoSpans;
+
+impl Spans for NoSpans {
+    fn with_capacity(_: usize) -> Self {
+        NoSpans
+    }
+    #[inline]
+    fn push(&mut self, _: u32, _: u32) {}
+    #[inline]
+    fn pop(&mut self) {}
+    #[inline]
+    fn truncate(&mut self, _: usize) {}
+    #[inline]
+    fn get(&self, _: usize) -> (u32, u32) {
+        (0, 0)
+    }
+    #[inline]
+    fn set(&mut self, _: usize, _: (u32, u32)) {}
+    #[inline]
+    fn attach(&mut self, _: u32) {}
+    #[inline]
+    fn merge(&mut self, _: Range<usize>) {}
+    #[inline]
+    fn extend_end(&mut self, _: usize, _: u32) {}
+}
+
+/// Code points and their source spans (byte offsets into the original, as `u32`).
+pub(crate) struct Buf<S> {
+    pub(crate) cp: Vec<u32>,
+    pub(crate) sp: S,
+}
+
+impl<S: Spans> Buf<S> {
     fn with_capacity(n: usize) -> Self {
         Buf {
             cp: Vec::with_capacity(n),
-            s: Vec::with_capacity(n),
-            e: Vec::with_capacity(n),
+            sp: S::with_capacity(n),
         }
     }
     #[inline]
@@ -99,45 +194,31 @@ impl Buf {
         self.cp.len()
     }
     #[inline]
-    fn add(&mut self, c: u32, st: usize, en: usize) {
+    fn add(&mut self, c: u32, st: u32, en: u32) {
         self.cp.push(c);
-        self.s.push(st);
-        self.e.push(en);
+        self.sp.push(st, en);
     }
     /// Adds a space unless empty or already ending with one (Z).
     #[inline]
-    fn add_space(&mut self, st: usize, en: usize) {
+    fn add_space(&mut self, st: u32, en: u32) {
         match self.cp.last() {
             None | Some(&SPACE) => {}
             _ => self.add(SPACE, st, en),
         }
     }
-    /// A deleted mark joins the source group of the last kept unit (SPEC §5).
-    fn attach(&mut self, en: usize) {
-        let n = self.len();
-        if n == 0 {
-            return;
-        }
-        let st = self.s[n - 1];
-        let mut i = n;
-        while i > 0 && self.s[i - 1] == st {
-            if self.e[i - 1] < en {
-                self.e[i - 1] = en;
-            }
-            i -= 1;
-        }
+    #[inline]
+    fn attach(&mut self, en: u32) {
+        self.sp.attach(en);
     }
     fn trim_end(&mut self) {
         if self.cp.last() == Some(&SPACE) {
             self.cp.pop();
-            self.s.pop();
-            self.e.pop();
+            self.sp.pop();
         }
     }
     fn truncate(&mut self, n: usize) {
         self.cp.truncate(n);
-        self.s.truncate(n);
-        self.e.truncate(n);
+        self.sp.truncate(n);
     }
     pub(crate) fn write_into(&self, out: &mut String) {
         out.reserve(self.len());
@@ -164,11 +245,13 @@ fn near_arabic(
     first(Box::new(left)) || first(Box::new(right))
 }
 
-fn pass1(c: &Charset, text: &str) -> Buf {
+fn pass1<S: Spans>(c: &Charset, text: &str) -> Buf<S> {
     let mut out = Buf::with_capacity(text.len() / 2 + 16);
-    for (st, ch) in text.char_indices() {
+    for (sti, ch) in text.char_indices() {
         let x = ch as u32;
-        let en = st + ch.len_utf8();
+        let eni = sti + ch.len_utf8();
+        // Callers that track spans check that the text is shorter than 4 GiB.
+        let (st, en) = (sti as u32, eni as u32);
         if x >= 0x10000 {
             if c.is_space(x) {
                 out.add_space(st, en);
@@ -192,8 +275,8 @@ fn pass1(c: &Charset, text: &str) -> Buf {
             if x != ZWNJ
                 && near_arabic(
                     c,
-                    text[..st].chars().rev().map(|ch| ch as u32),
-                    text[en..].chars().map(|ch| ch as u32),
+                    text[..sti].chars().rev().map(|ch| ch as u32),
+                    text[eni..].chars().map(|ch| ch as u32),
                 )
             {
                 out.attach(en);
@@ -221,7 +304,7 @@ fn pass1(c: &Charset, text: &str) -> Buf {
 
 // ---------------------------------------------------------------- pass 2 (C1)
 
-fn c1(cs: &Charset, a: &mut Buf) {
+fn c1<S: Spans>(cs: &Charset, a: &mut Buf<S>) {
     let ccc = |x: u32| cs.ccc.get(x);
     let n = a.len();
     let mut i = 0;
@@ -237,25 +320,21 @@ fn c1(cs: &Charset, a: &mut Buf) {
         if j - i > 1 {
             let mut changed = false;
             for k in i + 1..j {
-                let (x, xs, xe) = (a.cp[k], a.s[k], a.e[k]);
+                let (x, xsp) = (a.cp[k], a.sp.get(k));
                 let xc = ccc(x);
                 let mut m = k;
                 while m > i && ccc(a.cp[m - 1]) > xc {
                     a.cp[m] = a.cp[m - 1];
-                    a.s[m] = a.s[m - 1];
-                    a.e[m] = a.e[m - 1];
+                    let prev = a.sp.get(m - 1);
+                    a.sp.set(m, prev);
                     m -= 1;
                     changed = true;
                 }
                 a.cp[m] = x;
-                a.s[m] = xs;
-                a.e[m] = xe;
+                a.sp.set(m, xsp);
             }
             if changed {
-                let lo = a.s[i..j].iter().copied().min().unwrap_or(0);
-                let hi = a.e[i..j].iter().copied().max().unwrap_or(0);
-                a.s[i..j].fill(lo);
-                a.e[i..j].fill(hi);
+                a.sp.merge(i..j);
             }
         }
         i = j;
@@ -270,9 +349,8 @@ fn c1(cs: &Charset, a: &mut Buf) {
             if last_ccc.map_or(true, |l| l < cc) {
                 if let Some(composed) = cs.composed(a.cp[st], x) {
                     a.cp[st] = composed;
-                    if a.e[k] > a.e[st] {
-                        a.e[st] = a.e[k];
-                    }
+                    let en = a.sp.get(k).1;
+                    a.sp.extend_end(st, en);
                     continue;
                 }
             }
@@ -284,8 +362,8 @@ fn c1(cs: &Charset, a: &mut Buf) {
             last_ccc = Some(cc);
         }
         a.cp[w] = x;
-        a.s[w] = a.s[k];
-        a.e[w] = a.e[k];
+        let v = a.sp.get(k);
+        a.sp.set(w, v);
         w += 1;
     }
     a.truncate(w);
@@ -298,10 +376,11 @@ fn is_digit(c: u32) -> bool {
     (0x30..=0x39).contains(&c)
 }
 
-fn pass3(cs: &Charset, a: &Buf, h: Honorifics, loose: bool) -> Buf {
+fn pass3<S: Spans>(cs: &Charset, a: &Buf<S>, h: Honorifics, loose: bool) -> Buf<S> {
     let mut out = Buf::with_capacity(a.len() + 16);
     for k in 0..a.len() {
-        let (c, st, en) = (a.cp[k], a.s[k], a.e[k]);
+        let c = a.cp[k];
+        let (st, en) = a.sp.get(k);
         if c < 0x10000 {
             let (off, len) = cs.pres_search.get(c);
             if len != 0 {
@@ -337,7 +416,15 @@ fn pass3(cs: &Charset, a: &Buf, h: Honorifics, loose: bool) -> Buf {
 }
 
 /// `rest`: the code points after `c` in this pass, for the S4 look-ahead (empty inside an expansion).
-fn emit(cs: &Charset, out: &mut Buf, c: u32, st: usize, en: usize, rest: &[u32], loose: bool) {
+fn emit<S: Spans>(
+    cs: &Charset,
+    out: &mut Buf<S>,
+    c: u32,
+    st: u32,
+    en: u32,
+    rest: &[u32],
+    loose: bool,
+) {
     if c >= 0x10000 {
         if cs.is_sep(c) {
             out.add_space(st, en);
@@ -423,7 +510,7 @@ fn phrases() -> &'static Phrases {
     })
 }
 
-fn s7(a: Buf, loose: bool) -> Buf {
+fn s7<S: Spans>(a: Buf<S>, loose: bool) -> Buf<S> {
     let ph = phrases();
     let (always, after_allah) = if loose {
         (&ph.always_loose, &ph.after_allah_loose)
@@ -478,11 +565,12 @@ fn s7(a: Buf, loose: bool) -> Buf {
             continue;
         }
         if out.len() > 0 {
-            let sp = s - 1;
-            out.add(SPACE, a.s[sp], a.e[sp]);
+            let (st, en) = a.sp.get(s - 1);
+            out.add(SPACE, st, en);
         }
         for k in s..e {
-            out.add(a.cp[k], a.s[k], a.e[k]);
+            let (st, en) = a.sp.get(k);
+            out.add(a.cp[k], st, en);
         }
     }
     out
@@ -490,7 +578,7 @@ fn s7(a: Buf, loose: bool) -> Buf {
 
 // ---------------------------------------------------------------- public
 
-pub(crate) fn normalize_buf(text: &str, opts: &Options) -> Buf {
+pub(crate) fn normalize_buf<S: Spans>(text: &str, opts: &Options) -> Buf<S> {
     let cs = cs();
     let mut b = pass1(cs, text);
     c1(cs, &mut b);
@@ -528,24 +616,31 @@ pub fn normalize(text: &str, opts: &Options) -> String {
 /// for example when indexing many documents.
 pub fn normalize_into(text: &str, opts: &Options, out: &mut String) {
     out.clear();
-    normalize_buf(text, opts).write_into(out);
+    normalize_buf::<NoSpans>(text, opts).write_into(out);
 }
 
 /// Normalizes `text` and maps every byte of the result to its source span in `text`
 /// (SPEC §5). All offsets are UTF-8 byte offsets.
+///
+/// # Panics
+/// If `text` is 4 GiB or longer (offsets are stored as `u32`).
 pub fn normalize_with_map(text: &str, opts: &Options) -> Normalized {
-    let b = normalize_buf(text, opts);
+    assert!(
+        u32::try_from(text.len()).is_ok(),
+        "nass: normalize_with_map needs a text shorter than 4 GiB"
+    );
+    let b = normalize_buf::<Vec<(u32, u32)>>(text, opts);
     let mut out = Normalized {
         text: String::new(),
         start: Vec::with_capacity(b.len() * 2),
         end: Vec::with_capacity(b.len() * 2),
     };
     b.write_into(&mut out.text);
-    for k in 0..b.len() {
+    for (k, &(st, en)) in b.sp.iter().enumerate() {
         let units = char::from_u32(b.cp[k]).map_or(3, char::len_utf8);
         for _ in 0..units {
-            out.start.push(b.s[k]);
-            out.end.push(b.e[k]);
+            out.start.push(st);
+            out.end.push(en);
         }
     }
     out

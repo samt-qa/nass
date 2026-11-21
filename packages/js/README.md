@@ -58,7 +58,7 @@ It is correct on 91 of 100 held-out hadiths from the six books ([details](https:
 
 ## Performance
 
-About 38 ms per MB of fully vocalized text at the `search` level (Node 22, desktop).
+About 36 ms for 1 Mi UTF-16 units (about 2 MB of UTF-8) of fully vocalized Ṣaḥīḥ al-Bukhārī at the `search` level (Node 22, desktop).
 
 ## License
 

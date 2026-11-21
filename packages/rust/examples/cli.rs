@@ -49,8 +49,8 @@ fn handle(r: &Value) -> Value {
             let (mut start, mut end) = (Vec::new(), Vec::new());
             for (b, ch) in m.text.char_indices() {
                 for _ in 0..ch.len_utf16() {
-                    start.push(u[m.start[b]]);
-                    end.push(u[m.end[b]]);
+                    start.push(u[m.start[b] as usize]);
+                    end.push(u[m.end[b] as usize]);
                 }
             }
             json!({"text": m.text, "start": start, "end": end})

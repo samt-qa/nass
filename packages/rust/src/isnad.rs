@@ -190,8 +190,8 @@ impl<'a> Parser<'a> {
                 j += 1;
             }
             w.push(m.text[i..j].to_string());
-            st.push(m.start[i]);
-            en.push(m.end[j - 1]);
+            st.push(m.start[i] as usize);
+            en.push(m.end[j - 1] as usize);
             i = j;
         }
         Parser {

@@ -109,8 +109,8 @@ fn offsets_vectors() {
         let (mut start, mut end) = (Vec::new(), Vec::new());
         for (b, ch) in m.text.char_indices() {
             for _ in 0..ch.len_utf16() {
-                start.push(u[m.start[b]] as u64);
-                end.push(u[m.end[b]] as u64);
+                start.push(u[m.start[b] as usize] as u64);
+                end.push(u[m.end[b] as usize] as u64);
             }
         }
         let ints = |k: &str| -> Vec<u64> {

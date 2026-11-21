@@ -56,7 +56,7 @@ It is correct on 91 of 100 held-out hadiths from the six books ([details](https:
 
 ## Performance
 
-About 26 ms per MB of fully vocalized text at the `search` level (Dart 3.13 VM, desktop). One pass for the character rules; written honorifics need a second, word-level pass.
+About 30 ms for 1 Mi UTF-16 units (about 2 MB of UTF-8) of fully vocalized Ṣaḥīḥ al-Bukhārī at the `search` level (Dart 3.13 VM, desktop). One pass for the character rules; written honorifics need a second, word-level pass.
 
 ## License
 

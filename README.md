@@ -161,17 +161,17 @@ Per-book results and the error analysis are in [docs/corpus.md](docs/corpus.md).
 
 ## Performance
 
-1 MB of fully vocalized hadith text (Ṣaḥīḥ al-Bukhārī), one desktop machine (Windows 11):
+The first 1,048,576 UTF-16 code units (about 2 MB of UTF-8, 1,658 hadiths) of the fully vocalized Ṣaḥīḥ al-Bukhārī from [Open-Hadith-Data](https://github.com/mhashim6/Open-Hadith-Data), in file order. All rows were measured in one session on one desktop machine (Windows 11), best of two runs:
 
 | Runtime | clean | search | loose |
 |---|--:|--:|--:|
-| Dart 3.13 VM | 24 ms | 26 ms | 28 ms |
-| Node 22 | 34 ms | 38 ms | 39 ms |
-| PHP 8.5, JIT on (`opcache.jit=tracing`) | 47 ms | 72 ms | 76 ms |
-| PHP 8.5, no JIT | 132 ms | 227 ms | 238 ms |
-| Rust 1.95, release (`cargo bench`) | 16 ms | 21 ms | 22 ms |
+| Rust 1.95, release (`cargo bench`) | 11 ms | 15 ms | 15 ms |
+| Dart 3.13 VM | 22 ms | 30 ms | 32 ms |
+| Node 22 | 36 ms | 36 ms | 39 ms |
+| PHP 8.5, JIT on (`opcache.jit=tracing`) | 93 ms | 135 ms | 139 ms |
+| PHP 8.5, no JIT | 248 ms | 380 ms | 396 ms |
 
-The Rust row was measured later on the same machine; Dart measured in the same session gave 29 / 30 / 31 ms. The core JS bundle is **7.9 KB** min+gzip; `@samt-qa/nass/isnad` adds about 2 KB and reuses the core.
+Rust with the offset map (`normalize_with_map`): 18 / 21 / 22 ms. To reproduce: `node tools/fetch-corpus.mjs && node tools/bench-text.mjs`, then each package's benchmark (`packages/*/benchmark`, `packages/js/scripts/bench.mjs`, `cargo bench` in `packages/rust`). The core JS bundle is **7.9 KB** min+gzip; `@samt-qa/nass/isnad` adds about 2 KB and reuses the core.
 
 ## Compared with other libraries
 
