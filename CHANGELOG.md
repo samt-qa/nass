@@ -2,6 +2,11 @@
 
 All packages (Dart `nass`, npm `@samt-qa/nass`, Packagist `samt/nass`, crates.io `nass`) share one version and one spec.
 
+## 0.3.1 (Rust only)
+
+- docs.rs builds the documentation with all features, so the experimental `isnad` module is documented.
+- No code change; behaviour is identical to 0.3.0.
+
 ## 0.3.0 (Rust)
 
 ### Rust package (new, published on crates.io)
