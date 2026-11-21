@@ -7,7 +7,7 @@ All packages (Dart `nass`, npm `@samt-qa/nass`, Packagist `samt/nass`, crates.io
 ### Benchmarks (all packages)
 - The benchmarks now run on real text: the first 1 Mi UTF-16 units (about 2 MB of UTF-8, 1,658 hadiths) of the vocalized Sahih al-Bukhari, built by `tools/bench-text.mjs`. Before, they repeated one sentence, and the READMEs wrongly called that "1 MB of Sahih al-Bukhari". All performance tables were re-measured in one session.
 
-### Rust 0.4.0 (breaking, not yet published)
+### Rust 0.4.0 (breaking, published on crates.io)
 - `Normalized::start` and `Normalized::end` are now `Vec<u32>` (were `Vec<usize>`): half the memory for the offset map. `normalize_with_map` panics on texts of 4 GiB or more. `source_range` still returns `Range<usize>`.
 - `normalize` and `normalize_into` no longer build source spans at all (same pipeline code, span tracking compiled out): about 20-25% faster on the Bukhari benchmark (search: 18.8 → 15.2 ms). `normalize_with_map` is 2-9% faster and its working buffer uses 12 instead of 20 bytes per code point.
 - No behaviour change: all shared vectors pass, differential test 0 mismatches / 172,463.
