@@ -1,3 +1,7 @@
+## 0.3.1
+
+- Documentation only, no code change. Performance figures re-measured on real vocalized Sahih al-Bukhari (1 Mi UTF-16 units, about 2 MB); mentions the Rust crate.
+
 ## 0.3.0
 
 - Experimental `splitIsnad`: new rules; 88.3% on a new held-out set of 300 hadiths (dev 98.0% on 500).

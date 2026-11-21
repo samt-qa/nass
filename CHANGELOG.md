@@ -1,8 +1,10 @@
 # Changelog
 
-All packages (Dart `nass`, npm `@samt-qa/nass`, Packagist `samt/nass`, crates.io `nass`) share one version and one spec.
+The Dart (`nass`), npm (`@samt-qa/nass`) and Packagist (`samt/nass`) packages share one version; the crates.io crate `nass` has its own since 0.4.0. All implement the same spec.
 
-## Unreleased
+## Dart, npm, Packagist 0.3.1 · Rust 0.4.0
+
+- Dart, npm and Packagist 0.3.1: documentation only, no code change.
 
 ### Benchmarks (all packages)
 - The benchmarks now run on real text: the first 1 Mi UTF-16 units (about 2 MB of UTF-8, 1,658 hadiths) of the vocalized Sahih al-Bukhari, built by `tools/bench-text.mjs`. Before, they repeated one sentence, and the READMEs wrongly called that "1 MB of Sahih al-Bukhari". All performance tables were re-measured in one session.

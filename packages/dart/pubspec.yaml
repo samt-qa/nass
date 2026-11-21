@@ -2,7 +2,7 @@ name: nass
 description: >-
   Arabic text normalization and diacritic-insensitive search for Quran, hadith
   and heritage texts, with match offsets in the original vocalized text.
-version: 0.3.0
+version: 0.3.1
 repository: https://github.com/samt-qa/nass
 issue_tracker: https://github.com/samt-qa/nass/issues
 topics: [arabic, quran, hadith, search, unicode]
