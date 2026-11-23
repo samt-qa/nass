@@ -2,13 +2,13 @@
 
 The Dart (`nass`), npm (`@samt-qa/nass`) and Packagist (`samt/nass`) packages share one version; the crates.io crate `nass` has its own since 0.4.0. All implement the same spec.
 
-## Unreleased (all packages)
+## Dart, npm, Packagist 0.3.2 · Rust 0.4.1
 
 ### Normalization fix: presentation forms with tatweel (SPEC C4)
 - Nine presentation forms (U+FE71, FE77, FE79, FE7B, FE7D, FE7F and the medial shadda ligatures U+FCF2–FCF4) decompose under NFKC to a tatweel plus harakat. C3 (tatweel removal) runs before C4, so the tatweel survived: `clean("بﹷ")` gave «بـَ» and `search` gave «بـ», and a second pass removed the tatweel. Normalization was not idempotent for these characters, and `clean ⊂ search` failed.
 - `tools/gen-tables.mjs` now drops U+0640 from the presentation table, so `clean("بﹷ")` = «بَ» and `search("بﹷ")` = «ب» in all four packages and the oracle. No runtime code changed, only the generated tables.
 - Four new shared vectors (`norm-clean-013`–`015`, `norm-search-029`): 1,558 cases. Rust property tests no longer exclude these characters and check every presentation form at every level.
-- Released in Rust 0.4.1 on crates.io; the Dart, npm and Packagist packages get it in their next release.
+- Released in Dart, npm and Packagist 0.3.2 and in Rust 0.4.1.
 
 ## Dart, npm, Packagist 0.3.1 · Rust 0.4.0
 

@@ -1,3 +1,8 @@
+## 0.3.2
+
+- Fix (SPEC C4): nine presentation forms (U+FE71, FE77, FE79, FE7B, FE7D, FE7F, FCF2–FCF4) no longer leave a tatweel: `normalize("بﹷ", level: Level.clean)` is «بَ», and normalization is idempotent for them. Only the generated tables changed.
+- Passes all 1,558 shared test vectors.
+
 ## 0.3.1
 
 - Documentation only, no code change. Performance figures re-measured on real vocalized Sahih al-Bukhari (1 Mi UTF-16 units, about 2 MB); mentions the Rust crate.
