@@ -124,6 +124,36 @@
       "review": "approved"
     },
     {
+      "id": "norm-clean-013",
+      "rule": "C4",
+      "input": "بﹷ",
+      "level": "clean",
+      "options": {},
+      "expected": "بَ",
+      "note": "صيغة عرض «تطويل مع فتحة» تُفك إلى الفتحة وحدها، بلا تطويل (0.4)",
+      "review": "approved"
+    },
+    {
+      "id": "norm-clean-014",
+      "rule": "C4",
+      "input": "ﹱ",
+      "level": "clean",
+      "options": {},
+      "expected": "ً",
+      "note": "«تطويل مع تنوين فتح» وحدها: يبقى التنوين فقط (0.4)",
+      "review": "approved"
+    },
+    {
+      "id": "norm-clean-015",
+      "rule": "C4",
+      "input": "بﳲ",
+      "level": "clean",
+      "options": {},
+      "expected": "بَّ",
+      "note": "ربط «شدة مع فتحة» الوسطي: لا تطويل، والحركتان بالترتيب القانوني (0.4)",
+      "review": "approved"
+    },
+    {
       "id": "norm-search-001",
       "rule": "S2",
       "input": "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ",
@@ -442,6 +472,16 @@
       "options": {},
       "expected": "a‌b",
       "note": "ZWNJ بين حرفين غير عربيين لا يُمس",
+      "review": "approved"
+    },
+    {
+      "id": "norm-search-029",
+      "rule": "C4",
+      "input": "بﹷ",
+      "level": "search",
+      "options": {},
+      "expected": "ب",
+      "note": "لا يبقى تطويل من صيغة العرض بعد حذف الحركة (0.4)",
       "review": "approved"
     },
     {
