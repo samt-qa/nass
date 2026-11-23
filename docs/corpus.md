@@ -30,7 +30,7 @@ node tools/fetch-corpus.mjs     # downloads the CSV files into tools/corpus (git
 
 | File | Built by | Cases |
 |---|---|---|
-| `normalize.json`, `offsets.json`, `search.json`, `names.json` | hand-written cases + `tools/gen-vectors.mjs` (deterministic, seeded) | 304 / 100 / 150 / 200 |
+| `normalize.json`, `offsets.json`, `search.json`, `names.json` | hand-written cases + `tools/gen-vectors.mjs` (deterministic, seeded) | 308 / 100 / 150 / 200 |
 | `isnad.json` | `tools/gen-isnad-vectors.mjs` from the hand labels in `tools/isnad-labels.mjs` | 800 |
 
 - Generated cases (`gen-…`) take real lines from the corpus, or are marked `synthetic: true` when they are built from rule fragments. The expected value comes from the Dart reference package and must agree with the independent oracle (`tools/oracle.mjs`).

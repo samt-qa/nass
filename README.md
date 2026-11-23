@@ -50,7 +50,7 @@ Searching vocalized Arabic is easy to get *almost* right. Strip the diacritics a
 | | |
 |---|---|
 | **Offsets in the original** | Every normalized character maps back to its source span, so you highlight the vocalized text the user is actually reading. |
-| **One spec, four languages** | Dart, TypeScript, PHP and Rust pass the same 1,554 shared test vectors, plus a differential test against an independent implementation: 0 mismatches in 172,463 comparisons over the six books. |
+| **One spec, four languages** | Dart, TypeScript, PHP and Rust pass the same 1,558 shared test vectors, plus a differential test against an independent implementation: 0 mismatches in 172,463 comparisons over the six books. |
 | **Built for religious texts** | Honorifics («ﷺ», «رضي الله عنه», «عز وجل» only after «الله»), a `nameKey` for narrator names, and an experimental isnad/matn splitter measured on hand-labelled hadiths. |
 | **Small and dependency-free** | The core JS bundle is 7.9 KB min+gzip with no runtime dependencies; the Dart, PHP and Rust packages have none either. |
 
@@ -153,7 +153,7 @@ Per-book results and the error analysis are in [docs/corpus.md](docs/corpus.md).
 
 | Check | Result |
 |---|---|
-| Shared test vectors (normalize, offsets, search, names, isnad) | 1,554 cases, all four packages |
+| Shared test vectors (normalize, offsets, search, names, isnad) | 1,558 cases, all four packages |
 | Differential test vs. independent oracle (six books) | 0 mismatches / 172,463 (Dart and Rust) |
 | Line coverage | Dart 99.3% · TypeScript 99.6% · PHP 97.9% · Rust 98.0% |
 | CI matrix | Dart 3.13 · Node 20 / 22 / 24 · PHP 8.3 / 8.4 / 8.5 · Rust stable / 1.70 on Linux and Windows |
@@ -185,7 +185,7 @@ From a review in November 2026 (all MIT-licensed). nass was written from scratch
 | Quranic marks (dagger alef, pause marks) | ✅ | ✅ | ? | — |
 | Narrator `nameKey`, isnad split | ✅ | — | — | — |
 | Same behaviour across languages | Dart · TS · PHP · Rust | TS | Rust · Python | Dart |
-| Shared test vectors (CC0) | 1,554 | — | — | — |
+| Shared test vectors (CC0) | 1,558 | — | — | — |
 
 ✅ supported · — not supported · ? not checked in the review
 

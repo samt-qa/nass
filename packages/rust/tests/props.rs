@@ -59,42 +59,38 @@ const PIECES: &[&str] = &[
     " ذا ",
 ];
 
-/// Nine presentation forms (U+FCF2–FCF4, U+FE71, FE77, FE79, FE7B, FE7D, FE7F) expand in C4 to a
-/// tatweel plus harakat, and C3 has already run, so the tatweel survives `clean` and is removed
-/// only by a second pass: idempotence and level inclusion fail for them in every package
-/// (TypeScript, Dart, PHP and the oracle agree). This is a spec question, not a Rust bug, so the
-/// generator leaves them out; `tatweel_from_presentation_forms` pins the shared behaviour.
-fn spec_tatweel_issue(c: char) -> bool {
-    ('\u{FB50}'..='\u{FEFF}').contains(&c)
-        && normalize(&c.to_string(), &Options::level(Level::Clean)).contains('\u{640}')
-}
-
 fn tricky() -> impl Strategy<Value = String> {
     prop_oneof![
         3 => prop::collection::vec(prop::sample::select(PIECES), 0..16).prop_map(|v| v.concat()),
-        1 => any::<String>().prop_map(|s| s.chars().filter(|&c| !spec_tatweel_issue(c)).collect()),
+        1 => any::<String>(),
     ]
 }
 
+/// Nine presentation forms (U+FCF2–FCF4, U+FE71, FE77, FE79, FE7B, FE7D, FE7F) used to expand in
+/// C4 to a tatweel plus harakat after C3 had run, so the tatweel survived one pass and vanished in
+/// the next. The generated table now drops it (SPEC C4). Check every presentation form.
 #[test]
-fn tatweel_from_presentation_forms() {
-    let affected: Vec<u32> = ('\u{FB50}'..='\u{FEFF}')
-        .filter(|&c| spec_tatweel_issue(c))
-        .map(|c| c as u32)
-        .collect();
-    assert_eq!(
-        affected,
-        [0xFCF2, 0xFCF3, 0xFCF4, 0xFE71, 0xFE77, 0xFE79, 0xFE7B, 0xFE7D, 0xFE7F]
-    );
-    // Same output as the TypeScript, Dart and PHP packages and the oracle.
+fn presentation_forms_are_idempotent() {
+    for c in ('\u{FB50}'..='\u{FDFF}').chain('\u{FE70}'..='\u{FEFF}') {
+        let text = format!("\u{628}{c}");
+        for level in LEVELS {
+            for honorifics in [Honorifics::Keep, Honorifics::Strip] {
+                let opts = Options { level, honorifics };
+                let once = normalize(&text, &opts);
+                let cp = c as u32;
+                assert!(
+                    !once.contains('\u{640}'),
+                    "U+{cp:04X} {level:?}: tatweel left"
+                );
+                assert_eq!(normalize(&once, &opts), once, "U+{cp:04X} {level:?}");
+            }
+        }
+    }
     assert_eq!(
         normalize("\u{628}\u{FE77}", &Options::level(Level::Clean)),
-        "\u{628}\u{640}\u{64E}"
+        "\u{628}\u{64E}"
     );
-    assert_eq!(
-        normalize("\u{628}\u{FE77}", &Options::default()),
-        "\u{628}\u{640}"
-    );
+    assert_eq!(normalize("\u{628}\u{FE77}", &Options::default()), "\u{628}");
 }
 
 const LEVELS: [Level; 3] = [Level::Clean, Level::Search, Level::Loose];

@@ -98,7 +98,10 @@ const presentationSearch = []; // [cp, [cps]]  (search, S1)
 for (const c of expand(src.presentationRanges)) {
   if (!assigned.has(c)) continue;
   const ch = String.fromCodePoint(c);
-  const mapped = ch.normalize("NFKC").replace(/^ /, ""); // drop leading space before isolated harakat
+  // Drop the leading space NFKC puts before isolated harakat (U+FE70..), and the tatweel it puts
+  // before medial harakat (U+FE71, FE77..FE7F, FCF2..FCF4): C3 has already run, so a tatweel
+  // left here would survive one pass and vanish in the next, breaking idempotence (SPEC C4).
+  const mapped = ch.normalize("NFKC").replace(/^ /, "").replaceAll("ـ", "");
   if (mapped === ch) continue;
   (deferred.has(c) ? presentationSearch : presentation).push([c, strToCps(mapped)]);
 }
